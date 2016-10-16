@@ -17,10 +17,13 @@
     </defs>
   </svg>
 </div>
+
 <div id="dashboard-<%= dashboard.id %>" class="<%= dashboard.name_slug %>">
+
   <div class="hero-region">
+
     <div class="container-ish">
-      <div class="row dashboard__top">
+      <div class="row-ish dashboard__top">
         <div class="dashboard__header">
           <h1><%= dashboard.name %> </h1>
           <div class="badge__holder">
@@ -34,24 +37,23 @@
         <% end %>
       </div>
     </div>
+
   </div>
 
-  <div class="container-fluid-ish metric-breakdown-view">
+
+  <div class="container metric-breakdown-view">
     <% if dashboard.show_kpis? %>
-      <div class="clearfix dashboard__kpis">
-        <div class="container-ish">
-          <div class="row">
-            <% dashboard.first_row.each do |widget| %>
-              <%= render 'widget', :widget => widget.decorate do %>
-                <h2><%= widget.name %></h2>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+      <div class="row dashboard__kpis">
+        <% dashboard.first_row.each do |widget| %>
+          <%= render 'widget', :widget => widget.decorate do %>
+            <h2><%= widget.name %></h2>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
 
-    <div class="container-ish dashboard__secondary dashboard__below-the-line">
+  <div class="below-the-line-background">
+    <div class="container dashboard__secondary dashboard__below-the-line">
       <% dashboard.remaining_rows.each do |widgets| %>
         <div class="row">
           <% widgets.each do |widget| %>
@@ -62,7 +64,6 @@
         </div>
       <% end %>
     </div>
-
 
     <div class="container">
       <div class="row">
