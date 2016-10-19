@@ -11,6 +11,11 @@
 
 .l-footer-logo {
   padding-bottom: 2.4em;
+  float: left;
+
+  @media (max-width:$screen-sm){
+    float: none;
+  }
 
   @media (min-width:$screen-sm-minor) {
     padding-bottom: 0;
@@ -32,7 +37,6 @@
 .footer {
   font-size: 14px;
   background: $primary-text-colour;
-
   padding-top: 1.4em;
   padding-bottom: 2.4em;
 
@@ -53,4 +57,3 @@
     }
   }
 }
-

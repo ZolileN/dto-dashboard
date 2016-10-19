@@ -21,7 +21,6 @@
   <div class="hero-region">
     <div class="container">
       <div class="row dashboard__top">
-        <a href="/" aria-hidden="true" class="back-link">Back to overview</a>
         <div class="dashboard__header">
           <h1><%= dashboard.name %> </h1>
           <div class="badge__holder">
@@ -39,22 +38,26 @@
 
   <div class="container-fluid metric-breakdown-view">
     <% if dashboard.show_kpis? %>
-        <div class="clearfix dashboard__kpis">
-          <div class="container">
-            <div class="row">
-              <% dashboard.first_row.each do |widget| %>
-                <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
+      <div class="clearfix dashboard__kpis">
+        <div class="container">
+          <div class="row">
+            <% dashboard.first_row.each do |widget| %>
+              <%= render 'widget', :widget => widget.decorate do %>
+                <h2><%= widget.name %></h2>
               <% end %>
-            </div>
+            <% end %>
           </div>
         </div>
+      </div>
     <% end %>
 
     <div class="container dashboard__secondary dashboard__below-the-line">
       <% dashboard.remaining_rows.each do |widgets| %>
         <div class="row">
           <% widgets.each do |widget| %>
-            <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
+            <%= render 'widget', :widget => widget.decorate do %>
+              <h3><%= widget.name %></h3>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -75,15 +78,16 @@
               <% end %>
             </div>
           </div>
-          <div class="widget-text__footer aus-width-five-twelfths">
-            <% if dashboard.show_url? %>
+          <% if dashboard.show_url? %>
+            <div class="widget-text__footer aus-width-five-twelfths">
               <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+
           <div class="widget-text__footer aus-width-five-twelfths">
             <p>
-              <%= link_to export_dashboard_path(dashboard, :format => 'csv') do %>
-                Download dashboard data as CSV<i class="fa fa-external-link"></i>
+              <%= link_to export_dashboard_path(dashboard, :format => 'csv'), class: "link--external-alt" do %>
+                Download dashboard data as CSV
               <% end %>
             </p>
           </div>
