@@ -54,14 +54,14 @@ export const getDatapointsById = (state, ids) => {
   });
 };
 
-/**
- * @param state
- * @param dataset_id
- * @returns {Array} - datapoints
- */
-export const getDatapointsByDatasetId = (state, dataset_id) => {
-  return state.filter((w) => dataset_id == w.dataset_id);
-};
+// /**
+//  * @param state
+//  * @param dataset_id
+//  * @returns {Array} - datapoints
+//  */
+// export const getDatapointsByDatasetId = (state, dataset_id) => {
+//   return state.filter((w) => dataset_id == w.dataset_id);
+// };
 
 export const computeLabel = (datapoint) => {
   return moment(datapoint).format('YYYY-MM');
