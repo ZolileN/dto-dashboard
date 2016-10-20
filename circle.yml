@@ -12,12 +12,12 @@ machine:
 dependencies:
   pre:
     - npm install -g npm
+    - npm run build
 
 test:
   override:
     - npm test
     - bundle exec rspec --exclude-pattern "features/**"
-    - npm run build
     - bundle exec rspec spec/features
 
 deployment:
@@ -29,7 +29,6 @@ deployment:
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_DEV &> /dev/null
-      - npm run build
       - ./bin/ci-deploy.sh
 
   staging:
