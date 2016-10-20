@@ -37,19 +37,28 @@ describe('datapoints selectors', () => {
       throw new Error('fixtureDatasets has not datapoints.')
     }
 
-    let expected = getDatapointsById(state, datapointIds);
-    expect(expected.length).toExist('returns a collection of datapoint');
+    let actual = getDatapointsById(state, datapointIds);
 
-    if (expected.length) {
-      let firstDatapoint = expected[0];
-      expect(isDatapointType(firstDatapoint)).toBe(true, 'collection item is of type datapoint');
+    let actual1 = actual.length;
+    expect(actual1).toExist('returns a collection of datapoint');
+
+    if (actual.length) {
+      let actual2 = isDatapointType(actual[0]);
+      let expected2 = true;
+      expect(actual2).toEqual(expected2, 'collection item is of type datapoint');
     }
   });
 
   it(`getDatapointById can retrieve a datapoint by id`, () => {
-    let expected = getDatapointById(state, fixture.id);
-    expect(expected.id).toBe(fixture.id, 'retrieves the correct datapoint');
-    expect(isDatapointType(expected)).toBe(true, 'item is of type datapoint');
+    let actual = getDatapointById(state, fixture.id);
+
+    let actual1 = actual.id;
+    let expected1 = fixture.id;
+    expect(actual1).toEqual(expected1, 'retrieves the correct datapoint');
+
+    let actual2 = isDatapointType(actual);
+    let expected2 = true;
+    expect(actual2).toEqual(expected2, 'item is of type datapoint');
   });
 
 });

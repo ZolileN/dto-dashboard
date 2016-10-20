@@ -26,9 +26,15 @@ describe('dashboards selectors', () => {
   let fixture = state[0];
 
   it(`getDashboardById can retrieve a dashboard by id`, () => {
-    let expectedDashboard = getDashboardById(state, fixture.id);
-    expect(expectedDashboard.id).toBe(fixture.id, 'retrieves the correct dashboard');
-    expect(isDashboardType(expectedDashboard)).toBe(true, 'item is of type dashboard');
+    let dashboard = getDashboardById(state, fixture.id);
+
+    let actual1 = dashboard.id;
+    let expected1 = fixture.id;
+    expect(actual1).toBe(expected1, 'retrieves the correct dashboard');
+
+    let actual2 = isDashboardType(dashboard);
+    let expected2 = true;
+    expect(actual2).toEqual(expected2, 'item is of type dashboard');
   });
 
 });

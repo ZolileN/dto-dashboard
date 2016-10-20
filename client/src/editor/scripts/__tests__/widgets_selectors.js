@@ -31,19 +31,28 @@ describe('widgets selectors', () => {
 
   it(`getWidgetsByDashboardId can retrieve a collection of widget by its' dashboard id`, () => {
     let dashId = dashboardFixture.id;
-    let expectedWidgets = getWidgetsByDashboardId(state, dashId);
-    expect(expectedWidgets.length).toExist('returns a collection of widget');
+    let actual = getWidgetsByDashboardId(state, dashId);
 
-    if (expectedWidgets.length) {
-      let firstWidget = expectedWidgets[0];
-      expect(isWidgetType(firstWidget)).toBe(true, 'collection item is of type widget');
+    let actual1 = actual.length;
+    expect(actual1).toExist('returns a collection of widget');
+
+    if (actual.length) {
+      let actual2 = isWidgetType(actual[0]);
+      let expected2 = true;
+      expect(actual2).toEqual(expected2, 'collection item is of type widget');
     }
   });
 
   it(`getWidgetById can retrieve a widget by id`, () => {
-    let expectedWidget = getWidgetById(state, fixture.id);
-    expect(expectedWidget.id).toBe(fixture.id, 'retrieves the correct widget');
-    expect(isWidgetType(expectedWidget)).toBe(true, 'item is of type widget');
+    let actual = getWidgetById(state, fixture.id);
+
+    let actual1 = actual.id;
+    let expected1 = fixture.id;
+    expect(actual1).toEqual(expected1, 'retrieves the correct widget');
+
+    let actual2 = isWidgetType(actual);
+    let expected2 = true;
+    expect(actual2).toEqual(expected2, 'item is of type widget');
   });
 
 });

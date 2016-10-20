@@ -32,19 +32,30 @@ describe('datasets selectors', () => {
 
   it(`getDatasetsByIds can retrieve a collection of dataset by dataset ids`, () => {
     let datasetIds = fixtureWidget.datasets;
-    let expected = getDatasetsByIds(state, datasetIds);
-    expect(expected.length).toExist('returns a collection of dataset');
+    let actual = getDatasetsByIds(state, datasetIds);
 
-    if (expected.length) {
-      let firstDataset = expected[0];
-      expect(isDatasetType(firstDataset)).toBe(true, 'collection item is of type dataset');
+    let actual1 = actual.length;
+    expect(actual1).toExist('returns a collection of dataset');
+
+    if (actual.length) {
+      let firstDataset = actual[0];
+
+      let actual2 = isDatasetType(firstDataset);
+      let expected2 = true;
+      expect(actual2).toEqual(expected2, 'collection item is of type dataset');
     }
   });
 
   it(`getDatasetById can retrieve a dataset by id`, () => {
-    let expected = getDatasetById(state, fixture.id);
-    expect(expected.id).toBe(fixture.id, 'retrieves the correct dataset');
-    expect(isDatasetType(expected)).toBe(true, 'item is of type dataset');
+    let actual = getDatasetById(state, fixture.id);
+
+    let actual1 = actual.id;
+    let expected1 = fixture.id;
+    expect(actual1).toEqual(expected1, 'retrieves the correct dataset');
+
+    let actual2 = isDatasetType(actual);
+    let expected2 = true;
+    expect(actual2).toEqual(expected2, 'item is of type dataset');
   });
 
 });
