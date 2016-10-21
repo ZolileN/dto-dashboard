@@ -1,13 +1,35 @@
 @charset 'utf-8';
 
-@import '~bootstrap/scss/mixins/lists';
+/**
+ *
+ * Ui-kit and overrides
+ *
+ */
 
 @import '~bourbon/core/bourbon';
 @import '~bourbon-neat/app/assets/stylesheets/neat';
 @import '_vendor/gov-au-ui-kit/fake-external-links';
 
-@import 'globals/variables';
-@import 'globals/mixins';
+@import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
+
+
+/**
+ *
+ * Dashboard
+ *
+ */
+
+// vendor
+
+@import '~bootstrap/scss/mixins/lists';
+
+
+// components
+// layout
+// themes
+
+@import 'variables';
+@import 'mixins';
 
 @import "../../_common/styles/components/type";
 @import 'base';
@@ -27,7 +49,6 @@ $media-alignment-padding-x:   10px !default;
 @import 'dashboard/dashboard';
 @import 'dashboard/card';
 @import 'dashboard/stack';
-@import 'feedback/base';
 @import 'feedback/feedback';
 @import 'widgets/widget';
 @import 'widgets/sparkline';

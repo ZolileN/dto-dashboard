@@ -176,10 +176,8 @@
   padding-top: $spacing-unit / 2;
 }
 
-.metric-breakdown-view {
+.below-the-line-bg {
   background-color: $light-grey;
-  padding: 0;
-  margin: 0;
 }
 
 .dashboard__kpis {
@@ -341,9 +339,15 @@
 }
 
 .dashboard-information {
-  .widget.widget-text {
+  .widget {
     height: auto !important; //can be removed when new design implemented
     min-height: auto !important; //can be removed when new design implemented
+  }
+
+  @media (min-width: $screen-md) {
+    .widget-text__footer {
+      float:right;
+    }
   }
 
   h4 {

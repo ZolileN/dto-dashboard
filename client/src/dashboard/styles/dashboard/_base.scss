@@ -1,6 +1,6 @@
 // todo - scope dashboard pages with parent scopes
 
-.container {
+.container-deprecated-dont-add-this-anywhere-else {
   margin-right: auto;
   margin-left: auto;
   @include add-gutter;
@@ -105,8 +105,31 @@
   @include omega;
 }
 
-.row {
-  @include row;
+
+@mixin row-from-neat($display: default, $direction: $default-layout-direction) {
+  @if $direction != $default-layout-direction {
+    @include -neat-warn("The $direction argument will be deprecated in future versions in favor of the direction(){...} mixin.");
+  }
+
+  $layout-direction: $direction !global;
+
+  @if $display != default {
+    @include -neat-warn("The $display argument will be deprecated in future versions in favor of the display(){...} mixin.");
+  }
+
+  @if $display == table {
+    display: table;
+    @include fill-parent;
+    table-layout: fixed;
+    $container-display-table: true !global;
+  } @else {
+    @include clearfix;
+    display: block;
+    $container-display-table: false !global;
+  }
+}
+.row-deprecated-dont-add-this-anywhere-else {
+  @include row-from-neat;
 }
 
 .prototype-warning {
@@ -119,7 +142,7 @@
 }
 
 .prototype-warning-text {
-  @extend .container;
+  @extend .container-deprecated-dont-add-this-anywhere-else;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -172,7 +195,7 @@ svg {
 }
 
 section {
-  @include row;
+  @include row-from-neat;
 }
 
 p {

@@ -305,12 +305,12 @@ git push -f
 or push from another branch
  
  ```
- git push origin feature/dashboard-dashboard:staging
+ git push -f origin feature/dashboard-dashboard:staging
  ```
  
  which is: 
  ```
- git push <remote> <local_branch_name>:<remote_branch_name>
+ git push -f <remote> <local_branch_name>:<remote_branch_name>
  ```
 
 

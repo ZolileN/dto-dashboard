@@ -18,80 +18,98 @@
   </svg>
 </div>
 <div id="dashboard-<%= dashboard.id %>" class="<%= dashboard.name_slug %>">
+
   <div class="hero-region">
     <div class="container">
-      <div class="row dashboard__top">
-        <div class="dashboard__header">
-          <h1><%= dashboard.name %> </h1>
-          <div class="badge__holder">
-            <span class="badge-default"><%= dashboard.organisation.name %></span>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="dashboard__top">
+            <div class="dashboard__header">
+              <h1><%= dashboard.name %> </h1>
+              <div class="badge__holder">
+                <span class="badge-default"><%= dashboard.organisation.name %></span>
+              </div>
+            </div>
+            <% if dashboard.show_hero? %>
+                <div class="clearfix">
+                  <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.datasets_to_chart %>"></div>
+                </div>
+            <% end %>
           </div>
         </div>
-        <% if dashboard.show_hero? %>
-          <div class="clearfix">
-            <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.datasets_to_chart %>"></div>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid metric-breakdown-view">
-    <% if dashboard.show_kpis? %>
-      <div class="clearfix dashboard__kpis">
-        <div class="container">
-          <div class="row">
-            <% dashboard.first_row.each do |widget| %>
-              <%= render 'widget', :widget => widget.decorate do %>
-                <h2><%= widget.name %></h2>
-              <% end %>
+  <% if dashboard.show_kpis? %>
+    <div class="container">
+      <div class="dashboard__kpis">
+        <div class="row">
+          <% dashboard.first_row.each do |widget| %>
+            <%= render 'widget', :widget => widget.decorate do %>
+              <h2><%= widget.name %></h2>
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
-    <div class="container dashboard__secondary dashboard__below-the-line">
-      <% dashboard.remaining_rows.each do |widgets| %>
-        <div class="row">
-          <% widgets.each do |widget| %>
-            <%= render 'widget', :widget => widget.decorate do %>
-              <h3><%= widget.name %></h3>
+  <div class="below-the-line-bg">
+
+    <div class="container">
+      <div class="dashboard__secondary dashboard__below-the-line">
+        <% dashboard.remaining_rows.each do |widgets| %>
+          <div class="row">
+            <% widgets.each do |widget| %>
+              <%= render 'widget', :widget => widget.decorate do %>
+                <h3><%= widget.name %></h3>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
-    <div class="row dashboard-information">
-      <div class="container">
-        <div class="widget widget-text clearfix">
-          <div class="widget-text__inner aus-width-seven-twelfths">
-            <div class="widget__title">
-              <h4>Dashboard Information</h4>
-            </div>
-            <div id="dashboard-notes" class="widget__body">
-              <% if dashboard.show_notes? %>
-                <%= raw dashboard.notes %>
-              <% else %>
-                <p>No information available.</p>
-              <% end %>
-            </div>
-          </div>
-          <% if dashboard.show_url? %>
-            <div class="widget-text__footer aus-width-five-twelfths">
-              <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
-            </div>
-          <% end %>
 
-          <div class="widget-text__footer aus-width-five-twelfths">
-            <p>
-              <%= link_to export_dashboard_path(dashboard, :format => 'csv'), class: "link--external-alt" do %>
-                Download dashboard data as CSV
-              <% end %>
-            </p>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div class="widget dashboard-information" style="height:auto">
+            <div class="col-xs-12 col-lg-7">
+              <div class=" widget-text">
+                <div class="widget-text__inner">
+                  <div class="widget__title">
+                    <h4>Dashboard Information</h4>
+                  </div>
+                  <div id="dashboard-notes" class="widget__body">
+                    <% if dashboard.show_notes? %>
+                        <%= raw dashboard.notes %>
+                    <% else %>
+                        <p>No information available.</p>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-lg-5">
+                <div class="widget-text__footer">
+                  <% if dashboard.show_url? %>
+                      <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
+                  <% end %>
+                  <p>
+                    <%= link_to export_dashboard_path(dashboard, :format => 'csv'), class: "link--external-alt" do %>
+                        Download dashboard data as CSV
+                    <% end %>
+                  </p>
+                </div>
+              </div>
           </div>
+
         </div>
+
       </div>
     </div>
 
