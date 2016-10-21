@@ -46,9 +46,7 @@
       <div class="dashboard__kpis">
         <div class="row">
           <% dashboard.first_row.each do |widget| %>
-            <%= render 'widget', :widget => widget.decorate do %>
-              <h2><%= widget.name %></h2>
-            <% end %>
+            <%= render :partial => 'kpi-widget', :locals => {:widget => widget.decorate} %>
           <% end %>
         </div>
       </div>
@@ -62,9 +60,7 @@
         <% dashboard.remaining_rows.each do |widgets| %>
           <div class="row">
             <% widgets.each do |widget| %>
-              <%= render 'widget', :widget => widget.decorate do %>
-                <h3><%= widget.name %></h3>
-              <% end %>
+              <%= render :partial => 'widget', :locals => {:widget => widget.decorate} %>
             <% end %>
           </div>
         <% end %>
