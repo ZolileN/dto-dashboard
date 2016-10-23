@@ -195,6 +195,10 @@
     content: '\f111';
     font-family: 'fontawesome';
     padding-right: 10px;
+
+    @media(max-width: $screen-sm - 1) {
+      float: left;
+    }
   }
 
   .widget__definition,
@@ -219,8 +223,10 @@
       text-align: center;
       height: 35px;
 
-      h4 {
+
+      h2 {
         display: inline;
+        font-size: 1.25rem;
       }
     }
   }
@@ -235,7 +241,6 @@
     }
   }
 }
-
 
 .no-js {
   .widget__definition--title {
@@ -317,7 +322,6 @@
   }
 }
 
-
 .dashboard__below-the-line {
   .has-data-true {
     .widget__last-updated {
@@ -340,5 +344,13 @@
   .widget.widget-text {
     height: auto !important; //can be removed when new design implemented
     min-height: auto !important; //can be removed when new design implemented
+  }
+
+  h4 {
+    margin-top: 0;
+  }
+
+  .link--external-alt {
+    color: $brand-primary-colour;
   }
 }

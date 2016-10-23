@@ -1,8 +1,8 @@
 .widget__definition--title {
   cursor: pointer;
   color: $link-colour;
-  text-decoration: underline;
   position: relative;
+  border-bottom: 1px solid $brand-primary-colour;
 
   &:hover {
     color: $link-hover-colour;
@@ -144,12 +144,13 @@
     //  height: 77px;
     //}
 
-    h4 {
+    h3 {
       font-size: 1.25 * $fallback;
       color: $primary-text-colour;
       font-size: 1.25rem;
       margin-top: 0;
       margin-bottom: $gutter / 2;
+      font-weight: 400;
     }
 
     .widget__last-updated,
@@ -362,7 +363,7 @@
   .widget-text__footer {
     text-align: left;
 
-    @include media($screen-sm) {
+    @include media($screen-sm +1) {
       text-align: right;
     }
 

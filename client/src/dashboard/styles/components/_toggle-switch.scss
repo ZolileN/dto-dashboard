@@ -5,7 +5,7 @@
   position: relative;
   top: 7px;
 
-  @media screen and (max-width: $screen-sm) {
+  @media screen and (max-width: $screen-sm - 1) {
     top: 2px;
  }
 
@@ -18,7 +18,7 @@
         padding-right: $gutter;
         padding-top: 6px;
 
-        @media screen and (max-width: $screen-sm) {
+        @media screen and (max-width: $screen-sm - 1) {
           display: none;
         }
       }

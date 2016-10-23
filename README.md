@@ -302,6 +302,18 @@ git rebase master
 git push -f
 ```
 
+or push from another branch
+ 
+ ```
+ git push origin feature/dashboard-dashboard:staging
+ ```
+ 
+ which is: 
+ ```
+ git push <remote> <local_branch_name>:<remote_branch_name>
+ ```
+
+
 ### Production
 
 To tag a release for deployment to production:
