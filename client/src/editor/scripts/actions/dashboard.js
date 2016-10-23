@@ -14,11 +14,10 @@ export const updateDashboard = formData => {
       data: formData,
       key: getRequestKey(formData.id, 'update'),
       successActions: [
-        types.SET_DASHBOARDS,
+        types.UPDATE_DASHBOARD,
         () => setToast(`Dashboard: ${formData.name} updated`)
       ],
       errorActions: [
-        // types.UPDATE_DASHBOARDS_FAIL,
         () => setToast(`Couldn't update dashboard: ${formData.name}`, 'error')
       ]
     }

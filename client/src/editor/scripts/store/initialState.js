@@ -1,5 +1,4 @@
 export default {
-  config: {},
   routing: {},
   app: {},
   requests: {},
@@ -11,6 +10,9 @@ export default {
     pageDatasetDatapoint: {},
     pageDatasetDatapointCreate: {}
   },
+  // __CONFIG__
+  config: {},
+  // __STATE__
   currentUser: {},
   dashboards: [],
   widgets: [],

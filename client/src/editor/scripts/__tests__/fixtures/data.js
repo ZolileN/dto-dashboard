@@ -1,4 +1,14 @@
 const fixtureState = {
+  app: {},
+  requests: {},
+  ui: {
+    toast: {},
+    pageDashboard: {},
+    pageDashboardWidget: {},
+    pageDataset: {},
+    pageDatasetDatapoint: {},
+    pageDatasetDatapointCreate: {}
+  },
   config: {
     USE_FIXTURES: true,
     API_BASE_URL: '/api/v1/'

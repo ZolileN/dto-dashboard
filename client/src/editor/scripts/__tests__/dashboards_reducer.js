@@ -1,34 +1,81 @@
+/*global describe,it,beforeAll*/
 import expect from 'expect';
 
-import dashboardReducer from './../reducers/dashboards';
-import fixtureData from './fixtures/data';
+import dashboardsReducer, {
+  isDashboard,
+  getDashboardById
+} from './../reducers/dashboards';
+import fixtures from './fixtures/data';
 import * as types from './../actions/_types';
 
 
-describe('dashboards reducer', () => {
+describe('Dashboards Reducer', () => {
 
-  let state;
-  let fixture;
+  const dashboards = fixtures.dashboards;
+  const dashboard = dashboards[0];
 
-  beforeEach(() => {
-    state = [fixtureData.dashboards];
-    fixture = state[0];
+  beforeAll(() => {
+    if (!dashboard) {
+      throw new Error('incorrect Dashboard fixture supplied');
+    }
   });
 
-  afterEach(() => {
+  it('can handle an unknown issue', () => {
+    let initState = [];
+    let nextState = dashboardsReducer(initState, {type:'UNKNOWN', payload:{id:1}});
+    expect(nextState).toBe(initState);  // toBe expects the *exact same* state
   });
 
-  it('Will update an existing dashboard', () => {
-    let expectedStateSlice = {...fixture, name:'boo hoo'};
-    let actual = dashboardReducer(state, {
-      type: types.SET_DASHBOARDS,
-      payload: expectedStateSlice
+  describe('Update an existing Dashboard', () => {
+    let expected,
+      nextState;
+
+    beforeAll(() => {
+      expected = {...dashboard, name:'boohoo'};
+      nextState = dashboardsReducer(dashboards, {
+        type: types.UPDATE_DASHBOARD,
+        payload: expected
+      });
     });
-    expect(actual).toInclude(expectedStateSlice, 'can update an existing record on state');
 
-    let actual2 = actual.length;
-    let expected2 = state.length;
-    expect(actual2).toEqual(expected2, 'after setting state the right amount of records on state remain');
+    it('the updated record should have the correct type', () => {
+      expect(isDashboard(expected)).toBe(true);
+    });
+    it('the state should show the correct dashboard was updated', () => {
+      expect(nextState).toContain(expected);
+    });
+    it('an updated record should store the correct property change', () => {
+      expect(getDashboardById(nextState, expected.id).name).toBe(expected.name);
+    });
+    it('the count of dashboards on state should remain unchanged', () => {
+      expect(nextState.length).toEqual(dashboards.length);
+    });
+  });
+
+  describe('Update a non-existing Dashboard', () => {
+    let fakeItem,
+      nextState;
+
+    beforeAll(() => {
+      fakeItem = {id:'3746527345372shgadhasfd2'};
+      nextState = dashboardsReducer(dashboards, {
+        type: types.UPDATE_DASHBOARD,
+        payload: fakeItem
+      });
+    });
+
+    it('attempt to update a non existing record should fail', () => {
+      expect(nextState.map((d) => {
+        return d.id;
+      }).includes(fakeItem.id)).toBe(false);
+    });
+    it('the count of dashboards on state should remain unchanged', () => {
+      expect(nextState.length).toEqual(dashboards.length);
+    })
+  });
+
+  describe('Update an existing Dashboard with an object that is not of type Dashboard', () => {
+    it.skip('the update should be rejected', () => {});
   });
 
 });

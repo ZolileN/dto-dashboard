@@ -1,61 +1,61 @@
+/*global describe,it,beforeAll*/
 import expect from 'expect';
-import { isObject } from 'lodash';
 
 import {
+  getDatasetById,
   getDatasetsByIds,
-  getDatasetById
+  isDataset
 } from './../reducers/datasets';
-import fixtureData from './fixtures/data';
+import fixtures from './fixtures/data';
 
 
-/**
- * @param dataset {Object}
- * @return {boolean}
- */
-let isDatasetType = (dataset) => {
-  // item is an object
-  if (isObject(dataset) === false) {
-    return false;
-  }
-  // item matches keys unique to dataset so assume is dataset
-  let datasetKeys = Object.keys(dataset);
-  return ['datapoints', 'units', 'label'].every((k) => datasetKeys.includes(k));
-};
+describe('Datsets Selectors', () => {
 
+  const datasets = fixtures.datasets;
+  const dataset = datasets[4];
+  const widgets = fixtures.widgets;
+  const widget = widgets[4];
 
-describe('datasets selectors', () => {
-
-  let state = fixtureData.datasets;
-  let fixtureWidget = fixtureData.widgets[0];
-  let fixture = state[0];
-
-
-  it(`getDatasetsByIds can retrieve a collection of dataset by dataset ids`, () => {
-    let datasetIds = fixtureWidget.datasets;
-    let actual = getDatasetsByIds(state, datasetIds);
-
-    let actual1 = actual.length;
-    expect(actual1).toExist('returns a collection of dataset');
-
-    if (actual.length) {
-      let firstDataset = actual[0];
-
-      let actual2 = isDatasetType(firstDataset);
-      let expected2 = true;
-      expect(actual2).toEqual(expected2, 'collection item is of type dataset');
+  beforeAll(() => {
+    if (!dataset) {
+      throw new Error('incorrect Dataset fixture supplied');
+    }
+    if (!widget || !widget.datasets.length) {
+      throw new Error('incorrect Widget fixture supplied')
     }
   });
 
-  it(`getDatasetById can retrieve a dataset by id`, () => {
-    let actual = getDatasetById(state, fixture.id);
+  describe('getDatasetById', () => {
+    let actual;
+    beforeAll(() => {
+      actual = getDatasetById(datasets, dataset.id);
+    });
 
-    let actual1 = actual.id;
-    let expected1 = fixture.id;
-    expect(actual1).toEqual(expected1, 'retrieves the correct dataset');
+    it('should retrieve a Dataset from an id', () => {
+      expect(actual).toBe(dataset);
+    });
 
-    let actual2 = isDatasetType(actual);
-    let expected2 = true;
-    expect(actual2).toEqual(expected2, 'item is of type dataset');
+    it('should return an item that is of type Dataset', () => {
+      expect(isDataset(actual)).toBe(true);
+    });
+  });
+
+
+  describe('getDatasetsByIds', () => {
+    let actual;
+    beforeAll(() => {
+      actual = getDatasetsByIds(datasets, widget.datasets);
+    });
+
+    it('should retrieve a collection of Dataset items from an array of ids', () => {
+      expect(actual.every((i) => {
+        return isDataset(i);
+      })).toBe(true);
+    });
+
+    it('should return an empty collection when supplied with incorrect ids', () => {
+      expect(getDatasetsByIds(datasets, ['asa','hdjfgfjsdh'])).toEqual([]);
+    });
   });
 
 });

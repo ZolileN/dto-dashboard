@@ -1,11 +1,12 @@
 import * as types from './../actions/_types';
 import initialState from './../store/initialState';
+import isTypeOfState from './../utils/isTypeOfState';
 
 
 const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
 
   switch (type) {
-    case types.SET_WIDGETS:
+    case types.UPDATE_WIDGET:
       return state.map((d) => {
         if (d.id === payload.id) {
           return {...d, ...payload}
@@ -14,13 +15,21 @@ const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
       });
       break;
 
-    case types.UPDATE_WIDGETS_FAIL:
     default:
       return state;
   }
 };
 
 export default widgetsReducer;
+
+
+//
+
+/**
+ * Check if is of state type
+ * @return {Boolean}
+ */
+export const isWidget = isTypeOfState(['row', 'pos', 'type', 'size', 'units']);
 
 
 // Selectors

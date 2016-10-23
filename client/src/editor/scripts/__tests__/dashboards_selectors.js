@@ -1,40 +1,37 @@
+/*global describe,it,beforeAll*/
 import expect from 'expect';
-import { isObject } from 'lodash';
 
-import { getDashboardById } from './../reducers/dashboards';
-import fixtureData from './fixtures/data';
-
-
-/**
- * @param dashboard {Object}
- * @return {boolean}
- */
-let isDashboardType = (dashboard) => {
-  // item is an object
-  if (isObject(dashboard) === false) {
-    return false;
-  }
-  // item matches keys unique to dashboard so assume is dashboard
-  let dashboardKeys = Object.keys(dashboard);
-  return ['name', 'target_users', 'url'].every((k) => dashboardKeys.includes(k));
-};
+import {
+  getDashboardById,
+  isDashboard
+} from './../reducers/dashboards';
+import fixtures from './fixtures/data';
 
 
-describe('dashboards selectors', () => {
+describe('Dashboards Selectors', () => {
 
-  let state = fixtureData.dashboards;
-  let fixture = state[0];
+  const dashboards = fixtures.dashboards;
+  const dashboard = dashboards[0];
 
-  it(`getDashboardById can retrieve a dashboard by id`, () => {
-    let dashboard = getDashboardById(state, fixture.id);
+  beforeAll(() => {
+    if (!dashboard) {
+      throw new Error('incorrect Dashboard fixture supplied');
+    }
+  });
 
-    let actual1 = dashboard.id;
-    let expected1 = fixture.id;
-    expect(actual1).toBe(expected1, 'retrieves the correct dashboard');
+  describe('getDashboardById', () => {
+    let actual;
+    beforeAll(() => {
+      actual = getDashboardById(dashboards, dashboard.id);
+    });
 
-    let actual2 = isDashboardType(dashboard);
-    let expected2 = true;
-    expect(actual2).toEqual(expected2, 'item is of type dashboard');
+    it('should retrieve a Dashboard from an id', () => {
+      expect(actual).toBe(dashboard);
+    });
+
+    it('should return an item that is of type Dashboard', () => {
+      expect(isDashboard(actual)).toBe(true);
+    });
   });
 
 });

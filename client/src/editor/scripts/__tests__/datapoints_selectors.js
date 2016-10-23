@@ -1,64 +1,63 @@
+/*global describe,it,beforeAll*/
 import expect from 'expect';
-import { isObject } from 'lodash';
-
 import {
   getDatapointById,
-  getDatapointsById
+  getDatapointsById,
+  isDatapoint
 } from './../reducers/datapoints';
-import fixtureData from './fixtures/data';
+import fixtures from './fixtures/data';
 
 
-/**
- * @param datapoint {Object}
- * @return {boolean}
- */
-let isDatapointType = (datapoint) => {
-  // item is an object
-  if (isObject(datapoint) === false) {
-    return false;
-  }
-  // item matches keys unique to datapoint so assume is datapoint
-  let datapointKeys = Object.keys(datapoint);
-  return ['label', 'ts', 'value'].every((k) => datapointKeys.includes(k));
-};
+describe('Datapoints Selectors', () => {
 
+  const datapoints = fixtures.datapoints;
+  const datapoint = datapoints[4];
+  const datasets = fixtures.datasets;
+  const dataset = datasets[10];
 
-
-describe('datapoints selectors', () => {
-
-  let state = fixtureData.datapoints;
-  let fixtureDataset = fixtureData.datasets[4];
-  let fixture = state[0];
-
-  it(`getDatapointsById can retrieve a collection of datapoint by datapoint ids`, () => {
-    let datapointIds = fixtureDataset.datapoints;
-
-    if (!datapointIds) {
-      throw new Error('fixtureDatasets has not datapoints.')
+  beforeAll(() => {
+    if (!datapoint) {
+      throw new Error('incorrect Datapoint fixture supplied');
     }
-
-    let actual = getDatapointsById(state, datapointIds);
-
-    let actual1 = actual.length;
-    expect(actual1).toExist('returns a collection of datapoint');
-
-    if (actual.length) {
-      let actual2 = isDatapointType(actual[0]);
-      let expected2 = true;
-      expect(actual2).toEqual(expected2, 'collection item is of type datapoint');
+    if (!dataset || !dataset.datapoints.length) {
+      throw new Error('incorrect Dataset fixture supplied');
     }
   });
 
-  it(`getDatapointById can retrieve a datapoint by id`, () => {
-    let actual = getDatapointById(state, fixture.id);
+  describe('getDatapointById', () => {
+    let actual;
+    beforeAll(() => {
+      actual = getDatapointById(datapoints, datapoint.id);
+    });
 
-    let actual1 = actual.id;
-    let expected1 = fixture.id;
-    expect(actual1).toEqual(expected1, 'retrieves the correct datapoint');
+    it('should retrieve a Datapoint from an id', () => {
+      expect(actual).toBe(datapoint);
+    });
 
-    let actual2 = isDatapointType(actual);
-    let expected2 = true;
-    expect(actual2).toEqual(expected2, 'item is of type datapoint');
+    it('should retrieve the correct Datapoint', () => {
+      expect(actual.ts).toBe(datapoint.ts);
+    });
+
+    it('should return an item that is of type Datapoint', () => {
+      expect(isDatapoint(actual)).toBe(true);
+    });
+  });
+
+  describe('getDatapointsById', () => {
+    let actual;
+    beforeAll(() => {
+      actual = getDatapointsById(datapoints, dataset.datapoints);
+    });
+
+    it('should retrieve a collection of items', () => {
+      expect(actual.length).toBeTruthy();
+    });
+
+    it('should retrieve a collection of Datapoint items', () => {
+      expect(actual.every((i) => {
+        return isDatapoint(i);
+      })).toBe(true);
+    });
   });
 
 });

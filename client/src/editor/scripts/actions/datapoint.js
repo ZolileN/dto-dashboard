@@ -13,7 +13,7 @@ export const updateDatapoint = formData => ({
     data: formData,
     key: getRequestKey(formData.id, 'update'),
     successActions: [
-      types.SET_DATAPOINTS,
+      types.UPDATE_DATAPOINT,
       () => setToast(`Datapoint: ${formData.label} updated`)
     ],
     errorActions: [
@@ -35,7 +35,6 @@ export const createDatapoint = formData => ({
       () => setToast(`Datapoint created`)
     ],
     errorActions: [
-      // types.CREATE_DATAPOINT_FAIL,
       () => setToast(`Couldn't create datapoint`, 'error')
     ]
   }

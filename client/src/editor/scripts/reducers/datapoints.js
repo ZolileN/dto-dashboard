@@ -1,6 +1,8 @@
+import moment from 'moment';
+
 import * as types from './../actions/_types';
 import initialState from './../store/initialState';
-import moment from 'moment';
+import isTypeOfState from './../utils/isTypeOfState';
 
 
 const datapointsReducer = (state = initialState.datapoints, {type, payload}) => {
@@ -13,7 +15,7 @@ const datapointsReducer = (state = initialState.datapoints, {type, payload}) => 
       ];
       break;
 
-    case types.SET_DATAPOINTS:
+    case types.UPDATE_DATAPOINT:
       return state.map((d) => {
         if (d.id === payload.id) {
           return {...d, ...payload}
@@ -22,14 +24,22 @@ const datapointsReducer = (state = initialState.datapoints, {type, payload}) => 
       });
       break;
 
-    case types.CREATE_DATAPOINT_FAIL:
-    case types.UPDATE_DATAPOINTS_FAIL:
     default:
       return state;
+
   }
 };
 
 export default datapointsReducer;
+
+
+//
+
+/**
+ * Check if is of state type
+ * @return {Boolean}
+ */
+export const isDatapoint = isTypeOfState(['label', 'ts', 'value']);
 
 
 // Selectors

@@ -13,11 +13,10 @@ export const updateDataset = formData => ({
     data: formData,
     key: getRequestKey(formData.id, 'update'),
     successActions: [
-      types.SET_DATASETS,
+      types.UPDATE_DATASET,
       () => setToast(`Dataset: ${formData.name} updated`)
     ],
     errorActions: [
-      // types.UPDATE_DATASETS_FAIL,
       () => setToast(`Couldn't update dataset: ${formData.name}`, 'error')
     ]
   }
