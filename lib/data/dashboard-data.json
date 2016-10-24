@@ -115,9 +115,9 @@
     {
       "id":           "average-session-time",
       "recorded_at":  "2016-10-23T20:25:04Z",
-      "units":        "n",
+      "units":        "i",
       "definition":   "Average Session Time on month",
-      "name":         "Seconds",
+      "name":         "Session Time",
       "note": "NEED TO CONTENT",
       "data": [
         { "label": "2016-05", "value": null },

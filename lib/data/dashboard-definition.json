@@ -109,7 +109,7 @@
       "name": "Average session length",
       "type": "line",
       "size": "medium",
-      "units": "n",
+      "units": "s",
       "displayRoundedData" : false,
       "definition": "NEED TO CONTENT",
       "datasets": ["average-session-time"]
