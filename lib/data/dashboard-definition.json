@@ -2,7 +2,7 @@
   "name":         "Performance Dashboard Dashboard",
   "url":          "https://dashboard.gov.au/",
   "agency":       "DTO",
-  "description":  "TODO",
+  "description":  "NEED TO CONTENT",
   "target_users": "Users",
   "notes":        "<dl><dt>Where is this information from?<dd>The Digital Transformation Office (DTO).<dt>What is the Performance Dashboard?<dd>The Performance Dashboard shows how government services are performing. Government services are required to publish 4 key performance indicators (KPIs) on the Performance Dashboard. These KPIs are cost per transaction, user satisfaction, digital take-up and completion rate.<dt>Who are the users of the Performance Dashboard?<dd>The Performance Dashboard’s users are anyone with an interest in how government services are performing, including the general public. Our vision is to drive the continuous improvement of government services, so our primary users are likely to include:<ul><li>service managers — senior executives in government who can make decisions on service improvement<li>digital transformation champions — people who lead a digital shift in government agencies<li>digital transformation teams — government agency staff who have embarked on the transformation process.</ul></dl>",
   "widgets":  [
@@ -90,7 +90,7 @@
       "type": "fact",
       "units": "n",
       "size": "small",
-      "description": "TODO"
+      "description": "NEED TO CONTENT"
     },
     {
       "id":   "avg-dashboard-page-views",
@@ -100,7 +100,7 @@
       "size": "medium",
       "units": "n",
       "displayRoundedData" : false,
-      "definition": "TODO",
+      "definition": "NEED TO CONTENT",
       "datasets": ["dashboard-pageviews-over-session"]
     },
     {
@@ -111,7 +111,7 @@
       "size": "medium",
       "units": "n",
       "displayRoundedData" : false,
-      "definition": "TODO",
+      "definition": "NEED TO CONTENT",
       "datasets": ["average-session-time"]
     },
     {
@@ -121,7 +121,7 @@
       "type": "fact",
       "units": "n",
       "size": "small",
-      "description": "TODO"
+      "description": "NEED TO CONTENT"
     },
 
 
@@ -137,7 +137,7 @@
       "stacking": "percentage",
       "units": "%",
       "displayRoundedData" : true,
-      "definition": "TODO",
+      "definition": "NEED TO CONTENT",
       "datasets": ["automated-vs-manual-automated", "automated-vs-manual-manual"]
     },
     {
@@ -148,7 +148,7 @@
       "size": "medium",
       "units": "n",
       "displayRoundedData" : true,
-      "definition": "TODO",
+      "definition": "NEED TO CONTENT",
       "datasets": [
         "traffic-sources-by-channel-direct",
         "traffic-sources-by-channel-referral",
@@ -164,7 +164,7 @@
       "size": "small",
       "units": "%",
       "displayRoundedData" : true,
-      "definition": "TODO",
+      "definition": "NEED TO CONTENT",
       "datasets": ["new-returning-new", "new-returning-returning"]
     },
     {
@@ -175,7 +175,7 @@
       "size": "small",
       "units": "%",
       "displayRoundedData" : true,
-      "definition": "TODO",
+      "definition": "NEED TO CONTENT",
       "datasets": [
         "ddd-sessions-by-device-mobile",
         "ddd-sessions-by-device-tablet",
