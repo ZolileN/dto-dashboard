@@ -1,0 +1,25 @@
+OPTIONS_WIDGET_TYPE:
+  full: Full
+  kpi-sparkline: Kpi Sparkline
+  bar: Bar
+  fact: Fact
+  pie: Pie
+OPTIONS_WIDGET_UNITS:
+  '%': Percentage
+  $: Currency
+  n: Number
+  f: Float
+  s: Seconds
+OPTIONS_DATASET_LABEL:
+  '%': Percentage
+  $: Currency
+  n: Number
+  f: Float
+  s: Seconds
+OPTIONS_WIDGET_SIZE:
+  'extra-small': Extra Small
+  'small': Small
+  'medium': Medium
+  'large': Large
+  'extra-large': Extra Large
+

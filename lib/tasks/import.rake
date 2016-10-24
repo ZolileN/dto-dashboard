@@ -5,7 +5,7 @@ namespace :import do
   desc 'Imports Data'
 
   task update: :environment do
-    orgs = { 'industry' => 3 }
+    orgs = { 'industry' => 3, 'dashboard' => 8 }
     run(orgs)
   end
 
@@ -15,7 +15,10 @@ namespace :import do
       'industry' => 3,
       'imports' => 4,
       'medicare-enrolment' => 6,
-      'marketplace' => 7 }
+      'marketplace' => 7,
+      'dashboard' => 8
+    }
+    
     run(orgs)
   end
 

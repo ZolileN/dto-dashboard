@@ -1,0 +1,296 @@
+{
+  "version":      "1",
+  "updated_at":   "2016-11-08T10:35:02.000Z",
+  "name":         "Dashboard",
+  "url":          "https://dashboard.gov.au/",
+  "agency":       "DTO",
+  "description":  "Dashboard",
+  "notes":        "",
+  "datasets":     [
+    {
+     "id":            "user-satisfaction",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "name":         "User Satisfaction",
+      "units":        "%",
+      "note": "User satisfaction measures the percentage of users who responded \"satisfied\" or \"very satisfied\" in our feedback survey. This figure is not yet statistically significant because of the low number of feedback responses from August 2016 onwards. In addition, we have no data for the months of May, June and July 2016 because no users provided feedback. We are determining the best way to encourage more feedback from our users.",
+      "data":          [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": null },
+        { "label": "2016-08", "value": 75 },
+        { "label": "2016-09", "value": 60 }
+      ]
+     },
+     {
+       "id":           "cost-per-transaction",
+       "recorded_at":  "2016-11-08T01:01:01.111Z",
+       "units":        "$",
+       "name":         "Cost per transaction",
+       "note":         "Cost per transaction measures the costs of delivering a service for each time a user views the Performance Dashboard. It is calculated by determining the labour costs, including training, travel and other overheads, for the reporting period. (It does not include items such as product development and administration.) This figure is then divided by the number of sessions as recorded by Google Analytics for dashboard.gov.au. The result is an average cost per transaction for the reporting period. Over time, as more users view the dashboard, we expect this figure to come down. As we release self-service features, we anticipate this figure will come down.",
+       "data":         [
+         { "label": "2016-05", "value": null },
+         { "label": "2016-06", "value": null },
+         { "label": "2016-07", "value": 375.66 },
+         { "label": "2016-08", "value": 53.67 },
+         { "label": "2016-09", "value": 53.45 }
+       ]
+     },
+    {
+      "id":           "digital-take-up",
+      "name":         "Digital take-up",
+      "units":        "%",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "note": "Digital take-up measures the percentage of services in public beta or live phases that have published a service dashboard to the Performance Dashboard. When a service enters public beta, it is required to publish its performance data on the dashboard. Digital take-up shows how many services have done this.",
+      "data":          [
+        { "label": "2016-05", "value": 0 },
+        { "label": "2016-06", "value": 0 },
+        { "label": "2016-07", "value": 67 },
+        { "label": "2016-08", "value": 100 },
+        { "label": "2016-09", "value": 100 }
+      ]
+    },
+    {
+      "id":           "completion-rate",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "units":        "%",
+      "name":         "Completion rate",
+      "note": "Completion rate measures the percentage of users who view Dashboard.gov.au and who then go on to view one or more service dashboards. For example, some users may only view the Dashboard.gov.au home page. Other users may then view a service dashboard. When users do this, we consider it a successful completion.",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 73.39 },
+        { "label": "2016-08", "value": 90.27 },
+        { "label": "2016-09", "value": 84.28 }
+      ]
+    },
+
+
+
+
+    {
+      "id":           "total-users",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Total Users on month",
+      "name":         "Users",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 121 },
+        { "label": "2016-08", "value": 833 },
+        { "label": "2016-09", "value": 825 }
+      ]
+    },
+    {
+      "id":           "dashboard-pageviews",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Dashboard PageViews on month",
+      "name":         "Page Views",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 168 },
+        { "label": "2016-08", "value": 1330 },
+        { "label": "2016-09", "value": 1074 }
+      ]
+    },
+    {
+      "id":           "dashboard-pageviews-over-session",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Dashboard PageViews over Session on month",
+      "name":         "Page Views",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 2.8 },
+        { "label": "2016-08", "value": 3.28 },
+        { "label": "2016-09", "value": 2.94 }
+      ]
+    },
+    {
+      "id":           "average-session-time",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Average Session Time on month",
+      "name":         "Seconds",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 83 },
+        { "label": "2016-08", "value": 231 },
+        { "label": "2016-09", "value": 195 }
+      ]
+    },
+    {
+      "id":           "automated-vs-manual-automated",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "%",
+      "definition":   "Automated vs Manual on month - automated",
+      "name":         "Automated",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 0 },
+        { "label": "2016-09", "value": 0 }
+      ]
+    },
+    {
+      "id":           "automated-vs-manual-manual",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "%",
+      "definition":   "Automated vs Manual on month - manual",
+      "name":         "Manual",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 100 },
+        { "label": "2016-08", "value": 100 },
+        { "label": "2016-09", "value": 100 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-direct",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Traffic sources by Channel on month - direct",
+      "name":         "Direct",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 116 },
+        { "label": "2016-08", "value": 618 },
+        { "label": "2016-09", "value": 631 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-referral",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Traffic sources by Channel on month - referral",
+      "name":         "Referral",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 52 },
+        { "label": "2016-08", "value": 477 },
+        { "label": "2016-09", "value": 472 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-organic",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Traffic sources by Channel on month - organic",
+      "name":         "Organic",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 8 },
+        { "label": "2016-08", "value": 130 },
+        { "label": "2016-09", "value": 146 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-social",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Traffic sources by Channel on month - social",
+      "name":         "Social",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 3 },
+        { "label": "2016-08", "value": 28 },
+        { "label": "2016-09", "value": 9 }
+      ]
+    },
+    {
+      "id":           "new-returning-new",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "New vs Returning Users on month - new",
+      "name":         "New",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 113 },
+        { "label": "2016-08", "value": 767 },
+        { "label": "2016-09", "value": 727 }
+      ]
+    },
+    {
+      "id":           "new-returning-returning",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "New vs Returning Users on month - returning",
+      "name":         "Returning",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 66 },
+        { "label": "2016-08", "value": 486 },
+        { "label": "2016-09", "value": 531 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-mobile",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Sessions by Device Type - mobile",
+      "name":         "Mobile",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 124 },
+        { "label": "2016-09", "value": 127 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-tablet",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Sessions by Device Type - tablet",
+      "name":         "Tablet",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 33 },
+        { "label": "2016-09", "value": 31 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-desktop",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Sessions by Device Type - desktop",
+      "name":         "Desktop",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 138 },
+        { "label": "2016-08", "value": 1096 },
+        { "label": "2016-09", "value": 1100 }
+      ]
+    }
+  ]
+}

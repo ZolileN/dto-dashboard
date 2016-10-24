@@ -1,0 +1,195 @@
+{
+  "name":         "Performance Dashboard Dashboard",
+  "url":          "https://dashboard.gov.au/",
+  "agency":       "DTO",
+  "description":  "TODO",
+  "target_users": "Users",
+  "notes":        "<dl><dt>Where is this information from?<dd>The Digital Transformation Office (DTO).<dt>What is the Performance Dashboard?<dd>The Performance Dashboard shows how government services are performing. Government services are required to publish 4 key performance indicators (KPIs) on the Performance Dashboard. These KPIs are cost per transaction, user satisfaction, digital take-up and completion rate.<dt>Who are the users of the Performance Dashboard?<dd>The Performance Dashboard’s users are anyone with an interest in how government services are performing, including the general public. Our vision is to drive the continuous improvement of government services, so our primary users are likely to include:<ul><li>service managers — senior executives in government who can make decisions on service improvement<li>digital transformation champions — people who lead a digital shift in government agencies<li>digital transformation teams — government agency staff who have embarked on the transformation process.</ul></dl>",
+  "widgets":  [
+    {
+      "id":   "kpis",
+      "updated_at": "2016-11-08T01:01:01.111Z",
+      "name": "Kpis",
+      "type": "full",
+      "size": "extra-large",
+      "units": "n",
+      "is_hero": true,
+      "datasets": ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"]
+    },
+    {
+      "id":   "user-satisfaction",
+      "updated_at": "2016-11-08T01:01:01.111Z",
+      "name": "User Satisfaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied",
+      "datasets": ["user-satisfaction"]
+    },
+    {
+      "id":   "cost-per-transaction",
+      "updated_at": "2016-11-08T01:01:01.111Z",
+      "name": "Cost Per Transaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "$",
+      "datasets": ["cost-per-transaction"]
+    },
+    {
+      "id":   "digital-take-up",
+      "updated_at": "2016-11-08T01:01:01.111Z",
+      "name": "Digital Take-up",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "datasets": ["digital-take-up"]
+    },
+    {
+      "id":   "completion-rate",
+      "updated_at": "2016-11-08T01:01:01.111Z",
+      "name": "Completion Rate",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Percentage of transactions made using the digital service.",
+      "datasets": ["completion-rate"]
+    },
+    {
+      "id":   "total-users",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Total users by month",
+      "type": "bar",
+      "size": "medium",
+      "units": "n",
+      "displayRoundedData" : false,
+      "definition": "",
+      "datasets": ["total-users"]
+    },
+    {
+      "id":   "top-dashboards",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Top Visited Dashboards",
+      "type": "fact",
+      "units": "n",
+      "size": "medium",
+      "description": "<dl><dt>1<dd><a href=/dashboards/1-mygov>myGov</a> <span>857 views</span><dt>2<dd><a href=/dashboards/2-australian-citizenship-appointment-booking-service>Australian Citizenship Booking Service</a> <span>852 views</span><dt>3<dd><a href=/dashboards/3-hobby-or-business-tool>Hobby or Business Tool </a><span>353 views</span></dl>"
+    },
+    {
+      "id":   "dashboard-visits",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Dashboard visits by month",
+      "type": "fact",
+      "units": "n",
+      "size": "large",
+      "description": "Mariam is getting datas..."
+    },
+    {
+      "id":   "fact-1",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "small",
+      "description": "TODO"
+    },
+    {
+      "id":   "avg-dashboard-page-views",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Dashboard Page Views on month",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "displayRoundedData" : false,
+      "definition": "TODO",
+      "datasets": ["dashboard-pageviews-over-session"]
+    },
+    {
+      "id":   "avg-session-time",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Average session length",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "displayRoundedData" : false,
+      "definition": "TODO",
+      "datasets": ["average-session-time"]
+    },
+    {
+      "id":   "fact-2",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "small",
+      "description": "TODO"
+    },
+
+
+
+
+
+    {
+      "id":   "automated-vs-manual",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Difference in Automated and Manual updated Dashboards",
+      "type": "bar",
+      "size": "large",
+      "stacking": "percentage",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "TODO",
+      "datasets": ["automated-vs-manual-automated", "automated-vs-manual-manual"]
+    },
+    {
+      "id":   "traffic-sources",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Traffic by Channel Grouping on month",
+      "type": "bar",
+      "size": "medium",
+      "units": "n",
+      "displayRoundedData" : true,
+      "definition": "TODO",
+      "datasets": [
+        "traffic-sources-by-channel-direct",
+        "traffic-sources-by-channel-referral",
+        "traffic-sources-by-channel-organic",
+        "traffic-sources-by-channel-social"
+      ]
+    },
+    {
+      "id":   "new-vs-returning-users",
+      "updated_at":  "2016-08-25T01:01:01.111Z",
+      "name": "New vs returning users",
+      "type": "pie",
+      "size": "small",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "TODO",
+      "datasets": ["new-returning-new", "new-returning-returning"]
+    },
+    {
+      "id":   "ddd-sessions-by-device",
+      "updated_at":  "2016-08-25T01:01:01.111Z",
+      "name": "Sessions by device type",
+      "type": "pie",
+      "size": "small",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "TODO",
+      "datasets": [
+        "ddd-sessions-by-device-mobile",
+        "ddd-sessions-by-device-tablet",
+        "ddd-sessions-by-device-desktop"
+      ]
+    }
+  ],
+  "layout": [
+    ["kpis"],
+    ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
+    ["total-users", "top-dashboards"],
+    ["dashboard-visits", "fact-1"],
+    ["avg-dashboard-page-views", "avg-session-time"],
+    ["fact-2", "automated-vs-manual"],
+    ["traffic-sources", "new-vs-returning-users", "ddd-sessions-by-device"]
+  ]
+}
