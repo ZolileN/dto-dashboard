@@ -18,6 +18,7 @@ Currently WIP.
  - ruby-2.3.1
  - Postgres 9.4
  - Node 6.3.0
+ - Yarn ^0.16.1
 
 
 ## Getting Started
@@ -108,20 +109,43 @@ Once installed, mail can be viewed at
 
 ### Front end
 
-Install the pipeline. Mostly this is all you will need.
+#### TLDR
+
 ```
-npm install
-npm run build
+yarn install
+yarn build
 ```
 
-Build webpack
+#### Getting started
+
+Make sure you have Yarn installed globally.  Refer to 
+https://yarnpkg.com/en/docs/install.
+
+Install the pipeline and all the project dependencies:
+
 ```
-npm run webpack:dev
+yarn install
 ```
 
-Develop mode in Webpack?
+Build the assets 
 
-1. Install these Chrome Extensions:
+```
+yarn build
+```
+
+That's it. 
+
+
+#### Need Develop mode?
+
+To develop on assets, instead of just building them, toggle `DEV_SERVER = true` 
+inside `/.env` and restart Rails. Then run the development server: 
+
+```
+yarn run dev
+```
+
+It might be useful to also install these Chrome Extensions to help you work:
 
 * Redux Dev Tools:
 https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en
@@ -133,14 +157,10 @@ More information here: http://zalmoxisus.github.io/redux-devtools-extension/
 https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
 
 
-2. Set .env variable to enable Dev Server mode
-```
-DEV_SERVER = true
-```
+#### Run Frontend Test?
 
-3. Run
 ```
-npm run webpack:dev
+yarn run test
 ```
 
 
