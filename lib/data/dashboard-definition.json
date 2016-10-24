@@ -98,8 +98,8 @@
       "name": "Dashboard Page Views on month",
       "type": "line",
       "size": "medium",
-      "units": "%",
-      "displayRoundedData" : true,
+      "units": "n",
+      "displayRoundedData" : false,
       "definition": "TODO",
       "datasets": ["dashboard-pageviews-over-session"]
     },
@@ -109,8 +109,8 @@
       "name": "Average session length",
       "type": "line",
       "size": "medium",
-      "units": "%",
-      "displayRoundedData" : true,
+      "units": "n",
+      "displayRoundedData" : false,
       "definition": "TODO",
       "datasets": ["average-session-time"]
     },

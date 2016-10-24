@@ -117,7 +117,7 @@
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
       "definition":   "Average Session Time on month",
-      "name":         "Average Session Time",
+      "name":         "Seconds",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
