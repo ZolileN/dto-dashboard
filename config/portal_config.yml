@@ -16,3 +16,10 @@ OPTIONS_DATASET_LABEL:
   n: Number
   f: Float
   s: Seconds
+OPTIONS_WIDGET_SIZE:
+  'extra-small': Extra Small
+  'small': Small
+  'medium': Medium
+  'large': Large
+  'extra-large': Extra Large
+

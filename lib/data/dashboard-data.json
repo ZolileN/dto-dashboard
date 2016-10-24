@@ -62,6 +62,206 @@
         { "label": "2016-08", "value": 90.27 },
         { "label": "2016-09", "value": 84.28 }
       ]
+    },
+
+
+
+
+    {
+      "id":           "total-users",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Total Users on month",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 121 },
+        { "label": "2016-08", "value": 833 },
+        { "label": "2016-09", "value": 825 }
+      ]
+    },
+    {
+      "id":           "dashboard-pageviews",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Dashboard PageViews on month",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 168 },
+        { "label": "2016-08", "value": 1330 },
+        { "label": "2016-09", "value": 1074 }
+      ]
+    },
+    {
+      "id":           "average-session-time",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Average Session Time on month",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 83 },
+        { "label": "2016-08", "value": 231 },
+        { "label": "2016-09", "value": 195 }
+      ]
+    },
+    {
+      "id":           "automated-vs-manual-automated",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "%",
+      "name":         "Automated vs Manual on month - automated",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 0 },
+        { "label": "2016-09", "value": 0 }
+      ]
+    },
+    {
+      "id":           "automated-vs-manual-manual",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "%",
+      "name":         "Automated vs Manual on month - manual",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 100 },
+        { "label": "2016-08", "value": 100 },
+        { "label": "2016-09", "value": 100 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-direct",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Traffic sources by Channel on month - direct",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 116 },
+        { "label": "2016-08", "value": 618 },
+        { "label": "2016-09", "value": 631 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-referral",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Traffic sources by Channel on month - referral",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 52 },
+        { "label": "2016-08", "value": 477 },
+        { "label": "2016-09", "value": 472 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-organic",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Traffic sources by Channel on month - organic",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 8 },
+        { "label": "2016-08", "value": 130 },
+        { "label": "2016-09", "value": 146 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-social",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Traffic sources by Channel on month - social",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 3 },
+        { "label": "2016-08", "value": 28 },
+        { "label": "2016-09", "value": 9 }
+      ]
+    },
+    {
+      "id":           "new-returning-new",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "New vs Returning Users on month - new",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 113 },
+        { "label": "2016-08", "value": 767 },
+        { "label": "2016-09", "value": 727 }
+      ]
+    },
+    {
+      "id":           "new-returning-returning",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "New vs Returning Users on month - returning",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 66 },
+        { "label": "2016-08", "value": 486 },
+        { "label": "2016-09", "value": 531 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-mobile",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Sessions by Device Type - mobile",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 124 },
+        { "label": "2016-09", "value": 127 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-tablet",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Sessions by dDevice Type - tablet",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 33 },
+        { "label": "2016-09", "value": 31 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-desktop",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Sessions by Device Type - desktop",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 138 },
+        { "label": "2016-08", "value": 1096 },
+        { "label": "2016-09", "value": 1100 }
+      ]
     }
   ]
 }
