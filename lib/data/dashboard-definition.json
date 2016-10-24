@@ -70,22 +70,20 @@
     {
       "id":   "top-dashboards",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Fact",
+      "name": "Top visited Dashboards",
       "type": "fact",
       "units": "n",
       "size": "medium",
-      "description": "TODO"
+      "description": "Top dashboards were..."
     },
     {
       "id":   "dashboard-visits",
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "Dashboard visits by month",
-      "type": "bar",
+      "type": "fact",
+      "units": "n",
       "size": "large",
-      "stacking": "percentage",
-      "units": "%",
-      "displayRoundedData" : true,
-      "definition": "TODO"
+      "description": "Top dashboards were..."
     },
     {
       "id":   "fact-1",
@@ -97,7 +95,7 @@
       "description": "TODO"
     },
     {
-      "id":   "dashboard-page-views",
+      "id":   "avg-dashboard-page-views",
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "Dashboard Page Views on month",
       "type": "line",
@@ -105,7 +103,7 @@
       "units": "%",
       "displayRoundedData" : true,
       "definition": "TODO",
-      "datasets": ["dashboard-pageviews-by-session"]
+      "datasets": ["dashboard-pageviews-over-session"]
     },
     {
       "id":   "avg-session-time",
@@ -181,7 +179,11 @@
       "units": "%",
       "displayRoundedData" : true,
       "definition": "TODO",
-      "datasets": ["ddd-session-by-device-mobile", "ddd-session-by-device-tablet", "ddd-session-by-device-desktop"]
+      "datasets": [
+        "ddd-sessions-by-device-mobile",
+        "ddd-sessions-by-device-tablet",
+        "ddd-sessions-by-device-desktop"
+      ]
     }
   ],
   "layout": [
@@ -189,7 +191,7 @@
     ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
     ["total-users", "top-dashboards"],
     ["dashboard-visits", "fact-1"],
-    ["dashboard-page-views-by-session", "avg-session-time"],
+    ["avg-dashboard-page-views", "avg-session-time"],
     ["fact-2", "automated-vs-manual"],
     ["traffic-sources", "new-vs-returning-users", "ddd-sessions-by-device"]
   ]
