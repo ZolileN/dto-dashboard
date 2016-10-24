@@ -54,8 +54,6 @@
       "definition": "Percentage of transactions made using the digital service.",
       "datasets": ["completion-rate"]
     },
-
-
     {
       "id":   "total-users",
       "updated_at": "2016-10-23T20:25:04Z",
@@ -70,11 +68,11 @@
     {
       "id":   "top-dashboards",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Top visited Dashboards",
+      "name": "Top Visited Dashboards",
       "type": "fact",
       "units": "n",
       "size": "medium",
-      "description": "Top dashboards were..."
+      "description": "<dl><dt>1<dd><a href=/dashboards/1-mygov>myGov</a> <span>857 views</span><dt>2<dd><a href=/dashboards/2-australian-citizenship-appointment-booking-service>Australian Citizenship Booking Service</a> <span>852 views</span><dt>3<dd><a href=/dashboards/3-hobby-or-business-tool>Hobby or Business Tool </a><span>353 views</span></dl>"
     },
     {
       "id":   "dashboard-visits",
@@ -83,7 +81,7 @@
       "type": "fact",
       "units": "n",
       "size": "large",
-      "description": "Top dashboards were..."
+      "description": "Mariam is getting datas..."
     },
     {
       "id":   "fact-1",
@@ -100,8 +98,8 @@
       "name": "Dashboard Page Views on month",
       "type": "line",
       "size": "medium",
-      "units": "%",
-      "displayRoundedData" : true,
+      "units": "n",
+      "displayRoundedData" : false,
       "definition": "TODO",
       "datasets": ["dashboard-pageviews-over-session"]
     },
@@ -111,8 +109,8 @@
       "name": "Average session length",
       "type": "line",
       "size": "medium",
-      "units": "%",
-      "displayRoundedData" : true,
+      "units": "n",
+      "displayRoundedData" : false,
       "definition": "TODO",
       "datasets": ["average-session-time"]
     },
@@ -145,11 +143,10 @@
     {
       "id":   "traffic-sources",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Sources of traffic by Channel Grouping on month",
+      "name": "Traffic by Channel Grouping on month",
       "type": "bar",
       "size": "medium",
-      "stacking": "percentage",
-      "units": "%",
+      "units": "n",
       "displayRoundedData" : true,
       "definition": "TODO",
       "datasets": [
@@ -164,7 +161,7 @@
       "updated_at":  "2016-08-25T01:01:01.111Z",
       "name": "New vs returning users",
       "type": "pie",
-      "size": "extra-small",
+      "size": "small",
       "units": "%",
       "displayRoundedData" : true,
       "definition": "TODO",
@@ -175,7 +172,7 @@
       "updated_at":  "2016-08-25T01:01:01.111Z",
       "name": "Sessions by device type",
       "type": "pie",
-      "size": "extra-small",
+      "size": "small",
       "units": "%",
       "displayRoundedData" : true,
       "definition": "TODO",
