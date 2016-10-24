@@ -18,7 +18,7 @@ import SubmitButton from './../submitButton';
  */
 let UpdateWidgetForm = ({
   isEditing, isSubmitting, onCancelSuccess,
-  OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_UNITS,
+  OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_UNITS, OPTIONS_WIDGET_SIZE,
   ...rfProps
 }) => {
 
@@ -37,6 +37,10 @@ let UpdateWidgetForm = ({
       <Field component={Select} name="units" label="Units"
              fieldProps={{disabled:!isEditing}}
              optionProps={{options:OPTIONS_WIDGET_UNITS}} />
+
+      <Field component={Select} name="size" label="Size"
+             fieldProps={{disabled:!isEditing}}
+             optionProps={{options:OPTIONS_WIDGET_SIZE}} />
 
       <Field component={Textarea} name="description" label="Description"
              fieldProps={{disabled:!isEditing}} />
@@ -114,6 +118,10 @@ const validate = (values, props) => {
 
   if (!values.units) {
     errors.units = 'Required';
+  }
+
+  if (!values.size) {
+    errors.size = 'Required';
   }
 
   if (!values.description) {
