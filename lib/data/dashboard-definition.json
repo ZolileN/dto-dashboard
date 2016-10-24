@@ -70,7 +70,7 @@
     {
       "id":   "top-dashboards",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Fact",
+      "name": "Top visited Dashboards",
       "type": "fact",
       "units": "n",
       "size": "medium",
@@ -80,12 +80,10 @@
       "id":   "dashboard-visits",
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "Dashboard visits by month",
-      "type": "bar",
+      "type": "fact",
+      "units": "n",
       "size": "large",
-      "stacking": "percentage",
-      "units": "%",
-      "displayRoundedData" : true,
-      "definition": "TODO"
+      "description": "Top dashboards were..."
     },
     {
       "id":   "fact-1",

@@ -71,7 +71,8 @@
       "id":           "total-users",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Total Users on month",
+      "definition":   "Total Users on month",
+      "name":         "Users",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -85,7 +86,8 @@
       "id":           "dashboard-pageviews",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Dashboard PageViews on month",
+      "definition":   "Dashboard PageViews on month",
+      "name":         "Page Views",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -99,7 +101,8 @@
       "id":           "dashboard-pageviews-over-session",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Dashboard PageViews over Session on month",
+      "definition":   "Dashboard PageViews over Session on month",
+      "name":         "Page Views",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -113,7 +116,8 @@
       "id":           "average-session-time",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Average Session Time on month",
+      "definition":   "Average Session Time on month",
+      "name":         "Average Session Time",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -127,7 +131,8 @@
       "id":           "automated-vs-manual-automated",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "%",
-      "name":         "Automated vs Manual on month - automated",
+      "definition":   "Automated vs Manual on month - automated",
+      "name":         "Automated",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -141,7 +146,8 @@
       "id":           "automated-vs-manual-manual",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "%",
-      "name":         "Automated vs Manual on month - manual",
+      "definition":   "Automated vs Manual on month - manual",
+      "name":         "Manual",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -155,7 +161,8 @@
       "id":           "traffic-sources-by-channel-direct",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Traffic sources by Channel on month - direct",
+      "definition":   "Traffic sources by Channel on month - direct",
+      "name":         "Direct",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -169,7 +176,8 @@
       "id":           "traffic-sources-by-channel-referral",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Traffic sources by Channel on month - referral",
+      "definition":   "Traffic sources by Channel on month - referral",
+      "name":         "Referral",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -183,7 +191,8 @@
       "id":           "traffic-sources-by-channel-organic",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Traffic sources by Channel on month - organic",
+      "definition":   "Traffic sources by Channel on month - organic",
+      "name":         "Organic",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -197,7 +206,8 @@
       "id":           "traffic-sources-by-channel-social",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Traffic sources by Channel on month - social",
+      "definition":   "Traffic sources by Channel on month - social",
+      "name":         "Social",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -211,7 +221,8 @@
       "id":           "new-returning-new",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "New vs Returning Users on month - new",
+      "definition":   "New vs Returning Users on month - new",
+      "name":         "New",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -225,7 +236,8 @@
       "id":           "new-returning-returning",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "New vs Returning Users on month - returning",
+      "definition":   "New vs Returning Users on month - returning",
+      "name":         "Returning",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -239,7 +251,8 @@
       "id":           "ddd-sessions-by-device-mobile",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Sessions by Device Type - mobile",
+      "definition":   "Sessions by Device Type - mobile",
+      "name":         "Mobile",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -253,7 +266,8 @@
       "id":           "ddd-sessions-by-device-tablet",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Sessions by dDevice Type - tablet",
+      "definition":   "Sessions by dDevice Type - tablet",
+      "name":         "Tablet",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
@@ -267,7 +281,8 @@
       "id":           "ddd-sessions-by-device-desktop",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "name":         "Sessions by Device Type - desktop",
+      "definition":   "Sessions by Device Type - desktop",
+      "name":         "Desktop",
       "note": "TODO",
       "data": [
         { "label": "2016-05", "value": null },
