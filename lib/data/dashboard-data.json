@@ -96,6 +96,20 @@
       ]
     },
     {
+      "id":           "dashboard-pageviews-over-session",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "name":         "Dashboard PageViews over Session on month",
+      "note": "TODO",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 2.8 },
+        { "label": "2016-08", "value": 3.28 },
+        { "label": "2016-09", "value": 2.94 }
+      ]
+    },
+    {
       "id":           "average-session-time",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
