@@ -160,16 +160,16 @@
     {
       "id":           "traffic-sources-by-channel-direct",
       "recorded_at":  "2016-10-23T20:25:04Z",
-      "units":        "n",
+      "units":        "%",
       "definition":   "Traffic sources by Channel on month - direct",
       "name":         "Direct",
       "note": "NEED TO CONTENT",
       "data": [
         { "label": "2016-05", "value": null },
         { "label": "2016-06", "value": null },
-        { "label": "2016-07", "value": 116 },
-        { "label": "2016-08", "value": 618 },
-        { "label": "2016-09", "value": 631 }
+        { "label": "2016-07", "value": 64.8 },
+        { "label": "2016-08", "value": 49.3 },
+        { "label": "2016-09", "value": 50.2 }
       ]
     },
     {
@@ -182,9 +182,9 @@
       "data": [
         { "label": "2016-05", "value": null },
         { "label": "2016-06", "value": null },
-        { "label": "2016-07", "value": 52 },
-        { "label": "2016-08", "value": 477 },
-        { "label": "2016-09", "value": 472 }
+        { "label": "2016-07", "value": 29.1 },
+        { "label": "2016-08", "value": 38.1 },
+        { "label": "2016-09", "value": 37.6 }
       ]
     },
     {
@@ -197,9 +197,9 @@
       "data": [
         { "label": "2016-05", "value": null },
         { "label": "2016-06", "value": null },
-        { "label": "2016-07", "value": 8 },
-        { "label": "2016-08", "value": 130 },
-        { "label": "2016-09", "value": 146 }
+        { "label": "2016-07", "value": 4.7 },
+        { "label": "2016-08", "value": 10.4 },
+        { "label": "2016-09", "value": 11.6 }
       ]
     },
     {
@@ -212,9 +212,9 @@
       "data": [
         { "label": "2016-05", "value": null },
         { "label": "2016-06", "value": null },
-        { "label": "2016-07", "value": 3 },
-        { "label": "2016-08", "value": 28 },
-        { "label": "2016-09", "value": 9 }
+        { "label": "2016-07", "value": 1.7 },
+        { "label": "2016-08", "value": 2.2 },
+        { "label": "2016-09", "value": 0.1 }
       ]
     },
     {
