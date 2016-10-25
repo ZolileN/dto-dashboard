@@ -4,7 +4,7 @@
   "agency":       "DTO",
   "description":  "NEED TO CONTENT",
   "target_users": "Users",
-  "notes":        "<dl><dt>Where is this information from?<dd>The Digital Transformation Office (DTO).<dt>What is the Performance Dashboard?<dd>The Performance Dashboard shows how government services are performing. Government services are required to publish 4 key performance indicators (KPIs) on the Performance Dashboard. These KPIs are cost per transaction, user satisfaction, digital take-up and completion rate.<dt>Who are the users of the Performance Dashboard?<dd>The Performance Dashboard’s users are anyone with an interest in how government services are performing, including the general public. Our vision is to drive the continuous improvement of government services, so our primary users are likely to include:<ul><li>service managers — senior executives in government who can make decisions on service improvement<li>digital transformation champions — people who lead a digital shift in government agencies<li>digital transformation teams — government agency staff who have embarked on the transformation process.</ul></dl>",
+  "notes":        "<dl><dt>Where is this information from?<dd>The Digital Transformation Office (DTO).<dt>What is the Performance Dashboard?<dd>The Performance Dashboard shows how government services are performing. Government services are required to publish 4 key performance indicators (KPIs) on the Performance Dashboard. These KPIs are cost per transaction, user satisfaction, digital take-up and completion rate.<dt>Who are the users of the Performance Dashboard?<dd>The Performance Dashboard’s users are anyone with an interest in how government services are performing, including the general public. Our vision is to drive the continuous improvement of government services, so our primary users are likely to include:<ul style='margin-top:0'><li>service managers — senior executives in government who can make decisions on service improvement<li>digital transformation champions — people who lead a digital shift in government agencies<li>digital transformation teams — government agency staff who have embarked on the transformation process.</ul><dl><dt>User satisfaction<dd>User satisfaction measures the percentage of users who responded “satisfied” or “very satisfied” in our feedback survey. This figure is not yet statistically significant because of the low number of feedback responses from August 2016 onwards. In addition, we have no data for the months of May, June and July 2016 because no users provided feedback. We are determining the best way to encourage more feedback from our users.<dt>Cost per transaction<dd>Cost per transaction measures the costs of delivering a service for each time a user views the Performance Dashboard. It is calculated by determining the labour costs, including training, travel and other overheads, for the reporting period. (It does not include items such as product development and administration.) This figure is then divided by the number of sessions as recorded by Google Analytics for dashboard.gov.au. The result is an average cost per transaction for the reporting period. Over time, as more users view the dashboard, we expect this figure to come down. As we release self-service features, we anticipate this figure will come down.<dt>Digital take-up<dd>Digital take-up measures the percentage of services in public beta or live phases that have published a service dashboard to the Performance Dashboard. When a service enters public beta, it is required to publish its performance data on the dashboard. Digital take-up shows how many services have done this.<dt>Completion rate<dd>Completion rate measures the percentage of users who view Dashboard.gov.au and who then go on to view one or more service dashboards. For example, some users may only view the Dashboard.gov.au home page. Other users may then view a service dashboard. When users do this, we consider it a successful completion.</dl></dl>",
   "widgets":  [
     {
       "id":   "kpis",
@@ -59,7 +59,7 @@
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "Total users by month",
       "type": "bar",
-      "size": "medium",
+      "size": "large",
       "units": "n",
       "displayRoundedData" : false,
       "definition": "",
@@ -71,7 +71,7 @@
       "name": "Top Visited Dashboards",
       "type": "fact",
       "units": "n",
-      "size": "medium",
+      "size": "small",
       "description": "The top 3 visited dashboards are myGov, Australian Citizenship Booking Service then Hobby or Business Tool."
     },
     {
