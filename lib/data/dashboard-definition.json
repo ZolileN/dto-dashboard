@@ -72,7 +72,7 @@
       "type": "fact",
       "units": "n",
       "size": "medium",
-      "description": "<dl><dt>1<dd><a href=/dashboards/1-mygov>myGov</a> <span>857 views</span><dt>2<dd><a href=/dashboards/2-australian-citizenship-appointment-booking-service>Australian Citizenship Booking Service</a> <span>852 views</span><dt>3<dd><a href=/dashboards/3-hobby-or-business-tool>Hobby or Business Tool </a><span>353 views</span></dl>"
+      "description": "The top 3 visited dashboards are myGov, Australian Citizenship Booking Service then Hobby or Business Tool."
     },
     {
       "id":   "dashboard-count",
@@ -82,7 +82,7 @@
       "stacking": "normal",
       "units": "n",
       "size": "large",
-      "description": "Mariam is getting datas..."
+      "description": "NEED TO CONTENT",
       "datasets": ["dashboards-betapub", "dashboards-prebeta", "dashboards-nontransf", "dashboards-other"]
     },
     {
@@ -122,7 +122,7 @@
       "name": "Fact",
       "type": "fact",
       "units": "n",
-      "size": "extra-small",
+      "size": "small",
       "description": "NEED TO CONTENT"
     },
 
@@ -133,9 +133,9 @@
     {
       "id":   "automated-vs-manual",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Difference in Automated and Manual updated Dashboards",
+      "name": "Dashboard population",
       "type": "bar",
-      "size": "large",
+      "size": "medium",
       "stacking": "normal",
       "units": "n",
       "displayRoundedData" : true,
@@ -189,9 +189,9 @@
     ["kpis"],
     ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
     ["total-users", "top-dashboards"],
-    ["dashboard-count", "fact-1"],
     ["avg-dashboard-page-views", "avg-session-time"],
-    ["new-vs-returning-users", "automated-vs-manual"],
-    ["fact-2", "traffic-sources", "ddd-sessions-by-device"]
+    ["dashboard-count", "fact-1"],
+    ["automated-vs-manual", "traffic-sources"],
+    ["new-vs-returning-users", "fact-2", "ddd-sessions-by-device"]
   ]
 }

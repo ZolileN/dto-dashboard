@@ -83,7 +83,7 @@
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
       "definition":   "Public Beta",
-      "name":         "Services - Public Beta",
+      "name":         "Public Beta",
       "note": "NEED TO CONTENT",
       "data": [
         { "label": "2016-05", "value": 0 },
@@ -98,7 +98,7 @@
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
       "definition":   "Pre-Beta",
-      "name":         "Services - Pre Beta",
+      "name":         "Pre Beta",
       "note": "NEED TO CONTENT",
       "data": [
         { "label": "2016-05", "value": 0 },
@@ -113,7 +113,7 @@
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
       "definition":   "Non-transformational",
-      "name":         "Services - Non-transformational",
+      "name":         "Non-transformational",
       "note": "NEED TO CONTENT",
       "data": [
         { "label": "2016-05", "value": 1 },
@@ -128,7 +128,7 @@
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
       "definition":   "Other",
-      "name":         "Services - Other",
+      "name":         "Other",
       "note": "NEED TO CONTENT",
       "data": [
         { "label": "2016-05", "value": 0 },
@@ -138,7 +138,7 @@
         { "label": "2016-09", "value": 0 }
       ]
     },
-    
+
     {
       "id":           "dashboard-pageviews",
       "recorded_at":  "2016-10-23T20:25:04Z",
