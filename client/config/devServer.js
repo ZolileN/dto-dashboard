@@ -1,6 +1,5 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import opn from 'opn';
 
 import * as CONFIG from './_config';
 import webpackConfig from './webpack.config.devserver';
@@ -12,9 +11,6 @@ function clearConsole() {
   process.stdout.write('\x1bc');
 }
 
-function openBrowser() {
-  opn(CONFIG.RAILS_HTTP);
-}
 
 
 let devServerPublicPath = `http://${CONFIG.WEBPACK_HOST}:${CONFIG.WEBPACK_PORT}/`;
@@ -68,8 +64,6 @@ devServer.listen(CONFIG.WEBPACK_PORT, CONFIG.WEBPACK_HOST, function (err) {
   }
   clearConsole();
   console.log(`Listening at ${devServerPublicPath}... . Develop at http://localhost:3000.`);
-  console.log();
-  // openBrowser();
 });
 
 
