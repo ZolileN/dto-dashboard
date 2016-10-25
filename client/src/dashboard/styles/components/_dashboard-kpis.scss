@@ -1,0 +1,262 @@
+.dashboard__kpis {
+  background-color: $white;
+  margin-bottom: 15px;
+
+  @media(max-width: $screen-sm - 1) {
+    padding-top: 10px;
+  }
+
+  .widget__title::before {
+    display: inline-block;
+    content: '\f111';
+    font-family: 'fontawesome';
+    padding-right: 10px;
+
+    @media(max-width: $screen-sm - 1) {
+      float: left;
+    }
+  }
+
+  .widget__definition,
+  .widget__data-source,
+  .widget__last-updated {
+    display: none;
+  }
+
+  .widget {
+    min-height: 0;
+    height: auto;
+
+    &.has-data-false {
+      min-height: 0;
+
+      @include media($screen-sm) {
+        height: 150px;
+      }
+    }
+
+    .widget__title {
+      text-align: center;
+      height: 35px;
+      padding: 0;
+
+      @media screen and(min-width: $screen-sm) {
+        padding: 0 $spacing-unit / 2;
+      }
+
+      h2 {
+        display: inline;
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .chart {
+    display: none;
+  }
+
+  @include media($screen-sm) {
+    .chart {
+      display: block;
+    }
+  }
+
+  .widget {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .widget__title {
+    padding: 0;
+  }
+
+  .widget__inner {
+    .sparkline__inner {
+      .chart {
+        display: none;
+
+        @include media($screen-sm) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $screen-sm - 1) {
+    .widget {
+      .widget__title {
+        border-bottom: 0;
+        text-align: left;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    .widget {
+      .widget__title {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-sm - 1) {
+    .widget {
+      margin: 0;
+
+      .widget__title {
+        border-bottom: 0;
+        text-align: left;
+      }
+
+      .sparkline__inner {
+        float: right;
+      }
+
+      .widget__inner {
+        padding: 0;
+      }
+
+      .widget__title,
+      .widget__inner,
+      .metric-data {
+        .value,
+        .sparkline {
+          display: table-cell;
+          font-size: $fallback;
+          font-size: 1rem;
+        }
+      }
+
+      .metric-data {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    .sparkline__inner {
+      .value {
+        font-weight: 700;
+      }
+    }
+  }
+
+  @media (max-width: $screen-sm) {
+    .widget {
+      width: 100%;
+      padding: 5px 0;
+
+      .widget__inner {
+        position: relative;
+      }
+
+      .widget__title {
+        h2 {
+          font-size: 1em;
+          line-height: 1;
+        }
+      }
+
+      .summary-text {
+        display: none;
+      }
+
+      .decorator {
+        flex-direction: row-reverse;
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      .metric-meta {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-sm){
+  .dashboard__kpis{
+    .widget {
+
+      .widget__title {
+        @include span-columns(8);
+        @include omega(2n);
+      }
+
+      .widget__inner {
+        @include span-columns(4);
+        @include omega(2n);
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) {//includes 767
+  .dashboard__kpis {
+    .aus-width-one-fourth {
+      @include span-columns(3);
+    }
+
+    .widget {
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      margin: 15px 0 0 0;
+      min-height: 0;
+      height: auto;
+      display: block;
+
+      .widget__inner {
+        position: relative;
+        padding:0;
+        width: 100%;
+
+        .sparkline {
+          max-width: 100%;
+          display:block;
+        }
+      }
+
+      .sparkline__inner {
+        float: none;
+
+        .chart {
+          display: block;
+        }
+      }
+
+      .decorator {
+        flex-direction: column;
+      }
+
+      .metric-meta {
+        display: block !important;
+
+        .metric-trend {
+          margin-right: 5px;
+          display: inline-block;
+        }
+      }
+
+      .summary-text {
+        display: inline-block !important;
+      }
+
+      .widget__title {
+        width: 100%;
+      }
+
+      .metric-data {
+        .value {
+          font-size: 45px;
+          font-size: 2.8125rem;
+          font-weight: 300;
+        }
+
+        .decorator {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
