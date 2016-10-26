@@ -5,14 +5,16 @@
 <div class="container-deprecated-dont-add-this-anywhere-else">
   <section>
 
-    <h1>Performance Dashboard Overview</h1>
+    <div class="col-md-12">
+      <h1>Performance Dashboard Overview</h1>
+    </div>
 
-    <div class="dashboards-intro">
+    <div class="dashboards-intro col-md-8">
       <p>The Performance Dashboard makes data open and accessible by measuring the performance of Australian government services against the Digital Service Standard.</p>
       <p>This promotes government transparency and helps drive the ongoing improvement of government services – for all Australians.</p>
     </div>
 
-    <div class="dashboards-intro-sec hide-on-mobile">
+    <div class="dashboards-intro-sec hide-on-mobile col-md-4">
       <div class="media">
         <div class="media-left">
           <span class="number-of-dashboards"><%= dashboards.size %></span>
@@ -25,30 +27,30 @@
 
   </section>
   <section class="metrics">
-    <div class="aus-width-one-third">
+    <div class="metric-overview col-sm-12 col-md-4">
       <p>There are 4 Key Performance Indicators that government services are required to publish on the Performance Dashboard.</p>
     </div>
-    <div class="metric-definitions">
+    <div class="metric-definitions col-md-8 col-sm-12">
       <div class="metric-definitions-inner">
-        <div class="metric-definitions__metric user-satisfaction">
+        <div class="metric-definitions__metric user-satisfaction col-sm-12 col-md-3">
           <div class="widget__title">
             <h2>User Satisfaction</h2>
           </div>
           <p>The overall satisfaction rate with the service.</p>
         </div>
-        <div class="metric-definitions__metric cost-per-transaction">
+        <div class="metric-definitions__metric cost-per-transaction col-sm-12 col-md-3">
           <div class="widget__title">
           <h2>Cost Per Transaction</h2>
           </div>
           <p>The estimated cost to government, per transaction, for administering the service.</p>
         </div>
-        <div class="metric-definitions__metric digital-take-up">
+        <div class="metric-definitions__metric digital-take-up col-sm-12 col-md-3">
           <div class="widget__title">
           <h2>Digital Take up</h2>
           </div>
           <p>The adoption rate for the digital service.</p>
         </div>
-        <div class="metric-definitions__metric completion-rate">
+        <div class="metric-definitions__metric completion-rate col-sm-12 col-md-3">
           <div class="widget__title">
           <h2>Completion Rate</h2>
           </div>
@@ -86,6 +88,9 @@
             </div>
           </div>
           <%= link_to "View Dashboard<span class='sr-only'> #{dashboard.name}</span>".html_safe, dashboard_path(dashboard), class: 'card__link__visible' %>
+          <div class="updated-at hide-on-mobile">
+            <p>Last updated on <%= dashboard.last_updated_at %></p>
+          </div>
         </div>
         <div class="card__right dashboard__kpis clearfix">
           <% if dashboard.display_kpis? %>
@@ -93,9 +98,6 @@
               <%= render :partial => 'overview_widget', :locals => { :dashboard => dashboard, :widget => widget.decorate } %>
             <% end %>
           <% end %>
-        </div>
-        <div class="updated-at hide-on-mobile">
-          <p>Last updated on <%= dashboard.last_updated_at %></p>
         </div>
       </li>
     <% end %>

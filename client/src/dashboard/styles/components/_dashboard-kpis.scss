@@ -70,6 +70,10 @@
 
   .widget__title {
     padding: 0;
+
+    h4 {
+      font-weight: 600;
+    }
   }
 
   .widget__inner {
@@ -96,7 +100,7 @@
   @media (min-width: $screen-md) {
     .widget {
       .widget__title {
-        margin-bottom: 30px;
+        margin-bottom: 22px;
       }
     }
   }
@@ -187,7 +191,7 @@
       .widget__inner {
         @include span-columns(4);
         @include omega(2n);
-        margin-top: 4px;
+        margin-top: 3px;
       }
     }
   }

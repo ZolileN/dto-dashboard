@@ -1,0 +1,148 @@
+.dashboards_index {
+
+  .metric-definitions {
+    margin-right: 0 !important;
+    border-bottom: 1px solid $axis-stroke-colour;
+    margin-bottom: 37px;
+
+    @media(min-width: $screen-sm) {
+      &.col-md-8.col-sm-12 {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+    }
+
+    @media(max-width: $screen-sm) {
+      margin-top: 30px;
+      margin-bottom: 0;
+    }
+
+    @media(max-width: $screen-md) {
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+  }
+
+  h1 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+
+  .metric-definitions__metric {
+    p {
+      padding-top:9px;
+      font-size: 14px;
+      font-size: 0.875rem;
+    }
+
+    .widget__title {
+      line-height: 1.2;
+    }
+
+    @media(max-width: $screen-sm) {
+      @include span-columns(12 of 12);
+      margin-bottom: 15px;
+
+      p {
+        padding-top:4px;
+        font-size: 13px;
+      }
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom:0;
+      height:35px;
+      font-weight:600;
+    }
+  }
+
+  .dashboards-intro {
+    clear: both;
+    margin-bottom: 40px;
+
+    @media(max-width: $screen-md) {
+      margin-bottom: 15px;
+      padding-top: 8px;
+    }
+
+    @media(max-width: 768px) {
+     margin: 0;
+   }
+
+   p:first-child {
+     margin-bottom: 0;
+   }
+  }
+
+  @media(min-width: $screen-sm){
+    h1 {
+      margin-top: 70px;
+      margin-bottom: 50px;
+    }
+  }
+
+  .metrics {
+    .metric-overview {
+      p {
+        font-weight: 600;
+      }
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 35px;
+      font-size: 1rem;
+    }
+  }
+
+  .dashboards-intro-sec {
+    color: $black;
+
+    @media(max-width: $screen-sm) {
+      padding-left:0;
+      margin-bottom: 30px;
+      margin-top: 30px;
+
+      &.hide-on-mobile {
+        display: none;
+      }
+
+      .media {
+        height: auto;
+        float: left;
+      }
+    }
+
+    @media(min-width: 769px) {
+      .media {
+        float:right;
+      }
+
+      .media-body {
+        width: auto;
+      }
+    }
+
+    .number-of-dashboards {
+      font-size: 80px;
+      line-height:1;
+      font-weight: bold;
+
+      @media(max-width: $screen-sm) {
+        float: left;
+      }
+    }
+
+    span:not(.number-of-dashboards) {
+      font-size: 30px;
+      line-height: 36px;
+      justify-content: flex-end;
+
+      @media(max-width: $screen-sm) {
+        float: none;
+      }
+    }
+  }
+}

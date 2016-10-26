@@ -1,84 +1,6 @@
-.dashboards-intro {
-  @include span-columns(8);
-  clear: both;
-  margin-bottom: 40px;
 
-  @media(max-width: $screen-md) {
-    margin-bottom: 15px;
-    padding-top: 8px;
-  }
 
-  @media(max-width: 768px) {
-   @include span-columns(12);
-   margin: 0;
- }
-}
 
-.metrics {
-  .aus-width-one-third {
-    @media(max-width: $screen-md) {
-      @include span-columns(12);
-    }
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 0;
-    height: 35px;
-    font-size: 1rem;
-  }
-}
-
-.dashboards-intro-sec {
-  @include span-columns(4);
-  color: $gov-au-brand-colour;
-
-  @media(max-width: 768px) {
-    @include span-columns(12);
-    padding-left:0;
-    margin-bottom: 30px;
-    margin-top: 30px;
-
-    &.hide-on-mobile {
-      display: none;
-    }
-
-    .media {
-      height: auto;
-      float: left;
-    }
-  }
-
-  @media(min-width: 769px) {
-    .media {
-      float:right;
-    }
-
-    .media-body {
-      width: auto;
-    }
-  }
-
-  .number-of-dashboards {
-    font-size: 80px;
-    line-height:1;
-    font-weight: bold;
-
-    @media(max-width: 768px) {
-      float: left;
-    }
-  }
-
-  span:not(.number-of-dashboards) {
-    font-size: 30px;
-    line-height: 36px;
-    justify-content: flex-end;
-
-    @media(max-width: 768px) {
-      float: none;
-    }
-  }
-}
 
 .metric-link {
   clear:both;
@@ -94,29 +16,6 @@
   }
 }
 
-.metric-definitions {
-  margin-right: 0 !important;
-  @include span-columns(8);
-  border-bottom: 1px solid $axis-stroke-colour;
-  margin-bottom: 37px;
-
-  @media(max-width: 768px) {
-    @include span-columns(12 of 12);
-    margin-top: 30px;
-    margin-bottom: 0;
-  }
-
-  @media(max-width: $screen-md) {
-    @include span-columns(12 of 12);
-    margin-top: 15px;
-    margin-bottom: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
 .updated-at {
   @media(max-width: 768px) {
     p {
@@ -129,35 +28,6 @@
   margin-top: 0;
   font-size: 2.25rem;
   font-weight: 400;
-}
-
-.metric-definitions__metric {
-  @include span-columns(2 of 8);
-  p {
-    padding-top:9px;
-  }
-
-  @media(max-width: 768px) {
-    @include span-columns(12 of 12);
-    margin-bottom: 15px;
-
-    .widget__title {
-      //h4 {
-      //  height:25px;
-      //}
-    }
-    p {
-      padding-top:4px;
-      font-size: 13px;
-    }
-  }
-
-  h4 {
-    margin-top: 0;
-    margin-bottom:0;
-    height:35px;
-    font-weight:600;
-  }
 }
 
 .dashboard__top {
