@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 
 import * as uiActions from './../actions/ui';
 import UpdateDashboardForm from './../components/forms/updateDashboardForm';
-import Breadcrumbs from './../components/breadcrumbs';
 import { getRequestKey } from './../actions/dashboard';
 import { isPendingRequest } from './../reducers/requests';
 import { humanisedLongDate } from './../utils/humanisedDates';
+import { getEditDashboardUrl } from './../utils/urlHelpers';
 
 
 const mapStateToProps = ({ui, requests}, ownProps) => {
@@ -71,7 +71,7 @@ class DashboardIndex extends Component {
               <td>{w.id}</td>
               <td>{w.name}</td>
               <td>{humanisedLongDate(w.last_updated_at)}</td>
-              <td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`} className="a--ui-kit">Edit</Link></td>
+              <td><Link to={getEditDashboardUrl(dashboard.id)} className="a--ui-kit">Edit</Link></td>
             </tr>
           ))}
           </tbody>
@@ -82,18 +82,14 @@ class DashboardIndex extends Component {
     return (
       <div className="container">
 
-        <div className="row">
-          <div className="col-xs-12">
-            <Breadcrumbs paths={[
-              {path:'/', name:'Home'},
-              {path:`/dashboards/${dashboard.id}`, name:`${dashboard.name}`}
-            ]} />
-          </div>
-        </div>
 
         <div className="row">
-          <div className="col-xs-12">
-            <h1>Dashboard: {dashboard.name}</h1>
+          <div className="col-xs-12 col-lg-8">
+            <span>Update Dashboard</span>
+            <hr />
+            <h1>{dashboard.name}</h1>
+            <p>{dashboard.description}</p>
+            <Link to={getEditDashboardUrl(dashboard.id)}>Edit dashboard overview</Link>
           </div>
         </div>
 
@@ -115,7 +111,7 @@ class DashboardIndex extends Component {
         </div>
 
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col-xs-12 col-lg-8">
             <h2 className="h4">Widgets</h2>
 
             {sortedWidgets.length ?

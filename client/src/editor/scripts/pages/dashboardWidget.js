@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
-import { getWidgetById } from './../reducers/widgets';
 import { getDatasetsByIds } from './../reducers/datasets';
 import UpdateWidgetForm from './../components/forms/updateWidgetForm';
 import { getRequestKey } from './../actions/widget';
@@ -13,7 +12,7 @@ import { isPendingRequest } from './../reducers/requests';
 
 
 const mapStateToProps = ({datasets, ui, requests, config}, ownProps) => {
-  let widget = getWidgetById(ownProps.widgets, ownProps.params.widget_id);
+  let widget = ownProps.widget;
   let requestKey = getRequestKey(widget.id, 'update');
   return {
     ui: ui.pageDashboardWidget,
@@ -56,7 +55,7 @@ class Widget extends Component {
       datasets,
       ui,
       isPendingRequest,
-      config: { OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_SIZE, OPTIONS_WIDGET_UNITS}
+      config: { OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_UNITS}
     } = this.props;
 
     let sortedDatasets = datasets.sort((a,b) => {
@@ -126,7 +125,6 @@ class Widget extends Component {
               onSubmitSuccess={this.onSubmitSuccess.bind(this)}
               onCancelSuccess={this.exitForm.bind(this)}
               OPTIONS_WIDGET_TYPE={OPTIONS_WIDGET_TYPE}
-              OPTIONS_WIDGET_SIZE={OPTIONS_WIDGET_SIZE}
               OPTIONS_WIDGET_UNITS={OPTIONS_WIDGET_UNITS}
             />
           </div>

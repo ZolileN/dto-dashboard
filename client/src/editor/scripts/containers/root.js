@@ -4,15 +4,23 @@ import { Router, Route, IndexRedirect, IndexRoute } from 'react-router';
 
 import Layout from './layout';
 
-import Dashboard from './dashboard';
 import Dashboards from './dashboards';
+import Dashboard from './dashboard';
+import DashboardWidget from './dashboardWidget';
+
+
 import Dataset from './dataset';
 import Datasets from './datasets';
 import DatasetDatapoints from './datasetDatapoints';
 
 import SplashPage from './../pages/splash';
 import DashboardPage from './../pages/dashboard';
+import DashboardWidgetsPage from './../pages/dashboardWidgets';
 import DashboardWidgetPage from './../pages/dashboardWidget';
+import DashboardWidgetDataPage from './../pages/dashboardWidgetData';
+import DashboardWidgetDescriptionsPage from './../pages/dashboardWidgetDescriptions';
+
+
 import DatasetPage from './../pages/dataset';
 import DatasetsPage from './../pages/datasets';
 import DatasetDatapointPage from './../pages/datasetDatapoint';
@@ -28,10 +36,6 @@ export default class Root extends Component {
     history: PropTypes.object.isRequired
   };
 
-  onEnter() {
-    return () => {};
-  }
-
   render() {
     let { store, history } = this.props;
     return (
@@ -41,35 +45,59 @@ export default class Root extends Component {
 
             /*
 
-             /
-             dashboards/1
-             dashboards/1/widgets/1
-             datasets
-             datasets/id
-             datasets/id/datapoints/1
-             datasets/id/datapoints-new
+	            /
+	            dashboards
+	            dashboards/:id                            UpdateDashboard Form
+	            dashboards/:id/widgets
+	            dashboards/:id/widgets/:id/data-new       CreateWidgetData Form
+	            dashboards/:id/widgets/:id/data/:yy-mm
+	            dashboards/:id/widgets/:id/descriptions   UpdateWidget Form
+
+
+
+	            datasets
+	            datasets/id
+	            datasets/id/datapoints/1
+	            datasets/id/datapoints-new
 
              */
 
             {/*<IndexRedirect to="" />*/}
 
             <Route path="" component={Dashboards}>
-              <IndexRoute component={SplashPage} onEnter={this.onEnter.bind(this)} />
+              /* / */
+              <IndexRoute component={SplashPage} />
+
               <Route path="dashboards/:dashboard_id" component={Dashboard}>
+                /* dashboards/:id */
                 <IndexRoute component={DashboardPage} />
-                <Route path="widgets/:widget_id" component={DashboardWidgetPage} onEnter={this.onEnter.bind(this)} />
+
+                <Route path="widgets">
+                  /* dashboards/:id/widgets */
+                  <IndexRoute component={DashboardWidgetsPage} />
+
+                  <Route path=":widget_id" component={DashboardWidget}>
+                    /* dashboards/:id/widgets/:id */
+                    <IndexRoute component={DashboardWidgetPage} />
+                    /* dashboards/:id/widgets/:id/data-new */
+                    /* dashboards/:id/widgets/:id/data/:yy-mm */
+                    /* dashboards/:id/widgets/:id/descriptions */
+                    <Route path="data-new" component={DashboardWidgetDataPage} />
+                    <Route path="data/descriptions" component={DashboardWidgetDescriptionsPage} />
+                  </Route>
+                </Route>
               </Route>
             </Route>
 
             <Route path="datasets" component={Datasets}>
-              <IndexRoute component={DatasetsPage} onEnter={this.onEnter.bind(this)} />
+              <IndexRoute component={DatasetsPage} />
 
               <Route path=":dataset_id" component={Dataset}>
-                <IndexRoute component={DatasetPage} onEnter={this.onEnter.bind(this)} />
+                <IndexRoute component={DatasetPage} />
 
                 <Route component={DatasetDatapoints}>
-                  <Route path="datapoints/:datapoint_id" component={DatasetDatapointPage} onEnter={this.onEnter.bind(this)} />
-                  <Route path="datapoints-new" component={DatasetDatapointCreatePage} onEnter={this.onEnter.bind(this)} />
+                  <Route path="datapoints/:datapoint_id" component={DatasetDatapointPage} />
+                  <Route path="datapoints-new" component={DatasetDatapointCreatePage} />
                 </Route>
               </Route>
             </Route>

@@ -75,7 +75,6 @@ UpdateWidgetForm.propTypes = {
   isSubmitting: PropTypes.bool,
   isEditing: PropTypes.bool,
   OPTIONS_WIDGET_TYPE: PropTypes.array.isRequired,
-  OPTIONS_WIDGET_SIZE: PropTypes.array.isRequired,
   OPTIONS_WIDGET_UNITS: PropTypes.array.isRequired
 };
 
