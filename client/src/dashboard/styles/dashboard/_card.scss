@@ -14,11 +14,13 @@
   margin: 0 0 $spacing-unit 0;
   display: block;
   position: relative;
-  padding: $gutter $gutter $gutter 25px;
+  padding: $gutter $gutter 25px 25px;
   color: $black;
 
-  @media (min-width: $screen-sm){
+  @media screen and (min-width: $screen-sm) {
     min-height: 140px;
+    padding: $gutter $gutter 10px 25px;
+    min-height: 132px;
   }
 
   h3 {
@@ -41,6 +43,11 @@
       text-decoration: underline;
       display: inline;
       width: 126px;
+
+      @media screen and (min-width: $screen-sm) {
+        position: absolute;
+        bottom: 0;
+      }
 
       &:visited {
         color: $brand-primary-colour;
@@ -69,18 +76,12 @@
 }
 
 .card__left {
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: $screen-sm) { //TODO fix clash of media queries
     width: 30%;
     float: left;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  @media screen and (max-width: $screen-sm) {
-    padding-bottom: 20px;
-    border-bottom: 1px $axis-stroke-colour solid;
-    margin-bottom: 10px;
   }
 
   @media only screen and (min-width: $screen-sm ) and (max-width: $screen-md) {
@@ -89,6 +90,21 @@
 }
 
 .card__right {
+
+  @media screen and (max-width: $screen-sm) {
+    padding-top: 20px;
+    border-top: 1px $axis-stroke-colour solid;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .aus-width-one-fourth:last-child {
+      .widget {
+        margin-bottom: -25px;
+      }
+    }
+  }
+
   .widget {
     background: transparent;
 

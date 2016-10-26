@@ -266,3 +266,13 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) {
+  .card__right {
+    &.dashboard__kpis {
+      .widget__title {
+        padding: 0;
+      }
+    }
+  }
+}
