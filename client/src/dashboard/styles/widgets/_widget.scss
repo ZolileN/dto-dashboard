@@ -104,6 +104,11 @@
   border: $widget-border;
   min-height: 150px;
 
+  //TODO when charts are refactored add logic to move last label in on mobile and remove this query
+  @media (max-width: $screen-md) {
+    padding: $spacing-unit / 4 $spacing-unit / 4 $spacing-unit / 2 $spacing-unit / 4;
+  }
+
   @include media($screen-sm) {
     height: $widget-height-tablet;
     min-height: $widget-height;
