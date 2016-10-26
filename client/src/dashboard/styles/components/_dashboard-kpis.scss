@@ -42,11 +42,13 @@
 
       @media screen and(min-width: $screen-sm) {
         padding: 0 $spacing-unit / 2;
+        height: 40px;
       }
 
       h2 {
         display: inline;
         font-size: 1.25rem;
+        line-height: 1;
       }
     }
   }
