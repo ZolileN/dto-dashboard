@@ -109,8 +109,7 @@
     padding: $spacing-unit / 4 $spacing-unit / 4 $spacing-unit / 2 $spacing-unit / 4;
   }
 
-  @include media($screen-sm) {
-    height: $widget-height-tablet;
+  @include media($screen-md) {
     min-height: $widget-height;
   }
 
