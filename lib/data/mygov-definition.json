@@ -177,7 +177,7 @@
       "size": "large",
       "units": "%",
       "stacking": "percentage",
-      "displayRoundedData" : true,
+      "displayRoundedData" : false,
       "range": 13,
       "definition": "Source of web traffic to myGov",
       "datasets": ["web-traffic-source-01", "web-traffic-source-02", "web-traffic-source-03", "web-traffic-source-04", "web-traffic-source-05"]
