@@ -99,12 +99,6 @@
 
 .card__right {
 
-  @media screen and (max-width: $screen-sm) {
-    padding-top: 20px;
-    border-top: 1px $axis-stroke-colour solid;
-    margin-top: 20px;
-  }
-
   @media (max-width: 768px) {
     .aus-width-one-fourth:last-child {
       .widget {
