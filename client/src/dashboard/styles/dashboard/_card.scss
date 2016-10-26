@@ -46,7 +46,7 @@
 
       @media screen and (min-width: $screen-sm) {
         position: absolute;
-        bottom: 0;
+        bottom: 17px;
       }
 
       &:visited {
@@ -63,11 +63,6 @@
   .updated-at {
     color: $secondary-text-colour;
     clear: both;
-
-    @media (min-width: $screen-sm) {
-      position: absolute;
-      bottom: 12px;
-    }
   }
 
   .main-kpi {
