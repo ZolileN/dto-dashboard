@@ -114,10 +114,6 @@
     min-height: $widget-height;
   }
 
-  @media (min-width: $screen-md) {
-    height: $widget-height;
-  }
-
   .widget__data {
     @extend .sr-only;
   }
