@@ -3,12 +3,14 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
 import UpdateDashboardForm from './../components/forms/updateDashboardForm';
 import { getRequestKey } from './../actions/dashboard';
 import { isPendingRequest } from './../reducers/requests';
-import { humanisedLongDate } from './../utils/humanisedDates';
-import { getEditDashboardUrl } from './../utils/urlHelpers';
+import {
+  getDashboardWidgetsUrl
+} from './../utils/urlHelpers';
 
 
 const mapStateToProps = ({ui, requests}, ownProps) => {
@@ -16,7 +18,6 @@ const mapStateToProps = ({ui, requests}, ownProps) => {
   let requestKey = getRequestKey(dashboard.id, 'update');
   return {
     dashboard,
-    widgets: ownProps.widgets,
     ui: ui.pageDashboard,
     isPendingRequest: isPendingRequest(requests, requestKey)
   };
@@ -48,50 +49,29 @@ class DashboardIndex extends Component {
   render() {
     let {
       dashboard,
-      widgets,
       ui,
       isPendingRequest
     } = this.props;
 
-    let sortedWidgets = widgets.sort((a,b) => {
-      return new Date(b.ts).getTime() - new Date(a.ts).getTime();
-    });
-
-    let editWidgetsList = (widgets) => {
-      return (
-        <table className="content-table">
-          <thead>
-          <tr>
-            <td>ID</td><td>Name</td><td>Last updated</td><td></td>
-          </tr>
-          </thead>
-          <tbody>
-          {sortedWidgets.map((w, idx) => (
-            <tr key={idx}>
-              <td>{w.id}</td>
-              <td>{w.name}</td>
-              <td>{humanisedLongDate(w.last_updated_at)}</td>
-              <td><Link to={getEditDashboardUrl(dashboard.id)} className="a--ui-kit">Edit</Link></td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      )
-    };
-
     return (
       <div className="container">
 
+        <div className="row">
+          <div className="col-xs-12">
+            <Breadcrumbs paths={[
+              {path:'/', name:'Home'},
+              {path:getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
+              {path:'', name:`Edit dashboard information`}
+            ]} />
+          </div>
+        </div>
 
         <div className="row">
           <div className="col-xs-12 col-lg-8">
-            <span>Update Dashboard</span>
-            <hr />
-            <h1>{dashboard.name}</h1>
-            <p>{dashboard.description}</p>
-            <Link to={getEditDashboardUrl(dashboard.id)}>Edit dashboard overview</Link>
+            <h1>Dashboard: {dashboard.name}</h1>
           </div>
         </div>
+
 
         <div className="row">
           <div className="col-xs-12 col-lg-8">
@@ -108,17 +88,6 @@ class DashboardIndex extends Component {
               onCancelSuccess={this.exitForm.bind(this)} />
           </div>
           <br />
-        </div>
-
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <h2 className="h4">Widgets</h2>
-
-            {sortedWidgets.length ?
-              editWidgetsList(sortedWidgets) :
-              <p><em>No widgets</em></p>
-            }
-          </div>
         </div>
 
       </div>

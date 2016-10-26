@@ -51,3 +51,16 @@ export const getWidgetsByDashboardId = (state, dashboard_id) => {
 export const getWidgetById = (state, widget_id) => {
   return state.find((w) => Number(widget_id) === w.id);
 };
+
+const WIDGET_TYPE_HERO = 'full';
+const WIDGET_TYPE_KPI = 'kpi-sparkline';
+
+export const filterKpiWidgets = state => {
+  return state.filter(w => w.type === WIDGET_TYPE_KPI);
+};
+
+export const filterBelowTheLineWidgets = state => {
+  return state.filter(w => {
+    return !(w.type === WIDGET_TYPE_KPI || w.type === WIDGET_TYPE_HERO);
+  });
+};

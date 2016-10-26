@@ -4,14 +4,26 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import * as uiActions from './../actions/ui';
+import Breadcrumbs from './../components/breadcrumbs';
+import KpiWidgetItem from './../components/kpiWidgetItem';
 import WidgetItem from './../components/widgetItem';
-import { getEditDashboardUrl } from './../utils/urlHelpers';
+import {
+  filterKpiWidgets,
+  filterBelowTheLineWidgets
+} from './../reducers/widgets';
+import {
+  getDashboardUrl,
+  getDashboardWidgetDataCreateUrl,
+  getDashboardWidgetDataUpdateUrl,
+  getDashboardWidgetDescriptionsUrl
+} from './../utils/urlHelpers';
 
 
-const mapStateToProps = (store, ownProps) => {
+const mapStateToProps = ({}, ownProps) => {
   return {
     dashboard: ownProps.dashboard,
-    widgets: ownProps.widgets
+    kpiWidgets: filterKpiWidgets(ownProps.widgets),
+    btlWidgets: filterBelowTheLineWidgets(ownProps.widgets)
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -23,26 +35,47 @@ class PageDashboardWidgets extends Component {
 
   render() {
     let {
-      widgets,
+      kpiWidgets,
+      btlWidgets,
       dashboard
     } = this.props;
+
 
     return (
       <div className="container">
 
         <div className="row">
           <div className="col-xs-12 col-lg-8">
+            <Breadcrumbs paths={[
+              {path:'/', name:'Home'},
+              {path:getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
+            ]} />
+
             <span>Update Dashboard</span>
             <hr />
             <h1>{dashboard.name}</h1>
             <p>{dashboard.description}</p>
-            <Link to={getEditDashboardUrl(dashboard.id)}>Edit dashboard overview</Link>
+            <Link to={getDashboardUrl(dashboard.id)}>Edit dashboard overview</Link>
           </div>
         </div>
 
+
         <div className="row">
           <div className="col-xs-12 col-lg-8">
-            {widgets.map((w, idx) => <WidgetItem key={idx} dashboard={dashboard} widget={w} />)}
+            <KpiWidgetItem dashboard={dashboard}
+                           widgets={kpiWidgets} />
+            {btlWidgets.map((w, idx) => {
+              let dateHash = '16-10'; // todo
+
+              return (
+                <WidgetItem key={idx}
+                            addDataUrl={getDashboardWidgetDataCreateUrl(dashboard.id, w.id)}
+                            editDataUrl={getDashboardWidgetDataUpdateUrl(dashboard.id, w.id, dateHash)}
+                            editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
+                            dashboard={dashboard}
+                            widget={w} />
+              )
+            })}
           </div>
         </div>
 

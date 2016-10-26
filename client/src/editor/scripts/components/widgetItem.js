@@ -1,26 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router';
-import {
-  getCreateDashboardWidgetDataUrl,
-  getEditDashboardWidgetDataUrl,
-  getEditDashboardWidgetDescriptionsUrl
-} from './../utils/urlHelpers';
 
 
 const Preview = () => {
   return (
-    <div>Preview</div>
+    <section>
+      <h1>Preview</h1>
+      <dl>
+        <dt>todo</dt><dd>value</dd>
+      </dl>
+    </section>
   )
 };
 
 const WidgetItem = props => {
 
-  let dateHash = '16-10'; // todo
-
   let {
     dashboard,
-    widget
+    widget,
+    addDataUrl,
+    editDataUrl,
+    editDescriptionsUrl
   } = props;
+
 
   return (
     <section>
@@ -31,9 +33,9 @@ const WidgetItem = props => {
           <Preview />
         </div>
         <div className="col-xs-12 col-lg-6">
-          <Link to={getCreateDashboardWidgetDataUrl(dashboard.id, widget.id)}>Add data</Link><br/>
-          <Link to={getEditDashboardWidgetDataUrl(dashboard.id, widget.id, dateHash)}>Edit data</Link><br/>
-          <Link to={getEditDashboardWidgetDescriptionsUrl(dashboard.id, widget.id)}>Edit KPI descriptions</Link><br/>
+          <Link to={addDataUrl}>Add data</Link><br/>
+          <Link to={editDataUrl}>Edit data</Link><br/>
+          <Link to={editDescriptionsUrl}>Edit KPI descriptions</Link><br/>
         </div>
       </div>
     </section>

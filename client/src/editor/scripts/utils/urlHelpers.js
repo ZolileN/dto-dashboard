@@ -1,15 +1,19 @@
-export const getEditDashboardUrl = (dashboardId) => {
+export const getDashboardUrl = (dashboardId) => {
   return `/dashboards/${dashboardId}`;
 };
 
-export const getCreateDashboardWidgetDataUrl = (dashboardId, widgetId) => {
-  return `/dashboards/${dashboardId}/widgets/${widgetId}/data-new`;
+export const getDashboardWidgetsUrl = (dashboardId) => {
+  return `/dashboards/${dashboardId}/widgets`;
 };
 
-export const getEditDashboardWidgetDataUrl = (dashboardId, widgetId, dateHash) => {
+export const getDashboardWidgetDataUpdateUrl = (dashboardId, widgetId, dateHash) => {
   return `/dashboards/${dashboardId}/widgets/${widgetId}/data/${dateHash}`;
 };
 
-export const getEditDashboardWidgetDescriptionsUrl = (dashboardId, widgetId) => {
+export const getDashboardWidgetDataCreateUrl = (dashboardId, widgetId) => {
+  return `/dashboards/${dashboardId}/widgets/${widgetId}/data-new`;
+};
+
+export const getDashboardWidgetDescriptionsUrl = (dashboardId, widgetId) => {
   return `/dashboards/${dashboardId}/widgets/${widgetId}/data/descriptions`;
 };

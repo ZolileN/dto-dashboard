@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
+
 
 const mapStateToProps = (store, ownProps) => ({
   dashboards: ownProps.dashboards
@@ -22,7 +24,7 @@ class DashboardsIndex extends Component {
         <ul>
           {dashboards.map((d, idx) => (
             <li key={idx}>
-              <Link to={`/dashboards/${d.id}`} className="a--ui-kit">Edit {d.name}</Link>
+              <Link to={getDashboardWidgetsUrl(d.id)} className="a--ui-kit">Edit {d.name}</Link>
             </li>
           ))}
         </ul>
