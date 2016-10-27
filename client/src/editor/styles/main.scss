@@ -28,7 +28,14 @@
 @import 'vendor/animate';
 @import 'vendor/ceaser-easings';
 
+
+// layout
+@import 'layouts/app-layout';
+@import 'layouts/main';
+
 // components
+@import "components/page";
+
 @import '../../_common/styles/components/type';
 @import '../../_common/styles/components/flex-grid';
 @import '../../_common/styles/components/forms';
@@ -39,8 +46,8 @@
 @import 'components/toast';
 
 
-// layout
-@import 'layouts/app-layout';
-@import 'layouts/main';
+// pages
+@import 'pages/dashboards';
+
 
 // themes

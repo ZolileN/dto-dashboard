@@ -1,13 +1,23 @@
-$dashboard-variables: (
+$dashboard-constants: (
+  // color palette
+  COLOR_CERULEAN: #0579c7,
 
+  // breakpoints
+  SCREEN_MIN: 320px
 );
 
 /**
-  * Accessor for Application variables.
+  * Accessor for Application constants.
   * @usage:
     var-get('color_header_bg');
   *
  */
-@function get($setting) {
-  @return map-get($dashboard-variables, $setting)
+@function get($const) {
+  @return map-get($dashboard-constants, $const)
 }
+
+
+// semantic colors
+$color-brand-primary: get(COLOR_CERULEAN) !default;
+$color-brand-supp: #00a1bb !default;
+$color-line-border: #ccc !default;

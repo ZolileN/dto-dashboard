@@ -4,6 +4,7 @@ import { Router, Route, IndexRedirect, IndexRoute } from 'react-router';
 
 import Layout from './layout';
 
+// Route State
 import Dashboards from './dashboards';
 import Dashboard from './dashboard';
 import DashboardWidget from './dashboardWidget';
@@ -13,7 +14,8 @@ import Dataset from './dataset';
 import Datasets from './datasets';
 import DatasetDatapoints from './datasetDatapoints';
 
-import SplashPage from './../pages/splash';
+// Pages
+import DashboardsPage from './../pages/dashboards';
 import DashboardPage from './../pages/dashboard';
 import DashboardWidgetsPage from './../pages/dashboardWidgets';
 import DashboardWidgetPage from './../pages/dashboardWidget';
@@ -45,14 +47,12 @@ export default class Root extends Component {
 
             /*
 
-	            /
 	            dashboards
 	            dashboards/:id                            UpdateDashboard Form
 	            dashboards/:id/widgets
 	            dashboards/:id/widgets/:id/data-new       CreateWidgetData Form
 	            dashboards/:id/widgets/:id/data/:yy-mm
 	            dashboards/:id/widgets/:id/descriptions   UpdateWidget Form
-
 
 
 	            datasets
@@ -62,30 +62,29 @@ export default class Root extends Component {
 
              */
 
-            {/*<IndexRedirect to="" />*/}
+            <IndexRedirect to="/dashboards" />
 
-            <Route path="" component={Dashboards}>
-              /* / */
-              <IndexRoute component={SplashPage} />
+            <Route path="dashboards" component={Dashboards}>
+              <IndexRoute path="" component={DashboardsPage} />
 
-              <Route path="dashboards/:dashboard_id" component={Dashboard}>
+              <Route path=":dashboard_id" component={Dashboard}>
                 /* dashboards/:id */
-                <IndexRoute component={DashboardPage} />
+                <IndexRoute path="" component={DashboardPage} />
 
-                <Route path="widgets">
-                  /* dashboards/:id/widgets */
-                  <IndexRoute component={DashboardWidgetsPage} />
+                  <Route path="widgets">
+                    /* dashboards/:id/widgets */
+                    <IndexRoute component={DashboardWidgetsPage} />
 
-                  <Route path=":widget_id" component={DashboardWidget}>
-                    /* dashboards/:id/widgets/:id */
-                    <IndexRoute component={DashboardWidgetPage} />
-                    /* dashboards/:id/widgets/:id/data-new */
-                    /* dashboards/:id/widgets/:id/data/:yy-mm */
-                    /* dashboards/:id/widgets/:id/descriptions */
-                    <Route path="data-new" component={DashboardWidgetDataPage} />
-                    <Route path="data/descriptions" component={DashboardWidgetDescriptionsPage} />
+                    <Route path=":widget_id" component={DashboardWidget}>
+                      /* dashboards/:id/widgets/:id */
+                      <IndexRoute component={DashboardWidgetPage} />
+                      /* dashboards/:id/widgets/:id/data-new */
+                      /* dashboards/:id/widgets/:id/data/:yy-mm */
+                      /* dashboards/:id/widgets/:id/descriptions */
+                      <Route path="data-new" component={DashboardWidgetDataPage} />
+                      <Route path="data/descriptions" component={DashboardWidgetDescriptionsPage} />
+                    </Route>
                   </Route>
-                </Route>
               </Route>
             </Route>
 
@@ -110,4 +109,3 @@ export default class Root extends Component {
     )
   }
 };
-

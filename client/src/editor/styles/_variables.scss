@@ -1,4 +1,21 @@
-$screen-min:                        320px;
-$screen-sm:                         768px;
-$screen-md:                         992px;
-$screen-lg:                         1200px;
+$editor-constants: (
+);
+
+/**
+  * Accessor for Application constants.
+  * @usage:
+    var-get('color_header_bg');
+  *
+ */
+@function getEditor($const) {
+  @return map-get($editor-constants, $const)
+}
+
+
+$vertical-unit: 1.4em !default;
+
+$screen-sm-min: get(SCREEN_MIN);
+$screen-sm-minor: map-get($grid-breakpoints, 'sm'); //544
+$screen-sm: map-get($grid-breakpoints, 'md'); //768
+$screen-md: map-get($grid-breakpoints, 'lg'); //992
+$screen-lg: map-get($grid-breakpoints, 'xl'); //1200
