@@ -101,7 +101,7 @@
       "size": "large",
       "units": "%",
       "definition": "The number of members services adopted by myGov users.",
-      "displayRoundedData" : true,
+      "displayRoundedData" : false,
       "datasets": ["linked-accounts-01", "linked-accounts-02", "linked-accounts-03", "linked-accounts-04", "linked-accounts-05"]
     },
     {
@@ -131,7 +131,7 @@
       "type": "line",
       "size": "medium",
       "units": "%",
-      "displayRoundedData" : true,
+      "displayRoundedData" : false,
       "datasets": ["device-types-01", "device-types-03", "device-types-04"]
     },
     {
@@ -142,7 +142,7 @@
       "stacked": "percentage",
       "size": "medium",
       "units": "%",
-      "displayRoundedData" : true,
+      "displayRoundedData" : false,
       "definition": "Types of browsers used to access myGov",
       "datasets": ["browser-usage-chrome", "browser-usage-safari", "browser-usage-mozilla", "browser-usage-IE", "browser-usage-other"]
     },
@@ -154,7 +154,7 @@
       "size": "medium",
       "units": "%",
       "stacking": "percentage",
-      "displayRoundedData" : true,
+      "displayRoundedData" : false,
       "definition": "The adoption of each member service by myGov users.",
       "datasets": ["links-by-member-service-01", "links-by-member-service-02", "links-by-member-service-03", "links-by-member-service-05", "links-by-member-service-07","links-by-member-service-09"]
     },
@@ -166,7 +166,7 @@
       "size": "medium",
       "units": "%",
       "stacking": "percentage",
-      "displayRoundedData" : true,
+      "displayRoundedData" : false,
       "definition": "The use of member services by myGov users.",
       "datasets": ["navigations-by-service-01", "navigations-by-service-03", "navigations-by-service-04", "navigations-by-service-05", "navigations-by-service-06"]
     },
