@@ -53,6 +53,10 @@ export const getDatapointById = (state, id) => {
   return state.find((d) => id == d.id);
 };
 
+export const getDatapointsByIds = (state, ids) => {
+  return state.filter((d) => ids.includes(Number(d.id)));
+};
+
 /**
  * @param state
  * @param ids {Array}
@@ -62,6 +66,15 @@ export const getDatapointsById = (state, ids) => {
   return state.filter((d) => {
     return ids.includes(d.id);
   });
+};
+
+export const getNewestDatapoint = datapoints => {
+  return datapoints.reduce((cur, next) => {
+    if (new Date(next.label) > curr) {
+      return next;
+    }
+    return curr;
+  }, null);
 };
 
 // /**

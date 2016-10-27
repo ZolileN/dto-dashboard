@@ -17,13 +17,19 @@ import {
   getDashboardWidgetDataUpdateUrl,
   getDashboardWidgetDescriptionsUrl
 } from './../utils/urlHelpers';
+import {
+  getDatapointsByIds,
+  getNewestDatapoint
+} from './../reducers/datapoints';
 
 
-const mapStateToProps = ({}, ownProps) => {
+const mapStateToProps = (store, ownProps) => {
   return {
     dashboard: ownProps.dashboard,
     kpiWidgets: filterKpiWidgets(ownProps.widgets),
-    btlWidgets: filterBelowTheLineWidgets(ownProps.widgets)
+    btlWidgets: filterBelowTheLineWidgets(ownProps.widgets),
+    datasets: ownProps.datasets,
+    datapoints: ownProps.datapoints
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -37,7 +43,9 @@ class PageDashboardWidgets extends Component {
     let {
       kpiWidgets,
       btlWidgets,
-      dashboard
+      dashboard,
+      datasets,
+      datapoints
     } = this.props;
 
     return (
@@ -69,14 +77,27 @@ class PageDashboardWidgets extends Component {
                                {/*widgets={kpiWidgets} />*/}
 
                 {btlWidgets.map((w, idx) => {
-                  let dateHash = '16-10'; // todo
+
+                  let widgetDatasets = getDatasetsByIds(datasets, w.datasets);
+                  let latestDataSlice = widgetDatasets.map((wd) => {
+                    let sectionDatapoints = getDatapointsByIds(datapoints, wd.datapoints);
+                    return {
+                      label: wd.label,
+                      value: getNewestDatapoint(sectionDatapoints).value,
+                      units: wd.units
+                    }
+                  });
+
+                  let dateHash = {}; // todo
                   return (
                     <WidgetItem key={idx}
                                 className="widget-list__item"
+                                hasRecentData={!!dateHash}
                                 addDataUrl={getDashboardWidgetDataCreateUrl(dashboard.id, w.id)}
                                 editDataUrl={getDashboardWidgetDataUpdateUrl(dashboard.id, w.id, dateHash)}
                                 editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
                                 dashboard={dashboard}
+                                latestDataSlice={latestDataSlice}
                                 widget={w} />
                   )
                 })}

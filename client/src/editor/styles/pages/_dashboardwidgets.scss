@@ -2,6 +2,7 @@
   .widget-list {
 
   }
+
   .widget-list__item {
     padding: $vertical-unit 0;
     border-top: 1px solid $color-line-border;
@@ -29,10 +30,23 @@
 
   .desc-title {
     display: block;
+    font-weight: $font-weight-bold;
   }
 
   .last-updated {
     font-size: $font-size-sm;
     text-transform: uppercase;
+  }
+
+  &__title {
+    @media (min-width:$screen-md) {
+      float:left;
+    }
+  }
+
+  &__ancillary {
+    @media (min-width:$screen-md) {
+      text-align: right;
+    }
   }
 }

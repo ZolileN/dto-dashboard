@@ -19,8 +19,6 @@ const KpiWidgetItem = props => {
     className
   } = props;
 
-  let dateHash = '16-10'; // todo
-
   // todo - urls ? wtf will they be ?
 
   return (

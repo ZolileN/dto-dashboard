@@ -7,6 +7,7 @@ import Layout from './layout';
 // Route State
 import Dashboards from './dashboards';
 import Dashboard from './dashboard';
+import DashboardWidgets from './dashboardWidgets';
 import DashboardWidget from './dashboardWidget';
 
 
@@ -71,7 +72,7 @@ export default class Root extends Component {
                 /* dashboards/:id */
                 <IndexRoute path="" component={DashboardPage} />
 
-                  <Route path="widgets">
+                  <Route path="widgets" component={DashboardWidgets}>
                     /* dashboards/:id/widgets */
                     <IndexRoute component={DashboardWidgetsPage} />
 
@@ -82,7 +83,8 @@ export default class Root extends Component {
                       /* dashboards/:id/widgets/:id/data/:yy-mm */
                       /* dashboards/:id/widgets/:id/descriptions */
                       <Route path="data-new" component={DashboardWidgetDataPage} />
-                      <Route path="data/descriptions" component={DashboardWidgetDescriptionsPage} />
+                      <Route path="data/:yyyy-mm" component={DashboardWidgetDataPage} />
+                      <Route path="descriptions" component={DashboardWidgetDescriptionsPage} />
                     </Route>
                   </Route>
               </Route>

@@ -16,7 +16,6 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(uiActions, dispatch)
 });
 
-
 class DashboardWidgetDataPage extends Component {
 
   render() {
