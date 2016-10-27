@@ -1,16 +1,25 @@
 import React, { cloneElement } from 'react';
 import { Link } from 'react-router';
-import { humanisedShortDate } from './../utils/humanisedDates';
+
+import {
+  humanisedShortDate,
+  humanisedVeryShortDate
+} from './../utils/humanisedDates';
+import LegendDot, { getPaletteColor } from './svgs/legend-dot';
 
 
 const Preview = ({data}) => {
   return (
     <section className="preview">
-      <span className="desc-title strong">Preview:</span>
+      <span className="date-meta">Most recent data: {humanisedVeryShortDate(data.date_period)}</span>
       {data.map((d, idx) => {
         return (
           <div key={idx} className="preview-table">
-            <span className="key">{d.label}</span> <span className="value">{d.value}</span>
+            <span className="key">
+              <LegendDot color={getPaletteColor(idx)} />
+            </span>
+            <span className="description">{d.label}</span>
+            <span className="value">{d.value}</span>
           </div>
         )
       })}
@@ -87,7 +96,7 @@ const WidgetItem = props => {
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="last-updated">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
         </div>
       </header>
       <ProxyItemType {...props} />

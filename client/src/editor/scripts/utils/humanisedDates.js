@@ -9,3 +9,7 @@ export const humanisedLongDate = ts => {
 export const humanisedShortDate = ts => {
   return moment(ts).format(dateConsts.SHORT_DATE);
 };
+
+export const humanisedVeryShortDate = ts => {
+  return moment(ts).format(dateConsts.VERY_SHORT_DATE);
+};

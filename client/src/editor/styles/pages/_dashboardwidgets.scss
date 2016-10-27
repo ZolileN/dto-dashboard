@@ -4,12 +4,12 @@
   }
 
   .widget-list__item {
-    padding: $vertical-unit 0;
+    padding: $spacer 0;
     border-top: 1px solid $color-line-border;
   }
 
   &__title-block {
-    margin-bottom: $vertical-unit;
+    margin-bottom: $spacer;
   }
 }
 
@@ -33,7 +33,7 @@
     font-weight: $font-weight-bold;
   }
 
-  .last-updated {
+  .date-meta {
     font-size: $font-size-sm;
     text-transform: uppercase;
   }
@@ -56,7 +56,8 @@
   }
 
   .preview {
-
+    padding: $spacer $spacer+.2;
+    background-color: $color-background-blue;
   }
 
   .preview-table {
@@ -64,15 +65,20 @@
     width: 100%;
 
     .key,
+    .description,
     .value {
       display: table-cell;
+      vertical-align: middle;
     }
 
     .key {
-
+      width: 32px;
+      padding-top: 2px;
     }
+
     .value {
       text-align: right;
+      font-weight: $font-weight-bold;
     }
   }
 }

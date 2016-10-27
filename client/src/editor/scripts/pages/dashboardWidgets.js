@@ -82,9 +82,11 @@ class PageDashboardWidgets extends Component {
                   let widgetDatasets = getDatasetsByIds(datasets, w.datasets);
                   let latestDataSlice = widgetDatasets.map((wd) => {
                     let sectionDatapoints = getDatapointsByIds(datapoints, wd.datapoints);
+                    let newestDatapoint = getNewestDatapoint(sectionDatapoints);
                     return {
+                      date_period: newestDatapoint.label,
                       label: wd.label,
-                      value: getNewestDatapoint(sectionDatapoints).value,
+                      value: newestDatapoint.value,
                       units: wd.units
                     }
                   });

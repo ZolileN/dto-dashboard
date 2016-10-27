@@ -17,7 +17,7 @@ $editor-constants: (
 }
 
 
-$vertical-unit: 1.4em !default;
+$spacer: 1.4em !default;
 
 $screen-sm-min: get(SCREEN_MIN);
 $screen-sm-minor: map-get($grid-breakpoints, 'sm'); //544
