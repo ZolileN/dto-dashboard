@@ -126,6 +126,12 @@
       .media {
         height: auto;
         float: left;
+
+        @media (max-width: $screen-sm){
+          margin-right: 15px;
+          margin-left: 15px;
+          margin-bottom: 30px;
+        }
       }
     }
 
