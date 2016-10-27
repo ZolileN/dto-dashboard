@@ -129,7 +129,7 @@
       "updated_at":  "2016-08-25T01:01:01.111Z",
       "name": "Device Usage",
       "type": "line",
-      "size": "large",
+      "size": "medium",
       "units": "%",
       "displayRoundedData" : true,
       "datasets": ["device-types-01", "device-types-03", "device-types-04"]
@@ -138,8 +138,9 @@
       "id":   "browser-types",
       "updated_at":  "2016-08-25T01:01:01.111Z",
       "name": "Browser types",
-      "type": "pie",
-      "size": "small",
+      "type": "bar",
+      "stacked": "percentage",
+      "size": "medium",
       "units": "%",
       "displayRoundedData" : true,
       "definition": "Types of browsers used to access myGov",
@@ -192,7 +193,7 @@
     ["fact-1", "member-service-adoption"],
     ["sign-ins-per-account", "navigations-per-signin"],
     ["linked-member-services", "member-service-activity"],
-    ["traffic-source", "browser-types"],
-    ["fact-2", "device-usage"]
+    ["traffic-source", "fact-2"],
+    ["device-usage", "browser-types"]
   ]
 }
