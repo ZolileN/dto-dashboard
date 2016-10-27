@@ -1,7 +1,11 @@
 import moment from 'moment';
-import { ISO_LONG_DATE } from './../../../_common/scripts/_vendor/gov-au-ui-kit/constants/date-time';
+import dateConsts from './../../../_common/scripts/_vendor/gov-au-ui-kit/constants/date-time';
 
 
-export const humanisedLongDate = (timestamp) => {
-  return moment(timestamp).format(ISO_LONG_DATE);
+export const humanisedLongDate = ts => {
+  return moment(ts).format(dateConsts.LONG_DATE);
+};
+
+export const humanisedShortDate = ts => {
+  return moment(ts).format(dateConsts.SHORT_DATE);
 };

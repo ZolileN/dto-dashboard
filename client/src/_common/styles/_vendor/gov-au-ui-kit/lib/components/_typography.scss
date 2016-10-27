@@ -466,7 +466,8 @@ kbd {
   margin: 0 $tiny-spacing;
 }
 
-strong {
+strong
+.strong {
   font-weight: $bold-font-weight;
 
   // Huh?

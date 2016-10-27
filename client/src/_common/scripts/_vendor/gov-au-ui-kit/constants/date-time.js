@@ -1,1 +1,4 @@
-export const ISO_LONG_DATE = 'dddd D MMMM, YYYY';
+export default {
+  LONG_DATE: 'dddd D MMMM, YYYY',
+  SHORT_DATE: 'DD MMM YYYY'
+};

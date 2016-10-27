@@ -64,9 +64,9 @@ class PageDashboardWidgets extends Component {
               </div>
 
               <section className="widget-list">
-                <KpiWidgetItem className="widget-list__item"
-                               dashboard={dashboard}
-                               widgets={kpiWidgets} />
+                {/*<KpiWidgetItem className="widget-list__item"*/}
+                               {/*dashboard={dashboard}*/}
+                               {/*widgets={kpiWidgets} />*/}
 
                 {btlWidgets.map((w, idx) => {
                   let dateHash = '16-10'; // todo

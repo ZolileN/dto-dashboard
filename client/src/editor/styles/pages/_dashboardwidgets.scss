@@ -8,6 +8,31 @@
   }
 
   &__title-block {
+    margin-bottom: $vertical-unit;
+  }
+}
 
+%widget {
+  content: 'widget';
+}
+
+.widget-list__item {
+  .widget--fact {
+    @extend %widget;
+    border: 1px solid green;
+  }
+
+  .widget--default {
+    @extend %widget;
+    border: 1px solid red;
+  }
+
+  .desc-title {
+    display: block;
+  }
+
+  .last-updated {
+    font-size: $font-size-sm;
+    text-transform: uppercase;
   }
 }

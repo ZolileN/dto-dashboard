@@ -1,5 +1,6 @@
 import React, { cloneElement } from 'react';
 import { Link } from 'react-router';
+import { humanisedShortDate } from './../utils/humanisedDates';
 
 
 const Preview = () => {
@@ -40,11 +41,11 @@ const TypeFact = props => {
   return (
     <div className="widget--fact">
       <div className="row">
-        <div className="col-xs-12">
-          <h2 className="h6">Preview</h2>
+        <div className="col-xs-12 col-lg-6">
+          <span className="desc-title strong">Preview:</span>
           <p>{widget.description}</p>
+          <Link to={editDataUrl} className="btn primary">Edit Fact</Link>
         </div>
-        <Link to={editDataUrl} className="btn primary">Edit Fact</Link>
       </div>
     </div>
   );
@@ -82,7 +83,7 @@ const WidgetItem = props => {
 
   return (
     <article className={className}>
-      <span>Last updated: {widget.last_updated_at}</span>
+      <span className="last-updated">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
       <h1 className="h5">{widget.name}</h1>
       <ProxyItemType {...props} />
     </article>

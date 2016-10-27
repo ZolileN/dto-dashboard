@@ -11,7 +11,6 @@
 @import 'vendor/gov-au-ui-kit/ui-kit';
 @import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/buttons';
 @import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/forms';
-@import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/forms';
 
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-cards';
@@ -44,7 +43,6 @@
 @import '../../_common/styles/ui-patterns/main-footer';
 @import 'components/date-fields';
 @import 'components/toast';
-@import "components/widget-30thousandfeet";
 
 // pages
 @import 'pages/dashboards';
