@@ -66,12 +66,12 @@ class DashboardIndex extends Component {
                 ]} />
                 <h1 className="h4">Update Dashboards</h1>
               </div>
-              <h1>Dashboard: {dashboard.name}</h1>
             </div>
           </div>
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
+              <h1 className="h5">Edit {dashboard.name} overview</h1>
               <button
                 className="btn primary small"
                 disabled={ui.isEditing}
