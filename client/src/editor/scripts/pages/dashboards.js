@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
+import Breadcrumbs from './../components/breadcrumbs';
 
 
 const DashboardItems = ({dashboards}) => {
@@ -41,14 +42,21 @@ class DashboardsIndex extends Component {
     });
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <div className="page page-dashboards">
+      <div className="page page-dashboards">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
               <div className="page__header">
+                <Breadcrumbs paths={[
+                  {path:'', name:'Home'}
+                ]} />
                 <h1 className="h4">Manage Dashboards</h1>
               </div>
-              <DashboardItems dashboards={sortedDashboards} />
+            </div>
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+                <DashboardItems dashboards={sortedDashboards} />
+              </div>
             </div>
           </div>
         </div>

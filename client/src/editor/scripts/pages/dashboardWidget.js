@@ -82,54 +82,55 @@ class Widget extends Component {
     };
 
     return (
-      <div className="container">
-
-        <div className="row">
-          <div className="col-xs-12">
-            <Breadcrumbs paths={[
-              {path:'/', name:'Home'},
-              {path:`/dashboards/${dashboard.id}`, name:`${dashboard.name}`},
-              {path:`/dashboards/${dashboard.id}/widgets/${widget.id}`, name:`${widget.name}`}
-            ]} />
+      <div className="page page-dashboardwidget">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12">
+              <Breadcrumbs paths={[
+                {path:'/', name:'Home'},
+                {path:`/dashboards/${dashboard.id}`, name:`${dashboard.name}`},
+                {path:`/dashboards/${dashboard.id}/widgets/${widget.id}`, name:`${widget.name}`}
+              ]} />
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-xs-12">
-            <h1>Dashboard: {dashboard.name}, Widget: {widget.name}</h1>
-            <h2 className="h4">Datasets</h2>
+          <div className="row">
+            <div className="col-xs-12">
+              <h1>Dashboard: {dashboard.name}, Widget: {widget.name}</h1>
+              <h2 className="h4">Datasets</h2>
+            </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="col-xs-12">
-            {sortedDatasets.length ?
-              editDatasetsList(sortedDatasets) :
-              <p><em>No datasets</em></p>
-            }
+          <div className="row">
+            <div className="col-xs-12">
+              {sortedDatasets.length ?
+                editDatasetsList(sortedDatasets) :
+                <p><em>No datasets</em></p>
+              }
+            </div>
+            <br />
           </div>
-          <br />
-        </div>
 
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <button
-              className="btn primary small"
-              disabled={ui.isEditing}
-              onClick={this.enterForm.bind(this)}>Edit</button>
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <button
+                className="btn primary small"
+                disabled={ui.isEditing}
+                onClick={this.enterForm.bind(this)}>Edit</button>
 
-            <UpdateWidgetForm
-              formModel={widget}
-              isEditing={ui.isEditing}
-              isSubmitting={isPendingRequest}
-              onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-              onCancelSuccess={this.exitForm.bind(this)}
-              OPTIONS_WIDGET_TYPE={OPTIONS_WIDGET_TYPE}
-              OPTIONS_WIDGET_UNITS={OPTIONS_WIDGET_UNITS}
-            />
+              <UpdateWidgetForm
+                formModel={widget}
+                isEditing={ui.isEditing}
+                isSubmitting={isPendingRequest}
+                onSubmitSuccess={this.onSubmitSuccess.bind(this)}
+                onCancelSuccess={this.exitForm.bind(this)}
+                OPTIONS_WIDGET_TYPE={OPTIONS_WIDGET_TYPE}
+                OPTIONS_WIDGET_UNITS={OPTIONS_WIDGET_UNITS}
+              />
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     )
   }

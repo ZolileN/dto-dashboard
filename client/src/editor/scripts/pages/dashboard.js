@@ -54,42 +54,39 @@ class DashboardIndex extends Component {
     } = this.props;
 
     return (
-      <div className="container">
+      <div className="page page-dashboard">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <div className="page__header">
+                <Breadcrumbs paths={[
+                  {path: '/dashboards', name:'Home'},
+                  {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
+                  {path: '', name:`Edit dashboard information`}
+                ]} />
+                <h1 className="h4">Update Dashboards</h1>
+              </div>
+              <h1>Dashboard: {dashboard.name}</h1>
+            </div>
+          </div>
 
-        <div className="row">
-          <div className="col-xs-12">
-            <Breadcrumbs paths={[
-              {path:'/', name:'Home'},
-              {path:getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
-              {path:'', name:`Edit dashboard information`}
-            ]} />
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <button
+                className="btn primary small"
+                disabled={ui.isEditing}
+                onClick={this.enterForm.bind(this)}>Edit</button>
+
+              <UpdateDashboardForm
+                formModel={dashboard}
+                isEditing={ui.isEditing}
+                isSubmitting={isPendingRequest}
+                onSubmitSuccess={this.onSubmitSuccess.bind(this)}
+                onCancelSuccess={this.exitForm.bind(this)} />
+              <br />
+            </div>
           </div>
         </div>
-
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <h1>Dashboard: {dashboard.name}</h1>
-          </div>
-        </div>
-
-
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <button
-              className="btn primary small"
-              disabled={ui.isEditing}
-              onClick={this.enterForm.bind(this)}>Edit</button>
-
-            <UpdateDashboardForm
-              formModel={dashboard}
-              isEditing={ui.isEditing}
-              isSubmitting={isPendingRequest}
-              onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-              onCancelSuccess={this.exitForm.bind(this)} />
-          </div>
-          <br />
-        </div>
-
       </div>
     )
   }
