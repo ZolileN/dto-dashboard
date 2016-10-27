@@ -21,11 +21,9 @@
     margin-right: 0 !important;
     margin-bottom: 37px;
 
-    @media(min-width: $screen-sm) {
-      &.col-md-8.col-sm-12 {
-        padding-left: 0px;
-        padding-right: 0px;
-      }
+    &.col-md-8.col-sm-12 {
+      padding-left: 0px;
+      padding-right: 0px;
     }
 
     @media(max-width: $screen-sm) {
