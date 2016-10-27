@@ -44,6 +44,7 @@ class DashboardsIndex extends Component {
     return (
       <div className="page page-dashboards">
         <div className="container">
+
           <div className="row">
             <div className="col-xs-12 col-lg-8">
               <div className="page__header">
@@ -53,12 +54,14 @@ class DashboardsIndex extends Component {
                 <h1 className="h4">Manage Dashboards</h1>
               </div>
             </div>
-            <div className="row">
-              <div className="col-xs-12 col-lg-8">
-                <DashboardItems dashboards={sortedDashboards} />
-              </div>
+          </div>
+
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <DashboardItems dashboards={sortedDashboards} />
             </div>
           </div>
+
         </div>
       </div>
     )

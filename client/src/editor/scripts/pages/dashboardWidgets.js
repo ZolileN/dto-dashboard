@@ -40,45 +40,50 @@ class PageDashboardWidgets extends Component {
       dashboard
     } = this.props;
 
-
     return (
-      <div className="container">
+      <div className="page page-dashboardwidgets">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <div className="page__header">
+                <Breadcrumbs paths={[
+                  {path:'/', name:'Home'},
+                  {path:getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
+                ]} />
+                <h1 className="h4">Manage Dashboards</h1>
+              </div>
+            </div>
+          </div>
 
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <Breadcrumbs paths={[
-              {path:'/', name:'Home'},
-              {path:getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
-            ]} />
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <div className="page-dashboardwidgets__title-block">
+                <h1>{dashboard.name}</h1>
+                <p>{dashboard.description}</p>
+                <Link to={getDashboardUrl(dashboard.id)}>Edit dashboard overview</Link>
+              </div>
 
-            <span>Update Dashboard</span>
-            <hr />
-            <h1>{dashboard.name}</h1>
-            <p>{dashboard.description}</p>
-            <Link to={getDashboardUrl(dashboard.id)}>Edit dashboard overview</Link>
+              <section className="widget-list">
+                <KpiWidgetItem className="widget-list__item"
+                               dashboard={dashboard}
+                               widgets={kpiWidgets} />
+
+                {btlWidgets.map((w, idx) => {
+                  let dateHash = '16-10'; // todo
+                  return (
+                    <WidgetItem key={idx}
+                                className="widget-list__item"
+                                addDataUrl={getDashboardWidgetDataCreateUrl(dashboard.id, w.id)}
+                                editDataUrl={getDashboardWidgetDataUpdateUrl(dashboard.id, w.id, dateHash)}
+                                editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
+                                dashboard={dashboard}
+                                widget={w} />
+                  )
+                })}
+              </section>
+            </div>
           </div>
         </div>
-
-
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <KpiWidgetItem dashboard={dashboard}
-                           widgets={kpiWidgets} />
-            {btlWidgets.map((w, idx) => {
-              let dateHash = '16-10'; // todo
-
-              return (
-                <WidgetItem key={idx}
-                            addDataUrl={getDashboardWidgetDataCreateUrl(dashboard.id, w.id)}
-                            editDataUrl={getDashboardWidgetDataUpdateUrl(dashboard.id, w.id, dateHash)}
-                            editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
-                            dashboard={dashboard}
-                            widget={w} />
-              )
-            })}
-          </div>
-        </div>
-
       </div>
     )
   }

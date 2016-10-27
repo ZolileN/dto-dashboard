@@ -15,14 +15,18 @@ const Preview = () => {
 
 const KpiWidgetItem = props => {
 
+  let {
+    className
+  } = props;
+
   let dateHash = '16-10'; // todo
 
   // todo - urls ? wtf will they be ?
 
   return (
-    <section>
+    <article className={className}>
       <h1>Key Performance Indicators</h1>
-    </section>
+    </article>
   )
 };
 

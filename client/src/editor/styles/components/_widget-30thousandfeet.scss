@@ -1,0 +1,16 @@
+%widget {
+  content: 'widget';
+}
+
+.widget-30thousandfeet {
+
+  .widget--fact {
+    @extend %widget;
+    border: 1px solid green;
+  }
+
+  .widget--default {
+    @extend %widget;
+    border: 1px solid red;
+  }
+}

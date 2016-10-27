@@ -71,7 +71,6 @@ class DashboardIndex extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              <h1 className="h5">Edit {dashboard.name} overview</h1>
               <button
                 className="btn primary small"
                 disabled={ui.isEditing}

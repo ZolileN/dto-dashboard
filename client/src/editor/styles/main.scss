@@ -44,10 +44,11 @@
 @import '../../_common/styles/ui-patterns/main-footer';
 @import 'components/date-fields';
 @import 'components/toast';
-
+@import "components/widget-30thousandfeet";
 
 // pages
 @import 'pages/dashboards';
+@import 'pages/dashboardwidgets';
 
 
 // themes
