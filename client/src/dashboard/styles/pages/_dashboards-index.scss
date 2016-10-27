@@ -1,8 +1,24 @@
 .dashboards_index {
 
+  .metric-link {
+    margin-left: 15px;
+    margin-right: 15px;
+    clear:both;
+    margin-bottom:17px;
+    text-align: center;
+    border-bottom: 1px solid $axis-stroke-colour;
+
+    a {
+      color: $brand-primary-colour;
+      margin: 10px 0 8px 0;
+      font-weight: 700;
+      border-bottom: 0;
+      text-decoration: underline;
+    }
+  }
+
   .metric-definitions {
     margin-right: 0 !important;
-    border-bottom: 1px solid $axis-stroke-colour;
     margin-bottom: 37px;
 
     @media(min-width: $screen-sm) {

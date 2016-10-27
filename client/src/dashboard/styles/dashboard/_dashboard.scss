@@ -1,21 +1,3 @@
-
-
-
-
-.metric-link {
-  clear:both;
-  margin-bottom:17px;
-  text-align: center;
-
-  a {
-    color: $brand-primary-colour;
-    margin: 10px 0 8px 0;
-    font-weight: 700;
-    border-bottom: 0;
-    text-decoration: underline;
-  }
-}
-
 .updated-at {
   @media(max-width: 768px) {
     p {
