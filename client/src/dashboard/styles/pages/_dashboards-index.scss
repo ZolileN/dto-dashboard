@@ -58,7 +58,6 @@
     }
 
     @media(max-width: $screen-sm) {
-      @include span-columns(12 of 12);
       margin-bottom: 15px;
 
       p {
