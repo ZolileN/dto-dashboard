@@ -11,9 +11,9 @@ const mapStateToProps = ({datasets, datapoints}, ownProps) => {
   let widgetsDatasetIds = widgets.reduce((cur, next) => {
     return cur.concat(next.datasets);
   }, []);
-  let datasets = getDatasetsByIds(datasets, widgetsDatasetIds);
-  let datatpointIds = datasets.reduce((cur, next) => {
-    return curr.concat(next.datapoints);
+  let widgetDatasets = getDatasetsByIds(datasets, widgetsDatasetIds);
+  let datatpointIds = widgetDatasets.reduce((cur, next) => {
+    return cur.concat(next.datapoints);
   }, []);
 
   return {

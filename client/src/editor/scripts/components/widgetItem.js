@@ -3,13 +3,17 @@ import { Link } from 'react-router';
 import { humanisedShortDate } from './../utils/humanisedDates';
 
 
-const Preview = ({latestDataSlice}) => {
+const Preview = ({data}) => {
   return (
-    <section>
-      <h1>Preview</h1>
-      <dl>
-        {latestDataSlice.map(d => <span><dt>{d.name}</dt><dd>{d.value}</dd></span>)}
-      </dl>
+    <section className="preview">
+      <span className="desc-title strong">Preview:</span>
+      {data.map((d, idx) => {
+        return (
+          <div key={idx} className="preview-table">
+            <span className="key">{d.label}</span> <span className="value">{d.value}</span>
+          </div>
+        )
+      })}
     </section>
   )
 };
@@ -19,14 +23,15 @@ const TypeDefault = props => {
     addDataUrl,
     editDataUrl,
     editDescriptionsUrl,
-    hasRecentData
+    hasRecentData,
+    latestDataSlice
   } = props;
   return (
     <div className="widget--default">
       <div className="row">
-        {/*<div className="col-xs-12 col-lg-6">*/}
-          {/*<Preview />*/}
-        {/*</div>*/}
+        <div className="col-xs-12 col-lg-6">
+          <Preview data={latestDataSlice} />
+        </div>
         <div className="col-xs-12 col-lg-6">
           <Link to={addDataUrl} className="btn primary" disabled={hasRecentData}>Add data</Link><br/>
           <Link to={editDataUrl}>Edit data</Link><br/>
@@ -56,10 +61,7 @@ const ProxyItemType = props => {
   let {
     dashboard,
     widget,
-    addDataUrl,
-    editDataUrl,
-    editDescriptionsUrl,
-    latestDataSlice
+    editDataUrl
   } = props;
 
   if (widget.type === 'fact') {
@@ -67,12 +69,7 @@ const ProxyItemType = props => {
                      widget={widget}
                      editDataUrl={editDataUrl} />
   } else {
-    return <TypeDefault dashboard={dashboard}
-                        widget={widget}
-                        addDataUrl={addDataUrl}
-                        editDataUrl={editDataUrl}
-                        editDescriptionsUrl={editDescriptionsUrl}
-                        latestDataSlice={latestDataSlice} />
+    return <TypeDefault {...props} />
   }
 };
 
@@ -85,12 +82,14 @@ const WidgetItem = props => {
 
   return (
     <article className={className}>
-      <div className="widget-list__item__title">
-        <h1 className="h5">{widget.name}</h1>
-      </div>
-      <div className="widget-list__item__ancillary">
-        <span className="last-updated">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
-      </div>
+      <header className="clearfix">
+        <div className="title">
+          <h1 className="h5">{widget.name}</h1>
+        </div>
+        <div className="ancillary">
+          <span className="last-updated">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
+        </div>
+      </header>
       <ProxyItemType {...props} />
     </article>
   );

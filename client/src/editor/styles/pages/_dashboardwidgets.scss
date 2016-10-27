@@ -38,14 +38,40 @@
     text-transform: uppercase;
   }
 
-  &__title {
-    @media (min-width:$screen-md) {
-      float:left;
+  header {
+    .title {
+      @media (min-width:$screen-md) {
+        float:left;
+      }
+      h1 {
+        margin:0;
+      }
+    }
+
+    .ancillary {
+      @media (min-width:$screen-md) {
+        text-align: right;
+      }
     }
   }
 
-  &__ancillary {
-    @media (min-width:$screen-md) {
+  .preview {
+
+  }
+
+  .preview-table {
+    display: table;
+    width: 100%;
+
+    .key,
+    .value {
+      display: table-cell;
+    }
+
+    .key {
+
+    }
+    .value {
       text-align: right;
     }
   }

@@ -69,12 +69,13 @@ export const getDatapointsById = (state, ids) => {
 };
 
 export const getNewestDatapoint = datapoints => {
-  return datapoints.reduce((cur, next) => {
-    if (new Date(next.label) > curr) {
+  return datapoints.reduce((curr, next) => {
+    if (new Date(curr) > next) {
+      return curr;
+    } else {
       return next;
     }
-    return curr;
-  }, null);
+  });
 };
 
 // /**

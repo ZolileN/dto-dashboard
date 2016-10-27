@@ -21,6 +21,7 @@ import {
   getDatapointsByIds,
   getNewestDatapoint
 } from './../reducers/datapoints';
+import { getDatasetsByIds } from './../reducers/datasets';
 
 
 const mapStateToProps = (store, ownProps) => {
