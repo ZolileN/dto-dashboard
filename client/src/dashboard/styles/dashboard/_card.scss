@@ -62,6 +62,10 @@
   .updated-at {
     color: $secondary-text-colour;
     clear: both;
+
+    @media (min-width: $screen-md){
+      padding-bottom: 30px;
+    }
   }
 
   .main-kpi {
