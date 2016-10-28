@@ -91,17 +91,17 @@
             </div>
 
             <div class="col-xs-12 col-lg-5">
-                <div class="widget-text__footer">
-                  <% if dashboard.show_url? %>
-                      <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
+              <div class="widget-text__footer">
+                <% if dashboard.show_url? %>
+                  <p>Visit <a href="<%= dashboard.url %>" target="_blank"><%= dashboard.url %><i class="fa fa-external-link"></i></a></p>
+                <% end %>
+                <p>
+                  <%= link_to export_dashboard_path(dashboard, :format => 'csv'), class: "link--external-alt" do %>
+                      Download dashboard data as CSV
                   <% end %>
-                  <p>
-                    <%= link_to export_dashboard_path(dashboard, :format => 'csv'), class: "link--external-alt" do %>
-                        Download dashboard data as CSV
-                    <% end %>
-                  </p>
-                </div>
+                </p>
               </div>
+            </div>
           </div>
 
         </div>
