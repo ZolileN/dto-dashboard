@@ -137,6 +137,12 @@
     color: $brand-primary-colour;
     border-bottom: 0;
     text-decoration: underline;
+    margin-right: 0;
+
+    @media(min-width: $screen-sm) {
+      margin-right: 1.6em;
+    }
+
 
     &:hover {
       color: $white;
