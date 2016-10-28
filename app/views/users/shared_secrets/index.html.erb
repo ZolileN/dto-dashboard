@@ -1,0 +1,15 @@
+<div class="sign-in">
+  <h1>To create an account, you need to set up a 2-step verification with
+    Google Authenticator.</h1>
+  <h2>Step 1 of 2</h2>
+  <p>Download the <strong>Google Authenticator</strong> app from the App Store
+    or Google Play, and then select <strong>Set Up Account</strong>.</p>
+  <div class="qrcode">
+    <p><strong>Scan the barcode directly into your Authenticator
+      app.</strong></p>
+    <img src="/users/shared_secrets/code.png?nocache=<%= rand %>" />
+  </div>
+  <p><%= link_to 'Can\'t scan it?', code_users_shared_secrets_path %></p>
+  <p><%= link_to 'Generate a new code', users_shared_secret_path, method: :delete %></p>
+  <p><%= link_to 'Next', new_users_shared_secret_path, role: :button %></p>
+</div>

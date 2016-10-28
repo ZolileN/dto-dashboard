@@ -26,6 +26,13 @@
   //  @include span-columns(6 of 16);
   //  @include shift(5 of 16);
   //}
+  .callout {
+    background: $light-green;
+
+    .fa-check-circle {
+      color: $success-colour;
+    }
+  }
 }
 
 
@@ -55,7 +62,6 @@
     input[type="submit"] {
       margin-bottom: 0;
       margin-top: $small-spacing;
-      width: 100%;
     }
 
     .form-options {

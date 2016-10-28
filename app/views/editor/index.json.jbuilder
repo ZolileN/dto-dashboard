@@ -1,6 +1,6 @@
 json.currentUser do
   json.(current_user, :id, :email)  # todo - first name, last name
-  json.token session_token.token
+  # json.token current_user.session_token.token
 end
 
 json.app({})

@@ -1,0 +1,25 @@
+<div class="sign-in">
+  <h1>Set up a 2-step verification with Google Authenticator.</h1>
+  <h2>Step 2 of 2</h2>
+  <p>A code has been generated in your <strong>Google Authenticator</strong>
+    app.</p>
+  <section class="sign-in-form">
+    <%= form_tag([:users, :shared_secrets], method: :post) do %>
+      <% if @form_error %>
+        <%= @form_error %>
+      <% end %>
+      <%= label_tag 'code', 'Enter the six-digit code:' %>
+      <%= text_field_tag :code, nil, autocomplete: :off, maxlength: 6 %>
+      <p>Haven't received the code?
+        <%= link_to 'Try again', users_shared_secret_path, method: :delete %>
+      </p>
+      <div class="form-footer-actions">
+        <div class="form-options">
+          <p>
+            <%= submit_tag 'Verify', role: :button %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</article>

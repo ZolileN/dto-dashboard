@@ -7,7 +7,8 @@ applications:
 qafire:
   buildpack: https://github.com/cloudfoundry-incubator/multi-buildpack
   command: npm install -g gulp && npm run build && bundle exec rake assets:precompile && bin/cf-start.sh
-  memory: 2048MB
+  deploy_memory: 2048M
+  memory: 128M
   disk_quota: 2048MB
   health_check_type: none
   instances: 1

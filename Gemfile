@@ -20,6 +20,11 @@ gem 'sass-rails',               '~> 5.0'
 gem 'turbolinks',               '~> 5'
 gem 'uglifier',                 '>= 1.3.0'
 gem 'jbuilder',                 '~> 2.6.0'
+gem 'two_factor_authentication', git: 'https://github.com/Houdini/two_factor_authentication.git'
+gem 'rqrcode-rails3'
+gem 'mini_magick'
+gem 'devise_invitable'
+gem 'maildown'
 
 group :production do
   gem 'rails_12factor'
