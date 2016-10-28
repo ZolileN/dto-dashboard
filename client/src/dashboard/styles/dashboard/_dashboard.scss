@@ -131,5 +131,11 @@
 
   .link--external-alt {
     color: $brand-primary-colour;
+    border-bottom: 0;
+    text-decoration: underline;
+
+    &:hover {
+      color: $white;
+    }
   }
 }
