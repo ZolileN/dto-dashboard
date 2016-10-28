@@ -1,4 +1,4 @@
-<% if current_user.present? -%>
+<% if !Rails.env.production? && current_user.present? -%>
   <span style="color:white; float:right;">
     <%= current_user.email %>
     |
