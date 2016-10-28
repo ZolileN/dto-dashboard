@@ -241,11 +241,13 @@
         .metric-trend {
           margin-right: 5px;
           display: inline-block;
+          max-width: 12px; //ie9
         }
       }
 
       .summary-text {
         display: inline-block !important;
+        max-width: 50px; //ie9
       }
 
       .widget__title {
