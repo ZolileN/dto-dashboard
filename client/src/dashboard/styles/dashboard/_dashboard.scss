@@ -119,9 +119,15 @@
     min-height: auto !important; //can be removed when new design implemented
   }
 
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
   @media (min-width: $screen-md) {
     .widget-text__footer {
       float:right;
+      text-align: right;
     }
   }
 
