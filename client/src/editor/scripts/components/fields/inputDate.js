@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
-import { ISO_LONG_DATE } from './../../../../_common/scripts/_vendor/gov-au-ui-kit/constants/date-time';
+import { ISO_LONG_DATE } from './../../constants/dates';
 
 
 const InputDate = ({input, name, label, meta, fieldProps, optionProps}) => {

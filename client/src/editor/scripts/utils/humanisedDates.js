@@ -1,15 +1,15 @@
 import moment from 'moment';
-import dateConsts from './../../../_common/scripts/_vendor/gov-au-ui-kit/constants/date-time';
+import * as dateFormats from './../constants/dateFormats';
 
 
 export const humanisedLongDate = ts => {
-  return moment(ts).format(dateConsts.LONG_DATE);
+  return moment(ts).format(dateFormats.LONG_DATE);
 };
 
 export const humanisedShortDate = ts => {
-  return moment(ts).format(dateConsts.SHORT_DATE);
+  return moment(ts).format(dateFormats.SHORT_DATE);
 };
 
 export const humanisedVeryShortDate = ts => {
-  return moment(ts).format(dateConsts.VERY_SHORT_DATE);
+  return moment(ts).format(dateFormats.VERY_SHORT_DATE);
 };
