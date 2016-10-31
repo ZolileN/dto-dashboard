@@ -1,9 +1,10 @@
 .dashboard__kpis {
   background-color: $white;
   margin-bottom: 15px;
+  padding-top: 10px;
 
-  @media(max-width: $screen-sm - 1) {
-    padding-top: 10px;
+  @media(min-width: $screen-sm ) {
+    padding-top: 0;
   }
 
   .widget__title::before {
@@ -268,7 +269,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: $screen-sm) {
   .card__right {
     &.dashboard__kpis {
       .widget__title {
