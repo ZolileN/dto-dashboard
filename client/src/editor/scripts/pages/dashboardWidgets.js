@@ -22,6 +22,7 @@ import {
   getNewestDatapoint
 } from './../reducers/datapoints';
 import { getDatasetsByIds } from './../reducers/datasets';
+import getLatestDataHash from './../utils/getLatestDataHash';
 
 
 const mapStateToProps = (store, ownProps) => {
@@ -91,7 +92,7 @@ class PageDashboardWidgets extends Component {
                     }
                   });
 
-                  let dateHash = {}; // todo
+                  let dateHash = getLatestDataHash(); // todo - add this on config or cache it
                   return (
                     <WidgetItem key={idx}
                                 className="widget-list__item"
