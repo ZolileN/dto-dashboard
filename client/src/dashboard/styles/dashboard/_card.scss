@@ -101,15 +101,6 @@
 }
 
 .card__right {
-
-  @media (max-width: 768px) {
-    .aus-width-one-fourth:last-child {
-      .widget {
-        margin-bottom: -25px;
-      }
-    }
-  }
-
   .widget {
     background: transparent;
 
