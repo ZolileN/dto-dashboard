@@ -32,7 +32,7 @@
     &.has-data-false {
       min-height: 0;
 
-      @include media($screen-sm) {
+      @media(min-width: $screen-sm) {
         height: 150px;
       }
     }
