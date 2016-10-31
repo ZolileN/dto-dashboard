@@ -186,14 +186,8 @@
 @media (max-width: $screen-sm){
   .dashboard__kpis{
     .widget {
-      .widget__title {
-        @include span-columns(8);
-        @include omega(2n);
-      }
 
       .widget__inner {
-        @include span-columns(4);
-        @include omega(2n);
         margin-top: 3px;
       }
     }
