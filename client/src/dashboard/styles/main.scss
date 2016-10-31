@@ -11,6 +11,7 @@
 @import '_vendor/gov-au-ui-kit/fake-external-links';
 
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
+@import './../../_common/styles/_vendor/bootstrap/responsive-utilities';
 
 
 /**
@@ -49,7 +50,8 @@ $media-alignment-padding-x:   10px !default;
 @import 'dashboard/dashboard';
 @import 'dashboard/card';
 @import 'dashboard/stack';
+@import 'components/dashboard-kpis';
 @import 'feedback/feedback';
 @import 'widgets/widget';
 @import 'widgets/sparkline';
-
+@import 'pages/dashboards-index';

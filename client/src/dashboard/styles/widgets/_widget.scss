@@ -104,13 +104,13 @@
   border: $widget-border;
   min-height: 150px;
 
-  @include media($screen-sm) {
-    height: $widget-height-tablet;
-    min-height: $widget-height;
+  //TODO when charts are refactored add logic to move last label in on mobile and remove this query
+  @media (max-width: $screen-md) {
+    padding: $spacing-unit / 4 $spacing-unit / 4 $spacing-unit / 2 $spacing-unit / 4;
   }
 
-  @media (min-width: $screen-md) {
-    height: $widget-height;
+  @include media($screen-md) {
+    min-height: $widget-height;
   }
 
   .widget__data {
@@ -135,14 +135,9 @@
     padding: 0 $spacing-unit / 2;
 
     @media screen and(min-width: $screen-md) {
-      //height: 50px;
       position: relative;
       z-index: 100;
     }
-
-    //@media screen and(max-width: $screen-md) {
-    //  height: 77px;
-    //}
 
     h3 {
       font-size: 1.25 * $fallback;

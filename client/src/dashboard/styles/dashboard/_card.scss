@@ -14,8 +14,13 @@
   margin: 0 0 $spacing-unit 0;
   display: block;
   position: relative;
-  padding: $gutter $gutter $gutter 25px;
+  padding: 10px 10px 10px 10px;
   color: $black;
+
+  @media screen and (min-width: $screen-sm) {
+    min-height: 140px;
+    padding: $gutter $gutter 10px 25px;
+  }
 
   h3 {
     line-height: 1.2;
@@ -35,10 +40,23 @@
     &.card__link__visible {
       font-weight: 600;
       text-decoration: underline;
-      display: block;
+      display: inline;
+      width: 127px;
+      position: relative;
+      top: 8px;
+
+      @media(min-width: $screen-md + 1) {
+        position: relative;
+        top: -15px;
+      }
 
       &:visited {
         color: $brand-primary-colour;
+      }
+
+      &:hover {
+        background-color: $govau-aqua;
+        color: $white;
       }
     }
   }
@@ -46,6 +64,10 @@
   .updated-at {
     color: $secondary-text-colour;
     clear: both;
+
+    @media (min-width: $screen-md){
+      padding-bottom: 30px;
+    }
   }
 
   .main-kpi {
@@ -54,21 +76,12 @@
 }
 
 .card__left {
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: $screen-sm) { //TODO fix clash of media queries
     width: 30%;
     float: left;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    .card__link__visible {
-      padding-bottom: 15px;
-    }
-  }
-  @media screen and (max-width: $screen-sm) {
-    padding-bottom: 20px;
-    border-bottom: 1px $axis-stroke-colour solid;
-    margin-bottom: 10px;
   }
 
   @media only screen and (min-width: $screen-sm ) and (max-width: $screen-md) {
@@ -77,6 +90,21 @@
 }
 
 .card__right {
+
+  @media screen and (max-width: $screen-sm) {
+    padding-top: 20px;
+    border-top: 1px $axis-stroke-colour solid;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .aus-width-one-fourth:last-child {
+      .widget {
+        margin-bottom: -25px;
+      }
+    }
+  }
+
   .widget {
     background: transparent;
 
@@ -152,6 +180,7 @@
           line-height: 1;
           font-size: $fallback;
           font-size: 1rem;
+          margin-top: 16px;
         }
       }
     }
@@ -298,73 +327,6 @@
 }
 
 @media (min-width: 768px) and (max-width: $screen-md - 1 ) {//includes 767
-
-  .dashboard__kpis {
-    .aus-width-one-fourth {
-      @include span-columns(3);
-    }
-
-    .widget {
-      border: 0;
-      box-shadow: none;
-      padding: 0;
-      margin: 15px 0 0 0;
-      min-height: 0;
-      height: auto;
-      display: block;
-
-      .widget__inner {
-        position: relative;
-        padding:0;
-        width: 100%;
-
-        .sparkline {
-          max-width: 100%;
-          display:block;
-        }
-      }
-
-      .sparkline__inner {
-        float: none;
-
-        .chart {
-          display: block;
-        }
-      }
-
-      .decorator {
-        flex-direction: column;
-      }
-
-      .metric-meta {
-        display: block !important;
-
-        .metric-trend {
-          margin-right: 5px;
-          display: inline-block;
-        }
-      }
-      .summary-text {
-        display: inline-block !important;
-      }
-
-      .widget__title {
-        width: 100%;
-      }
-
-      .metric-data {
-        .value {
-          font-size: 45px;
-          font-size: 2.8125rem;
-          font-weight: 300;
-        }
-
-        .decorator {
-          flex-direction: column;
-        }
-      }
-    }
-  }
 
   .metric-data, .metric-data .decorator {
     display: flex;

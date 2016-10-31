@@ -179,6 +179,10 @@ main {
 .no-data {
   color: $secondary-text-colour;
   text-transform: uppercase;
+
+  @media (min-width: $screen-md){
+    padding-top: 15px;
+  }
 }
 
 .badge {

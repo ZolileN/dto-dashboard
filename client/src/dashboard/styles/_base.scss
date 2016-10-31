@@ -91,21 +91,3 @@ h4 {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-
-.hide-on-desktop {
-  @media (min-width: 769px) {
-    display: none;
-  }
-}
-
-.hide-on-mobile {
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
-
-.hide-on-desktop-tablet {
-  @media (min-width: 769px) {
-    display: none !important;
-  }
-}
