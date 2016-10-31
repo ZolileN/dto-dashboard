@@ -31,6 +31,10 @@
     min-height: 0;
     height: auto;
 
+    .widget__inner {
+      margin-top: 3px;
+    }
+
     &.has-data-false {
       min-height: 0;
 
@@ -178,17 +182,6 @@
 
       .metric-meta {
         display: none;
-      }
-    }
-  }
-}
-
-@media (max-width: $screen-sm){
-  .dashboard__kpis{
-    .widget {
-
-      .widget__inner {
-        margin-top: 3px;
       }
     }
   }
