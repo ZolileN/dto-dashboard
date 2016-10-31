@@ -12,9 +12,10 @@
     content: '\f111';
     font-family: 'fontawesome';
     padding-right: 10px;
+    float: left;
 
-    @media(max-width: $screen-sm - 1) {
-      float: left;
+    @media(min-width: $screen-sm) {
+      float: none;
     }
   }
 
