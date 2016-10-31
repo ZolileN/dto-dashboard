@@ -201,9 +201,6 @@
 
 @media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) {//includes 767
   .dashboard__kpis {
-    .aus-width-one-fourth {
-      @include span-columns(3);
-    }
 
     .widget {
       border: 0;
