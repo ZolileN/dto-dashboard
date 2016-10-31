@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
-import { computeLabel } from './../reducers/datapoints';
 import { getDashboardUrl } from './../utils/urlHelpers';
 
 
@@ -12,24 +12,27 @@ const mapStateToProps = (store, ownProps) => {
   return {
     dashboard: ownProps.dashboard,
     widget: ownProps.widget,
-    dateHash: ownProps.params.key
+    datagroup_key: ownProps.params.datagroup_key,
+    datagroup: getDatagroupForTimeSeries(ownProps.widget, ownProps.datasets, ownProps.datapoints)
   }
 };
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(uiActions, dispatch)
 });
 
-class DashboardWidgetDatagroupPage extends Component {
+
+class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
   render() {
     let {
       widget,
       dashboard,
-      key
+      datagroup,
+      datagroup_key
     } = this.props;
 
     return (
-      <div className="page page-dashboardwidgetdata">
+      <div className="page page-dashboardwidgetdatagrouptimeseries">
         <div className="container">
           <div className="row">
             <div className="col-xs-12 col-lg-8">
@@ -37,7 +40,7 @@ class DashboardWidgetDatagroupPage extends Component {
                 <Breadcrumbs paths={[
                   {path: '/', name:'Home'},
                   {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`},
-                  {path: '', name:`Data group: ${key}`}
+                  {path: '', name:`${datagroup_key}`}
                 ]} />
                 <h1 className="h4">{widget.name}</h1>
               </div>
@@ -46,7 +49,7 @@ class DashboardWidgetDatagroupPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              DashboardWidgetDatagroupPage
+              DashboardWidgetDatagroupTimeSeriesPage
             </div>
           </div>
         </div>
@@ -58,4 +61,4 @@ class DashboardWidgetDatagroupPage extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardWidgetDatagroupPage);
+)(DashboardWidgetDatagroupTimeSeriesPage);

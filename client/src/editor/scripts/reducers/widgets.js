@@ -58,11 +58,11 @@ export const getWidgetsWithComputedProps = widgets => {
   return widgets.map(w => getWidgetWithComputedProps(w));
 };
 
-export const filterByKpiWidgets = computedWidgets => computedWidgets.filter(w => {
+export const groupByKpiWidgets = computedWidgets => computedWidgets.filter(w => {
   return w._type === 'kpi';
 });
 
-export const filterByHeroWidget = computedWidgets => computedWidgets.find(w => {
+export const groupByHeroWidget = computedWidgets => computedWidgets.find(w => {
   return w._type === 'hero';
 });
 

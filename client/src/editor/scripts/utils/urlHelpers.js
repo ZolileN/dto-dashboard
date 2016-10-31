@@ -6,10 +6,18 @@ export const getDashboardWidgetsUrl = (dashboardId) => {
   return `/dashboards/${dashboardId}/widgets`;
 };
 
-export const getDashboardWidgetDatagroup = (dashboardId, widgetId, key) => {
-  let url = `/dashboards/${dashboardId}/widgets/${widgetId}/data/${key}`;
+export const getDashboardWidgetDatagroupSimpleUrl = (dashboardId, widgetId) => {
+  return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-simple`;
+};
+
+export const getDashboardWidgetDatagroupTimeSeriesUrl = (dashboardId, widgetId, key = 'edit') => {
+  return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-time-series/${key}`;
+};
+
+export const getDashboardWidgetDatagroupCrossSectionalUrl = (dashboardId, widgetId) => {
+  return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-cross-sectional`;
 };
 
 export const getDashboardWidgetDescriptionsUrl = (dashboardId, widgetId) => {
-  return `/dashboards/${dashboardId}/widgets/${widgetId}/data/descriptions`;
+  return `/dashboards/${dashboardId}/widgets/${widgetId}/descriptions`;
 };

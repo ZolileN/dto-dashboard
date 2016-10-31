@@ -7,30 +7,21 @@ import * as uiActions from './../actions/ui';
 import Breadcrumbs from './../components/breadcrumbs';
 import { getWigetsAsType } from './../reducers/widgets';
 
-import KpiWidgetItem from './../components/kpiWidgetItem';
-import WidgetItem from './../components/widgetItem';
 import {
   getDashboardUrl,
-  getDashboardWidgetDatagroup,
+  getDashboardWidgetDatagroupSimpleUrl,
+  getDashboardWidgetDatagroupTimeSeriesUrl,
+  getDashboardWidgetDatagroupCrossSectionalUrl,
   getDashboardWidgetDescriptionsUrl
 } from './../utils/urlHelpers';
 import {
-  getDatapointsByIds
-} from './../reducers/datapoints';
-import { getDatasetsByIds } from './../reducers/datasets';
-import {
-  hasLatestData,
-  getHeadDatapoints
-} from './../helpers/datasets';
-import getLatestDataHash from './../utils/getLatestDataHash';
-import {
-  getDatagroup
+  getDatagroupForTimeSeries,
+  getDatagroupForCrossSectional
 } from './../helpers/datagroup';
-
 import {
   getWidgetsWithComputedProps,
-  filterByKpiWidgets,
-  filterByHeroWidget
+  groupByHeroWidget,
+  groupByHeroWidget
 } from './../reducers/widgets';
 
 
@@ -40,7 +31,7 @@ const WidgetTypeSimple = ({widget, dashboard}) => {
     <article>
       <h1 className="h4">{widget.name}</h1>
       <p>{widget.description}</p>
-      <Link to={getDashboardWidgetDatagroup(dashboard.id, widget.id)} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
+      <Link to={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, widget.id)} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
     </article>
   )
 };
@@ -71,8 +62,8 @@ class PageDashboardWidgets extends Component {
       widgets
     } = this.props;
 
-    let kpiWidgets = filterByKpiWidgets(widgets);
-    let heroWidget = filterByHeroWidget(widgets);
+    let kpiWidgets = groupByKpiWidgets(widgets);
+    let heroWidget = groupByHeroWidget(widgets);
 
     return (
       <div className="page page-dashboardwidgets">
@@ -111,13 +102,13 @@ class PageDashboardWidgets extends Component {
                     return <WidgetTypeCrossSectional key={idx}
                                                      widget={w}
                                                      dashboard={dashboard}
-                                                     datagroup={getDatagroup(w, datasets, datapoints)} />
+                                                     datagroup={getDatagroupForCrossSectional(w, datasets, datapoints)} />
                   }
                   else if (w._type === 'time-series') {
                     return <WidgetTypeTimeSeries key={idx}
                                                  widget={w}
                                                  dashboard={dashboard}
-                                                 datagroup={getDatagroup(w, datasets, datapoints)} />
+                                                 datagroup={getDatagroupForTimeSeries(w, datasets, datapoints)} />
                   }
                 })}
               </section>

@@ -83,22 +83,24 @@ export const getDatagroup = (widget, datasets, datapoints) => {
 const getDatagroupForSimple = () => {
   return {
     key: 'edit',
+    type: 'simple',
     datasets: [],
     datapoints: []
   }
 };
 
-const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
+export const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
   const widgetDataset = getDatasetById(widget.datasets[0]);
   const widgetDatapoints = getDatapointsByIds(datapoints, widgetDataset.datapoints);
   return {
     key: 'edit',
+    type: 'cross-sectional',
     datasets: [widgetDataset],
     datapoints: widgetDatapoints
   }
 };
 
-const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
+export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
   const widgetDatasets = getDatasetsByIds(datasets, widget.datasets);
 
   const widgetDatapointsByDataset = widgetDatasets.map(dataset => {
@@ -107,10 +109,9 @@ const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
   const headDatapoints = widgetDatapointsByDataset.map(datapoints => {
     return getHeadDatapoint(datapoints)
   });
-
-  debugger
   return {
     key: headDatapoints[0].label,
+    type: 'time-series',
     datasets: widgetDatasets,
     datapointsByDataset: widgetDatapointsByDataset,
     headDatapoints
