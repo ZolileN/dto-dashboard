@@ -1,13 +1,17 @@
-import { getLatestDateHash } from './../utils/getLatestDataHash';
-import { getNewestDatapoint } from './../reducers/datapoints';
+import getLatestDateHash from './../utils/getLatestDataHash';
+import {
+  getDatapointById,
+  getNewestDatapoint
+} from './../reducers/datapoints';
 
 
 export const getHeadDatapoints = (datasets) => {
-  return datasets.map(dataset => {
-    return getNewestDatapoint(dataset);
+  return datasets.map(d => {
+    return getNewestDatapoint(d.datapoints);
   })
 };
 
-export const hasLatestData = (headDatapoints) => {
-  return headDatapoints[0].label === getLatestDateHash();
+export const hasLatestData = (datapoints, headDatapoints) => {
+  let datapoint = getDatapointById(datapoints, headDatapoints[0]);
+  return datapoint ? datapoint.label === getLatestDateHash() : false;
 };

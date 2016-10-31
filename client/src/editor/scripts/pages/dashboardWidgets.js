@@ -22,6 +22,10 @@ import {
   getNewestDatapoint
 } from './../reducers/datapoints';
 import { getDatasetsByIds } from './../reducers/datasets';
+import {
+  hasLatestData,
+  getHeadDatapoints
+} from './../helpers/datasets';
 import getLatestDataHash from './../utils/getLatestDataHash';
 
 
@@ -57,8 +61,8 @@ class PageDashboardWidgets extends Component {
             <div className="col-xs-12 col-lg-8">
               <div className="page__header">
                 <Breadcrumbs paths={[
-                  {path:'/', name:'Home'},
-                  {path:getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
+                  {path: '/', name:'Home'},
+                  {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
                 ]} />
                 <h1 className="h4">Manage Dashboards</h1>
               </div>
@@ -81,28 +85,22 @@ class PageDashboardWidgets extends Component {
                 {btlWidgets.map((w, idx) => {
 
                   let widgetDatasets = getDatasetsByIds(datasets, w.datasets);
-                  let latestDataSlice = widgetDatasets.map((wd) => {
-                    let sectionDatapoints = getDatapointsByIds(datapoints, wd.datapoints);
-                    let newestDatapoint = getNewestDatapoint(sectionDatapoints);
-                    return {
-                      date_period: newestDatapoint.label,
-                      label: wd.label,
-                      value: newestDatapoint.value,
-                      units: wd.units
-                    }
-                  });
+                  let headDatapointsIds = getHeadDatapoints(widgetDatasets);
+                  let headDatapoints = getDatapointsByIds(datapoints, headDatapointsIds);
+                  let hasHead = hasLatestData(datapoints, headDatapointsIds);
+                  let dateHash = getLatestDataHash(); // todo - add this on config or memoise
 
-                  let dateHash = getLatestDataHash(); // todo - add this on config or cache it
                   return (
                     <WidgetItem key={idx}
                                 className="widget-list__item"
-                                hasRecentData={!!dateHash}
+                                hasRecentData={hasHead}
                                 addDataUrl={getDashboardWidgetDataCreateUrl(dashboard.id, w.id)}
                                 editDataUrl={getDashboardWidgetDataUpdateUrl(dashboard.id, w.id, dateHash)}
                                 editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
                                 dashboard={dashboard}
-                                latestDataSlice={latestDataSlice}
-                                widget={w} />
+                                headDatapoints={headDatapoints}
+                                widget={w}
+                                datasets={widgetDatasets} />
                   )
                 })}
               </section>

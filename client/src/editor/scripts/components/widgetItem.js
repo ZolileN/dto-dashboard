@@ -8,17 +8,17 @@ import {
 import LegendDot, { getPaletteColor } from './svgs/legend-dot';
 
 
-const Preview = ({data}) => {
+const Preview = ({datapoints, datasets}) => {
   return (
     <section className="preview">
-      <span className="date-meta">Most recent data: {humanisedVeryShortDate(data.date_period)}</span>
-      {data.map((d, idx) => {
+      <span className="date-meta">Most recent data: {humanisedVeryShortDate(datapoints[0].label)}</span>
+      {datapoints.map((d, idx) => {
         return (
           <div key={idx} className="preview-table">
             <span className="key">
               <LegendDot color={getPaletteColor(idx)} />
             </span>
-            <span className="description">{d.label}</span>
+            <span className="description">{datasets[idx].label}</span>
             <span className="value">{d.value}</span>
           </div>
         )
@@ -29,17 +29,18 @@ const Preview = ({data}) => {
 
 const TypeDefault = props => {
   let {
+    datasets,
     addDataUrl,
     editDataUrl,
     editDescriptionsUrl,
     hasRecentData,
-    latestDataSlice
+    headDatapoints
   } = props;
   return (
     <div className="widget--default">
       <div className="row">
         <div className="col-xs-12 col-lg-6">
-          <Preview data={latestDataSlice} />
+          <Preview datapoints={headDatapoints} datasets={datasets} />
         </div>
         <div className="col-xs-12 col-lg-6">
           <Link to={addDataUrl} className="btn primary" disabled={hasRecentData}>Add data</Link><br/>

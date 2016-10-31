@@ -82,8 +82,8 @@ export default class Root extends Component {
                       /* dashboards/:id/widgets/:id/data-new */
                       /* dashboards/:id/widgets/:id/data/:yy-mm */
                       /* dashboards/:id/widgets/:id/descriptions */
+                      <Route path="data/:date_hash" component={DashboardWidgetDataPage} />
                       <Route path="data-new" component={DashboardWidgetDataPage} />
-                      <Route path="data/:yyyy-mm" component={DashboardWidgetDataPage} />
                       <Route path="descriptions" component={DashboardWidgetDescriptionsPage} />
                     </Route>
                   </Route>
