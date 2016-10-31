@@ -42,7 +42,7 @@
       height: 35px;
       padding: 0;
 
-      @media screen and(min-width: $screen-sm) {
+      @media(min-width: $screen-sm) {
         padding: 0 $spacing-unit / 2;
         height: 30px;
       }
@@ -59,7 +59,7 @@
     display: none;
   }
 
-  @include media($screen-sm) {
+  @media(min-width: $screen-sm) {
     .chart {
       display: block;
     }
@@ -83,7 +83,7 @@
       .chart {
         display: none;
 
-        @include media($screen-sm) {
+        @media(min-width: $screen-sm) {
           display: block;
         }
       }
