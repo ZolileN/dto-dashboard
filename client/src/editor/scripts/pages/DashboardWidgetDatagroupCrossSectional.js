@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
-import { getDashboardUrl } from './../utils/urlHelpers';
+import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 
 import { getDatagroupForCrossSectional } from './../helpers/datagroup';
 
@@ -38,8 +38,8 @@ class DashboardWidgetDatagroupCrossSectionalPage extends Component {
               <div className="page__header">
                 <Breadcrumbs paths={[
                   {path: '/', name:'Home'},
-                  {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`},
-                  {path: '', name:`Data group`}
+                  {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
+                  {path: '', name:`Data group: ${widget.name}`}
                 ]} />
                 <h1 className="h4">{widget.name}</h1>
               </div>

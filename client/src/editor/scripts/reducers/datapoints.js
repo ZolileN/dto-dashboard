@@ -97,8 +97,8 @@ export const getDatapointsByLabel = (state, label) => {
 };
 
 
-export const getDatapointsByWidgets = (datapoints, widgets) => {
-  return widgets.reduce((curr, next) => {
+export const getDatapointsByDatasets = (datapoints, datasets) => {
+  return datasets.reduce((curr, next) => {
     return curr.concat(next.datapoints);
   }, []).map(d => {
     return getDatapointById(datapoints, d);

@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
-import { getDashboardUrl } from './../utils/urlHelpers';
+import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
+import { getDatagroupForTimeSeries } from './../helpers/datagroup';
 
 
 const mapStateToProps = (store, ownProps) => {
@@ -39,7 +40,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
               <div className="page__header">
                 <Breadcrumbs paths={[
                   {path: '/', name:'Home'},
-                  {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`},
+                  {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
                   {path: '', name:`${datagroup_key}`}
                 ]} />
                 <h1 className="h4">{widget.name}</h1>
