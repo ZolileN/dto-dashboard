@@ -16,22 +16,23 @@ import {
 } from './../utils/urlHelpers';
 import {
   getDatagroupForTimeSeries,
-  getDatagroupForCrossSectional
+  getDatagroupForCrossSectional,
+  getLatestDatagroupKey
 } from './../helpers/datagroup';
 import {
   getWidgetsWithComputedProps,
   groupByHeroWidget,
-  groupByHeroWidget
+  groupByKpiWidgets
 } from './../reducers/widgets';
 
 
 const WidgetTypeKpiHeroGroup = ({widgets}) => <p>kpi group</p>;
-const WidgetTypeSimple = ({widget, dashboard}) => {
+const WidgetTypeSimple = ({widget, editUrl}) => {
   return (
     <article>
       <h1 className="h4">{widget.name}</h1>
       <p>{widget.description}</p>
-      <Link to={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, widget.id)} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
+      <Link to={editUrl} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
     </article>
   )
 };
@@ -61,6 +62,8 @@ class PageDashboardWidgets extends Component {
       datapoints,
       widgets
     } = this.props;
+
+    let latestDatagroupKey = getLatestDatagroupKey();
 
     let kpiWidgets = groupByKpiWidgets(widgets);
     let heroWidget = groupByHeroWidget(widgets);
@@ -96,19 +99,26 @@ class PageDashboardWidgets extends Component {
                     return <WidgetTypeSimple key={idx}
                                              urlKey="simple"
                                              widget={w}
+                                             editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, w.id)}
                                              dashboard={dashboard} />
                   }
                   else if (w._type === 'cross-sectional') {
                     return <WidgetTypeCrossSectional key={idx}
                                                      widget={w}
                                                      dashboard={dashboard}
+                                                     editUrl={getDashboardWidgetDatagroupCrossSectionalUrl(dashboard.id, w.id)}
+                                                     editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
                                                      datagroup={getDatagroupForCrossSectional(w, datasets, datapoints)} />
                   }
                   else if (w._type === 'time-series') {
+                    let datagroup = getDatagroupForTimeSeries(w, datasets, datapoints);
                     return <WidgetTypeTimeSeries key={idx}
                                                  widget={w}
                                                  dashboard={dashboard}
-                                                 datagroup={getDatagroupForTimeSeries(w, datasets, datapoints)} />
+                                                 addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, latestDatagroupKey)}
+                                                 editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroup.key)}
+                                                 editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
+                                                 datagroup={datagroup} />
                   }
                 })}
               </section>

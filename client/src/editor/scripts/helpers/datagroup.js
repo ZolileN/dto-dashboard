@@ -1,4 +1,7 @@
 import { createSelector } from 'reselect';
+import moment from 'moment';
+import { DATAGROUP_KEY_ROUTE_SEGMENT } from './../constants/dateFormats';
+
 
 import {
   getDatasetById,
@@ -64,36 +67,10 @@ import {
 // };
 
 
-export const getDatagroup = (widget, datasets, datapoints) => {
-  if (widget.datasets.length <= 1) {
-    // no data exists or is simple
-    return getDatagroupForSimple();
-  }
-  else if (widget.datasets.length === 1) {
-    // cross-sectional data
-    return getDatagroupForCrossSectional(widget, datasets, datapoints);
-  }
-  else {
-    // time-series data
-    return getDatagroupForTimeSeries(widget, datasets, datapoints);
-  }
-};
-
-
-const getDatagroupForSimple = () => {
-  return {
-    key: 'edit',
-    type: 'simple',
-    datasets: [],
-    datapoints: []
-  }
-};
-
 export const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
-  const widgetDataset = getDatasetById(widget.datasets[0]);
+  const widgetDataset = getDatasetById(datasets, widget.datasets[0]);
   const widgetDatapoints = getDatapointsByIds(datapoints, widgetDataset.datapoints);
   return {
-    key: 'edit',
     type: 'cross-sectional',
     datasets: [widgetDataset],
     datapoints: widgetDatapoints
@@ -117,3 +94,9 @@ export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
     headDatapoints
   }
 };
+
+export const getLatestDatagroupKey = () => {
+  let saidMonth = moment(new Date()).subtract(1, 'months');
+  return saidMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
+};
+
