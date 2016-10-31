@@ -69,11 +69,13 @@ import {
 
 export const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
   const widgetDataset = getDatasetById(datasets, widget.datasets[0]);
-  const widgetDatapoints = getDatapointsByIds(datapoints, widgetDataset.datapoints);
+  const widgetDatapointsByDataset = getDatapointsByIds(datapoints, widgetDataset.datapoints);
+  const headDatapoint = getHeadDatapoint(widgetDatapointsByDataset);
   return {
     type: 'cross-sectional',
     datasets: [widgetDataset],
-    datapoints: widgetDatapoints
+    datapoints: widgetDatapointsByDataset,
+    headDatapoints: [headDatapoint]
   }
 };
 
@@ -84,7 +86,7 @@ export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
     return getDatapointsByIds(datapoints, dataset.datapoints);
   });
   const headDatapoints = widgetDatapointsByDataset.map(datapoints => {
-    return getHeadDatapoint(datapoints)
+    return getHeadDatapoint(datapoints);
   });
   return {
     key: headDatapoints[0].label,

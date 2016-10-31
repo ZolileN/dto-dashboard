@@ -13,21 +13,11 @@
   }
 }
 
-%widget {
-  content: 'widget';
+
+.widget-list {
 }
 
 .widget-list__item {
-  .widget--fact {
-    @extend %widget;
-    border: 1px solid green;
-  }
-
-  .widget--default {
-    @extend %widget;
-    border: 1px solid red;
-  }
-
   .desc-title {
     display: block;
     font-weight: $font-weight-bold;

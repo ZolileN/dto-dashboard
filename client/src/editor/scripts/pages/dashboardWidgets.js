@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 
 import * as uiActions from './../actions/ui';
 import Breadcrumbs from './../components/breadcrumbs';
-import { getWigetsAsType } from './../reducers/widgets';
+import WidgetTypeKpiHeroGroup from './../components/widgetTypeKpiHeroGroup';
+import WidgetTypeSimple from './../components/widgetTypeSimple';
+import WidgetTypeCrossSectional from './../components/widgetTypeCrossSectional';
+import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
 
 import {
   getDashboardUrl,
@@ -24,20 +27,6 @@ import {
   groupByHeroWidget,
   groupByKpiWidgets
 } from './../reducers/widgets';
-
-
-const WidgetTypeKpiHeroGroup = ({widgets}) => <p>kpi group</p>;
-const WidgetTypeSimple = ({widget, editUrl}) => {
-  return (
-    <article>
-      <h1 className="h4">{widget.name}</h1>
-      <p>{widget.description}</p>
-      <Link to={editUrl} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
-    </article>
-  )
-};
-const WidgetTypeTimeSeries = ({widget}) => <p>Time series {widget.name}</p>;
-const WidgetTypeCrossSectional = ({widget}) => <p>Cross sectional {widget.name}</p>;
 
 
 const mapStateToProps = (store, ownProps) => {
@@ -92,12 +81,12 @@ class PageDashboardWidgets extends Component {
               </div>
 
               <section className="widget-list">
+
                 <WidgetTypeKpiHeroGroup heroWidget={heroWidget} kpiWidgets={kpiWidgets} />
 
                 {widgets.map((w, idx) => {
                   if (w._type === 'simple') {
                     return <WidgetTypeSimple key={idx}
-                                             urlKey="simple"
                                              widget={w}
                                              editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, w.id)}
                                              dashboard={dashboard} />
@@ -115,6 +104,7 @@ class PageDashboardWidgets extends Component {
                     return <WidgetTypeTimeSeries key={idx}
                                                  widget={w}
                                                  dashboard={dashboard}
+                                                 hasRecentData={latestDatagroupKey === datagroup.key}
                                                  addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, latestDatagroupKey)}
                                                  editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroup.key)}
                                                  editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
