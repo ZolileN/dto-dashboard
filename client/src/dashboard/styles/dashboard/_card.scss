@@ -46,8 +46,9 @@
       top: 8px;
 
       @media(min-width: $screen-md + 1) {
-        position: relative;
-        top: -15px;
+        position: absolute;
+        bottom: 0;
+        top:auto;
       }
 
       &:visited {
