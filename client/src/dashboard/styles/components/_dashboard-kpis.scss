@@ -44,7 +44,7 @@
 
       @media(min-width: $screen-sm) {
         padding: 0 $spacing-unit / 2;
-        height: 30px;
+        height: 40px;
       }
 
       h2 {
@@ -267,9 +267,66 @@
   }
 }
 
+@media (min-width: $screen-md) {
+  .dashboard__kpis {
+
+    .widget {
+      border: 0;
+      box-shadow: none;
+      min-height: 0;
+      height: auto;
+
+      .widget__inner {
+        position: relative;
+      }
+
+      .sparkline__inner {
+        .chart {
+          display: block;
+        }
+      }
+
+      .decorator {
+        flex-direction: column;
+      }
+
+      .metric-meta {
+        display: block !important;
+
+        .metric-trend {
+          margin-right: 5px;
+        }
+      }
+
+      .metric-data {
+        .value {
+
+          font-size: 3.75rem;;
+        }
+
+        .decorator {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+.chart__wrapper{
+  width:100%;
+}
+
 @media (min-width: $screen-sm) {
   .card__right {
     &.dashboard__kpis {
+      .col-md-3:first-child {
+        padding-left: 0;
+      }
+
+      .col-md-3:last-child {
+        padding-right: 0;
+      }
+
       .widget__title {
         padding: 0;
       }
