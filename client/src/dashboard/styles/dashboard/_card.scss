@@ -82,6 +82,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    .card__link__visible {
+      padding-bottom: 15px;
+    }
+  }
+
+  @media screen and (max-width: $screen-sm -1) {
+    padding-bottom: 20px;
+    border-bottom: 1px $axis-stroke-colour solid;
+    margin-bottom: 10px;
   }
 
   @media only screen and (min-width: $screen-sm ) and (max-width: $screen-md) {
@@ -90,12 +100,6 @@
 }
 
 .card__right {
-
-  @media screen and (max-width: $screen-sm) {
-    padding-top: 20px;
-    border-top: 1px $axis-stroke-colour solid;
-    margin-top: 20px;
-  }
 
   @media (max-width: 768px) {
     .aus-width-one-fourth:last-child {
