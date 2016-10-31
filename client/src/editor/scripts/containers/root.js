@@ -20,7 +20,7 @@ import DashboardsPage from './../pages/dashboards';
 import DashboardPage from './../pages/dashboard';
 import DashboardWidgetsPage from './../pages/dashboardWidgets';
 import DashboardWidgetPage from './../pages/dashboardWidget';
-import DashboardWidgetDataPage from './../pages/dashboardWidgetData';
+import DashboardWidgetDatagroupPage from './../pages/dashboardWidgetDatagroup';
 import DashboardWidgetDescriptionsPage from './../pages/dashboardWidgetDescriptions';
 
 
@@ -51,8 +51,7 @@ export default class Root extends Component {
 	            dashboards
 	            dashboards/:id                            UpdateDashboard Form
 	            dashboards/:id/widgets
-	            dashboards/:id/widgets/:id/data-new       CreateWidgetData Form
-	            dashboards/:id/widgets/:id/data/:yy-mm
+	            dashboards/:id/widgets/:id/datagroup/:key      key = dataset_id or datehash
 	            dashboards/:id/widgets/:id/descriptions   UpdateWidget Form
 
 
@@ -79,11 +78,9 @@ export default class Root extends Component {
                     <Route path=":widget_id" component={DashboardWidget}>
                       /* dashboards/:id/widgets/:id */
                       <IndexRoute component={DashboardWidgetPage} />
-                      /* dashboards/:id/widgets/:id/data-new */
-                      /* dashboards/:id/widgets/:id/data/:yy-mm */
+                      /* dashboards/:id/widgets/:id/data/:key */
                       /* dashboards/:id/widgets/:id/descriptions */
-                      <Route path="data/:date_hash" component={DashboardWidgetDataPage} />
-                      <Route path="data-new" component={DashboardWidgetDataPage} />
+                      <Route path="datagroup/:key" component={DashboardWidgetDatagroupPage} />
                       <Route path="descriptions" component={DashboardWidgetDescriptionsPage} />
                     </Route>
                   </Route>

@@ -2,9 +2,11 @@ import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 import isTypeOfState from './../utils/isTypeOfState';
 
+import { createSelector } from 'reselect';
+
+
 
 const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
-
   switch (type) {
     case types.UPDATE_WIDGET:
       return state.map((d) => {
@@ -23,16 +25,11 @@ const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
 export default widgetsReducer;
 
 
-//
-
 /**
  * Check if is of state type
  * @return {Boolean}
  */
 export const isWidget = isTypeOfState(['row', 'pos', 'type', 'size', 'units']);
-
-
-// Selectors
 
 /**
  * @param state
@@ -52,15 +49,51 @@ export const getWidgetById = (state, widget_id) => {
   return state.find((w) => Number(widget_id) === w.id);
 };
 
-const WIDGET_TYPE_HERO = 'full';
-const WIDGET_TYPE_KPI = 'kpi-sparkline';
 
-export const filterKpiWidgets = state => {
-  return state.filter(w => w.type === WIDGET_TYPE_KPI);
+// Selectors
+
+// widgets
+
+export const getWidgetsWithComputedProps = widgets => {
+  return widgets.map(w => getWidgetWithComputedProps(w));
 };
 
-export const filterBelowTheLineWidgets = state => {
-  return state.filter(w => {
-    return !(w.type === WIDGET_TYPE_KPI || w.type === WIDGET_TYPE_HERO);
-  });
+export const filterByKpiWidgets = computedWidgets => computedWidgets.filter(w => {
+  return w._type === 'kpi';
+});
+
+export const filterByHeroWidget = computedWidgets => computedWidgets.find(w => {
+  return w._type === 'hero';
+});
+
+
+// widget
+
+export const selectWidgetType = widget => {
+  switch (widget.type) {
+    case 'full':
+      return 'hero';
+    case 'kpi-sparkline':
+      return 'kpi';
+    case 'fact':
+      return 'simple';
+    case 'line':
+      return 'time-series';
+    case 'pie':
+    case 'sparkline':
+    case 'bar':
+      return 'cross-sectional';
+    default:
+      console.warn('Back up: that type of widget does not exist!', widget.type);
+      return null;
+  }
 };
+
+export const getWidgetWithComputedProps = createSelector(
+  widget => widget,
+  selectWidgetType,
+  (widget, _type) => {
+    return {...widget, _type}
+  }
+);
+

@@ -5,21 +5,17 @@ import { connect } from 'react-redux';
 
 import * as uiActions from './../actions/ui';
 import Breadcrumbs from './../components/breadcrumbs';
+import { getWigetsAsType } from './../reducers/widgets';
+
 import KpiWidgetItem from './../components/kpiWidgetItem';
 import WidgetItem from './../components/widgetItem';
 import {
-  filterKpiWidgets,
-  filterBelowTheLineWidgets
-} from './../reducers/widgets';
-import {
   getDashboardUrl,
-  getDashboardWidgetDataCreateUrl,
-  getDashboardWidgetDataUpdateUrl,
+  getDashboardWidgetDatagroup,
   getDashboardWidgetDescriptionsUrl
 } from './../utils/urlHelpers';
 import {
-  getDatapointsByIds,
-  getNewestDatapoint
+  getDatapointsByIds
 } from './../reducers/datapoints';
 import { getDatasetsByIds } from './../reducers/datasets';
 import {
@@ -27,32 +23,56 @@ import {
   getHeadDatapoints
 } from './../helpers/datasets';
 import getLatestDataHash from './../utils/getLatestDataHash';
+import {
+  getDatagroup
+} from './../helpers/datagroup';
+
+import {
+  getWidgetsWithComputedProps,
+  filterByKpiWidgets,
+  filterByHeroWidget
+} from './../reducers/widgets';
+
+
+const WidgetTypeKpiHeroGroup = ({widgets}) => <p>kpi group</p>;
+const WidgetTypeSimple = ({widget, dashboard}) => {
+  return (
+    <article>
+      <h1 className="h4">{widget.name}</h1>
+      <p>{widget.description}</p>
+      <Link to={getDashboardWidgetDatagroup(dashboard.id, widget.id)} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
+    </article>
+  )
+};
+const WidgetTypeTimeSeries = ({widget}) => <p>Time series {widget.name}</p>;
+const WidgetTypeCrossSectional = ({widget}) => <p>Cross sectional {widget.name}</p>;
 
 
 const mapStateToProps = (store, ownProps) => {
   return {
     dashboard: ownProps.dashboard,
-    kpiWidgets: filterKpiWidgets(ownProps.widgets),
-    btlWidgets: filterBelowTheLineWidgets(ownProps.widgets),
     datasets: ownProps.datasets,
-    datapoints: ownProps.datapoints
+    datapoints: ownProps.datapoints,
+    widgets: getWidgetsWithComputedProps(ownProps.widgets),
   }
 };
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(uiActions, dispatch)
 });
 
-
 class PageDashboardWidgets extends Component {
 
   render() {
+
     let {
-      kpiWidgets,
-      btlWidgets,
       dashboard,
       datasets,
-      datapoints
+      datapoints,
+      widgets
     } = this.props;
+
+    let kpiWidgets = filterByKpiWidgets(widgets);
+    let heroWidget = filterByHeroWidget(widgets);
 
     return (
       <div className="page page-dashboardwidgets">
@@ -78,30 +98,27 @@ class PageDashboardWidgets extends Component {
               </div>
 
               <section className="widget-list">
-                {/*<KpiWidgetItem className="widget-list__item"*/}
-                               {/*dashboard={dashboard}*/}
-                               {/*widgets={kpiWidgets} />*/}
+                <WidgetTypeKpiHeroGroup heroWidget={heroWidget} kpiWidgets={kpiWidgets} />
 
-                {btlWidgets.map((w, idx) => {
-
-                  let widgetDatasets = getDatasetsByIds(datasets, w.datasets);
-                  let headDatapointsIds = getHeadDatapoints(widgetDatasets);
-                  let headDatapoints = getDatapointsByIds(datapoints, headDatapointsIds);
-                  let hasHead = hasLatestData(datapoints, headDatapointsIds);
-                  let dateHash = getLatestDataHash(); // todo - add this on config or memoise
-
-                  return (
-                    <WidgetItem key={idx}
-                                className="widget-list__item"
-                                hasRecentData={hasHead}
-                                addDataUrl={getDashboardWidgetDataCreateUrl(dashboard.id, w.id)}
-                                editDataUrl={getDashboardWidgetDataUpdateUrl(dashboard.id, w.id, dateHash)}
-                                editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
-                                dashboard={dashboard}
-                                headDatapoints={headDatapoints}
-                                widget={w}
-                                datasets={widgetDatasets} />
-                  )
+                {widgets.map((w, idx) => {
+                  if (w._type === 'simple') {
+                    return <WidgetTypeSimple key={idx}
+                                             urlKey="simple"
+                                             widget={w}
+                                             dashboard={dashboard} />
+                  }
+                  else if (w._type === 'cross-sectional') {
+                    return <WidgetTypeCrossSectional key={idx}
+                                                     widget={w}
+                                                     dashboard={dashboard}
+                                                     datagroup={getDatagroup(w, datasets, datapoints)} />
+                  }
+                  else if (w._type === 'time-series') {
+                    return <WidgetTypeTimeSeries key={idx}
+                                                 widget={w}
+                                                 dashboard={dashboard}
+                                                 datagroup={getDatagroup(w, datasets, datapoints)} />
+                  }
                 })}
               </section>
             </div>

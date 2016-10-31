@@ -69,9 +69,9 @@ export const getDatapointsById = (state, ids) => {
   });
 };
 
-export const getNewestDatapoint = datapoints => {
+export const getLastSavedDatapoints = datapoints => {
   return datapoints.reduce((curr, next) => {
-    if (new Date(curr) > next) {
+    if (new Date(curr.label) > new Date(next.label)) {
       return curr;
     } else {
       return next;
@@ -90,4 +90,27 @@ export const getNewestDatapoint = datapoints => {
 
 export const computeLabel = (ts) => {
   return moment(ts).format(dateFormats.DATE_HASH_LABEL);
+};
+
+export const getDatapointsByLabel = (state, label) => {
+  return state.filter(d => d.label === label);
+};
+
+
+export const getDatapointsByWidgets = (datapoints, widgets) => {
+  return widgets.reduce((curr, next) => {
+    return curr.concat(next.datapoints);
+  }, []).map(d => {
+    return getDatapointById(datapoints, d);
+  });
+};
+
+export const getHeadDatapoint = (datapoints) => {
+  return datapoints.reduce((curr, next) => {
+    if (new Date(curr.label) > new Date(next.label)) {
+      return curr;
+    } else {
+      return next;
+    }
+  });
 };

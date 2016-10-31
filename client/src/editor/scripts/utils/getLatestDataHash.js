@@ -7,4 +7,5 @@ const getLatestDateHash = () => {
   return saidMonth.format(DATE_HASH_ROUTE_SEGMENT)
 };
 
+
 export default getLatestDateHash;

@@ -6,12 +6,8 @@ export const getDashboardWidgetsUrl = (dashboardId) => {
   return `/dashboards/${dashboardId}/widgets`;
 };
 
-export const getDashboardWidgetDataUpdateUrl = (dashboardId, widgetId, dateHash) => {
-  return `/dashboards/${dashboardId}/widgets/${widgetId}/data/${dateHash}`;
-};
-
-export const getDashboardWidgetDataCreateUrl = (dashboardId, widgetId) => {
-  return `/dashboards/${dashboardId}/widgets/${widgetId}/data-new`;
+export const getDashboardWidgetDatagroup = (dashboardId, widgetId, key) => {
+  let url = `/dashboards/${dashboardId}/widgets/${widgetId}/data/${key}`;
 };
 
 export const getDashboardWidgetDescriptionsUrl = (dashboardId, widgetId) => {

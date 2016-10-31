@@ -5,29 +5,28 @@ import { connect } from 'react-redux';
 
 import * as uiActions from './../actions/ui';
 import { computeLabel } from './../reducers/datapoints';
+import { getDashboardUrl } from './../utils/urlHelpers';
 
 
 const mapStateToProps = (store, ownProps) => {
   return {
     dashboard: ownProps.dashboard,
     widget: ownProps.widget,
-    dateHash: ownProps.params.date_hash
+    dateHash: ownProps.params.key
   }
 };
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(uiActions, dispatch)
 });
 
-class DashboardWidgetDataPage extends Component {
+class DashboardWidgetDatagroupPage extends Component {
 
   render() {
     let {
       widget,
       dashboard,
-      dateHash
+      key
     } = this.props;
-
-
 
     return (
       <div className="page page-dashboardwidgetdata">
@@ -38,7 +37,7 @@ class DashboardWidgetDataPage extends Component {
                 <Breadcrumbs paths={[
                   {path: '/', name:'Home'},
                   {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`},
-                  {path: '', name:`Data group: ${dateHash}`}
+                  {path: '', name:`Data group: ${key}`}
                 ]} />
                 <h1 className="h4">{widget.name}</h1>
               </div>
@@ -47,7 +46,7 @@ class DashboardWidgetDataPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              DashboardWidgetDataPage
+              DashboardWidgetDatagroupPage
             </div>
           </div>
         </div>
@@ -59,4 +58,4 @@ class DashboardWidgetDataPage extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardWidgetDataPage);
+)(DashboardWidgetDatagroupPage);
