@@ -7,15 +7,17 @@
     padding-top: 0;
   }
 
-  .widget__title::before {
-    display: inline-block;
-    content: '\f111';
-    font-family: 'fontawesome';
-    padding-right: 10px;
-    float: left;
+  .widget__title {
+    &::before {
+      display: inline-block;
+      content: '\f111';
+      font-family: 'fontawesome';
+      padding-right: 10px;
+      float: left;
 
-    @media(min-width: $screen-sm) {
-      float: none;
+      @media(min-width: $screen-sm) {
+        float: none;
+      }
     }
   }
 
@@ -184,7 +186,6 @@
 @media (max-width: $screen-sm){
   .dashboard__kpis{
     .widget {
-
       .widget__title {
         @include span-columns(8);
         @include omega(2n);
@@ -314,6 +315,14 @@
 
 .chart__wrapper{
   width:100%;
+}
+
+.card__right {
+  &.dashboard__kpis {
+    .col-xs-12 {
+      padding-left: 0;
+    }
+  }
 }
 
 @media (min-width: $screen-sm) {
