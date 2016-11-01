@@ -18,6 +18,7 @@
     height: auto;
     width: 100%;
     padding: 5px 0;
+    margin: 0;
 
     @media(min-width: $screen-sm) {
       border: 0;
@@ -56,9 +57,10 @@
     }
 
     .widget__title {
-      text-align: center;
       height: 35px;
       padding: 0;
+      // border-bottom: 0;
+      text-align: left;
 
       @media(min-width: $screen-md){
         margin-bottom: 22px;
@@ -68,6 +70,7 @@
         padding: 0 $spacing-unit / 2;
         height: 40px;
         width: 100%;
+        text-align: center;
       }
 
       &::before {
@@ -108,7 +111,12 @@
       }
 
       .metric-data {
+        font-weight: 700;
+        // letter-spacing: 0.5px;
+
         .value {
+          font-weight: 700;
+
           @media(min-width: $screen-md){
             font-size: 3.75rem;
           }
@@ -158,6 +166,19 @@
         display: inline-block !important;
       }
     }
+
+    .widget__title,
+    .widget__inner,
+    .metric-data {
+      .value,
+      .sparkline {
+        display: table-cell;
+
+        @media(min-width: $screen-sm){
+          display: block;
+        }
+      }
+    }
   }
 
   .chart {
@@ -178,69 +199,23 @@
   .widget__title {
     padding: 0;
 
+
     h4 {
       font-weight: 600;
     }
   }
 
   .widget__inner {
+    padding: 0;
+
     .sparkline__inner {
+
       .chart {
         display: none;
 
         @media(min-width: $screen-sm) {
           display: block;
         }
-      }
-    }
-  }
-
-  @media (max-width: $screen-sm - 1) {
-    .widget {
-      .widget__title {
-        border-bottom: 0;
-        text-align: left;
-      }
-    }
-  }
-
-  @media (max-width: $screen-sm - 1) {
-    .widget {
-      margin: 0;
-
-      .widget__title {
-        border-bottom: 0;
-        text-align: left;
-      }
-
-      .sparkline__inner {
-        float: right;
-      }
-
-      .widget__inner {
-        padding: 0;
-      }
-
-      .widget__title,
-      .widget__inner,
-      .metric-data {
-        .value,
-        .sparkline {
-          display: table-cell;
-          font-size: $fallback;
-          font-size: 1rem;
-        }
-      }
-
-      .metric-data {
-        font-weight: 700;
-        letter-spacing: 0.5px;
-      }
-    }
-
-    .sparkline__inner {
-      .value {
-        font-weight: 700;
       }
     }
   }
