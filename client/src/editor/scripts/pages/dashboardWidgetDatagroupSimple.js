@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
+import UpdateDatagroupSimpleForm from './../components/forms/updateDatagroupSimple';
 
 
 const mapStateToProps = (store, ownProps) => {
@@ -45,7 +46,8 @@ class DashboardWidgetDatagroupSimplePage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              DashboardWidgetDatagroupSimplePage
+              <UpdateDatagroupSimpleForm
+                formModel={widget} />
             </div>
           </div>
         </div>
