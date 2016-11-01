@@ -125,6 +125,10 @@
   &.dashboard__kpis {
     background: transparent;
     padding-top: 30px;
+
+    @media (min-width: $screen-sm){
+      padding-top: 0;
+    }
   }
 
   @media screen and (min-width: $screen-md + 1) {
