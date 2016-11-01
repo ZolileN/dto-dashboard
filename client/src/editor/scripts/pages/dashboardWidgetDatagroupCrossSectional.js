@@ -8,6 +8,7 @@ import * as uiActions from './../actions/ui';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 
 import { getDatagroupForCrossSectional } from './../helpers/datagroup';
+import UpdateCrossSectionalDatagroup from './../components/forms/updateCrossSectionalDatagroup';
 
 
 const mapStateToProps = (store, ownProps) => {
@@ -27,7 +28,8 @@ class DashboardWidgetDatagroupCrossSectionalPage extends Component {
   render() {
     let {
       widget,
-      dashboard
+      dashboard,
+      datagroup
     } = this.props;
 
     return (
@@ -48,7 +50,7 @@ class DashboardWidgetDatagroupCrossSectionalPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              DashboardWidgetDatagroupCrossSectionalPage
+              <UpdateCrossSectionalDatagroup formModel={datagroup} />
             </div>
           </div>
         </div>

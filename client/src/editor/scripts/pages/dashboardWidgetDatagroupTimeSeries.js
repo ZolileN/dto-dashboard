@@ -7,6 +7,7 @@ import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import { getDatagroupForTimeSeries } from './../helpers/datagroup';
+import UpdateTimeSeriesDatagroupForm from './../components/forms/updateTimeSeriesDatagroup';
 
 
 const mapStateToProps = (store, ownProps) => {
@@ -50,7 +51,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              DashboardWidgetDatagroupTimeSeriesPage
+              <UpdateTimeSeriesDatagroupForm formModel={datagroup} />
             </div>
           </div>
         </div>
