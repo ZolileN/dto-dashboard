@@ -1,3 +1,28 @@
+@each $metric, $color in $metrics {
+  &.#{$metric} {
+    .widget__title {
+      @media(min-width: $screen-md){
+        border-bottom: 2px solid $color;
+      }
+    }
+
+    .fa-circle {
+      color: $color;
+    }
+  }
+
+  .widget {
+    &.#{$metric} {
+      .widget__title::before {
+        content: '\f111';
+        font-family: 'fontawesome';
+        padding-right: 10px;
+        color: $color;
+
+      }
+    }
+  }
+}
 .dashboard__kpis {
   background-color: $white;
   margin-bottom: 15px;

@@ -375,34 +375,34 @@
   color: $missing-data-colour;
 }
 
-@each $metric, $color in $metrics {
-  &.#{$metric} {
-    .widget__title {
-      border-bottom: 2px solid $color;
-    }
-
-    .fa-circle {
-      color: $color;
-    }
-  }
-
-  .dashboard__kpis {
-    .widget {
-      &.#{$metric} {
-        .widget__title::before {
-          content: '\f111';
-          font-family: 'fontawesome';
-          padding-right: 10px;
-          color: $color;
-
-          @include media($screen-sm) {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-}
+// @each $metric, $color in $metrics {
+//   &.#{$metric} {
+//     .widget__title {
+//       border-bottom: 2px solid $color;
+//     }
+//
+//     .fa-circle {
+//       color: $color;
+//     }
+//   }
+//
+//   .dashboard__kpis {
+//     .widget {
+//       &.#{$metric} {
+//         .widget__title::before {
+//           content: '\f111';
+//           font-family: 'fontawesome';
+//           padding-right: 10px;
+//           color: $color;
+//
+//           @include media($screen-sm) {
+//             display: none;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 .meta-group {
   display: inline-block;
