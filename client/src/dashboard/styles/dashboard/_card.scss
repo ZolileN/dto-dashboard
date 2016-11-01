@@ -102,13 +102,25 @@
 }
 
 .card__right {
-  .widget {
-    background: transparent;
+  &.dashboard__kpis {
+    .widget {
+      background: transparent;
 
-    .widget__title {
-      padding: 0;
+      @media (min-width: $screen-sm){
+        margin: 0;
+        padding-top: 0;
+      }
+
+      .widget__title {
+        padding: 0;
+
+        @media (min-width: $screen-sm){
+          height: 50px;
+        }
+      }
     }
   }
+
 
   .metric-data {
     .decorator {
