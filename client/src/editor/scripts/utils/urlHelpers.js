@@ -6,6 +6,10 @@ export const getDashboardWidgetsUrl = (dashboardId) => {
   return `/dashboards/${dashboardId}/widgets`;
 };
 
+export const getDashboardWidgetDatagroupKpiUrl = (dashboardId, heroWidgetId, key) => {
+  return `/dashboards/${dashboardId}/widgets/${heroWidgetId}/datagroup-kpi/${key}`;
+};
+
 export const getDashboardWidgetDatagroupSimpleUrl = (dashboardId, widgetId) => {
   return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-simple`;
 };

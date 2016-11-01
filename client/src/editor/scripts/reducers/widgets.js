@@ -59,11 +59,11 @@ export const getWidgetsWithComputedProps = widgets => {
 };
 
 export const groupByKpiWidgets = computedWidgets => computedWidgets.filter(w => {
-  return w._type === 'kpi';
+  return w._type ? w._type === 'kpi' : w.type === 'kpi-sparkline';
 });
 
 export const groupByHeroWidget = computedWidgets => computedWidgets.find(w => {
-  return w._type === 'hero';
+  return w._type ? w._type === 'hero' : w.type === 'full';
 });
 
 

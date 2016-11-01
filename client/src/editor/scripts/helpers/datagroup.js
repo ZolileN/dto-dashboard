@@ -97,6 +97,27 @@ export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
   }
 };
 
+export const getDatagroupForKpi = (kpiWidgets, datasets, datapoints) => {
+  const widgetDatasets = kpiWidgets.map(w => {
+    return w.datasets;
+  }).map(d => {
+    return getDatasetsByIds(datasets, d)[0];
+  });
+  const widgetDatapointsByDataset = widgetDatasets.map(dataset => {
+    return getDatapointsByIds(datapoints, dataset.datapoints);
+  });
+  const headDatapoints = widgetDatapointsByDataset.map(datapoints => {
+    return datapoints.length ? getHeadDatapoint(datapoints) : null;
+  });
+  return {
+    key: headDatapoints[0] ? headDatapoints[0].label : '',
+    type: 'kpis',
+    datasets: widgetDatasets,
+    datapointsByDataset: widgetDatapointsByDataset,
+    headDatapoints
+  }
+};
+
 export const getCurrentDatagroupKey = () => {
   let currentMonth = moment(new Date()).subtract(1, 'months');
   return currentMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
@@ -113,5 +134,7 @@ export const getPreviousDatagroupKey = (key) => {
 };
 
 export const hasNextDatagroup = (key) => {
-  return new Date(moment(new Date()).subtract(1, 'months')) <= new Date(key);
+  let currentMonth = new Date().getMonth() - 1;
+  let latestSavedMonth = new Date(key).getMonth();
+  return currentMonth !== latestSavedMonth;
 };

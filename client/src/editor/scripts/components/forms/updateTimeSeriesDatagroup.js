@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { isURL } from 'validator';
 
+import Input from './../fields/input';
 import Textarea from './../fields/textarea';
 import SubmitButton from './../submitButton';
 
@@ -12,7 +13,7 @@ import SubmitButton from './../submitButton';
  * @component
  */
 let UpdateTimeSeriesDatagroup = ({
-  isEditing, isSubmitting, onCancelSuccess,
+  isEditing, isSubmitting, onCancelSuccess, formModel,
   ...rfProps
 }) => {
 

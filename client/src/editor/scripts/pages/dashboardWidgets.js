@@ -12,12 +12,14 @@ import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
 
 import {
   getDashboardUrl,
+  getDashboardWidgetDatagroupKpiUrl,
   getDashboardWidgetDatagroupSimpleUrl,
   getDashboardWidgetDatagroupTimeSeriesUrl,
   getDashboardWidgetDatagroupCrossSectionalUrl,
   getDashboardWidgetDescriptionsUrl
 } from './../utils/urlHelpers';
 import {
+  getDatagroupForKpi,
   getDatagroupForTimeSeries,
   getDatagroupForCrossSectional,
   getCurrentDatagroupKey,
@@ -55,8 +57,9 @@ class PageDashboardWidgets extends Component {
 
     let latestDatagroupKey = getCurrentDatagroupKey();
 
-    let kpiWidgets = groupByKpiWidgets(widgets);
-    let heroWidget = groupByHeroWidget(widgets);
+    const kpiWidgets = groupByKpiWidgets(widgets);
+    const heroWidget = groupByHeroWidget(widgets);
+    const kpiDatagroup = getDatagroupForKpi(kpiWidgets, datasets, datapoints);
 
     return (
       <div className="page page-dashboardwidgets">
@@ -83,7 +86,13 @@ class PageDashboardWidgets extends Component {
 
               <section className="widget-list">
 
-                <WidgetTypeKpiHeroGroup heroWidget={heroWidget} kpiWidgets={kpiWidgets} />
+                <WidgetTypeKpiHeroGroup heroWidget={heroWidget}
+                                        kpiWidgets={kpiWidgets}
+                                        hasRecentData={!hasNextDatagroup(kpiDatagroup.key)}
+                                        addUrl={getDashboardWidgetDatagroupKpiUrl(dashboard.id, heroWidget.id)}
+                                        editUrl={getDashboardWidgetDatagroupKpiUrl(dashboard.id, heroWidget.id)}
+                                        editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroWidget.id)}
+                                        datagroup={kpiDatagroup} />
 
                 {widgets.map((w, idx) => {
                   if (w._type === 'simple') {
