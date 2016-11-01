@@ -120,20 +120,6 @@
       }
     }
 
-      .metric-meta {
-        display: none;
-
-        @media(min-width: $screen-sm){
-          display: block !important;
-        }
-
-        .metric-trend {
-          @media(min-width: $screen-sm){
-            margin-right: 5px;
-            display: inline-block;
-          }
-        }
-      }
 
       .metric-data {
         font-weight: 700;
@@ -166,6 +152,20 @@
 
     .sparkline__inner {
       float: none;
+      .metric-meta {
+        display: none;
+
+        @media(min-width: $screen-sm){
+          display: block;
+        }
+
+        .metric-trend {
+          @media(min-width: $screen-sm){
+            margin-right: 5px;
+            display: inline-block;
+          }
+        }
+      }
 
       .chart {
         display: block;
