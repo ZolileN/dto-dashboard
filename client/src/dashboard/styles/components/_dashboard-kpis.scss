@@ -1,7 +1,7 @@
 @each $metric, $color in $metrics {
   &.#{$metric} {
     .widget__title {
-      @media(min-width: $screen-md){
+      @media(min-width: $screen-sm){
         border-bottom: 2px solid $color;
       }
     }
@@ -105,7 +105,7 @@
         float: left;
 
         @media(min-width: $screen-sm) {
-          float: none;
+          display: none;
         }
       }
 
@@ -127,6 +127,10 @@
         font-weight: 700;
         justify-content: flex-end;
         letter-spacing: 0.5px;
+
+        @media(min-width: $screen-sm){
+          justify-content: center;
+        }
 
         .value {
           font-weight: 700;
@@ -257,6 +261,11 @@
     .col-xs-12 {
       padding-left: 0;
       padding-right: 0;
+
+
+      @media (min-width: $screen-sm) {
+        padding-right: 15px;
+      }
     }
   }
 }
