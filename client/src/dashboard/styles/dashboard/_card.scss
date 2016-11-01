@@ -113,6 +113,7 @@
 
       .widget__title {
         padding: 0;
+        height: 40px;
 
         @media (min-width: $screen-sm){
           height: 50px;
