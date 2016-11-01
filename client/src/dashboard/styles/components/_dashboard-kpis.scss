@@ -16,6 +16,8 @@
   .widget {
     min-height: 0;
     height: auto;
+    width: 100%;
+    padding: 5px 0;
 
     @media(min-width: $screen-sm) {
       border: 0;
@@ -29,13 +31,9 @@
 
     .widget__inner {
       margin-top: 3px;
-
-      @media(min-width: $screen-md){
-        position: relative;
-      }
+      position: relative;
 
       @media (min-width: $screen-sm) {
-        position: relative;
         padding:0;
         width: 100%;
       }
@@ -85,12 +83,18 @@
       }
 
       h2 {
-        display: inline;
-        font-size: 1.25rem;
+        font-size: 1em;
         line-height: 1;
+        display: inline;
+
+        @media(min-width: $screen-sm){
+          font-size: 1.25rem;
+        }
       }
 
       .metric-meta {
+        display: none;
+
         @media(min-width: $screen-sm){
           display: block !important;
         }
@@ -116,6 +120,10 @@
         }
 
         .decorator {
+          flex-direction: row-reverse;
+          font-size: 1rem;
+          line-height: 1;
+
           @media(min-width: $screen-sm){
             flex-direction: column;
           }
@@ -144,6 +152,8 @@
     }
 
     .summary-text {
+      display: none;
+
       @media(min-width: $screen-sm) {
         display: inline-block !important;
       }
@@ -231,38 +241,6 @@
     .sparkline__inner {
       .value {
         font-weight: 700;
-      }
-    }
-  }
-
-  @media (max-width: $screen-sm) {
-    .widget {
-      width: 100%;
-      padding: 5px 0;
-
-      .widget__inner {
-        position: relative;
-      }
-
-      .widget__title {
-        h2 {
-          font-size: 1em;
-          line-height: 1;
-        }
-      }
-
-      .summary-text {
-        display: none;
-      }
-
-      .decorator {
-        flex-direction: row-reverse;
-        font-size: 1rem;
-        line-height: 1;
-      }
-
-      .metric-meta {
-        display: none;
       }
     }
   }
