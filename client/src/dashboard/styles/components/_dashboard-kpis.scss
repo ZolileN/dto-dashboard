@@ -25,11 +25,11 @@
 }
 .dashboard__kpis {
   background-color: $white;
-  margin-bottom: 15px;
-  padding-top: 10px;
+  padding-top: 30px;
 
   @media(min-width: $screen-sm ) {
     padding-top: 0;
+    margin-bottom: 15px;
   }
 
   .widget__definition,
@@ -120,17 +120,23 @@
       }
     }
 
+    .sparkline__inner {
+      float: none;
 
       .metric-data {
         font-weight: 700;
-        // letter-spacing: 0.5px;
+        justify-content: flex-end;
+        letter-spacing: 0.5px;
 
         .value {
           font-weight: 700;
+          font-size: 14.4px;
 
           @media(min-width: $screen-md){
+            font-size: 3.75 * $fallback;
             font-size: 3.75rem;
           }
+
           @media(min-width: $screen-sm){
             font-size: 45px;
             font-size: 2.8125rem;
@@ -148,10 +154,7 @@
           }
         }
       }
-    }
 
-    .sparkline__inner {
-      float: none;
       .metric-meta {
         display: none;
 
@@ -253,6 +256,7 @@
   &.dashboard__kpis {
     .col-xs-12 {
       padding-left: 0;
+      padding-right: 0;
     }
   }
 }

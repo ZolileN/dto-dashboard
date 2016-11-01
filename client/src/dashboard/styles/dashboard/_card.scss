@@ -16,6 +16,7 @@
   position: relative;
   padding: 10px 10px 10px 10px;
   color: $black;
+  min-height: 130px;
 
   @media screen and (min-width: $screen-sm) {
     min-height: 140px;
@@ -156,13 +157,6 @@
         }
       }
 
-      .metric-data {
-        .value {
-          font-size: 3.75 * $fallback;
-          font-size: 3.75rem;
-        }
-      }
-
       .widget__title {
         h4 {
           line-height: 1;
@@ -203,13 +197,6 @@
             font-size: 2 * $fallback;
             font-size: 1rem;
           }
-        }
-      }
-
-      .metric-data {
-        .value {
-          font-size: 3.75 * $fallback;
-          font-size: 3.75rem;
         }
       }
 
