@@ -18,7 +18,7 @@
   color: $black;
   min-height: 130px;
 
-  @media screen and (min-width: $screen-sm) {
+  @media (min-width: $screen-sm) {
     min-height: 140px;
     padding: $gutter $gutter 10px 25px;
   }
@@ -27,7 +27,7 @@
     line-height: 1.2;
     margin: $gutter 0;
 
-    @media screen and (min-width: 768px) {
+    @media (min-width: $screen-sm) {
       font-size: 30px;
       font-size: 1.875rem;
     }
@@ -78,7 +78,7 @@
 }
 
 .card__left {
-  @media screen and (min-width: $screen-sm) { //TODO fix clash of media queries
+  @media(min-width: $screen-sm) { //TODO fix clash of media queries
     width: 30%;
     float: left;
     display: flex;
@@ -90,13 +90,13 @@
     }
   }
 
-  @media screen and (max-width: $screen-sm -1) {
+  @media(max-width: $screen-sm -1) {
     padding-bottom: 20px;
     border-bottom: 1px $axis-stroke-colour solid;
     margin-bottom: 10px;
   }
 
-  @media only screen and (min-width: $screen-sm ) and (max-width: $screen-md) {
+  @media(min-width: $screen-sm ) and (max-width: $screen-md) {
     @include span-columns(12);
   }
 }
@@ -121,7 +121,6 @@
     }
   }
 
-
   .metric-data {
     .decorator {
       font-size: $fallback;
@@ -143,7 +142,7 @@
     }
   }
 
-  @media screen and (min-width: $screen-md + 1) {
+  @media (min-width: $screen-md + 1) {
     width: 70%;
     float: left;
 
@@ -186,7 +185,7 @@
   }
 
 
-  @media screen and (max-width: $screen-sm) {
+  @media (max-width: $screen-sm) {
     width: 100%;
     float: left;
 
@@ -229,7 +228,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: $screen-md - 1 ) { //includes 767//
+@media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) { //includes 767//
   .card {
     .aus-width-one-fourth {
       @include span-columns(3);
@@ -318,7 +317,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: $screen-md - 1 ) {//includes 767
+@media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) {//includes 767
 
   .metric-data, .metric-data .decorator {
     display: flex;
