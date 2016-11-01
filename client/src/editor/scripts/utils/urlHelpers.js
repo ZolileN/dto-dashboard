@@ -14,7 +14,8 @@ export const getDashboardWidgetDatagroupCrossSectionalUrl = (dashboardId, widget
   return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-cross-sectional`;
 };
 
-export const getDashboardWidgetDatagroupTimeSeriesUrl = (dashboardId, widgetId, key = 'edit') => {
+export const getDashboardWidgetDatagroupTimeSeriesUrl = (dashboardId, widgetId, key) => {
+  if (!key) console.warn('no key provided');
   return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-time-series/${key}`;
 };
 

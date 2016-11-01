@@ -20,7 +20,8 @@ import {
 import {
   getDatagroupForTimeSeries,
   getDatagroupForCrossSectional,
-  getLatestDatagroupKey
+  getCurrentDatagroupKey,
+  hasNextDatagroup
 } from './../helpers/datagroup';
 import {
   getWidgetsWithComputedProps,
@@ -52,7 +53,7 @@ class PageDashboardWidgets extends Component {
       widgets
     } = this.props;
 
-    let latestDatagroupKey = getLatestDatagroupKey();
+    let latestDatagroupKey = getCurrentDatagroupKey();
 
     let kpiWidgets = groupByKpiWidgets(widgets);
     let heroWidget = groupByHeroWidget(widgets);
@@ -104,7 +105,7 @@ class PageDashboardWidgets extends Component {
                     return <WidgetTypeTimeSeries key={idx}
                                                  widget={w}
                                                  dashboard={dashboard}
-                                                 hasRecentData={latestDatagroupKey === datagroup.key}
+                                                 hasRecentData={!hasNextDatagroup(datagroup.key)}
                                                  addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, latestDatagroupKey)}
                                                  editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroup.key)}
                                                  editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}

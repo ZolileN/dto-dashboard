@@ -97,8 +97,21 @@ export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
   }
 };
 
-export const getLatestDatagroupKey = () => {
-  let saidMonth = moment(new Date()).subtract(1, 'months');
-  return saidMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
+export const getCurrentDatagroupKey = () => {
+  let currentMonth = moment(new Date()).subtract(1, 'months');
+  return currentMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
 };
 
+export const getNextDatagroupKey = (key) => {
+  let nextMonth = moment(new Date(key)).add(1, 'months');
+  return nextMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
+};
+
+export const getPreviousDatagroupKey = (key) => {
+  let previousMonth = moment(new Date(key)).subtract(1, 'months');
+  return previousMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
+};
+
+export const hasNextDatagroup = (key) => {
+  return new Date(moment(new Date()).subtract(1, 'months')) <= new Date(key);
+};

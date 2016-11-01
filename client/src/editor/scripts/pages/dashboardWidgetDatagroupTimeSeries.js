@@ -5,8 +5,16 @@ import { connect } from 'react-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
-import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
-import { getDatagroupForTimeSeries } from './../helpers/datagroup';
+import {
+  getDashboardWidgetsUrl,
+  getDashboardWidgetDatagroupTimeSeriesUrl
+} from './../utils/urlHelpers';
+import {
+  getDatagroupForTimeSeries,
+  getNextDatagroupKey,
+  getPreviousDatagroupKey,
+  hasNextDatagroup
+} from './../helpers/datagroup';
 import UpdateTimeSeriesDatagroupForm from './../components/forms/updateTimeSeriesDatagroup';
 
 
@@ -33,6 +41,9 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
       datagroup_key
     } = this.props;
 
+    let prevUrl = getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, widget.id, getPreviousDatagroupKey(datagroup_key));
+    let nextUrl = getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, widget.id, getNextDatagroupKey(datagroup_key));
+
     return (
       <div className="page page-dashboardwidgetdatagrouptimeseries">
         <div className="container">
@@ -45,6 +56,18 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                   {path: '', name:`${datagroup_key}`}
                 ]} />
                 <h1 className="h4">{widget.name}</h1>
+
+                <div className="timeseries-pagination">
+                  <span className="">Edit data for:</span>
+                  <div>
+                    <span className="">{datagroup_key}</span>
+                    <div>
+                      <Link to={prevUrl}>Left</Link>
+                      <Link to={nextUrl} disabled={hasNextDatagroup(datagroup.key)}>Right</Link>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
