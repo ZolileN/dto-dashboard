@@ -12,13 +12,14 @@
   box-shadow: $card-box-shadow;
   background-image: linear-gradient(to bottom, $card-grey-colour, $light-grey);
   margin: 0 0 $spacing-unit 0;
-  display: block;
+  display: flex;
   position: relative;
   padding: 10px 10px 10px 10px;
   color: $black;
   min-height: 130px;
 
   @media (min-width: $screen-sm) {
+    display: block;
     min-height: 140px;
     padding: $gutter $gutter 10px 25px;
   }
@@ -31,10 +32,6 @@
       font-size: 30px;
       font-size: 1.875rem;
     }
-  }
-
-  @media screen and (max-width: $screen-sm -1) {
-    display: flex;
   }
 
   a {
