@@ -93,7 +93,9 @@ class PageDashboardWidgets extends Component {
               <div className="page-dashboardwidgets__title-block">
                 <h1>{dashboard.name}</h1>
                 <p>{dashboard.description}</p>
-                <Link to={getDashboardUrl(dashboard.id)} disabled={true}>Edit dashboard overview</Link>
+                <Link to={getDashboardUrl(dashboard.id)}
+                      disabled={true}
+                      onClick={e => e.preventDefault()}>Edit dashboard overview</Link>
               </div>
 
               <section className="widget-list">

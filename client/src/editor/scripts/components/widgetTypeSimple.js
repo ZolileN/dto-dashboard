@@ -17,7 +17,10 @@ const WidgetTypeSimple = ({widget, editUrl}) => {
       </header>
 
       <p>{widget.description}</p>
-      <Link to={editUrl} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
+      <Link to={editUrl}
+            className="btn primary"
+            disabled={true}
+            onClick={e => e.preventDefault()}>Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
     </article>
   )
 };

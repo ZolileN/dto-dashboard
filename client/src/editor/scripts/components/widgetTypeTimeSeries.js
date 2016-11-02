@@ -23,9 +23,15 @@ const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, 
           <Preview date={datagroup.key} items={makePreviewItems(datagroup)} />
         </div>
         <div className="col-xs-12 col-lg-6">
-          <Link to={addUrl} className="btn primary" disabled={datagroup.hasLatest}>Add data</Link><br/>
-          <Link to={editUrl} disabled={true}>Edit data</Link><br/>
-          <Link to={editDescriptionsUrl} disabled={true}>Edit KPI descriptions</Link><br/>
+          <Link to={addUrl} className="btn primary"
+                disabled={datagroup.hasLatest}
+                onClick={e => {if (datagroup.head.hasLatest) return e.preventDefault()}}>Add data</Link><br/>
+          <Link to={editUrl}
+                disabled={true}
+                onClick={e => e.preventDefault()}>Edit data</Link><br/>
+          <Link to={editDescriptionsUrl}
+                disabled={true}
+                onClick={e => e.preventDefault()}>Edit KPI descriptions</Link><br/>
         </div>
       </div>
     </article>
