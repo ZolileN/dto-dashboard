@@ -122,13 +122,15 @@
               }
             }
           }
+
           .metric-data {
             .value {
               @media(min-width: $screen-sm) {
                 font-size: 3.75rem
               }
             }
-          } 
+          }
+          
           .chart {
             margin: 5px 10px;
           }
