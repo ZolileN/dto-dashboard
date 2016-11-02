@@ -38,6 +38,7 @@
     "css-loader": "^0.23.1",
     "d3": "^3.5.17",
     "d3-selection": "^1.0.2",
+    "del-cli": "^0.2.0",
     "domready": "^1.0.8",
     "enzyme": "^2.4.1",
     "es6-promise": "^3.3.0",
@@ -89,6 +90,7 @@
     "redux-logger": "^2.6.1",
     "redux-mock-store": "^1.2.1",
     "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.4",
     "resolve-url": "^0.2.1",
     "resolve-url-loader": "^1.6.0",
     "sass-lint": "^1.9.1",
@@ -141,7 +143,6 @@
     }
   },
   "devDependencies": {
-    "del-cli": "^0.2.0",
     "react-test-renderer": "^15.3.2"
   }
 }

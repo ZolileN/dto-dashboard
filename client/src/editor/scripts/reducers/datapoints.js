@@ -3,6 +3,7 @@ import moment from 'moment';
 import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 import isTypeOfState from './../utils/isTypeOfState';
+import * as dateFormats from './../constants/dateFormats';
 
 
 const datapointsReducer = (state = initialState.datapoints, {type, payload}) => {
@@ -53,6 +54,10 @@ export const getDatapointById = (state, id) => {
   return state.find((d) => id == d.id);
 };
 
+export const getDatapointsByIds = (state, ids) => {
+  return state.filter((d) => ids.includes(Number(d.id)));
+};
+
 /**
  * @param state
  * @param ids {Array}
@@ -61,6 +66,16 @@ export const getDatapointById = (state, id) => {
 export const getDatapointsById = (state, ids) => {
   return state.filter((d) => {
     return ids.includes(d.id);
+  });
+};
+
+export const getLastSavedDatapoints = datapoints => {
+  return datapoints.reduce((curr, next) => {
+    if (new Date(curr.label) > new Date(next.label)) {
+      return curr;
+    } else {
+      return next;
+    }
   });
 };
 
@@ -73,6 +88,32 @@ export const getDatapointsById = (state, ids) => {
 //   return state.filter((w) => dataset_id == w.dataset_id);
 // };
 
-export const computeLabel = (datapoint) => {
-  return moment(datapoint).format('YYYY-MM');
+export const computeLabel = (ts) => {
+  return moment(ts).format(dateFormats.DATE_HASH_LABEL);
+};
+
+export const getDatapointsByLabel = (state, label) => {
+  return state.filter(d => d.label === label);
+};
+
+
+export const getDatapointsByDatasets = (datapoints, datasets) => {
+  return datasets.reduce((curr, next) => {
+    return curr.concat(next.datapoints);
+  }, []).map(d => {
+    return getDatapointById(datapoints, d);
+  });
+};
+
+export const getHeadDatapoint = (datasetName, lastUpdated, datapoints) => {
+  if (!datapoints.length) {
+    return {datasetName, lastUpdated, value:'No data'};
+  }
+  return datapoints.reduce((curr, next) => {
+    if (new Date(curr.label) > new Date(next.label)) {
+      return {datasetName, lastUpdated, ...curr};
+    } else {
+      return {datasetName, lastUpdated, ...next};
+    }
+  });
 };

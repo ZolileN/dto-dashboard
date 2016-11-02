@@ -3,12 +3,14 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
 import UpdateDashboardForm from './../components/forms/updateDashboardForm';
-import Breadcrumbs from './../components/breadcrumbs';
 import { getRequestKey } from './../actions/dashboard';
 import { isPendingRequest } from './../reducers/requests';
-import { humanisedLongDate } from './../utils/humanisedDates';
+import {
+  getDashboardWidgetsUrl
+} from './../utils/urlHelpers';
 
 
 const mapStateToProps = ({ui, requests}, ownProps) => {
@@ -16,7 +18,6 @@ const mapStateToProps = ({ui, requests}, ownProps) => {
   let requestKey = getRequestKey(dashboard.id, 'update');
   return {
     dashboard,
-    widgets: ownProps.widgets,
     ui: ui.pageDashboard,
     isPendingRequest: isPendingRequest(requests, requestKey)
   };
@@ -48,83 +49,43 @@ class DashboardIndex extends Component {
   render() {
     let {
       dashboard,
-      widgets,
       ui,
       isPendingRequest
     } = this.props;
 
-    let sortedWidgets = widgets.sort((a,b) => {
-      return new Date(b.ts).getTime() - new Date(a.ts).getTime();
-    });
-
-    let editWidgetsList = (widgets) => {
-      return (
-        <table className="content-table">
-          <thead>
-          <tr>
-            <td>ID</td><td>Name</td><td>Last updated</td><td></td>
-          </tr>
-          </thead>
-          <tbody>
-          {sortedWidgets.map((w, idx) => (
-            <tr key={idx}>
-              <td>{w.id}</td>
-              <td>{w.name}</td>
-              <td>{humanisedLongDate(w.last_updated_at)}</td>
-              <td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`} className="a--ui-kit">Edit</Link></td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      )
-    };
-
     return (
-      <div className="container">
+      <div className="page page-dashboard">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <div className="page__header">
+                <Breadcrumbs paths={[
+                  {path: '/dashboards', name:'Home'},
+                  {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
+                  {path: '', name:`Edit dashboard information`}
+                ]} />
+                <h1 className="h4">Update Dashboards</h1>
+              </div>
+            </div>
+          </div>
 
-        <div className="row">
-          <div className="col-xs-12">
-            <Breadcrumbs paths={[
-              {path:'/', name:'Home'},
-              {path:`/dashboards/${dashboard.id}`, name:`${dashboard.name}`}
-            ]} />
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <button
+                className="btn primary small"
+                disabled={ui.isEditing}
+                onClick={this.enterForm.bind(this)}>Edit</button>
+
+              <UpdateDashboardForm
+                formModel={dashboard}
+                isEditing={ui.isEditing}
+                isSubmitting={isPendingRequest}
+                onSubmitSuccess={this.onSubmitSuccess.bind(this)}
+                onCancelSuccess={this.exitForm.bind(this)} />
+              <br />
+            </div>
           </div>
         </div>
-
-        <div className="row">
-          <div className="col-xs-12">
-            <h1>Dashboard: {dashboard.name}</h1>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <button
-              className="btn primary small"
-              disabled={ui.isEditing}
-              onClick={this.enterForm.bind(this)}>Edit</button>
-
-            <UpdateDashboardForm
-              formModel={dashboard}
-              isEditing={ui.isEditing}
-              isSubmitting={isPendingRequest}
-              onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-              onCancelSuccess={this.exitForm.bind(this)} />
-          </div>
-          <br />
-        </div>
-
-        <div className="row">
-          <div className="col-xs-12">
-            <h2 className="h4">Widgets</h2>
-
-            {sortedWidgets.length ?
-              editWidgetsList(sortedWidgets) :
-              <p><em>No widgets</em></p>
-            }
-          </div>
-        </div>
-
       </div>
     )
   }

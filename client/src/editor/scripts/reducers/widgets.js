@@ -2,9 +2,11 @@ import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 import isTypeOfState from './../utils/isTypeOfState';
 
+import { createSelector } from 'reselect';
+
+
 
 const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
-
   switch (type) {
     case types.UPDATE_WIDGET:
       return state.map((d) => {
@@ -23,16 +25,11 @@ const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
 export default widgetsReducer;
 
 
-//
-
 /**
  * Check if is of state type
  * @return {Boolean}
  */
 export const isWidget = isTypeOfState(['row', 'pos', 'type', 'size', 'units']);
-
-
-// Selectors
 
 /**
  * @param state
@@ -51,3 +48,52 @@ export const getWidgetsByDashboardId = (state, dashboard_id) => {
 export const getWidgetById = (state, widget_id) => {
   return state.find((w) => Number(widget_id) === w.id);
 };
+
+
+// Selectors
+
+// widgets
+
+// export const getWidgetsWithComputedProps = widgets => {
+//   return widgets.map(w => getWidgetWithComputedProps(w));
+// };
+
+export const groupByKpiWidgets = widgets => widgets.filter(w => {
+  return w.type === 'kpi-sparkline' || w.type === 'full';
+});
+
+export const groupByStandardWidgets = widgets => widgets.filter(w => {
+  return !(w.type === 'kpi-sparkline' || w.type === 'full');
+});
+
+
+// widget
+
+// export const selectWidgetType = widget => {
+//   switch (widget.type) {
+//     case 'full':
+//       return 'hero';
+//     case 'kpi-sparkline':
+//       return 'kpi';
+//     case 'fact':
+//       return 'simple';
+//     case 'line':
+//       return 'time-series';
+//     case 'bar':
+//     case 'pie':
+//     case 'sparkline':
+//       return 'cross-sectional';
+//     default:
+//       console.warn('Back up: that type of widget does not exist!', widget.type);
+//       return null;
+//   }
+// };
+
+// export const getWidgetWithComputedProps = createSelector(
+//   widget => widget,
+//   selectWidgetType,
+//   (widget, _type) => {
+//     return {...widget, _type}
+//   }
+// );
+
