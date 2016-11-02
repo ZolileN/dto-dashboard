@@ -98,11 +98,11 @@ class PageDashboardWidgets extends Component {
 
               <section className="widget-list">
 
-                {/*<KpiGroup kpiSuperWidgets={kpiSuperWidgets}*/}
-                          {/*datasets={datasets}*/}
-                          {/*datapoints={datapoints}*/}
-                          {/*dashboard={dashboard}*/}
-                          {/*latestDatagroupKey={latestDatagroupKey} />*/}
+                <KpiGroup kpiSuperWidgets={kpiSuperWidgets}
+                          datasets={datasets}
+                          datapoints={datapoints}
+                          dashboard={dashboard}
+                          latestDatagroupKey={latestDatagroupKey} />
 
                 {btlWidgets.map((w, idx) => {
                   let datagroup = getDatagroup(w, datasets, datapoints);

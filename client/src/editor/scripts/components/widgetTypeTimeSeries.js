@@ -6,7 +6,7 @@ import Preview from './datagroupPreview';
 import { makePreviewItems } from './../helpers/datagroup';
 
 
-const WidgetTypeTimeSeries = ({widget, datagroup, editUrl, addUrl, editDescriptionsUrl, hasRecentData}) => {
+const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, widget}) => {
   return (
     <article className="widget-list__item">
       <header className="clearfix">
@@ -33,6 +33,7 @@ const WidgetTypeTimeSeries = ({widget, datagroup, editUrl, addUrl, editDescripti
 };
 
 WidgetTypeTimeSeries.propTypes = {
+  datagroup: PropTypes.object.isRequired,
   widget: PropTypes.object.isRequired,
   editUrl: PropTypes.string.isRequired
 };

@@ -69,7 +69,7 @@ import {
 //   "datapoints": [1,2,3]
 // };
 
-export const hasLatesDatagroup = (key) => {
+export const hasLatestDatagroup = (key) => {
   let currentMonth = new Date().getMonth() - 1;
   let latestSavedMonth = new Date(key).getMonth();
   return currentMonth === latestSavedMonth;
@@ -124,7 +124,7 @@ export const getDatagroup = (widget, datasets, datapoints) => {
   });
   datagroup.head = head;
   datagroup.key = head[0].label || '';
-  datagroup.hasLatest = hasLatesDatagroup(datagroup.key);
+  datagroup.hasLatest = hasLatestDatagroup(datagroup.key);
 
   return datagroup;
 };
@@ -151,16 +151,14 @@ export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
     }
   });
 
-  datagroup.kpiWidgets.map(w => {
+  datagroup.kpiWidgets.forEach((w,idx) => {
     if (!w.datasets.length) {
       // if no datasets assume no kpis stored like myGov
       // then exit
       return;
     } else {
-      widgetDatasets = w.datasets.map(d => {
-        return getDatasetById(datasets, d);
-      });
-      datagroup.datasets = widgetDatasets;
+      widgetDatasets = getDatasetsByIds(datasets, w.datasets);
+      datagroup.datasets[idx] = widgetDatasets[0];
 
       // need to get datasets so we can resolve head
       widgetDatapointsByDatasets = widgetDatasets.map(wd => {
@@ -170,11 +168,12 @@ export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
       head = widgetDatapointsByDatasets.map((d, idx) => {
         return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].last_updated_at, d);
       });
-      datagroup.head = head;
-      datagroup.key = head[0].label || '';
-      datagroup.hasLatest = hasLatesDatagroup(datagroup.key);
+      datagroup.head[idx] = head[0];
     }
   });
+
+  datagroup.key = datagroup.head[0].label || '';
+  datagroup.hasLatest = hasLatestDatagroup(datagroup.key);
 
   return datagroup
 };
@@ -266,6 +265,21 @@ export const getPreviousDatagroupKey = (key) => {
 
 
 export const makePreviewItems = datagroup => {
+  if (!datagroup.datasets.length) {
+    return [];
+  }
+  if (!datagroup.head.length) {
+    return [];
+  }
+  return datagroup.datasets.map((d, idx) => {
+    return {
+      label: datagroup.head[idx].datasetName,
+      value: datagroup.head[idx].value
+    }
+  });
+};
+
+export const makeKpiPreviewItems = datagroup => {
   if (!datagroup.datasets.length) {
     return [];
   }
