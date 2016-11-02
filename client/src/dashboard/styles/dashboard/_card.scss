@@ -174,14 +174,6 @@
 
   @media (min-width: $screen-md) {
 
-    .widget__inner {
-      .sparkline__inner {
-        .chart {
-          margin: 5px 10px;
-        }
-      }
-    }
-
     &.dashboard__kpis {
       .widget__title {
         height: 35px;
