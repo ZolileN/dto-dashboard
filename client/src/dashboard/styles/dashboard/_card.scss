@@ -88,10 +88,22 @@
       padding-bottom: 15px;
     }
   }
+
+  @media(min-width: $screen-md) {
+    width: 30%;
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .card__right {
   &.dashboard__kpis {
+
+    @media (min-width: $screen-md){
+      width: 70%;
+      padding-right: 0;
+      padding-left: 0;
+    }
     .widget {
       background: transparent;
 
