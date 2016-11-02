@@ -13,23 +13,19 @@ import {
   getDashboardWidgetDatagroupTimeSeriesUrl
 } from './../utils/urlHelpers';
 import {
-  getDatagroupForKpi,
   getNextDatagroupKey,
   getPreviousDatagroupKey,
-  hasNextDatagroup
 } from './../helpers/datagroup';
 // import UpdateKpiDatagroupForm from './../components/forms/updateTimeSeriesDatagroup'; // todo
 
 
 const mapStateToProps = (store, ownProps) => {
-  let heroWidget = groupByHeroWidget(ownProps.widget);
   let kpiWidgets = groupByKpiWidgets(ownProps.widget);
   return {
     dashboard: ownProps.dashboard,
-    heroWidget,
-    kpiWidgets,
+    widgets: kpiWidgets,
     datagroup_key: ownProps.params.datagroup_key,
-    datagroup: getDatagroupForKpi(kpiWidgets, ownProps.datasets, ownProps.datapoints)
+    datagroup: getKpiDatagroup(kpiWidgets, ownProps.datasets, ownProps.datapoints)
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -47,6 +43,8 @@ class DashboardWidgetDatagroupKpiPage extends Component {
       datagroup,
       datagroup_key
     } = this.props;
+
+    // todo -
 
     let firstKpiWidget = kpiWidgets[0];
 

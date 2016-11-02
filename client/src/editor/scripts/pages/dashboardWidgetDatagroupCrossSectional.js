@@ -7,7 +7,7 @@ import Breadcrumbs from './../components/breadcrumbs';
 import * as uiActions from './../actions/ui';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 
-import { getDatagroupForCrossSectional } from './../helpers/datagroup';
+import { getDatagroup } from './../helpers/datagroup';
 import UpdateCrossSectionalDatagroup from './../components/forms/updateCrossSectionalDatagroup';
 
 
@@ -15,7 +15,7 @@ const mapStateToProps = (store, ownProps) => {
   return {
     dashboard: ownProps.dashboard,
     widget: ownProps.widget,
-    datagroup: getDatagroupForCrossSectional(ownProps.widget, ownProps.datasets, ownProps.datapoints)
+    datagroup: getDatagroup(ownProps.widget, ownProps.datasets, ownProps.datapoints)
   }
 };
 const mapDispatchToProps = dispatch => ({

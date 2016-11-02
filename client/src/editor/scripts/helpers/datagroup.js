@@ -195,56 +195,56 @@ export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
 
 
 
-export const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
-  const widgetDataset = getDatasetById(datasets, widget.datasets[0]);
-  const widgetDatapointsByDataset = getDatapointsByIds(datapoints, widgetDataset.datapoints);
-  const headDatapoint = getHeadDatapoint(widgetDatapointsByDataset);
-  return {
-    type: 'cross-sectional',
-    datasets: [widgetDataset],
-    // datapoints: widgetDatapointsByDataset,
-    headDatapoints: [headDatapoint]
-  }
-};
-
-export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
-  const widgetDatasets = getDatasetsByIds(datasets, widget.datasets);
-
-  const widgetDatapointsByDataset = widgetDatasets.map(dataset => {
-    return getDatapointsByIds(datapoints, dataset.datapoints);
-  });
-  const headDatapoints = widgetDatapointsByDataset.map(datapoints => {
-    return getHeadDatapoint(datapoints);
-  });
-  return {
-    key: headDatapoints[0].label,
-    type: 'time-series',
-    datasets: widgetDatasets,
-    // datapointsByDataset: widgetDatapointsByDataset,
-    headDatapoints
-  }
-};
-
-export const getDatagroupForKpi = (kpiWidgets, datasets, datapoints) => {
-  const widgetDatasets = kpiWidgets.map(w => {
-    return w.datasets;
-  }).map(d => {
-    return getDatasetsByIds(datasets, d)[0];
-  });
-  const widgetDatapointsByDataset = widgetDatasets.map(dataset => {
-    return getDatapointsByIds(datapoints, dataset.datapoints);
-  });
-  const headDatapoints = widgetDatapointsByDataset.map(datapoints => {
-    return datapoints.length ? getHeadDatapoint(datapoints) : null;
-  });
-  return {
-    key: headDatapoints[0] ? headDatapoints[0].label : '',
-    type: 'kpis',
-    datasets: widgetDatasets,
-    // datapointsByDataset: widgetDatapointsByDataset,
-    headDatapoints
-  }
-};
+// export const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
+//   const widgetDataset = getDatasetById(datasets, widget.datasets[0]);
+//   const widgetDatapointsByDataset = getDatapointsByIds(datapoints, widgetDataset.datapoints);
+//   const headDatapoint = getHeadDatapoint(widgetDatapointsByDataset);
+//   return {
+//     type: 'cross-sectional',
+//     datasets: [widgetDataset],
+//     // datapoints: widgetDatapointsByDataset,
+//     headDatapoints: [headDatapoint]
+//   }
+// };
+//
+// export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
+//   const widgetDatasets = getDatasetsByIds(datasets, widget.datasets);
+//
+//   const widgetDatapointsByDataset = widgetDatasets.map(dataset => {
+//     return getDatapointsByIds(datapoints, dataset.datapoints);
+//   });
+//   const headDatapoints = widgetDatapointsByDataset.map(datapoints => {
+//     return getHeadDatapoint(datapoints);
+//   });
+//   return {
+//     key: headDatapoints[0].label,
+//     type: 'time-series',
+//     datasets: widgetDatasets,
+//     // datapointsByDataset: widgetDatapointsByDataset,
+//     headDatapoints
+//   }
+// };
+//
+// export const getDatagroupForKpi = (kpiWidgets, datasets, datapoints) => {
+//   const widgetDatasets = kpiWidgets.map(w => {
+//     return w.datasets;
+//   }).map(d => {
+//     return getDatasetsByIds(datasets, d)[0];
+//   });
+//   const widgetDatapointsByDataset = widgetDatasets.map(dataset => {
+//     return getDatapointsByIds(datapoints, dataset.datapoints);
+//   });
+//   const headDatapoints = widgetDatapointsByDataset.map(datapoints => {
+//     return datapoints.length ? getHeadDatapoint(datapoints) : null;
+//   });
+//   return {
+//     key: headDatapoints[0] ? headDatapoints[0].label : '',
+//     type: 'kpis',
+//     datasets: widgetDatasets,
+//     // datapointsByDataset: widgetDatapointsByDataset,
+//     headDatapoints
+//   }
+// };
 
 export const getLatestDatagroupKey = () => {
   let currentMonth = moment(new Date()).subtract(1, 'months');

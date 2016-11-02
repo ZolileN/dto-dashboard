@@ -10,10 +10,9 @@ import {
   getDashboardWidgetDatagroupTimeSeriesUrl
 } from './../utils/urlHelpers';
 import {
-  getDatagroupForTimeSeries,
+  getDatagroup,
   getNextDatagroupKey,
-  getPreviousDatagroupKey,
-  hasNextDatagroup
+  getPreviousDatagroupKey
 } from './../helpers/datagroup';
 import UpdateTimeSeriesDatagroupForm from './../components/forms/updateTimeSeriesDatagroup';
 
@@ -23,7 +22,7 @@ const mapStateToProps = (store, ownProps) => {
     dashboard: ownProps.dashboard,
     widget: ownProps.widget,
     datagroup_key: ownProps.params.datagroup_key,
-    datagroup: getDatagroupForTimeSeries(ownProps.widget, ownProps.datasets, ownProps.datapoints)
+    datagroup: getDatagroup(ownProps.widget, ownProps.datasets, ownProps.datapoints)
   }
 };
 const mapDispatchToProps = dispatch => ({
