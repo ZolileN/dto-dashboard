@@ -47,7 +47,7 @@ const KpiGroup = ({kpiSuperWidgets, datasets, datapoints, dashboard, latestDatag
     return (
       <WidgetTypeKpiHeroGroup
         datagroup={datagroup}
-        addUrl={getDashboardWidgetsDatagroupKpiUrl(dashboard.id, datagroup.heroWidget.id, latestDatagroupKey)}
+        addUrl={getDashboardWidgetsDatagroupKpiUrl(dashboard.id, latestDatagroupKey)}
         editUrl={getDashboardWidgetsDatagroupKpiUrl(dashboard.id, datagroup.key)}
         editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, datagroup.key)}
         dashboard={dashboard} />
