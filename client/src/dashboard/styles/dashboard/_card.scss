@@ -133,9 +133,7 @@
     }
   }
 
-  @media (min-width: $screen-md + 1) {
-    width: 70%;
-    float: left;
+  @media (min-width: $screen-md) {
 
     .widget__inner {
       .sparkline__inner {
@@ -221,9 +219,6 @@
 
 @media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) { //includes 767//
   .card {
-    .aus-width-one-fourth {
-      @include span-columns(3);
-    }
     .dashboard__kpis {
       .widget {
         border: 0;
