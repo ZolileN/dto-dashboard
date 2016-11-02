@@ -14,7 +14,7 @@ const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, 
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.head.lastUpdated)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.head[0].lastUpdated)}</span>
         </div>
       </header>
 

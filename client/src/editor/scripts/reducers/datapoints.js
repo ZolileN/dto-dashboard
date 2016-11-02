@@ -107,7 +107,7 @@ export const getDatapointsByDatasets = (datapoints, datasets) => {
 
 export const getHeadDatapoint = (datasetName, lastUpdated, datapoints) => {
   if (!datapoints.length) {
-    return {datasetName, lastUpdated, value:'No record'};
+    return {datasetName, lastUpdated, value:'No data'};
   }
   return datapoints.reduce((curr, next) => {
     if (new Date(curr.label) > new Date(next.label)) {

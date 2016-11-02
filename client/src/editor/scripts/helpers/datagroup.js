@@ -120,7 +120,7 @@ export const getDatagroup = (widget, datasets, datapoints) => {
   }
 
   head = widgetDatapointsByDatasets.map((d, idx) => {
-    return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].last_updated_at, d);
+    return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].updated_at, d);
   });
   datagroup.head = head;
   datagroup.key = head[0].label || '';
@@ -166,7 +166,7 @@ export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
       });
 
       head = widgetDatapointsByDatasets.map((d, idx) => {
-        return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].last_updated_at, d);
+        return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].updated_at, d);
       });
       datagroup.head[idx] = head[0];
     }
