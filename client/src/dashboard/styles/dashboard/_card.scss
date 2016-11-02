@@ -43,7 +43,7 @@
       position: relative;
       top: 8px;
 
-      @media(min-width: $screen-md + 1) {
+      @media(min-width: $screen-md) {
         position: absolute;
         bottom: 10px;
         top:auto;
@@ -217,7 +217,7 @@
   }
 }
 
-@media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) { //includes 767//
+@media (min-width: $screen-sm) and (max-width: $screen-md) {
   .card {
     .dashboard__kpis {
       .widget {
@@ -303,7 +303,7 @@
   }
 }
 
-@media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) {//includes 767
+@media (min-width: $screen-sm) and (max-width: $screen-md ) {
 
   .metric-data, .metric-data .decorator {
     display: flex;
