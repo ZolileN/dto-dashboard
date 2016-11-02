@@ -74,7 +74,7 @@ export const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
   return {
     type: 'cross-sectional',
     datasets: [widgetDataset],
-    datapoints: widgetDatapointsByDataset,
+    // datapoints: widgetDatapointsByDataset,
     headDatapoints: [headDatapoint]
   }
 };
@@ -92,7 +92,7 @@ export const getDatagroupForTimeSeries = (widget, datasets, datapoints) => {
     key: headDatapoints[0].label,
     type: 'time-series',
     datasets: widgetDatasets,
-    datapointsByDataset: widgetDatapointsByDataset,
+    // datapointsByDataset: widgetDatapointsByDataset,
     headDatapoints
   }
 };
@@ -113,7 +113,7 @@ export const getDatagroupForKpi = (kpiWidgets, datasets, datapoints) => {
     key: headDatapoints[0] ? headDatapoints[0].label : '',
     type: 'kpis',
     datasets: widgetDatasets,
-    datapointsByDataset: widgetDatapointsByDataset,
+    // datapointsByDataset: widgetDatapointsByDataset,
     headDatapoints
   }
 };
@@ -137,4 +137,20 @@ export const hasNextDatagroup = (key) => {
   let currentMonth = new Date().getMonth() - 1;
   let latestSavedMonth = new Date(key).getMonth();
   return currentMonth !== latestSavedMonth;
+};
+
+
+export const makePreviewItems = datagroup => {
+  if (!datagroup.datasets.length) {
+    return [];
+  }
+  if (!datagroup.headDatapoints[0]) {
+    return [];
+  }
+  return datagroup.datasets.map((d, idx) => {
+    return {
+      label: d.name,
+      value: datagroup.headDatapoints[idx].value
+    }
+  });
 };

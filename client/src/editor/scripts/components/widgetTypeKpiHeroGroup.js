@@ -3,17 +3,7 @@ import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
 import Preview from './datagroupPreview';
-
-
-const makePreviewItems = datapoints => {
-  return datapoints.map(d => {
-    if (!d) return {};
-    return {
-      label: d.label,
-      value: d.value
-    }
-  })
-};
+import { makePreviewItems } from './../helpers/datagroup';
 
 
 /**
@@ -44,12 +34,12 @@ const WidgetTypeKpiHeroGroup = ({
 
       <div className="row">
         <div className="col-xs-12 col-lg-6">
-          <Preview date={datagroup.key} items={makePreviewItems(datagroup.headDatapoints)} />
+          <Preview date={datagroup.key} items={makePreviewItems(datagroup)} />
         </div>
         <div className="col-xs-12 col-lg-6">
           <Link to={addUrl} className="btn primary" disabled={hasRecentData}>Add data</Link><br/>
-          <Link to={editUrl}>Edit data</Link><br/>
-          <Link to={editDescriptionsUrl}>Edit KPI descriptions</Link><br/>
+          <Link to={editUrl} disabled={true}>Edit data</Link><br/>
+          <Link to={editDescriptionsUrl} disabled={true}>Edit KPI descriptions</Link><br/>
         </div>
       </div>
     </article>

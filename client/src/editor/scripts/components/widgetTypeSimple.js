@@ -16,7 +16,6 @@ const WidgetTypeSimple = ({widget, editUrl}) => {
         </div>
       </header>
 
-      {/*<h1>WidgetTypeSimple</h1>*/}
       <p>{widget.description}</p>
       <Link to={editUrl} className="btn primary">Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
     </article>

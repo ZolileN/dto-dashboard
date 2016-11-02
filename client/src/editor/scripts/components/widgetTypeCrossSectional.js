@@ -3,16 +3,8 @@ import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
 import Preview from './datagroupPreview';
+import { makePreviewItems } from './../helpers/datagroup';
 
-
-const makePreviewItems = datapoints => {
-  return datapoints.map(d => {
-    return {
-      label: d.label,
-      value: d.value
-    }
-  })
-};
 
 const WidgetTypeCrossSectional = ({widget, datagroup, editUrl, editDescriptionsUrl}) => {
   return (
@@ -26,14 +18,13 @@ const WidgetTypeCrossSectional = ({widget, datagroup, editUrl, editDescriptionsU
         </div>
       </header>
 
-      {/*<h1>WidgetTypeCrossSectional</h1>*/}
       <div className="row">
         <div className="col-xs-12 col-lg-6">
-          <Preview date={datagroup.key} items={makePreviewItems(datagroup.headDatapoints)} />
+          <Preview date={datagroup.key} items={makePreviewItems(datagroup)} />
         </div>
         <div className="col-xs-12 col-lg-6">
-          <Link to={editUrl}>Edit data</Link><br/>
-          <Link to={editDescriptionsUrl}>Edit KPI descriptions</Link><br/>
+          <Link to={editUrl} disabled={true}>Edit data</Link><br/>
+          <Link to={editDescriptionsUrl} disabled={true}>Edit KPI descriptions</Link><br/>
         </div>
       </div>
     </article>

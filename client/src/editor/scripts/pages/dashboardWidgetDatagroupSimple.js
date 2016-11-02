@@ -46,8 +46,7 @@ class DashboardWidgetDatagroupSimplePage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              <UpdateDatagroupSimpleForm
-                formModel={widget} />
+              <UpdateDatagroupSimpleForm formModel={widget} />
             </div>
           </div>
         </div>

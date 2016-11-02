@@ -44,6 +44,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
     let prevUrl = getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, widget.id, getPreviousDatagroupKey(datagroup_key));
     let nextUrl = getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, widget.id, getNextDatagroupKey(datagroup_key));
 
+
     return (
       <div className="page page-dashboardwidgetdatagrouptimeseries">
         <div className="container">
@@ -74,6 +75,10 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
+
+              {/*{datagroup}*/}
+
+
               <UpdateTimeSeriesDatagroupForm formModel={datagroup} />
             </div>
           </div>
