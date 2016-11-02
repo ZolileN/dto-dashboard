@@ -12,7 +12,7 @@ import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
 
 import {
   getDashboardUrl,
-  getDashboardWidgetDatagroupKpiUrl,
+  getDashboardWidgetsDatagroupKpiUrl,
   getDashboardWidgetDatagroupSimpleUrl,
   getDashboardWidgetDatagroupTimeSeriesUrl,
   getDashboardWidgetDatagroupCrossSectionalUrl,
@@ -47,8 +47,8 @@ const KpiGroup = ({kpiSuperWidgets, datasets, datapoints, dashboard, latestDatag
     return (
       <WidgetTypeKpiHeroGroup
         datagroup={datagroup}
-        addUrl={getDashboardWidgetDatagroupKpiUrl(dashboard.id, datagroup.heroWidget.id, latestDatagroupKey)}
-        editUrl={getDashboardWidgetDatagroupKpiUrl(dashboard.id, datagroup.key)}
+        addUrl={getDashboardWidgetsDatagroupKpiUrl(dashboard.id, datagroup.heroWidget.id, latestDatagroupKey)}
+        editUrl={getDashboardWidgetsDatagroupKpiUrl(dashboard.id, datagroup.key)}
         editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, datagroup.key)}
         dashboard={dashboard} />
     )

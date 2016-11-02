@@ -6,8 +6,9 @@ export const getDashboardWidgetsUrl = (dashboardId) => {
   return `/dashboards/${dashboardId}/widgets`;
 };
 
-export const getDashboardWidgetDatagroupKpiUrl = (dashboardId, heroWidgetId, key) => {
-  return `/dashboards/${dashboardId}/widgets/${heroWidgetId}/datagroup-kpi/${key}`;
+export const getDashboardWidgetsDatagroupKpiUrl = (dashboardId, datagroup_key) => {
+  if (!datagroup_key) console.warn('no key provided');
+  return `/dashboards/${dashboardId}/widgets/datagroup-kpi/${datagroup_key}`;
 };
 
 export const getDashboardWidgetDatagroupSimpleUrl = (dashboardId, widgetId) => {
@@ -18,9 +19,9 @@ export const getDashboardWidgetDatagroupCrossSectionalUrl = (dashboardId, widget
   return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-cross-sectional`;
 };
 
-export const getDashboardWidgetDatagroupTimeSeriesUrl = (dashboardId, widgetId, key) => {
-  if (!key) console.warn('no key provided');
-  return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-time-series/${key}`;
+export const getDashboardWidgetDatagroupTimeSeriesUrl = (dashboardId, widgetId, datagroup_key) => {
+  if (!datagroup_key) console.warn('no key provided');
+  return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-time-series/${datagroup_key}`;
 };
 
 export const getDashboardWidgetDescriptionsUrl = (dashboardId, widgetId) => {

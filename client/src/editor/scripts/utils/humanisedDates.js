@@ -13,3 +13,7 @@ export const humanisedShortDate = ts => {
 export const humanisedVeryShortDate = ts => {
   return moment(ts).format(dateFormats.VERY_SHORT_DATE);
 };
+
+export const getExpandedShortDate = key => {
+  return moment(key).format(`MMMM 'YY`);
+};

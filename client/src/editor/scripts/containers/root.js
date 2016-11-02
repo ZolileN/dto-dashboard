@@ -54,7 +54,7 @@ export default class Root extends Component {
 	            dashboards
 	            dashboards/:id                            UpdateDashboard Form
 	            dashboards/:id/widgets
-              dashboards/:id/widgets/:id/datagroup-kpi
+              dashboards/:id/widgets/datagroup-kpi/:datagroup_key
               dashboards/:id/widgets/:id/datagroup-simple
               dashboards/:id/widgets/:id/datagroup-cross-sectional
               dashboards/:id/widgets/:id/datagroup-time-series/:datagroup_key
@@ -81,15 +81,17 @@ export default class Root extends Component {
                     /* dashboards/:id/widgets */
                     <IndexRoute component={DashboardWidgetsPage} />
 
+                    /* dashboards/:id/widgets/datagroup-kpi/:datagroup_key */
+                    <Route path="datagroup-kpi/:datagroup_key" component={DashboardWidgetDatagroupKpiPage} />
+
+
                     <Route path=":widget_id" component={DashboardWidget}>
                       /* dashboards/:id/widgets/:id */
                       <IndexRoute component={DashboardWidgetPage} />
-                      /* dashboards/:id/widgets/:id/datagroup-kpi */
                       /* dashboards/:id/widgets/:id/datagroup-simple */
                       /* dashboards/:id/widgets/:id/datagroup-cross-sectional */
                       /* dashboards/:id/widgets/:id/datagroup-time-series/:datagroup_key */
                       /* dashboards/:id/widgets/:id/descriptions */
-                      <Route path="datagroup-kpi" component={DashboardWidgetDatagroupKpiPage} />
                       <Route path="datagroup-simple" component={DashboardWidgetDatagroupSimplePage} />
                       <Route path="datagroup-cross-sectional" component={DashboardWidgetDatagroupCrossSectionalPage} />
                       <Route path="datagroup-time-series/:datagroup_key" component={DashboardWidgetDatagroupTimeSeriesPage} />
