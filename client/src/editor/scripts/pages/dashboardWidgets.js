@@ -98,18 +98,17 @@ class PageDashboardWidgets extends Component {
 
               <section className="widget-list">
 
-                <KpiGroup kpiSuperWidgets={kpiSuperWidgets}
-                          datasets={datasets}
-                          datapoints={datapoints}
-                          dashboard={dashboard}
-                          latestDatagroupKey={latestDatagroupKey} />
+                {/*<KpiGroup kpiSuperWidgets={kpiSuperWidgets}*/}
+                          {/*datasets={datasets}*/}
+                          {/*datapoints={datapoints}*/}
+                          {/*dashboard={dashboard}*/}
+                          {/*latestDatagroupKey={latestDatagroupKey} />*/}
 
                 {btlWidgets.map((w, idx) => {
                   let datagroup = getDatagroup(w, datasets, datapoints);
 
                   if (datagroup.type === 'simple') {
                     return <WidgetTypeSimple key={idx}
-                               datagroup={datagroup}
                                editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, w.id)}
                                widget={w}
                                dashboard={dashboard} />

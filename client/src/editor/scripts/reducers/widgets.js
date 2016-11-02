@@ -54,9 +54,9 @@ export const getWidgetById = (state, widget_id) => {
 
 // widgets
 
-export const getWidgetsWithComputedProps = widgets => {
-  return widgets.map(w => getWidgetWithComputedProps(w));
-};
+// export const getWidgetsWithComputedProps = widgets => {
+//   return widgets.map(w => getWidgetWithComputedProps(w));
+// };
 
 export const groupByKpiWidgets = widgets => widgets.filter(w => {
   return w.type === 'kpi-sparkline' || w.type === 'full';
@@ -69,32 +69,31 @@ export const groupByStandardWidgets = widgets => widgets.filter(w => {
 
 // widget
 
-// todo - delete
-export const selectWidgetType = widget => {
-  switch (widget.type) {
-    case 'full':
-      return 'hero';
-    case 'kpi-sparkline':
-      return 'kpi';
-    case 'fact':
-      return 'simple';
-    case 'line':
-      return 'time-series';
-    case 'bar':
-    case 'pie':
-    case 'sparkline':
-      return 'cross-sectional';
-    default:
-      console.warn('Back up: that type of widget does not exist!', widget.type);
-      return null;
-  }
-};
+// export const selectWidgetType = widget => {
+//   switch (widget.type) {
+//     case 'full':
+//       return 'hero';
+//     case 'kpi-sparkline':
+//       return 'kpi';
+//     case 'fact':
+//       return 'simple';
+//     case 'line':
+//       return 'time-series';
+//     case 'bar':
+//     case 'pie':
+//     case 'sparkline':
+//       return 'cross-sectional';
+//     default:
+//       console.warn('Back up: that type of widget does not exist!', widget.type);
+//       return null;
+//   }
+// };
 
-export const getWidgetWithComputedProps = createSelector(
-  widget => widget,
-  selectWidgetType,
-  (widget, _type) => {
-    return {...widget, _type}
-  }
-);
+// export const getWidgetWithComputedProps = createSelector(
+//   widget => widget,
+//   selectWidgetType,
+//   (widget, _type) => {
+//     return {...widget, _type}
+//   }
+// );
 

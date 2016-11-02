@@ -6,7 +6,7 @@ import Preview from './datagroupPreview';
 import { makePreviewItems } from './../helpers/datagroup';
 
 
-const WidgetTypeCrossSectional = ({widget, datagroup, editUrl, editDescriptionsUrl}) => {
+const WidgetTypeCrossSectional = ({datagroup, editUrl, editDescriptionsUrl, widget}) => {
   return (
     <article className="widget-list__item">
       <header className="clearfix">
@@ -14,7 +14,7 @@ const WidgetTypeCrossSectional = ({widget, datagroup, editUrl, editDescriptionsU
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.head.lastUpdated)}</span>
         </div>
       </header>
 

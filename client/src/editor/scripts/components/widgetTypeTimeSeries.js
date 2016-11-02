@@ -14,7 +14,7 @@ const WidgetTypeTimeSeries = ({widget, datagroup, editUrl, addUrl, editDescripti
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.head.lastUpdated)}</span>
         </div>
       </header>
 
@@ -23,7 +23,7 @@ const WidgetTypeTimeSeries = ({widget, datagroup, editUrl, addUrl, editDescripti
           <Preview date={datagroup.key} items={makePreviewItems(datagroup)} />
         </div>
         <div className="col-xs-12 col-lg-6">
-          <Link to={addUrl} className="btn primary" disabled={hasRecentData}>Add data</Link><br/>
+          <Link to={addUrl} className="btn primary" disabled={datagroup.hasLatest}>Add data</Link><br/>
           <Link to={editUrl} disabled={true}>Edit data</Link><br/>
           <Link to={editDescriptionsUrl} disabled={true}>Edit KPI descriptions</Link><br/>
         </div>

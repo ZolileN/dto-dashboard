@@ -269,13 +269,13 @@ export const makePreviewItems = datagroup => {
   if (!datagroup.datasets.length) {
     return [];
   }
-  if (!datagroup.headDatapoints[0]) {
+  if (!datagroup.head.length) {
     return [];
   }
   return datagroup.datasets.map((d, idx) => {
     return {
-      label: d.name,
-      value: datagroup.headDatapoints[idx].value
+      label: datagroup.head[idx].datasetName,
+      value: datagroup.head[idx].value
     }
   });
 };
