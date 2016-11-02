@@ -105,12 +105,15 @@ export const getDatapointsByDatasets = (datapoints, datasets) => {
   });
 };
 
-export const getHeadDatapoint = (datapoints) => {
+export const getHeadDatapoint = (datasetName, lastUpdated, datapoints) => {
+  if (!datapoints.length) {
+    return {datasetName, lastUpdated, value:'No record'};
+  }
   return datapoints.reduce((curr, next) => {
     if (new Date(curr.label) > new Date(next.label)) {
-      return curr;
+      return {datasetName, lastUpdated, ...curr};
     } else {
-      return next;
+      return {datasetName, lastUpdated, ...next};
     }
   });
 };

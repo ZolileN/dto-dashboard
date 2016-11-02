@@ -58,17 +58,18 @@ export const getWidgetsWithComputedProps = widgets => {
   return widgets.map(w => getWidgetWithComputedProps(w));
 };
 
-export const groupByKpiWidgets = computedWidgets => computedWidgets.filter(w => {
-  return w._type ? w._type === 'kpi' : w.type === 'kpi-sparkline';
+export const groupByKpiWidgets = widgets => widgets.filter(w => {
+  return w.type === 'kpi-sparkline' || w.type === 'full';
 });
 
-export const groupByHeroWidget = computedWidgets => computedWidgets.find(w => {
-  return w._type ? w._type === 'hero' : w.type === 'full';
+export const groupByStandardWidgets = widgets => widgets.filter(w => {
+  return !(w.type === 'kpi-sparkline' || w.type === 'full');
 });
 
 
 // widget
 
+// todo - delete
 export const selectWidgetType = widget => {
   switch (widget.type) {
     case 'full':
@@ -79,9 +80,9 @@ export const selectWidgetType = widget => {
       return 'simple';
     case 'line':
       return 'time-series';
+    case 'bar':
     case 'pie':
     case 'sparkline':
-    case 'bar':
       return 'cross-sectional';
     default:
       console.warn('Back up: that type of widget does not exist!', widget.type);

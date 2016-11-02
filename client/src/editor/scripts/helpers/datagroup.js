@@ -16,10 +16,11 @@ import {
 
 // types of data
 
-// empty
+// simple
 
 // let datagroup = {
 //   key,   //
+//   type: 'simple',
 //   datasets, []
 //   datapoints: []
 // }
@@ -28,16 +29,18 @@ import {
 
 // let datagroup = {
 //   key,   // dataset_id
-//   datasets, [1]
-//   datapoints: [...]
+//   type: 'cross-sectional',
+//   datasets, [1,2,3]
+//   datapoints: [[2],[3],[4]]
 // }
 
 // time-series
 
 // let datagroup = {
 //   key,   // datehash like 2016-08
-//   datasets, [1,2]
-//   datapoints: [...]
+//   type: 'time-series',
+//   datasets, [1,2,3]
+//   datapoints: [[2,3,4],[3,6,7],[4,8,9]]
 // }
 
 
@@ -65,6 +68,132 @@ import {
 //   "datasets": [1],
 //   "datapoints": [1,2,3]
 // };
+
+export const hasLatesDatagroup = (key) => {
+  let currentMonth = new Date().getMonth() - 1;
+  let latestSavedMonth = new Date(key).getMonth();
+  return currentMonth === latestSavedMonth;
+};
+
+export const getDatagroup = (widget, datasets, datapoints) => {
+  let widgetDatasets,
+    widgetDatapointsByDatasets,
+    head;
+
+  let datagroup = {
+    key: null,
+    type: '',
+    widget: widget,
+    datasets: [],
+    head: [],
+    hasLatest: null
+  };
+
+  if (widget.type === 'kpi-sparkline' || widget.type === 'full') {
+    // if it's a kpi cluster, handle that separately
+    // and exit
+    return;
+  }
+
+  if (!widget.datasets.length) {
+    // if no datasets assume type is simple
+    // then exit
+    datagroup.type = 'simple';
+    return datagroup;
+  }
+
+  widgetDatasets = widget.datasets.map(d => {
+    return getDatasetById(datasets, d);
+  });
+  datagroup.datasets = widgetDatasets;
+
+  // need to get datasets so we can resolve head
+  widgetDatapointsByDatasets = widgetDatasets.map(wd => {
+    return getDatapointsByIds(datapoints, wd.datapoints);
+  });
+
+  if (widgetDatapointsByDatasets[0].length <= 1) {
+    datagroup.type = 'cross-sectional';
+  }
+  if (widgetDatapointsByDatasets[0].length > 1) {
+    datagroup.type = 'time-series';
+  }
+
+  head = widgetDatapointsByDatasets.map((d, idx) => {
+    return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].last_updated_at, d);
+  });
+  datagroup.head = head;
+  datagroup.key = head[0].label || '';
+  datagroup.hasLatest = hasLatesDatagroup(datagroup.key);
+
+  return datagroup;
+};
+
+export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
+  let widgetDatasets,
+    widgetDatapointsByDatasets,
+    head;
+
+  let datagroup = {
+    key: null,
+    type: 'kpi',
+    kpiWidgets: [],
+    heroWidget: null,
+    datasets: [],
+    head: [],
+  };
+
+  kpiWidgets.forEach(w => {
+    if (w.type === 'full') {
+      datagroup.heroWidget = w;
+    } else {
+      datagroup.kpiWidgets.push(w);
+    }
+  });
+
+  datagroup.kpiWidgets.map(w => {
+    if (!w.datasets.length) {
+      // if no datasets assume no kpis stored like myGov
+      // then exit
+      return;
+    } else {
+      widgetDatasets = w.datasets.map(d => {
+        return getDatasetById(datasets, d);
+      });
+      datagroup.datasets = widgetDatasets;
+
+      // need to get datasets so we can resolve head
+      widgetDatapointsByDatasets = widgetDatasets.map(wd => {
+        return getDatapointsByIds(datapoints, wd.datapoints);
+      });
+
+      head = widgetDatapointsByDatasets.map((d, idx) => {
+        return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].last_updated_at, d);
+      });
+      datagroup.head = head;
+      datagroup.key = head[0].label || '';
+      datagroup.hasLatest = hasLatesDatagroup(datagroup.key);
+    }
+  });
+
+  return datagroup
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export const getDatagroupForCrossSectional = (widget, datasets, datapoints) => {
@@ -118,7 +247,7 @@ export const getDatagroupForKpi = (kpiWidgets, datasets, datapoints) => {
   }
 };
 
-export const getCurrentDatagroupKey = () => {
+export const getLatestDatagroupKey = () => {
   let currentMonth = moment(new Date()).subtract(1, 'months');
   return currentMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
 };
@@ -133,11 +262,7 @@ export const getPreviousDatagroupKey = (key) => {
   return previousMonth.format(DATAGROUP_KEY_ROUTE_SEGMENT)
 };
 
-export const hasNextDatagroup = (key) => {
-  let currentMonth = new Date().getMonth() - 1;
-  let latestSavedMonth = new Date(key).getMonth();
-  return currentMonth !== latestSavedMonth;
-};
+
 
 
 export const makePreviewItems = datagroup => {
