@@ -66,8 +66,11 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
           <div className="row">
             <div className="col-xs-12 col-lg-8">
 
-              {/*{datagroup}*/}
-
+              {datagroup.head.map(h => {
+                return (
+                  <p><span className="label">{h.datasetName}</span><span className="value">{h.value}</span></p>
+                )
+              })};
 
               <UpdateTimeSeriesDatagroupForm formModel={datagroup} />
             </div>

@@ -116,12 +116,14 @@ class PageDashboardWidgets extends Component {
                                dashboard={dashboard} />
                   }
                   else if (datagroup.type === 'cross-sectional') {
-                    return <WidgetTypeCrossSectional key={idx}
-                               datagroup={datagroup}
-                               editUrl={getDashboardWidgetDatagroupCrossSectionalUrl(dashboard.id, w.id)}
-                               editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
-                               widget={w}
-                               dashboard={dashboard} />
+
+                    console.warn('Found a cross-sectional datagroup');
+                    {/*return <WidgetTypeCrossSectional key={idx}*/}
+                               {/*datagroup={datagroup}*/}
+                               {/*editUrl={getDashboardWidgetDatagroupCrossSectionalUrl(dashboard.id, w.id)}*/}
+                               {/*editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}*/}
+                               {/*widget={w}*/}
+                               {/*dashboard={dashboard} />*/}
                   }
                   else if (datagroup.type === 'time-series') {
                     return <WidgetTypeTimeSeries key={idx}
