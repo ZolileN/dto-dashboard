@@ -17,7 +17,7 @@ const mapStateToProps = (store, ownProps) => {
     dashboard: ownProps.dashboard,
     widget: ownProps.widget,
     datagroup_key: ownProps.params.datagroup_key,
-    datagroup: getDatagroup(ownProps.widget, ownProps.datasets, ownProps.datapoints)
+    datagroup: getDatagroup(ownProps.widget, ownProps.datasets, ownProps.datapoints, ownProps.params.datagroup_key)
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -57,8 +57,6 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                                 links={makeLinksTimeSeriesType(datagroup_key, dashboard.id, widget.id)} />
                   </div>
                 </div>
-
-
               </div>
             </div>
           </div>
@@ -66,13 +64,21 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
           <div className="row">
             <div className="col-xs-12 col-lg-8">
 
-              {datagroup.head.map(h => {
-                return (
-                  <p><span className="label">{h.datasetName}</span><span className="value">{h.value}</span></p>
-                )
-              })};
+              <p>Last updated: {datagroup.headGroup[0].lastUpdated}</p>
 
-              <UpdateTimeSeriesDatagroupForm formModel={datagroup} />
+              {datagroup.group.map((h, idx) => {
+                {if (h) {
+                  return (
+                    <p key={idx}>
+                      <span className="label">{h.label}</span>
+                      <span className="label">{h.datasetName}</span>
+                      <span className="value">{h.value || 'No data'}</span>
+                    </p>
+                  )
+                }}
+              })}
+
+              {/*<UpdateTimeSeriesDatagroupForm formModel={datagroup} />*/}
             </div>
           </div>
         </div>

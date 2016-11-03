@@ -61,14 +61,13 @@ class DashboardWidgetDatagroupKpiPage extends Component {
                 </div>
 
 
-                {datagroup.head.map(h => {
+                {datagroup.headGroup.map((h, idx) => {
                   return (
-                    <p><span className="label">{h.datasetName}</span><span className="value">{h.value}</span></p>
+                    <p key={idx}><span className="label">{h.datasetName}</span><span className="value">{h.value}</span></p>
                   )
                 })};
 
-                <UpdateKpiDatagroupForm formModel={datagroup} />
-
+                {/*<UpdateKpiDatagroupForm formModel={datagroup} />*/}
               </div>
             </div>
           </div>

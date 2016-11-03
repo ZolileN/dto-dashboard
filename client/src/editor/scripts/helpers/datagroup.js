@@ -10,7 +10,8 @@ import {
 
 import {
   getDatapointsByIds,
-  getHeadDatapoint
+  getHeadDatapoint,
+  getDatapointOfKey
 } from './../reducers/datapoints';
 
 
@@ -25,7 +26,7 @@ import {
 //   datapoints: []
 // }
 
-// cross-sectional
+// cross-sectional  // todo - most likely doesnt exist
 
 // let datagroup = {
 //   key,   // dataset_id
@@ -75,18 +76,20 @@ export const hasLatestDatagroup = (key) => {
   return currentMonth === latestSavedMonth;
 };
 
-export const getDatagroup = (widget, datasets, datapoints) => {
+export const getDatagroup = (widget, datasets, datapoints, datagroup_key) => {
   let widgetDatasets,
     widgetDatapointsByDatasets,
-    head;
+    headGroup,
+    group = [];
 
   let datagroup = {
     key: null,
     type: '',
     widget: widget,
     datasets: [],
-    head: [],
-    hasLatest: null
+    hasLatest: null,
+    group: [],
+    headGroup: []
   };
 
   if (widget.type === 'kpi-sparkline' || widget.type === 'full') {
@@ -107,32 +110,50 @@ export const getDatagroup = (widget, datasets, datapoints) => {
   });
   datagroup.datasets = widgetDatasets;
 
-  // need to get datasets so we can resolve head
+  // need to get datasets so we can resolve headGroup
   widgetDatapointsByDatasets = widgetDatasets.map(wd => {
     return getDatapointsByIds(datapoints, wd.datapoints);
   });
 
-  if (widgetDatapointsByDatasets[0].length <= 1) {
+  if (widgetDatapointsByDatasets[0].length <= 1) {  // todo - most likely deprecate because everything is time series
     datagroup.type = 'cross-sectional';
   }
   if (widgetDatapointsByDatasets[0].length > 1) {
     datagroup.type = 'time-series';
   }
 
-  head = widgetDatapointsByDatasets.map((d, idx) => {
-    return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].updated_at, d);
+  headGroup = widgetDatapointsByDatasets.map((d, idx) => {
+    return getHeadDatapoint(widgetDatasets[idx].label, widgetDatasets[idx].updated_at, d);
   });
-  datagroup.head = head;
-  datagroup.key = head[0].label || '';
+
+  datagroup.headGroup = headGroup;
+  datagroup.key = headGroup[0].label || '';
   datagroup.hasLatest = hasLatestDatagroup(datagroup.key);
+
+  if (datagroup_key) {
+    widgetDatapointsByDatasets.forEach((wdd, idx) => {
+      wdd.forEach(dp => {
+        if (dp.label == datagroup_key) {  // double quality is important
+          group.push({
+            datasetName: widgetDatasets[idx].label,
+            lastUpdated: dp.ts,
+            ...dp
+          })
+        }
+      })
+    });
+    datagroup.group = group;
+  }
+  // datagroup.group = group.length >= 1 ? group : headGroup;
 
   return datagroup;
 };
 
-export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
+export const getKpiDatagroup = (kpiWidgets, datasets, datapoints, datagroup_key) => {
   let widgetDatasets,
     widgetDatapointsByDatasets,
-    head;
+    group = [],
+    headGroup;
 
   let datagroup = {
     key: null,
@@ -140,7 +161,8 @@ export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
     kpiWidgets: [],
     heroWidget: null,
     datasets: [],
-    head: [],
+    group: [],
+    headGroup: []
   };
 
   kpiWidgets.forEach(w => {
@@ -160,19 +182,34 @@ export const getKpiDatagroup = (kpiWidgets, datasets, datapoints) => {
       widgetDatasets = getDatasetsByIds(datasets, w.datasets);
       datagroup.datasets[idx] = widgetDatasets[0];
 
-      // need to get datasets so we can resolve head
+      // need to get datasets so we can resolve headGroup
       widgetDatapointsByDatasets = widgetDatasets.map(wd => {
         return getDatapointsByIds(datapoints, wd.datapoints);
       });
 
-      head = widgetDatapointsByDatasets.map((d, idx) => {
-        return getHeadDatapoint(widgetDatasets[idx].name, widgetDatasets[idx].updated_at, d);
+      headGroup = widgetDatapointsByDatasets.map((d, idx) => {
+        return getHeadDatapoint(widgetDatasets[idx].label, widgetDatasets[idx].updated_at, d);
       });
-      datagroup.head[idx] = head[0];
+      datagroup.headGroup[idx] = headGroup[0];
+
+      if (datagroup_key) {
+        widgetDatapointsByDatasets.forEach((wdd, idx) => {
+          wdd.forEach(dp => {
+            if (dp.label == datagroup_key) {  // double quality is important
+              group.push({
+                datasetName: widgetDatasets[idx].label,
+                lastUpdated: dp.ts,
+                ...dp
+              })
+            }
+          })
+        });
+      }
+      datagroup.group[idx] = group;
     }
   });
 
-  datagroup.key = datagroup.head[0].label || '';
+  datagroup.key = datagroup.headGroup[0].label || '';
   datagroup.hasLatest = hasLatestDatagroup(datagroup.key);
 
   return datagroup
@@ -268,13 +305,13 @@ export const makePreviewItems = datagroup => {
   if (!datagroup.datasets.length) {
     return [];
   }
-  if (!datagroup.head.length) {
+  if (!datagroup.headGroup.length) {
     return [];
   }
   return datagroup.datasets.map((d, idx) => {
     return {
-      label: datagroup.head[idx].datasetName,
-      value: datagroup.head[idx].value
+      label: datagroup.headGroup[idx].datasetName,
+      value: datagroup.headGroup[idx].value
     }
   });
 };
@@ -283,13 +320,13 @@ export const makeKpiPreviewItems = datagroup => {
   if (!datagroup.datasets.length) {
     return [];
   }
-  if (!datagroup.head.length) {
+  if (!datagroup.headGroup.length) {
     return [];
   }
   return datagroup.datasets.map((d, idx) => {
     return {
-      label: datagroup.head[idx].datasetName,
-      value: datagroup.head[idx].value
+      label: datagroup.headGroup[idx].datasetName,
+      value: datagroup.headGroup[idx].value
     }
   });
 };

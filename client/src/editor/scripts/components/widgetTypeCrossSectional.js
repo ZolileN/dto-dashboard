@@ -14,7 +14,7 @@ const WidgetTypeCrossSectional = ({datagroup, editUrl, editDescriptionsUrl, widg
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.head[0].lastUpdated)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.headGroup[0].lastUpdated)}</span>
         </div>
       </header>
 

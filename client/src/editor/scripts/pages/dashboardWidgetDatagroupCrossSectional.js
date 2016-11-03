@@ -15,7 +15,7 @@ const mapStateToProps = (store, ownProps) => {
   return {
     dashboard: ownProps.dashboard,
     widget: ownProps.widget,
-    datagroup: getDatagroup(ownProps.widget, ownProps.datasets, ownProps.datapoints)
+    datagroup: getDatagroup(ownProps.widget, ownProps.datasets, ownProps.datapoints, ownProps.params.datagroup_key)
   }
 };
 const mapDispatchToProps = dispatch => ({

@@ -14,7 +14,7 @@ const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, 
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.head[0].lastUpdated)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.headGroup[0].lastUpdated)}</span>
         </div>
       </header>
 
@@ -25,7 +25,7 @@ const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, 
         <div className="col-xs-12 col-lg-6">
           <Link to={addUrl} className="btn primary"
                 disabled={datagroup.hasLatest}
-                onClick={e => {if (datagroup.head.hasLatest) return e.preventDefault()}}>Add data</Link><br/>
+                onClick={e => {if (datagroup.headGroup.hasLatest) return e.preventDefault()}}>Add data</Link><br/>
           <Link to={editUrl}
                 disabled={true}
                 onClick={e => e.preventDefault()}>Edit data</Link><br/>

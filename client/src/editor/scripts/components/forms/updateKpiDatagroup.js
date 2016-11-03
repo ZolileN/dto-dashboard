@@ -23,7 +23,19 @@ let UpdateTimeSeriesDatagroup = ({
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={Input}
-             type="number"  name="value" label="datagroup.datasetName"
+             type="number"  name="value[0]" label="datagroup[0].datasetName"
+             optionProps={{infoText: `Leave blank to save as "No data"`}} />
+
+      <Field component={Input}
+             type="number"  name="value[1]" label="datagroup[1].datasetName"
+             optionProps={{infoText: `Leave blank to save as "No data"`}} />
+
+      <Field component={Input}
+             type="number"  name="value[2]" label="datagroup[2].datasetName"
+             optionProps={{infoText: `Leave blank to save as "No data"`}} />
+
+      <Field component={Input}
+             type="number"  name="value[3]" label="datagroup[3].datasetName"
              optionProps={{infoText: `Leave blank to save as "No data"`}} />
 
       <div>

@@ -24,7 +24,7 @@ const WidgetTypeKpiHeroGroup = ({
           <h1 className="h5">Kpi Performance Indicators</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.head[0].lastUpdated)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.headGroup[0].lastUpdated)}</span>
         </div>
       </header>
 
@@ -33,8 +33,8 @@ const WidgetTypeKpiHeroGroup = ({
           <Preview date={datagroup.key} items={makeKpiPreviewItems(datagroup)} />
         </div>
         <div className="col-xs-12 col-lg-6">
-          <Link to={addUrl} className="btn primary" disabled={datagroup.head.hasLatest}
-                onClick={e => {if (datagroup.head.hasLatest) return e.preventDefault()}}>Add data</Link><br/>
+          <Link to={addUrl} className="btn primary" disabled={datagroup.headGroup.hasLatest}
+                onClick={e => {if (datagroup.headGroup.hasLatest) return e.preventDefault()}}>Add data</Link><br/>
           <Link to={editUrl}
                 disabled={true}
                 onClick={e => e.preventDefault()}>Edit data</Link><br/>
