@@ -73,9 +73,6 @@
 }
 
 .card__left {
-  padding-bottom: 20px;
-  border-bottom: 1px $axis-stroke-colour solid;
-  margin-bottom: 10px;
   padding-left: 0;
   padding-right: 0;
 
@@ -104,7 +101,10 @@
 .card__right {
   padding-left: 0;
   padding-right: 0;
-  
+  padding-top: 20px;
+  border-top: 1px $axis-stroke-colour solid;
+  margin-top: 20px;
+
   .widget {
     background: transparent;
     padding: 0;
