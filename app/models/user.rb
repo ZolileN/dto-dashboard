@@ -64,6 +64,10 @@ class User < ApplicationRecord
     email
   end
 
+  def need_two_factor_authentication?(_request)
+    !Rails.env.development?
+  end
+
   def send_two_factor_authentication_code(code)
     # Send code via SMS, etc.
   end

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    session[:user_return_to] || editor_path
+    editor_path
   end
 
   def access_denied(exception)
