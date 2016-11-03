@@ -84,17 +84,23 @@
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 0;
+    width: 100%;
+    margin-bottom: 0;
 
-    .card__link__visible {
-      padding-bottom: 15px;
-    }
-  }
-
-  @media(min-width: $screen-md) {
-    width: 30%;
+  @media (min-width: $screen-md) {
+    width: 100%;
+    float: left;
+    display: flex;
+    flex-direction: column;
     padding-right: 0;
     padding-left: 0;
     padding-bottom: 20px;
+  }
+
+  .card__link__visible {
+    @media (min-width: $screen-sm) {
+      padding-bottom: 15px;
+    }
   }
 }
 
