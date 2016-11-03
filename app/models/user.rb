@@ -65,7 +65,7 @@ class User < ApplicationRecord
   end
 
   def need_two_factor_authentication?(_request)
-    !Rails.env.development?
+    !Rails.env.development? && !Rails.env.staging?
   end
 
   def send_two_factor_authentication_code(code)
