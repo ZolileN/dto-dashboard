@@ -12,13 +12,12 @@
   box-shadow: $card-box-shadow;
   background-image: linear-gradient(to bottom, $card-grey-colour, $light-grey);
   margin: 0 0 $spacing-unit 0;
+  display: block;
   position: relative;
   padding: 10px 10px 10px 10px;
   color: $black;
-  min-height: 130px;
 
   @media (min-width: $screen-sm) {
-    display: block;
     min-height: 140px;
     padding: $gutter $gutter 10px 25px;
   }
@@ -44,8 +43,8 @@
 
       @media(min-width: $screen-md) {
         position: absolute;
-        bottom: 10px;
-        top:auto;
+        bottom: 8px;
+        top: auto;
       }
 
       &:visited {
@@ -78,23 +77,19 @@
   border-bottom: 1px $axis-stroke-colour solid;
   margin-bottom: 10px;
 
-  @media(min-width: $screen-sm) {
-    border-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 0;
+  @media (min-width: $screen-sm) {
     width: 100%;
+    justify-content: space-between;
+    border-bottom: 0;
     margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
   @media (min-width: $screen-md) {
     width: 100%;
     float: left;
     display: flex;
     flex-direction: column;
-    padding-right: 0;
-    padding-left: 0;
-    padding-bottom: 20px;
   }
 
   .card__link__visible {
@@ -105,72 +100,42 @@
 }
 
 .card__right {
-  &.dashboard__kpis {
+  .widget {
+    background: transparent;
+    padding: 0;
+    margin: 0;
 
-    @media (min-width: $screen-md){
-      width: 70%;
-      padding-right: 0;
-      padding-left: 0;
-    }
-
-    .widget {
-      background: transparent;
-
-      @media (min-width: $screen-sm){
-        margin: 0;
-        padding-top: 0;
-        padding-bottom: 0
-      }
-
-      .widget__title {
-        padding: 0;
-        height: 40px;
-
-        @media (min-width: $screen-sm){
-          height: 50px;
-        }
-
-        h4 {
-          margin: 3px 0 0 0;
-          @media (min-width: $screen-sm){
-            margin: 1.33rem 0;
-          }
-        }
-      }
-
-      .widget__inner {
-        .sparkline__inner {
-          &.no-data {
-            .metric-data {
-              .value {
-                @media(min-width: $screen-sm) {
-                  font-size: 32px;
-                  font-size: 2rem;
-                }
-              }
-            }
-          }
-
-          .metric-data {
-            .value {
-              @media(min-width: $screen-sm) {
-                font-size: 3.75rem
-              }
-            }
-          }
-
-          .chart {
-            margin: 5px 10px;
-          }
+    &.has-data-false {
+      .metric-data {
+        .value {
+          font-size: 2 * $fallback;
+          font-size: 1rem;
         }
       }
     }
-  }
 
-  .metric-data {
-    .decorator {
-      font-size: $fallback;
-      font-size: 1rem;
+    .widget__title {
+      padding: 0;
+      height: 35px;
+
+      h4 {
+        line-height: 1;
+        font-size: $fallback;
+        font-size: 1rem;
+        margin: 3px 0 0 0;
+      }
+    }
+
+    .metric-data {
+      .value {
+        font-size: 3.75 * $fallback;
+        font-size: 3.75rem;
+      }
+
+      .decorator {
+        font-size: $fallback;
+        font-size: 1rem;
+      }
     }
   }
 
@@ -181,48 +146,10 @@
 
   &.dashboard__kpis {
     background: transparent;
-    padding-top: 30px;
-
-    @media (min-width: $screen-sm){
-      padding-top: 0;
-    }
   }
 
   @media (min-width: $screen-md) {
-
-    &.dashboard__kpis {
-      .widget__title {
-        height: 35px;
-      }
-    }
-
-    .widget {
-      padding: 0;
-      margin: 0;
-
-      &.has-data-false {
-        .metric-data {
-          .value {
-            font-size: 2 * $fallback;
-            font-size: 2rem;
-          }
-        }
-      }
-
-      .widget__title {
-        h4 {
-          line-height: 1;
-          font-size: $fallback;
-          font-size: 1rem;
-          margin-top: 16px;
-        }
-      }
-    }
-  }
-
-
-  @media (max-width: $screen-sm) {
-    width: 100%;
+    width: 70%;
     float: left;
 
     .widget__inner {
@@ -247,8 +174,15 @@
         .metric-data {
           .value {
             font-size: 2 * $fallback;
-            font-size: 1rem;
+            font-size: 2rem;
           }
+        }
+      }
+
+      .metric-data {
+        .value {
+          font-size: 3.75 * $fallback;
+          font-size: 3.75rem;
         }
       }
 
@@ -257,16 +191,15 @@
           line-height: 1;
           font-size: $fallback;
           font-size: 1rem;
+          margin-top: 16px;
         }
       }
     }
   }
-}
 
-@media (min-width: $screen-sm) and (max-width: $screen-md) {
-  .card {
-    .dashboard__kpis {
-      .widget {
+  &.dashboard__kpis {
+    .widget {
+      @media (min-width: $screen-sm){
         border: 0;
         box-shadow: none;
         padding: 0;
@@ -274,77 +207,107 @@
         min-height: 0;
         height: auto;
         display: block;
+      }
 
-        .widget__inner {
+      .widget__title {
+        @media (min-width: $screen-sm){
+          height: 35px;
+          width: 100%;
+          text-align: center;
+        }
+
+        svg {
+          @media (min-width: $screen-sm){
+            display: none;
+          }
+        }
+
+        h4 {
+          @media (min-width: $screen-sm){
+            line-height: 1;
+            font-size: 16px;
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .sparkline__inner {
+        @media (min-width: $screen-sm){
+          float: none;
+        }
+
+        .chart {
+          @media (min-width: $screen-sm){
+            display: block;
+          }
+        }
+      }
+
+      .widget__inner {
+        @media (min-width: $screen-sm){
           position: relative;
           padding:0;
           width: 100%;
+        }
 
-          .sparkline {
+        .sparkline {
+          @media (min-width: $screen-sm){
             max-width: 100%;
             display:block;
           }
         }
+      }
 
-        .sparkline__inner {
-          float: none;
-
-          .chart {
-            display: block;
-          }
-        }
-
-        .decorator {
+      .decorator {
+        @media (min-width: $screen-sm){
           flex-direction: column;
         }
+      }
 
-        .metric-meta {
+      .metric-meta {
+        @media (min-width: $screen-sm){
           display: block;
+        }
 
-          .metric-trend {
+        .metric-trend {
+          @media (min-width: $screen-sm){
             margin-right: 5px;
             display: inline-block;
           }
         }
-        .summary-text {
+      }
+
+      .summary-text {
+        @media (min-width: $screen-sm){
           display: inline-block;
         }
       }
+    }
 
-      .widget__title {
-        height: 35px;
-        width: 100%;
-        text-align: center;
+    .metric-data {
+      @media (min-width: $screen-sm){
+        display: flex;
+      }
 
-        svg {
-          display: none;
-        }
-
-        h4 {
-          line-height: 1;
-          font-size: 16px;
-          font-size: 1rem;
+      .decorator {
+        @media (min-width: $screen-sm){
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          flex-direction: column;
+          -ms-flex-pack: distribute;
+          justify-content: space-around;
+          font-size: 1.2rem;
         }
       }
-    }
 
-    .metric-data, .metric-data .decorator {
-      display: flex;
-    }
-
-    .card__right .widget .metric-data .value {
-      font-size: 45px;
-      font-size: 2.8125rem;
-      font-weight: 300;
-    }
-
-    .metric-data .decorator {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      flex-direction: column;
-      -ms-flex-pack: distribute;
-      justify-content: space-around;
-      font-size: 1.2rem;
+      .value {
+        @media (min-width: $screen-sm){
+          font-size: 45px;
+          font-size: 2.8125rem;
+          font-weight: 300;
+        }
+      }
     }
   }
 }
