@@ -151,6 +151,10 @@
 
   &.dashboard__kpis {
     background: transparent;
+
+    @media (min-width: $screen-sm) {
+      padding-top: 20px;
+    }
   }
 
   @media (min-width: $screen-md) {
