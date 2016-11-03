@@ -22,6 +22,10 @@
     padding: $gutter $gutter 10px 25px;
   }
 
+  @media (min-width: $screen-sm) {
+    display: flex;
+  }
+
   h3 {
     line-height: 1.2;
     margin: $gutter 0;
@@ -42,7 +46,7 @@
       top: 8px;
 
       @media(min-width: $screen-md) {
-        position: absolute;
+        position: relative;
         bottom: 8px;
         top: auto;
       }
@@ -85,15 +89,19 @@
   }
 
   @media (min-width: $screen-md) {
-    width: 100%;
+    width: 30%;
     float: left;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
   }
 
   .card__link__visible {
     @media (min-width: $screen-sm) {
       padding-bottom: 15px;
+    }
+    @media (min-width: $screen-md) {
+      padding-bottom: 0;
     }
   }
 }
@@ -104,6 +112,14 @@
   padding-top: 20px;
   border-top: 1px $axis-stroke-colour solid;
   margin-top: 20px;
+
+  @media (min-width: $screen-md) {
+    width: 70%;
+    float: left;
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
 
   .widget {
     background: transparent;
@@ -151,15 +167,9 @@
 
   &.dashboard__kpis {
     background: transparent;
-
-    @media (min-width: $screen-sm) {
-      padding-top: 20px;
-    }
   }
 
   @media (min-width: $screen-md) {
-    width: 70%;
-    float: left;
 
     .widget__inner {
       .sparkline__inner {
@@ -171,7 +181,11 @@
 
     &.dashboard__kpis {
       .widget__title {
-        height: 35px;
+        // height: 35px;
+
+        @media (min-width: $screen-md) {
+          height: 30px;
+        }
       }
     }
 
@@ -225,6 +239,13 @@
           text-align: center;
         }
 
+        @media (min-width: $screen-md){
+          height: 22px;
+          padding-bottom: 22px;
+          box-sizing: content-box;
+          padding-top: 2px;
+        }
+
         svg {
           @media (min-width: $screen-sm){
             display: none;
@@ -243,6 +264,31 @@
       .sparkline__inner {
         @media (min-width: $screen-sm){
           float: none;
+
+          .metric-data {
+            .value {
+              @media(min-width: $screen-md){
+                font-size: 60px;
+                font-size: 3.75rem;
+              }
+            }
+          }
+
+          &.no-data {
+            .metric-data {
+              .decorator {
+                @media(min-width: $screen-md) {
+                  display: none;
+                }
+              }
+              .value {
+                @media(min-width: $screen-md) {
+                  font-size: 32px;
+                  font-size: 2rem;
+                }
+              }
+            }
+          }
         }
 
         .chart {
@@ -315,6 +361,11 @@
           font-size: 45px;
           font-size: 2.8125rem;
           font-weight: 300;
+        }
+
+        @media (min-width: $screen-md) {
+          font-size: 60px;
+          font-size: 3.75rem;
         }
       }
     }
