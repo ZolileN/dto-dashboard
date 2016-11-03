@@ -7,9 +7,6 @@ export const getDashboardWidgetsUrl = (dashboardId) => {
 };
 
 export const getDashboardWidgetsDatagroupKpiUrl = (dashboardId, datagroup_key) => {
-  if (!datagroup_key) {
-    console.warn('no key provided');
-  }
   return `/dashboards/${dashboardId}/widgets/datagroup-kpi/${datagroup_key}`;
 };
 

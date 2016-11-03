@@ -19,7 +19,6 @@ export const makeLinksKpiType = (datagroup_key, dashboardId) => {
     nextKey: getNextDatagroupKey(datagroup_key),
     prevUrl: null
   };
-
   res.nextUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.nextKey);
   res.prevUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.prevKey);
   return res;

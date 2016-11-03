@@ -15,11 +15,12 @@ import { getExpandedShortDate } from './../utils/humanisedDates';
 
 const mapStateToProps = (store, ownProps) => {
   let kpiWidgets = groupByKpiWidgets(ownProps.widgets);
+  let datagroup_key = ownProps.params.datagroup_key;
   return {
     dashboard: ownProps.dashboard,
     widgets: kpiWidgets,
-    datagroup_key: ownProps.params.datagroup_key,
-    datagroup: getKpiDatagroup(kpiWidgets, ownProps.datasets, ownProps.datapoints)
+    datagroup_key,
+    datagroup: getKpiDatagroup(kpiWidgets, ownProps.datasets, ownProps.datapoints, datagroup_key)
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -63,9 +64,12 @@ class DashboardWidgetDatagroupKpiPage extends Component {
 
                 {datagroup.headGroup.map((h, idx) => {
                   return (
-                    <p key={idx}><span className="label">{h.datasetName}</span><span className="value">{h.value}</span></p>
+                    <p key={idx}>
+                      <span className="label">{h.datasetName}</span>
+                      <span className="value">{h.value}</span>
+                    </p>
                   )
-                })};
+                })}
 
                 {/*<UpdateKpiDatagroupForm formModel={datagroup} />*/}
               </div>

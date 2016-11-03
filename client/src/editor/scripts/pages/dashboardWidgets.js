@@ -42,7 +42,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const KpiGroup = ({kpiSuperWidgets, datasets, datapoints, dashboard, latestDatagroupKey}) => {
-  let datagroup = getKpiDatagroup(kpiSuperWidgets, datasets, datapoints);
+  let datagroup = getKpiDatagroup(kpiSuperWidgets, datasets, datapoints, latestDatagroupKey);
+
   if (datagroup) {
     return (
       <WidgetTypeKpiHeroGroup
@@ -53,7 +54,7 @@ const KpiGroup = ({kpiSuperWidgets, datasets, datapoints, dashboard, latestDatag
         dashboard={dashboard} />
     )
   }
-}
+};
 
 class PageDashboardWidgets extends Component {
 
