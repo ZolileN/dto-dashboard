@@ -11,12 +11,13 @@ machine:
 
 dependencies:
   pre:
-    - npm install -g npm
-    - npm run build
+    - npm install -g yarn
+    - yarn install
+    - yarn build
 
 test:
   override:
-    - npm test
+    - yarn test
     - bundle exec rspec --exclude-pattern "features/**"
     - bundle exec rspec spec/features
 
@@ -39,7 +40,6 @@ deployment:
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
       - cf target -o $CF_ORG_DEV &> /dev/null
       - cf target -s $CF_SPACE_STAGING &> /dev/null
-      - npm run build
       - ./bin/ci-deploy-staging.sh
       - ./bin/ci-deploy-newrelic.sh
 
@@ -51,6 +51,5 @@ deployment:
       - cf auth $CF_USER_PROD $CF_PASSWORD_PROD &> /dev/null
       - cf target -o $CF_ORG_PROD &> /dev/null
       - cf target -s $CF_SPACE_PROD &> /dev/null
-      - npm run build
       - ./bin/ci-deploy-prod.sh
       - ./bin/ci-deploy-newrelic.sh

@@ -1,2 +1,2 @@
-npm run build
+yarn build
 rails s
