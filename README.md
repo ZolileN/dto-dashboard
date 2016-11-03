@@ -1,5 +1,7 @@
 # Dashboard
 
+## Elise is awesome !
+
 [![CircleCI](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master.svg?style=svg)](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master)
 
 [![Code Climate](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/gpa.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard)
