@@ -43,6 +43,11 @@ Rails.application.routes.draw do
     end
   end
 
+  scope '/preview' do
+    resources :dashboards, as: 'preview_dashboards', only: [:index, :show],
+      defaults: { preview: true }
+  end
+
   get 'feedback', :to => 'feedback#index'
 
   get '/index.html', :to => redirect('/')

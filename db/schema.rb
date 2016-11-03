@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012235752) do
+ActiveRecord::Schema.define(version: 20161103023136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20161012235752) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  end
+
+  create_table "changesets", force: :cascade do |t|
+    t.integer  "organisation_id"
+    t.datetime "applied_at"
+    t.jsonb    "data"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organisation_id"], name: "index_changesets_on_organisation_id", using: :btree
   end
 
   create_table "dashboards", force: :cascade do |t|
@@ -179,4 +188,5 @@ ActiveRecord::Schema.define(version: 20161012235752) do
     t.index ["dashboard_id"], name: "index_widgets_on_dashboard_id", using: :btree
   end
 
+  add_foreign_key "changesets", "organisations"
 end

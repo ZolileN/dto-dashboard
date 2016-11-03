@@ -9,4 +9,7 @@ class Organisation < ApplicationRecord
 
   validates :url, :presence => true
 
+  has_many :changesets
+  has_one :active_changeset, -> { active }
+
 end
