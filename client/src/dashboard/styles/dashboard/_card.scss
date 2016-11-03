@@ -348,19 +348,3 @@
     }
   }
 }
-
-@media (min-width: $screen-sm) and (max-width: $screen-md ) {
-
-  .metric-data, .metric-data .decorator {
-    display: flex;
-  }
-
-  .metric-data .decorator {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-    font-size: 1.2rem;
-  }
-}
