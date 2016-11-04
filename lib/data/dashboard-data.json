@@ -140,7 +140,7 @@
     },
 
     {
-      "id":           "dashboard-pageviews",
+      "id":           "dashboard-page-views-on-month",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
       "definition":   "Dashboard PageViews on month",
@@ -278,7 +278,7 @@
       "id":           "new-returning-new",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "definition":   "New vs Returning Users on month - new",
+      "definition":   "New and returning users on month - new",
       "name":         "New",
       "note": "NEED TO CONTENT",
       "data": [
@@ -293,7 +293,7 @@
       "id":           "new-returning-returning",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "definition":   "New vs Returning Users on month - returning",
+      "definition":   "New and returning users on month - returning",
       "name":         "Returning",
       "note": "NEED TO CONTENT",
       "data": [
@@ -308,7 +308,7 @@
       "id":           "ddd-sessions-by-device-mobile",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "definition":   "Sessions by Device Type - mobile",
+      "definition":   "Devices used - mobile",
       "name":         "Mobile",
       "note": "NEED TO CONTENT",
       "data": [
@@ -323,7 +323,7 @@
       "id":           "ddd-sessions-by-device-tablet",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "definition":   "Sessions by Device Type - tablet",
+      "definition":   "Devices used - tablet",
       "name":         "Tablet",
       "note": "NEED TO CONTENT",
       "data": [
@@ -338,7 +338,7 @@
       "id":           "ddd-sessions-by-device-desktop",
       "recorded_at":  "2016-10-23T20:25:04Z",
       "units":        "n",
-      "definition":   "Sessions by Device Type - desktop",
+      "definition":   "Devices used - desktop",
       "name":         "Desktop",
       "note": "NEED TO CONTENT",
       "data": [

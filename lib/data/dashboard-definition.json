@@ -57,32 +57,32 @@
     {
       "id":   "total-users",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Total users by month",
+      "name": "Number of users",
       "type": "bar",
       "size": "large",
       "units": "n",
       "displayRoundedData" : false,
-      "definition": "",
+      "definition": "This shows the number of people visiting the Performance Dashboard each month.",
       "datasets": ["total-users"]
     },
     {
-      "id":   "top-dashboards",
+      "id":   "most-visited-dashboards",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Top Visited Dashboards",
+      "name": "Most-visited dashboards",
       "type": "fact",
       "units": "n",
       "size": "small",
-      "description": "The top 3 visited dashboards are myGov, Australian Citizenship Booking Service then Hobby or Business Tool."
+      "description": "The top 3 most-visited service dashboards are: 1. myGov 2. Australian Citizenship Booking Service 3. Hobby or Business Tool."
     },
     {
       "id":   "dashboard-count",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Services to publish Dashboard",
+      "name": "Types of service",
       "type": "bar",
       "stacking": "normal",
       "units": "n",
       "size": "large",
-      "description": "NEED TO CONTENT",
+      "description": "This shows which the development phase the services that have published on the Performance Dashboard are in. It also shows services that are not going through a digital transformation and other types of projects such as information websites",
       "datasets": ["dashboards-betapub", "dashboards-prebeta", "dashboards-nontransf", "dashboards-other"]
     },
     {
@@ -92,17 +92,17 @@
       "type": "fact",
       "units": "n",
       "size": "small",
-      "description": "NEED TO CONTENT"
+      "description": "The Performance Dashboard’s 3 primary goals are to increase the number of service dashboards it hosts, improve user engagement and to encourage automated publishing of data."
     },
     {
       "id":   "avg-dashboard-page-views",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Dashboard Page Views on month",
+      "name": "Dashboards viewed",
       "type": "line",
       "size": "medium",
       "units": "n",
       "displayRoundedData" : false,
-      "definition": "NEED TO CONTENT",
+      "definition": "This shows the average number of service dashboards viewed each time a user visits the Performance Dashboard.",
       "datasets": ["dashboard-pageviews-over-session"]
     },
     {
@@ -113,7 +113,7 @@
       "size": "medium",
       "units": "s",
       "displayRoundedData" : false,
-      "definition": "NEED TO CONTENT",
+      "definition": "This shows the average length of time users spend visiting the Performance Dashboard.",
       "datasets": ["average-session-time"]
     },
     {
@@ -123,34 +123,47 @@
       "type": "fact",
       "units": "n",
       "size": "small",
-      "description": "NEED TO CONTENT"
+      "description": "We expect that rising user numbers, more dashboard views and longer session lengths will reveal higher levels of user engagement."
     },
-
-
-
-
-
+    {
+      "id":   "fact-3",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "small",
+      "description": "Our user satisfaction figures are not yet statistically significant because of the low feedback response so far. However, the average session length of more than 3 minutes shows that users are engaging well with the data provided."
+    },
+    {
+      "id":   "fact-4",
+      "updated_at": "2016-10-23T20:25:04Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "small",
+      "description": "The Performance Dashboard is being continuously improved to enable more than 100 high-volume services to publish their own service dashboards in the coming months. The ability to enter data automatically is part of this improvement."
+    },
     {
       "id":   "automated-vs-manual",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Dashboard population",
+      "name": "How data is entered",
       "type": "bar",
       "size": "medium",
       "stacking": "normal",
       "units": "n",
       "displayRoundedData" : true,
-      "definition": "NEED TO CONTENT",
+      "definition": "This shows how many services enter data manually to their dashboard and how many use automated procedures such as APIs.",
       "datasets": ["automated-vs-manual-automated", "automated-vs-manual-manual"]
     },
     {
       "id":   "traffic-sources",
       "updated_at": "2016-10-23T20:25:04Z",
-      "name": "Traffic by Channel Grouping on month",
+      "name": "How users find the dashboard",
       "type": "bar",
       "size": "medium",
       "units": "%",
       "displayRoundedData" : true,
-      "definition": "NEED TO CONTENT",
+      "definition": "This shows how users navigate to the Performance Dashboard. It show how many users type in the URL directly, find the dashboard on a search engine, click on a link in an article or another website, or come to it via social media.",
       "datasets": [
         "traffic-sources-by-channel-direct",
         "traffic-sources-by-channel-referral",
@@ -159,25 +172,25 @@
       ]
     },
     {
-      "id":   "new-vs-returning-users",
+      "id":   "new-and-returning-users",
       "updated_at":  "2016-08-25T01:01:01.111Z",
-      "name": "New vs returning users",
+      "name": "New and returning users",
       "type": "pie",
       "size": "small",
       "units": "%",
       "displayRoundedData" : true,
-      "definition": "NEED TO CONTENT",
+      "definition": "This shows the percentage of users visiting the Performance Dashboard for the first time compared to the percentage of users who have visited it before.",
       "datasets": ["new-returning-new", "new-returning-returning"]
     },
     {
       "id":   "ddd-sessions-by-device",
       "updated_at":  "2016-08-25T01:01:01.111Z",
-      "name": "Sessions by device type",
+      "name": "Devices used",
       "type": "pie",
       "size": "small",
       "units": "%",
       "displayRoundedData" : true,
-      "definition": "NEED TO CONTENT",
+      "definition": "This shows which devices are used to view the Performance Dashboard.",
       "datasets": [
         "ddd-sessions-by-device-mobile",
         "ddd-sessions-by-device-tablet",
@@ -188,10 +201,13 @@
   "layout": [
     ["kpis"],
     ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
-    ["total-users", "top-dashboards"],
-    ["avg-dashboard-page-views", "avg-session-time"],
-    ["dashboard-count", "fact-1"],
-    ["automated-vs-manual", "traffic-sources"],
-    ["new-vs-returning-users", "fact-2", "ddd-sessions-by-device"]
+    ["total-users", "fact-1"],
+    ["top-dashboards"],
+    ["avg-dashboard-page-views", "fact-2"],
+    ["avg-session-time", "fact-3"],
+    ["dashboard-count"],
+    ["automated-vs-manual", "fact-4"],
+    ["traffic-sources"],
+    ["new-vs-returning-users",  "ddd-sessions-by-device"]
   ]
 }
