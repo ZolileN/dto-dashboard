@@ -26,6 +26,7 @@
 .dashboard__kpis {
   background-color: $white;
   padding-top: 10px;
+  margin-bottom: 0;
 
   @media(min-width: $screen-sm ) {
     padding-top: 0;
