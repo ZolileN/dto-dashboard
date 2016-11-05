@@ -51,6 +51,14 @@
   }
 
   .metric-definitions__metric {
+    @each $metric, $color in $metrics {
+      &.#{$metric}{
+        .widget__title {
+          border-bottom: 2px solid $color;
+        }
+      }
+    }
+    
     p {
       padding-top:9px;
       font-size: 14px;
