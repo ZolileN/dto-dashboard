@@ -1,25 +1,27 @@
 <div data-id="<%= widget.id %>" class="col-xs-12 col-md-3">
   <div class="widget <%= widget.name_slug %> has-data-<%= widget.has_data? %> <%= widget.style %>">
-    <div id="<%= widget.name_slug %>" data-id="<%= widget.id %>" class="widget__title col-xs-8">
-      <h2><%= widget.name %></h2>
-      <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"><span class="sr-only"><%= widget.name %> definition</span></a>
-      <div class="meta-group">
-        <time class="widget__last-updated">Last updated <%= widget.last_updated_at %></time>
-      </div>
-      <div class="meta-group">
-        <% if widget.show_description? %>
-          <div class="widget__definition">
-            <span class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">What is this?</span>
-            <div class="widget__definition--content" role="tooltip" id="tooltip--<%= widget.name_slug %>">
-              <div class="widget__definition--content__inner">
-                <%= widget.description %>
+    <div class="row">
+      <div id="<%= widget.name_slug %>" data-id="<%= widget.id %>" class="widget__title col-xs-8">
+        <h2><%= widget.name %></h2>
+        <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"><span class="sr-only"><%= widget.name %> definition</span></a>
+        <div class="meta-group">
+          <time class="widget__last-updated">Last updated <%= widget.last_updated_at %></time>
+        </div>
+        <div class="meta-group">
+          <% if widget.show_description? %>
+            <div class="widget__definition">
+              <span class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">What is this?</span>
+              <div class="widget__definition--content" role="tooltip" id="tooltip--<%= widget.name_slug %>">
+                <div class="widget__definition--content__inner">
+                  <%= widget.description %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div data-data="<%= widget.to_chart %>" aria-hidden="true" class="widget__inner col-xs-4 <%= widget.type %> <%= widget.style %>">
+      <div data-data="<%= widget.to_chart %>" aria-hidden="true" class="widget__inner col-xs-4 <%= widget.type %> <%= widget.style %>">
+      </div>
     </div>
     <div class="widget__data">
       <table class="data-table table">
