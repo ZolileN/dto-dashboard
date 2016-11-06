@@ -175,6 +175,10 @@
     @media(min-width: $screen-sm){
       padding-top: 20px;
     }
+
+    @media(min-width: $screen-md){
+      padding-top: 0;
+    }
   }
 
   @media (min-width: $screen-md) {
