@@ -3,6 +3,7 @@ class Users::SharedSecretsController < ApplicationController
   layout 'devise'
 
   before_action :ensure_secret_exists, only: [:new, :code]
+  before_action :protect_from_abuse, except: [:done]
 
   def create
     unless secret.present?
@@ -71,6 +72,12 @@ class Users::SharedSecretsController < ApplicationController
 
   def devise_controller?
     true
+  end
+
+  def protect_from_abuse
+    if current_user.otp_secret_key.present?
+      head 403
+    end
   end
 
 end
