@@ -143,6 +143,10 @@
 
       &.no-data {
         .metric-data {
+          .decorator {
+            display: none;
+          }
+          
           .value {
             @media(min-width: $screen-sm) {
               font-size: 48px;
