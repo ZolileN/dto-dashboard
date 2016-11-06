@@ -104,9 +104,6 @@
   }
 
   .card__link__visible {
-    @media (min-width: $screen-sm) {
-      padding-bottom: 15px;
-    }
     @media (min-width: $screen-md) {
       padding-bottom: 0;
     }
