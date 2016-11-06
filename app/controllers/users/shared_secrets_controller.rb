@@ -59,7 +59,7 @@ class Users::SharedSecretsController < ApplicationController
   end
 
   def ensure_secret_exists
-    self.secret = current_user.generate_totp_secret
+    self.secret = current_user.generate_totp_secret unless secret.present?
   end
 
   def issuer
