@@ -16,12 +16,12 @@ json.widgets current_user.widgets do |widget|
   json.datasets widget.dataset_widgets.collect {|dw| dw.dataset_id }
 end
 
-json.datasets current_user.datasets.uniq do |dataset|
+json.datasets current_user.widget_datasets.uniq do |dataset|
   json.(dataset, :id, :name, :label, :units, :notes, :updated_at)
   json.datapoints dataset.datapoints.collect {|datapoint| datapoint.id }
 end
 
-json.datapoints current_user.datapoints do |datapoint|
+json.datapoints current_user.widget_datapoints do |datapoint|
   json.(datapoint, :id, :value, :label)
   json.ts datapoint.ts.to_formatted_s :data_point_serialisation
 end

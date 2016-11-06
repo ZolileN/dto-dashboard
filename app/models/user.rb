@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
   has_many :widgets, :through => :dashboards
 
+  # TODO Rationalise / normalise & get rid of this hack
+  has_many :widget_datasets, class_name: 'Dataset', source: :datasets, :through => :widgets
+  has_many :widget_datapoints, class_name: 'Datapoint', source: :datapoints, :through => :widgets
+
   has_many :organisations, :through => :dashboards
 
   def self.by_email
