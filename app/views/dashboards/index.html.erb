@@ -76,7 +76,7 @@
 
   <ul class="list-unstyled clearfix">
     <% dashboards.each do |dashboard| %>
-      <li class="card row">
+      <li class="card row" id="<%= dashboard.name_slug %>">
         <div class="card__left col-xs-12 col-sm-12">
           <div>
             <h3 class="card-title">
