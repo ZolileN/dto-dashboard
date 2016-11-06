@@ -14,7 +14,7 @@
   margin: 0 0 $spacing-unit 0;
   display: block;
   position: relative;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 0 10px;
   color: $black;
 
   @media (min-width: $screen-sm) {
@@ -302,9 +302,10 @@
       }
 
       .widget__inner {
+        padding: 0;
+
         @media (min-width: $screen-sm){
           position: relative;
-          padding:0;
           width: 100%;
         }
 

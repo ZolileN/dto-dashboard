@@ -62,6 +62,10 @@
       margin-bottom: 15px;
     }
 
+    .row {
+      margin-left: 0;
+    }
+
     .widget__inner {
       margin-top: 3px;
       position: relative;
@@ -267,10 +271,7 @@
   }
 
   .widget__inner {
-    padding: 0;
-
     .sparkline__inner {
-
       .chart {
         display: none;
 
