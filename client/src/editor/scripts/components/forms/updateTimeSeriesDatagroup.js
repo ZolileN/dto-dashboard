@@ -1,3 +1,6 @@
+import { FLAG_CAN_UDPATE_DATAGROUP } from './../../constants/flags';
+
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
@@ -17,14 +20,26 @@ let UpdateTimeSeriesDatagroup = ({
   ...rfProps
 }) => {
 
+  const disableUpdate = !FLAG_CAN_UDPATE_DATAGROUP;
+
+  // edit and create;
+
+  // todo update  - need to pass through dataset_id
+
+
   const { error, handleSubmit, pristine, valid } = rfProps;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
 
-      <Field component={Input}
-             type="number"  name="value" label="datagroup.datasetName"
-             optionProps={{infoText: `Leave blank to save as "No data"`}} />
+      {formModel.map(field => {
+        return (
+          <Field component={Input}
+                 type="number" name={field.value} label={field.datasetName}
+                 optionProps={{infoText: `Leave blank to save as "No data"`}} />
+        )
+      })}
+
 
       <div>
         <SubmitButton type="submit"
@@ -98,7 +113,7 @@ const cancel = (rfProps, cb = ()=>{}) => {
 
 
 UpdateTimeSeriesDatagroup = reduxForm({
-  form: 'updateDashboard',
+  form: 'updateTimeSeriesDatagroup',  // todo - or create
   validate,
   destroyOnUnmount: true
 })(UpdateTimeSeriesDatagroup);

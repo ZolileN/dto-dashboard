@@ -7,7 +7,6 @@ import * as uiActions from './../actions/ui';
 import Breadcrumbs from './../components/breadcrumbs';
 import WidgetTypeKpiHeroGroup from './../components/widgetTypeKpiHeroGroup';
 import WidgetTypeSimple from './../components/widgetTypeSimple';
-import WidgetTypeCrossSectional from './../components/widgetTypeCrossSectional';
 import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
 
 import {
@@ -15,13 +14,12 @@ import {
   getDashboardWidgetsDatagroupKpiUrl,
   getDashboardWidgetDatagroupSimpleUrl,
   getDashboardWidgetDatagroupTimeSeriesUrl,
-  getDashboardWidgetDatagroupCrossSectionalUrl,
   getDashboardWidgetDescriptionsUrl
 } from './../utils/urlHelpers';
 import {
-  getDatagroup,
-  getKpiDatagroup,
-  getLatestDatagroupKey
+  getRecentDatagroupsetSlice,
+  getDatagroupsets,
+  getKpiDatagroup
 } from './../helpers/datagroup';
 import {
   groupByKpiWidgets,
@@ -67,11 +65,17 @@ class PageDashboardWidgets extends Component {
       widgets
     } = this.props;
 
-    let datagroup;
-    let latestDatagroupKey = getLatestDatagroupKey();
-
     let kpiSuperWidgets = groupByKpiWidgets(widgets);
     let btlWidgets = groupByStandardWidgets(widgets);
+
+
+    // btlWidgets.map((w, idx) => {
+    //   getDatagroups(w, datasets, datapoints);
+    // });
+
+    // getDatagroups(btlWidgets[4], datasets, datapoints);
+    // getDatagroups(btlWidgets[5], datasets, datapoints);
+
 
 
     return (
@@ -101,36 +105,27 @@ class PageDashboardWidgets extends Component {
 
               <section className="widget-list">
 
-                <KpiGroup kpiSuperWidgets={kpiSuperWidgets}
-                          datasets={datasets}
-                          datapoints={datapoints}
-                          dashboard={dashboard}
-                          latestDatagroupKey={latestDatagroupKey} />
+                {/*<KpiGroup kpiSuperWidgets={kpiSuperWidgets}*/}
+                          {/*datasets={datasets}*/}
+                          {/*datapoints={datapoints}*/}
+                          {/*dashboard={dashboard}*/}
+                          {/*latestDatagroupKey={latestDatagroupKey} />*/}
 
                 {btlWidgets.map((w, idx) => {
-                  let datagroup = getDatagroup(w, datasets, datapoints);
+                  let datagroupsets = getDatagroupsets(w, datasets, datapoints);
+                  let datagroupset = datagroupsets[0];
 
-                  if (datagroup.type === 'simple') {
+                  if (datagroupset.type === 'simple') {
                     return <WidgetTypeSimple key={idx}
                                editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, w.id)}
                                widget={w}
                                dashboard={dashboard} />
                   }
-                  else if (datagroup.type === 'cross-sectional') {
-
-                    console.warn('Found a cross-sectional datagroup');
-                    {/*return <WidgetTypeCrossSectional key={idx}*/}
-                               {/*datagroup={datagroup}*/}
-                               {/*editUrl={getDashboardWidgetDatagroupCrossSectionalUrl(dashboard.id, w.id)}*/}
-                               {/*editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}*/}
-                               {/*widget={w}*/}
-                               {/*dashboard={dashboard} />*/}
-                  }
-                  else if (datagroup.type === 'time-series') {
+                  else if (datagroupset.type === 'time-series') {
                     return <WidgetTypeTimeSeries key={idx}
-                               datagroup={datagroup}
-                               addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, latestDatagroupKey)}
-                               editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroup.key)}
+                               recentDatagroups={getRecentDatagroupsetSlice(datagroupset)}
+                               addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroupset.headKey)}
+                               editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroupset.recentKey)}
                                editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
                                widget={w}
                                dashboard={dashboard} />
