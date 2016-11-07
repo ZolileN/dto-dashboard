@@ -266,6 +266,24 @@ https://swaggerhub.com/api/dto/dto-dashboard/v1
 
  - Create the PR early and label as `WIP`
 
+### Two Factor Authentication
+
+By default, this is disabled in the development environment.
+
+- enable 'Two Factor' feature flag.
+- add an encryption key to your `.env` file
+
+```
+OTP_SECRET_ENCRYPTION_KEY={RANDOM_STRING}
+```
+
+To generate an appropriately random string, you can use `rails secret`
+
+To disable, you can either remove the TWO_FACTOR line or set to false
+
+```
+TWO_FACTOR=false
+```
 
 ### Rebasing
 
