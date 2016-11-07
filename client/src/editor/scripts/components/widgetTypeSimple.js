@@ -1,3 +1,5 @@
+import { FLAG_CAN_UDPATE_DATAGROUP } from './../constants/flags';
+
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
@@ -5,6 +7,10 @@ import { humanisedShortDate } from './../utils/humanisedDates';
 
 
 const WidgetTypeSimple = ({widget, editUrl}) => {
+
+  const disableUpdate = !FLAG_CAN_UDPATE_DATAGROUP;
+  const isFact = widget.type === 'fact';
+
   return (
     <article className="widget-list__item">
       <header className="clearfix">
@@ -19,8 +25,8 @@ const WidgetTypeSimple = ({widget, editUrl}) => {
       <p>{widget.description}</p>
       <Link to={editUrl}
             className="btn primary"
-            disabled={true}
-            onClick={e => e.preventDefault()}>Edit{widget.type === 'fact' ? ' Fact' : ''}</Link>
+            disabled={disableUpdate}
+            onClick={e => disableUpdate && e.preventDefault()}>{isFact ? 'Edit fact' : 'Edit'}</Link>
     </article>
   )
 };

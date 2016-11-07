@@ -1,3 +1,5 @@
+import { FLAG_CAN_UDPATE_DATAGROUP } from './../../constants/flags';
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, SubmissionError } from 'redux-form';
@@ -16,24 +18,26 @@ let UpdateDatagroupSimpleForm = ({
   ...rfProps
 }) => {
 
+  const disableUpdate = !FLAG_CAN_UDPATE_DATAGROUP;
   const { error, handleSubmit, pristine, valid } = rfProps;
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
 
       <Field component={Textarea}
-             name='description' label='Fact text' />
+             name='description' label='Fact text'
+             fieldProps={{autoComplete: 'off', rows: 5, disabled:disableUpdate}} />
 
       <div>
         <SubmitButton type="submit"
                       btnText={isSubmitting ? 'Saving...' : 'Save'}
                       className='btn primary'
-                      disabled={isSubmitting || pristine || !valid}
-                      onClick={handleSubmit(submit.bind(this))} />
+                      disabled={disableUpdate || isSubmitting || pristine || !valid}
+                      onClick={disableUpdate || handleSubmit(submit.bind(this))} />
         <button type="cancel"
                 className='btn primary-link'
-                disabled={!isEditing || isSubmitting}
-                onClick={cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
+                disabled={disableUpdate || !isEditing || isSubmitting}
+                onClick={disableUpdate || cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>
       <div className="form__help-block">
         {error && <strong>{error}</strong>}

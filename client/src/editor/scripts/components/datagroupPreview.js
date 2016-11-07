@@ -7,23 +7,19 @@ import {
 import LegendDot, { getPaletteColor } from './svgs/legend-dot';
 
 
-const DescriptionWithoutData = () => <span className="description">No records</span>;
 
-const DescriptionWithData = ({description}) => <span className="description">{description}</span>;
-const ValueWithData = ({value = '-'}) => <span className="value">{value}</span>;
-
-const Preview = ({items, date}) => {
+const Preview = ({recentDatagroups}) => {
   return (
     <div className="preview">
-      <span className="date-meta">Most recent data: {humanisedVeryShortDate(date)}</span>
-      {items.map((i, idx) => {
+      <span className="date-meta">Most recent data: {humanisedVeryShortDate(recentDatagroups.lastUpdated)}</span>
+      {recentDatagroups.groups.map((group, idx) => {
         return (
           <div key={idx} className="preview-table">
-            <span className="key">
-              <LegendDot color={getPaletteColor(idx)} />
-            </span>
-            {!!i.label ? <DescriptionWithData description={i.label} /> : <DescriptionWithoutData />}
-            {!!i.label ? <ValueWithData value={i.value} /> : ''}
+          <span className="key">
+            <LegendDot color={getPaletteColor(idx)} />
+          </span>
+            <span className="description">{group.dataset.label}</span>
+            <span className="value">{group.datapoint.value}</span>
           </div>
         );
       })}

@@ -1,12 +1,17 @@
+import { FLAG_CAN_UDPATE_DATAGROUP } from './../constants/flags';
+
+
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
 import Preview from './datagroupPreview';
-import { makePreviewItems } from './../helpers/datagroup';
 
 
-const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, widget}) => {
+const WidgetTypeTimeSeries = ({recentDatagroups, editUrl, addUrl, editDescriptionsUrl, widget}) => {
+
+  const disableUpdate = !FLAG_CAN_UDPATE_DATAGROUP;
+
   return (
     <article className="widget-list__item">
       <header className="clearfix">
@@ -14,24 +19,24 @@ const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, 
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(datagroup.headGroup[0].lastUpdated)}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(recentDatagroups.lastUpdated)}</span>
         </div>
       </header>
 
       <div className="row">
         <div className="col-xs-12 col-lg-6">
-          <Preview date={datagroup.key} items={makePreviewItems(datagroup)} />
+          <Preview recentDatagroups={recentDatagroups} />
         </div>
         <div className="col-xs-12 col-lg-6">
           <Link to={addUrl} className="btn primary"
-                disabled={datagroup.hasLatest}
-                onClick={e => {if (datagroup.headGroup.hasLatest) return e.preventDefault()}}>Add data</Link><br/>
+                disabled={recentDatagroups.hasHead}
+                onClick={e => {if (recentDatagroups.hasHead) return e.preventDefault()}}>Add data</Link><br/>
           <Link to={editUrl}
-                disabled={true}
-                onClick={e => e.preventDefault()}>Edit data</Link><br/>
+                disabled={disableUpdate}
+                onClick={e => disableUpdate && e.preventDefault()}>Edit data</Link><br/>
           <Link to={editDescriptionsUrl}
-                disabled={true}
-                onClick={e => e.preventDefault()}>Edit KPI descriptions</Link><br/>
+                disabled={disableUpdate}
+                onClick={e => disableUpdate && e.preventDefault()}>Edit KPI descriptions</Link><br/>
         </div>
       </div>
     </article>
@@ -39,7 +44,7 @@ const WidgetTypeTimeSeries = ({datagroup, editUrl, addUrl, editDescriptionsUrl, 
 };
 
 WidgetTypeTimeSeries.propTypes = {
-  datagroup: PropTypes.object.isRequired,
+  recentDatagroups: PropTypes.object.isRequired,
   widget: PropTypes.object.isRequired,
   editUrl: PropTypes.string.isRequired
 };

@@ -7,28 +7,27 @@ import {
 } from './../utils/urlHelpers';
 import {
   getNextDatagroupKey,
-  getPreviousDatagroupKey,
-  getLatestDatagroupKey
+  getPreviousDatagroupKey
 } from './../helpers/datagroup';
 
 
 export const makeLinksKpiType = (datagroup_key, dashboardId) => {
-  let res = {
-    latestKey: getLatestDatagroupKey(),
-    prevKey: getPreviousDatagroupKey(datagroup_key),
-    nextKey: getNextDatagroupKey(datagroup_key),
-    prevUrl: null
-  };
-  res.nextUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.nextKey);
-  res.prevUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.prevKey);
-  return res;
+  // let res = {
+  //   latestKey: getLatestDatagroupKey(),
+  //   prevKey: getPreviousDatagroupKey(datagroup_key),
+  //   nextKey: getNextDatagroupKey(datagroup_key),
+  //   prevUrl: null
+  // };
+  // res.nextUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.nextKey);
+  // res.prevUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.prevKey);
+  // return res;
 };
 
-export const makeLinksTimeSeriesType = (datagroup_key, dashboardId, widgetId) => {
+export const makeLinksTimeSeriesType = (datagroupset, dashboardId, widgetId) => {
   let res = {
-    latestKey: getLatestDatagroupKey(),
-    prevKey: getPreviousDatagroupKey(datagroup_key),
-    nextKey: getNextDatagroupKey(datagroup_key),
+    latestKey: datagroupset.headKey,
+    prevKey: getPreviousDatagroupKey(datagroupset.currentKey),
+    nextKey: getNextDatagroupKey(datagroupset.currentKey),
     prevUrl: null
   };
   res.nextUrl = getDashboardWidgetDatagroupTimeSeriesUrl(dashboardId, widgetId, res.nextKey);
@@ -36,7 +35,7 @@ export const makeLinksTimeSeriesType = (datagroup_key, dashboardId, widgetId) =>
   return res;
 };
 
-const Pagination = ({dashboard, datagroup_key, links}) => {
+const Pagination = ({links}) => {
 
   let { nextKey, latestKey, prevUrl, nextUrl } = links;
 

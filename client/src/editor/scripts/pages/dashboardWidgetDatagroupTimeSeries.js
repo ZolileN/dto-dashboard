@@ -8,16 +8,21 @@ import Pagination, { makeLinksTimeSeriesType } from './../components/widgetPageP
 import * as uiActions from './../actions/ui';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import { getExpandedShortDate } from './../utils/humanisedDates';
-import { getDatagroup } from './../helpers/datagroup';
-import UpdateTimeSeriesDatagroupForm from './../components/forms/updateTimeSeriesDatagroup';
+import {
+  getDatagroupsets,
+  getCurrentDatagroupsetSlice
+} from './../helpers/datagroup';
+// import UpdateDatagroupFormGroup from './../components/forms/UpdateDatagroup';
 
 
 const mapStateToProps = (store, ownProps) => {
+  let datagroupsets = getDatagroupsets(ownProps.widget, ownProps.datasets, ownProps.datapoints);
+  let datagroupset = datagroupsets[0];
+  let currentDatagroups = getCurrentDatagroupsetSlice(datagroupset, ownProps.params.datagroup_key);
   return {
     dashboard: ownProps.dashboard,
     widget: ownProps.widget,
-    datagroup_key: ownProps.params.datagroup_key,
-    datagroup: getDatagroup(ownProps.widget, ownProps.datasets, ownProps.datapoints, ownProps.params.datagroup_key)
+    datagroupset: currentDatagroups
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -31,8 +36,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
     let {
       widget,
       dashboard,
-      datagroup,
-      datagroup_key
+      datagroupset
     } = this.props;
 
     return (
@@ -44,17 +48,15 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                 <Breadcrumbs paths={[
                   {path: '/', name:'Home'},
                   {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
-                  {path: '', name:`${datagroup_key}`}
+                  {path: '', name:`${datagroupset.currentKey}`}
                 ]} />
                 <h1 className="h4">{widget.name}</h1>
 
                 <div className="timeseries-pagination">
                   <span className="">Edit data for:</span>
                   <div>
-                    <span className="">{getExpandedShortDate(datagroup_key)}</span>
-                    <Pagination dashboard={dashboard}
-                                datagroup_key={datagroup_key}
-                                links={makeLinksTimeSeriesType(datagroup_key, dashboard.id, widget.id)} />
+                    <span className="">{getExpandedShortDate(datagroupset.currentKey)}</span>
+                    <Pagination links={makeLinksTimeSeriesType(datagroupset, dashboard.id, widget.id)} />
                   </div>
                 </div>
               </div>
@@ -64,21 +66,19 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
           <div className="row">
             <div className="col-xs-12 col-lg-8">
 
-              <p>Last updated: {datagroup.headGroup[0].lastUpdated}</p>
+              <p>Last updated: {datagroupset.groups[0].dataset.updated_at}</p>
 
-              {datagroup.group.map((h, idx) => {
-                {if (h) {
-                  return (
-                    <p key={idx}>
-                      <span className="label">{h.label}</span>
-                      <span className="label">{h.datasetName}</span>
-                      <span className="value">{h.value || 'No data'}</span>
-                    </p>
-                  )
-                }}
+              {datagroupset.groups.map((g, idx) => {
+                return (
+                  <p key={idx}>
+                    <span className="label">{g.dataset.label}</span>
+                    <span className="label">{g.dataset.name}</span>
+                    <span className="value">{g.datapoint.value || 'No data'}</span>
+                  </p>
+                )
               })}
 
-              {/*<UpdateTimeSeriesDatagroupForm formModel={datagroup} />*/}
+              {/*<UpdateDatagroupFormGroup datagroupset={datagroupset} />*/}
             </div>
           </div>
         </div>

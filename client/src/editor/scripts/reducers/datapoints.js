@@ -92,11 +92,6 @@ export const computeLabel = (ts) => {
   return moment(ts).format(dateFormats.DATE_HASH_LABEL);
 };
 
-export const getDatapointsByLabel = (state, label) => {
-  return state.filter(d => d.label === label);
-};
-
-
 export const getDatapointsByDatasets = (datapoints, datasets) => {
   return datasets.reduce((curr, next) => {
     return curr.concat(next.datapoints);
@@ -105,16 +100,4 @@ export const getDatapointsByDatasets = (datapoints, datasets) => {
   });
 };
 
-export const getHeadDatapoint = (datasetName, lastDatasetUpdated, datapoints) => {
-  if (!datapoints.length) {
-    return {datasetName, lastUpdated:lastDatasetUpdated, value:'No data'};
-  }
-  return datapoints.reduce((curr, next) => {
-    if (new Date(curr.label) > new Date(next.label)) {
-      return {datasetName, lastUpdated: curr.ts, ...curr};
-    } else {
-      return {datasetName, lastUpdated: lastDatasetUpdated, ...next};
-    }
-  });
-};
 
