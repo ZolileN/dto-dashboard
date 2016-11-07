@@ -20,9 +20,7 @@ import DashboardsPage from './../pages/dashboards';
 import DashboardPage from './../pages/dashboard';
 import DashboardWidgetsPage from './../pages/dashboardWidgets';
 import DashboardWidgetPage from './../pages/dashboardWidget';
-import DashboardWidgetDatagroupKpiPage from './../pages/dashboardWidgetDatagroupKpi';
 import DashboardWidgetDatagroupSimplePage from './../pages/dashboardWidgetDatagroupSimple';
-import DashboardWidgetDatagroupCrossSectionalPage from './../pages/dashboardWidgetDatagroupCrossSectional';
 import DashboardWidgetDatagroupTimeSeriesPage from './../pages/dashboardWidgetDatagroupTimeSeries';
 import DashboardWidgetDescriptionsPage from './../pages/dashboardWidgetDescriptions';
 
@@ -54,9 +52,7 @@ export default class Root extends Component {
 	            dashboards
 	            dashboards/:id                            UpdateDashboard Form
 	            dashboards/:id/widgets
-              dashboards/:id/widgets/datagroup-kpi/:datagroup_key
               dashboards/:id/widgets/:id/datagroup-simple
-              dashboards/:id/widgets/:id/datagroup-cross-sectional
               dashboards/:id/widgets/:id/datagroup-time-series/:datagroup_key
 	            dashboards/:id/widgets/:id/descriptions   UpdateWidget Form
 
@@ -81,19 +77,13 @@ export default class Root extends Component {
                     /* dashboards/:id/widgets */
                     <IndexRoute component={DashboardWidgetsPage} />
 
-                    /* dashboards/:id/widgets/datagroup-kpi/:datagroup_key */
-                    <Route path="datagroup-kpi/:datagroup_key" component={DashboardWidgetDatagroupKpiPage} />
-
-
                     <Route path=":widget_id" component={DashboardWidget}>
                       /* dashboards/:id/widgets/:id */
                       <IndexRoute component={DashboardWidgetPage} />
                       /* dashboards/:id/widgets/:id/datagroup-simple */
-                      /* dashboards/:id/widgets/:id/datagroup-cross-sectional */
                       /* dashboards/:id/widgets/:id/datagroup-time-series/:datagroup_key */
                       /* dashboards/:id/widgets/:id/descriptions */
                       <Route path="datagroup-simple" component={DashboardWidgetDatagroupSimplePage} />
-                      <Route path="datagroup-cross-sectional" component={DashboardWidgetDatagroupCrossSectionalPage} />
                       <Route path="datagroup-time-series/:datagroup_key" component={DashboardWidgetDatagroupTimeSeriesPage} />
                       <Route path="descriptions" component={DashboardWidgetDescriptionsPage} />
                     </Route>

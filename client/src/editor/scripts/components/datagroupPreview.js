@@ -7,7 +7,6 @@ import {
 import LegendDot, { getPaletteColor } from './svgs/legend-dot';
 
 
-
 const Preview = ({recentDatagroups}) => {
   return (
     <div className="preview">

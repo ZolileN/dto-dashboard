@@ -86,7 +86,9 @@ export const getDatagroupsets = (widget, datasets, datapoints) => {
 
       group.dataset = getDatasetById(datasets, datasetId);
       group.datapoints = getDatapointsByIds(datapoints, group.dataset.datapoints);
-      group.key = group.datapoints[0].label;
+      if (group.datapoints.length) {
+        group.key = group.datapoints[0].label;
+      }
       group.headDatapointIdx = group.datapoints.find((dp, idx) => {
         if (dp.label === latestDatagroupKey) {
           return idx;
@@ -110,8 +112,10 @@ export const getDatagroupsets = (widget, datasets, datapoints) => {
     groupset.hasRecent = groupset.groups[0].recentDatapointIdx >= 0;
     if (groupset.hasRecent) {
       let item = groupset.groups[0].datapoints[groupset.groups[0].recentDatapointIdx];
-      groupset.recentKey = item.label;
-      groupset.lastUpdated = groupset.groups[0].dataset.updated_at;
+      if (item) {
+        groupset.recentKey = item.label;
+        groupset.lastUpdated = groupset.groups[0].dataset.updated_at;
+      }
     }
 
 

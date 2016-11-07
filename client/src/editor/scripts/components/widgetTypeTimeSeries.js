@@ -8,7 +8,9 @@ import { humanisedShortDate } from './../utils/humanisedDates';
 import Preview from './datagroupPreview';
 
 
-const WidgetTypeTimeSeries = ({recentDatagroups, editUrl, addUrl, editDescriptionsUrl, widget}) => {
+const WidgetTypeTimeSeries = ({
+  recentDatagroups, editUrl, addUrl, editDescriptionsUrl, widget
+}) => {
 
   const disableUpdate = !FLAG_CAN_UDPATE_DATAGROUP;
 
@@ -16,7 +18,7 @@ const WidgetTypeTimeSeries = ({recentDatagroups, editUrl, addUrl, editDescriptio
     <article className="widget-list__item">
       <header className="clearfix">
         <div className="title">
-          <h1 className="h5">{widget.name}</h1>
+          <h1 className="h5">{recentDatagroups.widget.name}</h1>
         </div>
         <div className="ancillary">
           <span className="date-meta">Last updated: {humanisedShortDate(recentDatagroups.lastUpdated)}</span>
@@ -25,7 +27,7 @@ const WidgetTypeTimeSeries = ({recentDatagroups, editUrl, addUrl, editDescriptio
 
       <div className="row">
         <div className="col-xs-12 col-lg-6">
-          <Preview recentDatagroups={recentDatagroups} />
+          {recentDatagroups.groups[0].datapoint && <Preview recentDatagroups={recentDatagroups} />}
         </div>
         <div className="col-xs-12 col-lg-6">
           <Link to={addUrl} className="btn primary"
@@ -45,7 +47,6 @@ const WidgetTypeTimeSeries = ({recentDatagroups, editUrl, addUrl, editDescriptio
 
 WidgetTypeTimeSeries.propTypes = {
   recentDatagroups: PropTypes.object.isRequired,
-  widget: PropTypes.object.isRequired,
   editUrl: PropTypes.string.isRequired
 };
 

@@ -5,24 +5,21 @@ import { connect } from 'react-redux';
 
 import * as uiActions from './../actions/ui';
 import Breadcrumbs from './../components/breadcrumbs';
-import WidgetTypeKpiHeroGroup from './../components/widgetTypeKpiHeroGroup';
 import WidgetTypeSimple from './../components/widgetTypeSimple';
 import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
 
 import {
   getDashboardUrl,
-  getDashboardWidgetsDatagroupKpiUrl,
   getDashboardWidgetDatagroupSimpleUrl,
   getDashboardWidgetDatagroupTimeSeriesUrl,
   getDashboardWidgetDescriptionsUrl
 } from './../utils/urlHelpers';
 import {
   getRecentDatagroupsetSlice,
-  getDatagroupsets,
-  getKpiDatagroup
+  getDatagroupsets
 } from './../helpers/datagroup';
 import {
-  groupByKpiWidgets,
+  groupByHeroWidget,
   groupByStandardWidgets
 } from './../reducers/widgets';
 
@@ -39,20 +36,6 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(uiActions, dispatch)
 });
 
-const KpiGroup = ({kpiSuperWidgets, datasets, datapoints, dashboard, latestDatagroupKey}) => {
-  let datagroup = getKpiDatagroup(kpiSuperWidgets, datasets, datapoints, latestDatagroupKey);
-
-  if (datagroup) {
-    return (
-      <WidgetTypeKpiHeroGroup
-        datagroup={datagroup}
-        addUrl={getDashboardWidgetsDatagroupKpiUrl(dashboard.id, latestDatagroupKey)}
-        editUrl={getDashboardWidgetsDatagroupKpiUrl(dashboard.id, datagroup.key)}
-        editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, datagroup.key)}
-        dashboard={dashboard} />
-    )
-  }
-};
 
 class PageDashboardWidgets extends Component {
 
@@ -65,18 +48,22 @@ class PageDashboardWidgets extends Component {
       widgets
     } = this.props;
 
-    let kpiSuperWidgets = groupByKpiWidgets(widgets);
+    let heroWidget = groupByHeroWidget(widgets);
     let btlWidgets = groupByStandardWidgets(widgets);
 
 
-    // btlWidgets.map((w, idx) => {
-    //   getDatagroups(w, datasets, datapoints);
-    // });
-
-    // getDatagroups(btlWidgets[4], datasets, datapoints);
-    // getDatagroups(btlWidgets[5], datasets, datapoints);
-
-
+    const KpiGroup = ({widget, datasets, datapoints, dashboard}) => {
+      let datagroupsets = getDatagroupsets(widget, datasets, datapoints);
+      let datagroupset = datagroupsets[0];
+      return (
+        <WidgetTypeTimeSeries
+          recentDatagroups={getRecentDatagroupsetSlice(datagroupset)}
+          addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, datagroupset.headKey)}
+          editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, datagroupset.recentKey)}
+          editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, datagroupset.id)}
+          dashboard={dashboard} />
+      )
+    };
 
     return (
       <div className="page page-dashboardwidgets">
@@ -105,11 +92,10 @@ class PageDashboardWidgets extends Component {
 
               <section className="widget-list">
 
-                {/*<KpiGroup kpiSuperWidgets={kpiSuperWidgets}*/}
-                          {/*datasets={datasets}*/}
-                          {/*datapoints={datapoints}*/}
-                          {/*dashboard={dashboard}*/}
-                          {/*latestDatagroupKey={latestDatagroupKey} />*/}
+                <KpiGroup widget={heroWidget}
+                          datasets={datasets}
+                          datapoints={datapoints}
+                          dashboard={dashboard} />
 
                 {btlWidgets.map((w, idx) => {
                   let datagroupsets = getDatagroupsets(w, datasets, datapoints);
@@ -127,7 +113,6 @@ class PageDashboardWidgets extends Component {
                                addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroupset.headKey)}
                                editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroupset.recentKey)}
                                editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}
-                               widget={w}
                                dashboard={dashboard} />
                   }
                 })}

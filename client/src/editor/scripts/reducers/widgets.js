@@ -59,7 +59,11 @@ export const getWidgetById = (state, widget_id) => {
 // };
 
 export const groupByKpiWidgets = widgets => widgets.filter(w => {
-  return w.type === 'kpi-sparkline' || w.type === 'full';
+  return w.type === 'kpi-sparkline';
+});
+
+export const groupByHeroWidget = widgets => widgets.find(w => {
+  return w.type === 'full';
 });
 
 export const groupByStandardWidgets = widgets => widgets.filter(w => {
