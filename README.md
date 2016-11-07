@@ -120,7 +120,7 @@ yarn build
 
 #### Getting started
 
-Make sure you have Yarn installed globally.  Refer to 
+Make sure you have Yarn installed globally.  Refer to
 https://yarnpkg.com/en/docs/install.
 
 Install the pipeline and all the project dependencies:
@@ -129,19 +129,19 @@ Install the pipeline and all the project dependencies:
 yarn install
 ```
 
-Build the assets 
+Build the assets
 
 ```
 yarn build
 ```
 
-That's it. 
+That's it.
 
 
 #### Need Develop mode?
 
-To develop on assets, instead of just building them, toggle `DEV_SERVER = true` 
-inside `/.env` and restart Rails. Then run the development server: 
+To develop on assets, instead of just building them, toggle `DEV_SERVER = true`
+inside `/.env` and restart Rails. Then run the development server:
 
 ```
 yarn run dev
@@ -324,12 +324,12 @@ git push -f
 ```
 
 or push from another branch
- 
+
  ```
  git push -f origin feature/dashboard-dashboard:staging
  ```
- 
- which is: 
+
+ which is:
  ```
  git push -f <remote> <local_branch_name>:<remote_branch_name>
  ```
@@ -342,3 +342,18 @@ To tag a release for deployment to production:
 ```
 git tag `date "+release-%Y%m%d%H%M%S"` && git push --tags
 ```
+
+#### Rollback
+
+If an error occurs or the release needs to be rolled back for any reason, the simplest way is to tag a new release from the last release.
+
+For example, given two releases `release-20160101` and `release-20160102`.
+
+If we decide to roll back to the earlier release, we would simply:
+
+```
+git checkout -b release-20160101
+git tag `date "+release-%Y%m%d%H%M%S"` && git push --tags
+```
+
+The checkout will create a new branch from the tag, which can be useful for diagnosing regression errors.  
