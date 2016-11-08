@@ -45,7 +45,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-
   describe 'tokens' do
     let(:active)   { Token.create! }
     let(:expired)  { FactoryGirl.create(:token_expired) }
@@ -73,9 +72,27 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'assigning dashboards and datasets' do
+    let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets) }
+    let(:datasets)  { dashboard.datasets }
 
-  describe 'dashboards and datasets' do
-    subject(:dashboard) { FactoryGirl.create(:dashboard_with_widgets) }
-    it { expect( dashboard.datasets ).to have_at_least(1).dataset }
+    subject(:user)  { FactoryGirl.create(:user) }
+
+    it { expect(user.datasets).to be_empty }
+
+    context 'adding a dashboard' do
+      before { user.dashboards << dashboard }
+      it { expect(user.datasets).to eq(datasets) }
+    end
+
+    context 'adding and removing a dashboard' do
+      before {
+        user.dashboards << dashboard
+        user.dashboards.delete(dashboard)
+      }
+      it { expect(user.datasets).to be_empty }
+      it { expect(dashboard.datasets).to_not be_empty }
+    end
+
   end
 end
