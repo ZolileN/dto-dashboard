@@ -2,46 +2,57 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Field, FieldArray, reduxForm, SubmissionError } from 'redux-form';
 
+import DatagroupsetInput from './../fields/datagroupsetInput';
+import InputHidden from './../fields/inputHidden';
 
-let UpdateDatagroupsetForm = ({...rfProps}) => {
-  let {formModel} = rfProps;
+
+let UpdateDatagroupsetForm = ({
+  canUpdate, canCreate, formModel,
+  ...rfProps
+}) => {
+
+  const notDisabled = canCreate && !formModel.groups[0].datapoint.value;
+  const disabled = !notDisabled;
+
   return (
-    <form>
-      <FieldArray name="groups" component={renderFields} props={{groupsModels:formModel.groups}} />
+    <form onSubmit={e => e.preventDefault()}>
+      <FieldArray name="groups" component={renderFields} props={{
+        models:formModel.groups,
+        canUpdate,
+        canCreate,
+        disabled
+      }} />
       <div>
-        <button type="submit">Save</button>
+        <button type="submit" className="btn primary" disabled={disabled}>Publish</button>
+        <button type="cancel" disabled={disabled}>Cancel</button>
       </div>
     </form>
   )
 };
 
-const renderFields = ({fields, groupsModels}) => {
+const renderFields = ({fields, models, canUpdate, canCreate, disabled}) => {
   return (
     <div>
       {fields.map((member, idx) => {
         return (
-          <Field key={idx} name={`${member}.datapoint.value`}
-                 label={groupsModels[idx].dataset.label}
-                 component={renderField} />
+          <fieldset key={idx}>
+            <Field name={`${member}.dataset.id`}
+                   component={InputHidden} />
+            <Field name={`${member}.datapoint.value`}
+                   label={models[idx].dataset.label}
+                   component={DatagroupsetInput}
+                   fieldProps={{disabled}}
+                   optionProps={{canUpdate, canCreate}} />
+          </fieldset>
         )
       })}
     </div>
   )
 };
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <input {...input} type={type} placeholder={label}/>
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-);
-
 
 UpdateDatagroupsetForm = reduxForm({
-  form: 'UpdateDatagroupsetForm',
+  form: 'CreateUpdateDatagroupsetForm',
   destroyOnUnmount: false
 })(UpdateDatagroupsetForm);
 

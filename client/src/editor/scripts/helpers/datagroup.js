@@ -140,7 +140,8 @@ export const getRecentDatagroupsetSlice = datagroupset => {
         return {
           key: group.key,
           dataset: group.dataset,
-          datapoint: group.datapoints[group.recentDatapointIdx]
+          datapoint: group.datapoints[group.recentDatapointIdx],
+          isHead: group.key === latestDatagroupKey
         }
       }
     }))
@@ -155,7 +156,8 @@ export const getHeadDatagroupsetSlice = datagroupset => {
         return {
           key: group.key,
           dataset: group.dataset,
-          datapoint: group.datapoints[group.headDatapointIdx]
+          datapoint: group.datapoints[group.headDatapointIdx],
+          isHead: true
         }
       }
     }))
@@ -166,7 +168,6 @@ export const getCurrentDatagroupsetSlice = (datagroupset, datagroupKey) => {
   let currentIdx;
   return {
     ...datagroupset,
-    currentKey: datagroupKey,
     groups: datagroupset.groups.map((group => {
       if (!currentIdx) {
         currentIdx = group.datapoints.reduce((curr, next, idx, arr) => {
@@ -179,7 +180,8 @@ export const getCurrentDatagroupsetSlice = (datagroupset, datagroupKey) => {
       return {
         key: group.key,
         dataset: group.dataset,
-        datapoint: group.datapoints[currentIdx]
+        datapoint: group.datapoints[currentIdx],
+        isHead: group.key === latestDatagroupKey
       }
     }))
   }

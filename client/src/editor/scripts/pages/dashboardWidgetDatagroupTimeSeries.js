@@ -1,3 +1,5 @@
+import * as flags from './../constants/flags';
+
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
@@ -33,6 +35,10 @@ const mapDispatchToProps = dispatch => ({
 class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
   render() {
+
+    const canUpdate = flags.FLAG_UDPATE_DATAGROUP;
+    const canCreate = flags.FLAG_CREATE_DATAGROUP;
+
     let {
       widget,
       dashboard,
@@ -84,7 +90,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
               <p>Last updated: {datagroupset.groups[0].dataset.updated_at}</p>
 
-              <UpdateDatagroupsetForm formModel={datagroupset}/>
+              <UpdateDatagroupsetForm formModel={datagroupset} canUpdate={canUpdate} canCreate={canCreate} />
 
             </div>
           </div>

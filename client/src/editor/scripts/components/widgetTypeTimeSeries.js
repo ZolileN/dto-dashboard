@@ -1,4 +1,4 @@
-import { FLAG_CAN_UDPATE_DATAGROUP } from './../constants/flags';
+import { FLAG_UDPATE_DATAGROUP } from './../constants/flags';
 
 
 import React, { PropTypes } from 'react';
@@ -12,7 +12,8 @@ const WidgetTypeTimeSeries = ({
   recentDatagroups, editUrl, addUrl, editDescriptionsUrl, widget
 }) => {
 
-  const disableUpdate = !FLAG_CAN_UDPATE_DATAGROUP;
+  const canUpdate = FLAG_UDPATE_DATAGROUP;
+  const disableUpdate = !canUpdate;
 
   return (
     <article className="widget-list__item">

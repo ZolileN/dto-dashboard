@@ -1,1 +1,2 @@
-export const FLAG_CAN_UDPATE_DATAGROUP = false;
+export const FLAG_CREATE_DATAGROUP = true;
+export const FLAG_UDPATE_DATAGROUP = false;

@@ -1,4 +1,4 @@
-import { FLAG_CAN_UDPATE_DATAGROUP } from './../../constants/flags';
+import { FLAG_UDPATE_DATAGROUP } from './../../constants/flags';
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
@@ -18,7 +18,7 @@ let UpdateDatagroupSimpleForm = ({
   ...rfProps
 }) => {
 
-  const disableUpdate = !FLAG_CAN_UDPATE_DATAGROUP;
+  const disableEdit = FLAG_UDPATE_DATAGROUP === false;
   const { error, handleSubmit, pristine, valid } = rfProps;
 
   return (
@@ -32,12 +32,12 @@ let UpdateDatagroupSimpleForm = ({
         <SubmitButton type="submit"
                       btnText={isSubmitting ? 'Saving...' : 'Save'}
                       className='btn primary'
-                      disabled={disableUpdate || isSubmitting || pristine || !valid}
-                      onClick={disableUpdate || handleSubmit(submit.bind(this))} />
+                      disabled={disableEdit || isSubmitting || pristine || !valid}
+                      onClick={disableEdit || handleSubmit(submit.bind(this))} />
         <button type="cancel"
                 className='btn primary-link'
-                disabled={disableUpdate || !isEditing || isSubmitting}
-                onClick={disableUpdate || cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
+                disabled={disableEdit || !isEditing || isSubmitting}
+                onClick={disableEdit || cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
