@@ -85,14 +85,5 @@ RSpec.describe User, type: :model do
       it { expect(user.datasets).to eq(datasets) }
     end
 
-    context 'adding and removing a dashboard' do
-      before {
-        user.dashboards << dashboard
-        user.dashboards.delete(dashboard)
-      }
-      it { expect(user.datasets).to be_empty }
-      it { expect(dashboard.datasets).to_not be_empty }
-    end
-
   end
 end
