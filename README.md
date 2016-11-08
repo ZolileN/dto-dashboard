@@ -21,7 +21,7 @@ Currently WIP.
  - Postgres 9.4
  - Node 6.3.0
  - Yarn ^0.16.1
-
+ - ImageMagick 
 
 ## Getting Started
 
@@ -266,24 +266,35 @@ https://swaggerhub.com/api/dto/dto-dashboard/v1
 
  - Create the PR early and label as `WIP`
 
+### Feature flags
+
+We use the [Flipper](https://github.com/jnunemaker/flipper) feature flags
+system to turn features on and off. Currently the features that can be toggled
+are `auth` (authentication) and `two_factor` (two-factor authentication).
+
+To manage features, log in as an admin user and visit the `/flipper` path.
+
+Note that it is possible for an admin user to lock out all users (including
+him/herself) by switching off the `auth` feature. To escape from this scenario,
+simply add an environment variable `FORCE_AUTH_FEATURE` with any truthy
+value and restart the server. This will automatically switch the `auth` flag
+back on. (You then should remove the environment variable.)
+
 ### Two Factor Authentication
 
 By default, this is disabled in the development environment.
 
-- enable 'Two Factor' feature flag.
-- add an encryption key to your `.env` file
+To enable, first ensure that an encryption key is present in your `.env` file
+(To generate an appropriately random string, you can use `rails secret`).
 
 ```
 OTP_SECRET_ENCRYPTION_KEY={RANDOM_STRING}
 ```
 
-To generate an appropriately random string, you can use `rails secret`
+Then enable the `two_factor` flag (for everyone) using Flipper (see the
+'Feature flags' section above).
 
-To disable, you can either remove the TWO_FACTOR line or set to false
-
-```
-TWO_FACTOR=false
-```
+You can also Flipper to disable two-factor authentication.
 
 ### Rebasing
 

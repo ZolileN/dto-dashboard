@@ -25,6 +25,8 @@ gem 'rqrcode-rails3'
 gem 'mini_magick'
 gem 'devise_invitable'
 gem 'maildown'
+gem 'flipper-ui',               '~> 0.9.2'
+gem 'flipper-active_record',    '~> 0.9.2'
 
 group :production do
   gem 'rails_12factor'

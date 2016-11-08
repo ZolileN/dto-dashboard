@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012235752) do
+ActiveRecord::Schema.define(version: 20161107045948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,22 @@ ActiveRecord::Schema.define(version: 20161012235752) do
     t.datetime "updated_at", null: false
     t.index ["dataset_id"], name: "index_datasets_users_on_dataset_id", using: :btree
     t.index ["user_id"], name: "index_datasets_users_on_user_id", using: :btree
+  end
+
+  create_table "flipper_features", force: :cascade do |t|
+    t.string   "key",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_flipper_features_on_key", unique: true, using: :btree
+  end
+
+  create_table "flipper_gates", force: :cascade do |t|
+    t.string   "feature_key", null: false
+    t.string   "key",         null: false
+    t.string   "value"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true, using: :btree
   end
 
   create_table "organisations", force: :cascade do |t|

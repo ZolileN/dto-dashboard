@@ -1,39 +1,41 @@
 Rails.application.routes.draw do
 
-  unless Rails.env.production?
-    devise_for :users,
-      controllers: {
-        sessions: "users/sessions",
-        invitations: 'users/invitations'
-      },
-      :path => '',
-      path_names: { sign_in: 'sign-in', sign_out: 'sign-out' }
+  devise_for :users,
+    controllers: {
+      sessions: "users/sessions",
+      invitations: 'users/invitations'
+    },
+    :path => '',
+    path_names: { sign_in: 'sign-in', sign_out: 'sign-out' }
 
-    ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self)
 
-    namespace :users do
-      resources :shared_secrets, only: [:new, :create, :index] do
-        collection do
-          get :code
-          get :done
-        end
-      end
-      match 'shared_secret', to: 'shared_secrets#destroy', via: :delete
-    end
-
-    namespace :api, defaults: {format: 'json'} do
-      namespace :v1 do
-        resources :dashboards do
-          resources :widgets
-        end
-        resources :datasets do
-          resources :datapoints
-        end
-      end
-    end
-
-    get '/editor', :to => 'editor#index'
+  constraints CanAccessFlipperUI do
+    mount Flipper::UI.app($flipper) => '/flipper'
   end
+
+  namespace :users do
+    resources :shared_secrets, only: [:new, :create, :index] do
+      collection do
+        get :code
+        get :done
+      end
+    end
+    match 'shared_secret', to: 'shared_secrets#destroy', via: :delete
+  end
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :dashboards do
+        resources :widgets
+      end
+      resources :datasets do
+        resources :datapoints
+      end
+    end
+  end
+
+  get '/editor', :to => 'editor#index'
 
   get root :to => 'dashboards#index'
 

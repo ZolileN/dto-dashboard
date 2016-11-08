@@ -1,5 +1,4 @@
 class Users::InvitationsController < Devise::InvitationsController
-
   before_action :set_organisations, only: [:new, :create]
 
   def invite_resource

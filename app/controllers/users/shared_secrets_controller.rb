@@ -1,5 +1,4 @@
 class Users::SharedSecretsController < ApplicationController
-
   layout 'devise'
 
   before_action :ensure_secret_exists, only: [:new, :code]

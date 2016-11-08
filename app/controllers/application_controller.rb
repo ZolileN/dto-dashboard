@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :store_current_location, :unless => :devise_controller?
+  before_action :check_auth_flag, if: :devise_controller?
 
   private
 
@@ -28,9 +29,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def handle_two_factor_authentication
-  #   byebug
-  #   super
-  # end
+  def check_auth_flag
+    head 403 unless $flipper[:auth].enabled?
+  end
 
 end
