@@ -41,6 +41,7 @@ export const getDatagroupsets = (widget, datasets, datapoints) => {
     widget: null,
     groups: [],
     hasHead: null,
+    currentKey: null,
     hasRecent: null,
     recentKey: null,
     headKey: latestDatagroupKey
@@ -168,6 +169,7 @@ export const getCurrentDatagroupsetSlice = (datagroupset, datagroupKey) => {
   let currentIdx;
   return {
     ...datagroupset,
+    currentKey: datagroupKey,
     groups: datagroupset.groups.map((group => {
       if (!currentIdx) {
         currentIdx = group.datapoints.reduce((curr, next, idx, arr) => {
