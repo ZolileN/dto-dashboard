@@ -44,10 +44,6 @@ class User < ApplicationRecord
     tokens.create!(:session => true)
   end
 
-  def after_database_authentication
-    generate_session_token! if confirmed?
-  end
-
   def token
     tokens.active.first
   end
