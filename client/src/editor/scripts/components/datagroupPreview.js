@@ -7,11 +7,11 @@ import {
 import LegendDot, { getPaletteColor } from './svgs/legend-dot';
 
 
-const Preview = ({recentDatagroups}) => {
+const Preview = ({recentDatagroupset}) => {
   return (
     <div className="preview">
-      <span className="date-meta">Most recent data: {humanisedVeryShortDate(recentDatagroups.lastUpdated)}</span>
-      {recentDatagroups.groups.map((group, idx) => {
+      <span className="date-meta">Most recent data: {humanisedVeryShortDate(recentDatagroupset.lastUpdated)}</span>
+      {recentDatagroupset.groups.map((group, idx) => {
         return (
           <div key={idx} className="preview-table">
           <span className="key">

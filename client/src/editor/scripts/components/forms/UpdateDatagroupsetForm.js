@@ -11,6 +11,8 @@ let UpdateDatagroupsetForm = ({
   ...rfProps
 }) => {
 
+  const { error, handleSubmit, pristine, valid } = rfProps;
+
   const notDisabled = canCreate && !formModel.groups[0].datapoint.value;
   const disabled = !notDisabled;
 
@@ -23,8 +25,17 @@ let UpdateDatagroupsetForm = ({
         disabled
       }} />
       <div>
-        <button type="submit" className="btn primary" disabled={disabled}>Publish</button>
-        <button type="cancel" disabled={disabled}>Cancel</button>
+        <button type="submit"
+                className="btn primary"
+                disabled={disabled}
+                onClick={handleSubmit(submit.bind(this))}>Publish</button>
+        <button type="cancel"
+                className='btn primary-link'
+                disabled={disabled}
+                onClick={cancel.bind({}, rfProps)}>Cancel</button>
+      </div>
+      <div className="form__help-block">
+        {error && <strong>{error}</strong>}
       </div>
     </form>
   )
@@ -51,8 +62,32 @@ const renderFields = ({fields, models, canUpdate, canCreate, disabled}) => {
 };
 
 
+const submit = (values, dispatch, props) => { // todo
+
+  debugger
+
+  // x length
+  // dataset.id
+  // datapoint.value
+  // datapoint.ts
+
+  return Promise.resolve();
+};
+
+const validate = (values, props) => {   // todo - validate
+  const errors = {};
+  return errors;
+};
+
+const cancel = (rfProps, cb) => {
+  rfProps.reset();
+  if (cb) cb();
+};
+
+
 UpdateDatagroupsetForm = reduxForm({
   form: 'CreateUpdateDatagroupsetForm',
+  validate,
   destroyOnUnmount: false
 })(UpdateDatagroupsetForm);
 

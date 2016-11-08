@@ -57,7 +57,7 @@ class PageDashboardWidgets extends Component {
       let datagroupset = datagroupsets[0];
       return (
         <WidgetTypeTimeSeries
-          recentDatagroups={getRecentDatagroupsetSlice(datagroupset)}
+          recentDatagroupset={getRecentDatagroupsetSlice(datagroupset)}
           addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, datagroupset.headKey)}
           editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, datagroupset.recentKey)}
           editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, datagroupset.id)}
@@ -109,7 +109,7 @@ class PageDashboardWidgets extends Component {
                   }
                   else if (datagroupset.type === 'time-series') {
                     return <WidgetTypeTimeSeries key={idx}
-                               recentDatagroups={getRecentDatagroupsetSlice(datagroupset)}
+                               recentDatagroupset={getRecentDatagroupsetSlice(datagroupset)}
                                addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroupset.headKey)}
                                editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, w.id, datagroupset.recentKey)}
                                editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, w.id)}

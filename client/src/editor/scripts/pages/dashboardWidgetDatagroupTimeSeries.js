@@ -45,21 +45,6 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
       datagroupset
     } = this.props;
 
-    let formModel = {
-      groups: datagroupset.groups.map((g, idx) => {
-        return {
-          dataset_id: g.dataset.id,
-          ts: new Date().toJSON(),
-          value: g.datapoint.value || ''
-        }
-      })
-    };
-
-    // let formModel = {
-    //   dataset_id: datagroupset.groups[0].dataset.id,
-    //   ts: new Date().toJSON(),
-    //   value: datagroupset.groups[0].datapoint.value || ''
-    // }
 
     return (
       <div className="page page-dashboardwidgetdatagrouptimeseries">
@@ -87,11 +72,8 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-
               <p>Last updated: {datagroupset.groups[0].dataset.updated_at}</p>
-
               <UpdateDatagroupsetForm formModel={datagroupset} canUpdate={canUpdate} canCreate={canCreate} />
-
             </div>
           </div>
         </div>
