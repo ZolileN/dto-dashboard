@@ -31,7 +31,7 @@ class Users::SharedSecretsController < ApplicationController
 
   def destroy
     session.delete :setup_totp
-    redirect_to new_users_shared_secret_path
+    redirect_to users_shared_secrets_path
   end
 
   def index

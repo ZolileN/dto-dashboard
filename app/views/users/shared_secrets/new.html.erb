@@ -10,9 +10,6 @@
       <% end %>
       <%= label_tag 'code', 'Enter the six-digit code:' %>
       <%= text_field_tag :code, nil, autocomplete: :off, maxlength: 6 %>
-      <p>Haven't received the code?
-        <%= link_to 'Try again', users_shared_secret_path, method: :delete %>
-      </p>
       <div class="form-footer-actions">
         <div class="form-options">
           <p>
@@ -21,5 +18,8 @@
         </div>
       </div>
     <% end %>
+    <p>Haven't received the code?
+      <%= button_to 'Try again', users_shared_secret_path, method: :delete %>
+    </p>
   </section>
 </article>
