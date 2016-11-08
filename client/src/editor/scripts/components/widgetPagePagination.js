@@ -11,19 +11,7 @@ import {
 } from './../helpers/datagroup';
 
 
-export const makeLinksKpiType = (datagroup_key, dashboardId) => {
-  // let res = {
-  //   latestKey: getLatestDatagroupKey(),
-  //   prevKey: getPreviousDatagroupKey(datagroup_key),
-  //   nextKey: getNextDatagroupKey(datagroup_key),
-  //   prevUrl: null
-  // };
-  // res.nextUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.nextKey);
-  // res.prevUrl = getDashboardWidgetsDatagroupKpiUrl(dashboardId, res.prevKey);
-  // return res;
-};
-
-export const makeLinksTimeSeriesType = (datagroupset, dashboardId, widgetId) => {
+export const makeLinks = (datagroupset, dashboardId, widgetId) => {
   let res = {
     latestKey: datagroupset.headKey,
     prevKey: getPreviousDatagroupKey(datagroupset.currentKey),

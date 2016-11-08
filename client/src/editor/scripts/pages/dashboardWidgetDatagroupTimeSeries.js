@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
-import Pagination, { makeLinksTimeSeriesType } from './../components/widgetPagePagination';
+import Pagination, { makeLinks } from './../components/widgetPagePagination';
 import * as uiActions from './../actions/ui';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import { getExpandedShortDate } from './../utils/humanisedDates';
@@ -12,7 +12,7 @@ import {
   getDatagroupsets,
   getCurrentDatagroupsetSlice
 } from './../helpers/datagroup';
-// import UpdateDatagroupFormGroup from './../components/forms/UpdateDatagroup';
+import UpdateDatagroupsetForm from './../components/forms/UpdateDatagroupsetForm';
 
 
 const mapStateToProps = (store, ownProps) => {
@@ -39,6 +39,22 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
       datagroupset
     } = this.props;
 
+    let formModel = {
+      groups: datagroupset.groups.map((g, idx) => {
+        return {
+          dataset_id: g.dataset.id,
+          ts: new Date().toJSON(),
+          value: g.datapoint.value || ''
+        }
+      })
+    };
+
+    // let formModel = {
+    //   dataset_id: datagroupset.groups[0].dataset.id,
+    //   ts: new Date().toJSON(),
+    //   value: datagroupset.groups[0].datapoint.value || ''
+    // }
+
     return (
       <div className="page page-dashboardwidgetdatagrouptimeseries">
         <div className="container">
@@ -56,7 +72,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                   <span className="">Edit data for:</span>
                   <div>
                     <span className="">{getExpandedShortDate(datagroupset.currentKey)}</span>
-                    <Pagination links={makeLinksTimeSeriesType(datagroupset, dashboard.id, widget.id)} />
+                    <Pagination links={makeLinks(datagroupset, dashboard.id, widget.id)} />
                   </div>
                 </div>
               </div>
@@ -68,17 +84,8 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
               <p>Last updated: {datagroupset.groups[0].dataset.updated_at}</p>
 
-              {datagroupset.groups.map((g, idx) => {
-                return (
-                  <p key={idx}>
-                    <span className="label">{g.dataset.label}</span>
-                    <span className="label">{g.dataset.name}</span>
-                    <span className="value">{g.datapoint.value || 'No data'}</span>
-                  </p>
-                )
-              })}
+              <UpdateDatagroupsetForm formModel={datagroupset}/>
 
-              {/*<UpdateDatagroupFormGroup datagroupset={datagroupset} />*/}
             </div>
           </div>
         </div>
