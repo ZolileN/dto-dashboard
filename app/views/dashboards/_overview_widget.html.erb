@@ -5,26 +5,6 @@
     </div>
     <div class="widget__inner <%= widget.name_slug %>" data-data="<%= render partial: 'chart/widget', locals: { widget: widget } %>" aria-hidden="true">
     </div>
-    <div class="widget__data">
-        <% widget.datasets.each do |dataset| %>
-          <table class="data-table table">
-            <caption>"<%= dataset.name || dataset.id %>"</caption>
-            <tbody>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Value</th>
-            </tr>
-            <% if dataset.datapoints != nil then %>
-                <% dataset.datapoints.decorate.each do |datapoint| %>
-                    <tr>
-                      <td scope="row"><%= datapoint.label() %></td>
-                      <td scope="row"><%= datapoint.value(widget.prefix, widget.suffix) %></td>
-                    </tr>
-                <% end %>
-            <%end %>
-            </tbody>
-          </table>
-        <% end %>
-    </div>
+    <%= render :partial => 'data_table', :locals => { :widget => widget } %>
   </div>
 </div>

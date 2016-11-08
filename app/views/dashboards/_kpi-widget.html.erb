@@ -21,24 +21,6 @@
     </div>
     <div data-data="<%= render partial: 'chart/widget', locals: { widget: widget } %>" aria-hidden="true" class="widget__inner <%= widget.type %> <%= widget.style %>">
     </div>
-    <div class="widget__data">
-      <table class="data-table table">
-        <% widget.datasets.each do |dataset| %>
-          <caption><%= widget.name || widget.id %> (<%= widget.units_to_s %>)</caption>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Value</th>
-            </tr>
-            <% if dataset.datapoints.any? %>
-              <% dataset.datapoints.decorate.each do |datapoint| %>
-              <tr>
-                <td scope="row"><%= datapoint.label %></td>
-                <td scope="row"><%= datapoint.value(widget.prefix, widget.suffix) %></td>
-              </tr>
-              <% end %>
-            <%end %>
-        <% end %>
-      </table>
-    </div>
+    <%= render :partial => 'data_table', :locals => { :widget => widget } %>
   </div>
 </div>
