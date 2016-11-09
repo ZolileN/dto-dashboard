@@ -28,7 +28,7 @@ RSpec.describe 'authentication feature toggles', type: :feature, js: true do
 
         it 'should log straight in' do
           use_sign_in_form
-          expect(page).to have_text 'Welcome to the Performance Dashboard Editor'
+          expect(page).to have_current_path(editor_path, only_path: true)
         end
       end
 
