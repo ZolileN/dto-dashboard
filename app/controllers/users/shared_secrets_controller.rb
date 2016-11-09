@@ -12,6 +12,7 @@ class Users::SharedSecretsController < ApplicationController
     if authenticate_code secret, params[:code]
       current_user.update_attribute :otp_secret_key, secret
       session.delete :setup_totp
+      warden.session(:user)[TwoFactorAuthentication::NEED_AUTHENTICATION] = false
       redirect_to done_users_shared_secrets_path
     else
       current_user.increment! :second_factor_attempts_count
