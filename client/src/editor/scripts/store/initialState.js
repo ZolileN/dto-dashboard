@@ -1,9 +1,9 @@
 export default {
   routing: {},
   app: {},
-  requests: {},
+  // requests: {},
   ui: {
-    toast: {},
+    // toast: {},
     pageDashboard: {},
     pageDashboardWidget: {},
     pageDataset: {},

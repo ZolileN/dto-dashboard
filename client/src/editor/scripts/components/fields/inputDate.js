@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react';
-import moment from 'moment';
-import { ISO_LONG_DATE } from './../../../../_common/scripts/_vendor/gov-au-ui-kit/constants/date-time';
+import { humanisedLongDate } from './../../utils/humanisedDates';
 
 
 const InputDate = ({input, name, label, meta, fieldProps, optionProps}) => {
 
-  const { isOptional, format } = optionProps;
+  const { isOptional } = optionProps;
   const { touched, error } = meta;
 
-  let computedValue = moment(input.value).format(format || ISO_LONG_DATE);
+  let computedValue = humanisedLongDate(input.value);
 
   return (
     <div className="form-group">

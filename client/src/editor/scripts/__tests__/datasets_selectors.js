@@ -31,11 +31,11 @@ describe('Datsets Selectors', () => {
       actual = getDatasetById(datasets, dataset.id);
     });
 
-    it('should retrieve a Dataset from an id', () => {
+    it.skip('should retrieve a Dataset from an id', () => {
       expect(actual).toBe(dataset);
     });
 
-    it('should return an item that is of type Dataset', () => {
+    it.skip('should return an item that is of type Dataset', () => {
       expect(isDataset(actual)).toBe(true);
     });
   });
@@ -47,13 +47,13 @@ describe('Datsets Selectors', () => {
       actual = getDatasetsByIds(datasets, widget.datasets);
     });
 
-    it('should retrieve a collection of Dataset items from an array of ids', () => {
+    it.skip('should retrieve a collection of Dataset items from an array of ids', () => {
       expect(actual.every((i) => {
         return isDataset(i);
       })).toBe(true);
     });
 
-    it('should return an empty collection when supplied with incorrect ids', () => {
+    it.skip('should return an empty collection when supplied with incorrect ids', () => {
       expect(getDatasetsByIds(datasets, ['asa','hdjfgfjsdh'])).toEqual([]);
     });
   });

@@ -9,6 +9,7 @@ ActiveAdmin.register Dataset do
 
   index do
     selectable_column
+    column :id
     column :name
     column :units
     column :dashboard
@@ -19,6 +20,7 @@ ActiveAdmin.register Dataset do
   end
 
   filter :name
+  filter :id
   filter :units
 
   form do |f|

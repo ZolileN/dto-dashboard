@@ -1,0 +1,12 @@
+.page {
+  &__header {
+    h1 {
+      padding-bottom: 1em;
+      border-bottom: 6px solid $color-brand-supp;
+
+      @media (min-width:$screen-md) {
+        padding-bottom: 2em;
+      }
+    }
+  }
+}

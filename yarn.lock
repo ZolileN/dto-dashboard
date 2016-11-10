@@ -2568,7 +2568,7 @@ defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
 
-del-cli@^0.2.0:
+del-cli:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/del-cli/-/del-cli-0.2.0.tgz#33dc01793d5a4cd8d64c2ab39c33c3e6658ec4ce"
   dependencies:
@@ -7146,6 +7146,10 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "~0.1.0"
 
+reduce-reducers:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/reduce-reducers/-/reduce-reducers-0.1.2.tgz#fa1b4718bc5292a71ddd1e5d839c9bea9770f14b"
+
 redux-actions-assertions-js@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/redux-actions-assertions-js/-/redux-actions-assertions-js-1.1.0.tgz#01d3a42d1a1315f0c3d94d29deba57678d3928de"
@@ -7416,6 +7420,10 @@ require-uncached@^1.0.2:
 requires-port@1.0.x, requires-port@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+
+reselect:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-2.5.4.tgz#b7d23fdf00b83fa7ad0279546f8dbbbd765c7047"
 
 resolve-cwd@^1.0.0:
   version "1.0.0"

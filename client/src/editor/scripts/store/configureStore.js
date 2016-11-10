@@ -9,7 +9,7 @@ import rootReducer from './../reducers';
 
 export default function configureStore(bootState, history, debug = __DEV__) {
   const middlewares = [
-    apiMiddleware,
+    // apiMiddleware,
     thunkMiddleware,
     routerMiddleware(history)
   ];

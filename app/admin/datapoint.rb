@@ -5,6 +5,7 @@ ActiveAdmin.register Datapoint do
 
   index do
     selectable_column
+    column :id
     column :ts
     column :value
     actions

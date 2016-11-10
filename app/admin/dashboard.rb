@@ -9,6 +9,7 @@ ActiveAdmin.register Dashboard do
 
   index do
     selectable_column
+    column :id
     column :name
     column :organisation
     actions

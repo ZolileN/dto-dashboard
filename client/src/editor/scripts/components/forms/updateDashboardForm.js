@@ -127,7 +127,7 @@ const validate = (values, props) => {
     errors.users = 'Must be less than 240 characters';
   }
 
-  if (values.url.length && isURL(values.url) === false) {
+  if (values.url && values.url.length && isURL(values.url) === false) {
     errors.url = 'Must be a valid URL';
   }
 

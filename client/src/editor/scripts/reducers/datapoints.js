@@ -3,26 +3,31 @@ import moment from 'moment';
 import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 import isTypeOfState from './../utils/isTypeOfState';
+import * as dateFormats from './../constants/dateFormats';
 
 
 const datapointsReducer = (state = initialState.datapoints, {type, payload}) => {
 
   switch (type) {
-    case types.PUSH_DATAPOINT:
-      return [
-        ...state,
-        payload
-      ];
-      break;
 
-    case types.UPDATE_DATAPOINT:
-      return state.map((d) => {
-        if (d.id === payload.id) {
-          return {...d, ...payload}
-        }
-        return d;
-      });
-      break;
+    case types.CREATE_DATAPOINT:
+      return [...state, payload];
+
+    // case types.PUSH_DATAPOINT:
+    //   return [
+    //     ...state,
+    //     payload
+    //   ];
+    //   break;
+    //
+    // case types.UPDATE_DATAPOINT:
+    //   return state.map((d) => {
+    //     if (d.id === payload.id) {
+    //       return {...d, ...payload}
+    //     }
+    //     return d;
+    //   });
+    //   break;
 
     default:
       return state;
@@ -53,6 +58,10 @@ export const getDatapointById = (state, id) => {
   return state.find((d) => id == d.id);
 };
 
+export const getDatapointsByIds = (state, ids) => {
+  return state.filter((d) => ids.includes(Number(d.id)));
+};
+
 /**
  * @param state
  * @param ids {Array}
@@ -61,6 +70,16 @@ export const getDatapointById = (state, id) => {
 export const getDatapointsById = (state, ids) => {
   return state.filter((d) => {
     return ids.includes(d.id);
+  });
+};
+
+export const getLastSavedDatapoints = datapoints => {
+  return datapoints.reduce((curr, next) => {
+    if (new Date(curr.label) > new Date(next.label)) {
+      return curr;
+    } else {
+      return next;
+    }
   });
 };
 
@@ -73,6 +92,13 @@ export const getDatapointsById = (state, ids) => {
 //   return state.filter((w) => dataset_id == w.dataset_id);
 // };
 
-export const computeLabel = (datapoint) => {
-  return moment(datapoint).format('YYYY-MM');
+
+export const getDatapointsByDatasets = (datapoints, datasets) => {
+  return datasets.reduce((curr, next) => {
+    return curr.concat(next.datapoints);
+  }, []).map(d => {
+    return getDatapointById(datapoints, d);
+  });
 };
+
+

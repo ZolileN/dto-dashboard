@@ -3,25 +3,32 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import Breadcrumbs from './../components/breadcrumbs';
-import * as uiActions from './../actions/ui';
+import { getDashboardById } from './../reducers/dashboards';
 import { getWidgetById } from './../reducers/widgets';
 import { getDatasetsByIds } from './../reducers/datasets';
-import UpdateWidgetForm from './../components/forms/updateWidgetForm';
-import { getRequestKey } from './../actions/widget';
+import { getDatapointsByDatasets } from './../reducers/datapoints';
 import { isPendingRequest } from './../reducers/requests';
 
+import Breadcrumbs from './../components/breadcrumbs';
+import * as uiActions from './../actions/ui';
+import UpdateWidgetForm from './../components/forms/updateWidgetForm';
+import { getRequestKey } from './../actions/widget';
 
-const mapStateToProps = ({datasets, ui, requests, config}, ownProps) => {
-  let widget = getWidgetById(ownProps.widgets, ownProps.params.widget_id);
+
+const mapStateToProps = (state, ownProps) => {
+  let dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
+  let widget = getWidgetById(state.widgets, ownProps.params.widget_id);
+  let datasets = getDatasetsByIds(state.datasets, widget.datasets);
+  let datapoints = getDatapointsByDatasets(state.datapoints, datasets);
   let requestKey = getRequestKey(widget.id, 'update');
   return {
-    ui: ui.pageDashboardWidget,
-    dashboard: ownProps.dashboard,
+    dashboard,
     widget,
-    config,
-    datasets: getDatasetsByIds(datasets, widget.datasets),
-    isPendingRequest: isPendingRequest(requests, requestKey)
+    datasets,
+    datapoints,
+    ui: state.ui.pageDashboardWidget,
+    config: state.config,
+    isPendingRequest: isPendingRequest(state.requests, requestKey)
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -29,7 +36,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-class Widget extends Component {
+class PageDashboardWidget extends Component {
 
   enterForm() {
     this.props.actions.editFormAtDashboardWidgetPage(true);
@@ -56,7 +63,7 @@ class Widget extends Component {
       datasets,
       ui,
       isPendingRequest,
-      config: { OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_SIZE, OPTIONS_WIDGET_UNITS}
+      config: { OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_UNITS}
     } = this.props;
 
     let sortedDatasets = datasets.sort((a,b) => {
@@ -83,55 +90,55 @@ class Widget extends Component {
     };
 
     return (
-      <div className="container">
-
-        <div className="row">
-          <div className="col-xs-12">
-            <Breadcrumbs paths={[
-              {path:'/', name:'Home'},
-              {path:`/dashboards/${dashboard.id}`, name:`${dashboard.name}`},
-              {path:`/dashboards/${dashboard.id}/widgets/${widget.id}`, name:`${widget.name}`}
-            ]} />
+      <div className="page page-dashboardwidget">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12">
+              <Breadcrumbs paths={[
+                {path:'/', name:'Home'},
+                {path:`/dashboards/${dashboard.id}`, name:`${dashboard.name}`},
+                {path:`/dashboards/${dashboard.id}/widgets/${widget.id}`, name:`${widget.name}`}
+              ]} />
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-xs-12">
-            <h1>Dashboard: {dashboard.name}, Widget: {widget.name}</h1>
-            <h2 className="h4">Datasets</h2>
+          <div className="row">
+            <div className="col-xs-12">
+              <h1>Dashboard: {dashboard.name}, Widget: {widget.name}</h1>
+              <h2 className="h4">Datasets</h2>
+            </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="col-xs-12">
-            {sortedDatasets.length ?
-              editDatasetsList(sortedDatasets) :
-              <p><em>No datasets</em></p>
-            }
+          <div className="row">
+            <div className="col-xs-12">
+              {sortedDatasets.length ?
+                editDatasetsList(sortedDatasets) :
+                <p><em>No datasets</em></p>
+              }
+            </div>
+            <br />
           </div>
-          <br />
-        </div>
 
-        <div className="row">
-          <div className="col-xs-12 col-lg-8">
-            <button
-              className="btn primary small"
-              disabled={ui.isEditing}
-              onClick={this.enterForm.bind(this)}>Edit</button>
+          <div className="row">
+            <div className="col-xs-12 col-lg-8">
+              <button
+                className="btn primary small"
+                disabled={ui.isEditing}
+                onClick={this.enterForm.bind(this)}>Edit</button>
 
-            <UpdateWidgetForm
-              formModel={widget}
-              isEditing={ui.isEditing}
-              isSubmitting={isPendingRequest}
-              onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-              onCancelSuccess={this.exitForm.bind(this)}
-              OPTIONS_WIDGET_TYPE={OPTIONS_WIDGET_TYPE}
-              OPTIONS_WIDGET_SIZE={OPTIONS_WIDGET_SIZE}
-              OPTIONS_WIDGET_UNITS={OPTIONS_WIDGET_UNITS}
-            />
+              <UpdateWidgetForm
+                formModel={widget}
+                isEditing={ui.isEditing}
+                isSubmitting={isPendingRequest}
+                onSubmitSuccess={this.onSubmitSuccess.bind(this)}
+                onCancelSuccess={this.exitForm.bind(this)}
+                OPTIONS_WIDGET_TYPE={OPTIONS_WIDGET_TYPE}
+                OPTIONS_WIDGET_UNITS={OPTIONS_WIDGET_UNITS}
+              />
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     )
   }
@@ -140,5 +147,5 @@ class Widget extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Widget);
+)(PageDashboardWidget);
 

@@ -1,6 +1,6 @@
 json.currentUser do
   json.(current_user, :id, :email)  # todo - first name, last name
-  # json.token current_user.session_token.token
+  json.token current_user.session_token.token
 end
 
 json.app({})
@@ -22,7 +22,7 @@ json.datasets current_user.datasets.uniq do |dataset|
 end
 
 json.datapoints current_user.datapoints do |datapoint|
-  json.(datapoint, :id, :value, :label)
+  json.(datapoint, :id, :value, :updated_at)
   json.ts datapoint.ts.to_formatted_s :data_point_serialisation
 end
 

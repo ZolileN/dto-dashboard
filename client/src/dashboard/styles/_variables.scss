@@ -30,11 +30,10 @@ $table-odd-row-bg-colour:           #f9f9f9;
 $axis-stroke-colour:                #c7ccd2;
 $debug-colour:                      #ff0;
 $debug-svg-colour:                  rgba($debug-colour, 0.1);
-$user-satisfaction-colour:          #f2b038;
-$cost-per-transaction-colour:       #75a370;
-$digital-take-up-colour:            #4892c0;
-$completion-rate-colour:            #7066a5;
-
+$user-satisfaction-colour:          $color-user-satisfaction; // todo - deprecate alias
+$cost-per-transaction-colour:       $color-cost-per-transaction;  // todo - deprecate alias
+$digital-take-up-colour:            $color-digital-take-up;  // todo - deprecate alias
+$completion-rate-colour:            $color-completion-rate;  // todo - deprecate alias
 
 $widget-box-shadow:                 0 1px 4px 0 rgba(0, 0, 0, 0.04);
 $widget-note-box-shadow:            0 2px 4px 0 rgba(0, 0, 0, 0.3);

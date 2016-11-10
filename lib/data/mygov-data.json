@@ -38,8 +38,8 @@
       },
     {
       "id":           "browser-usage-chrome",
-      "label":        "Chrome",
-      "name":         "Browser Usage - Chrome",
+      "name": "Chrome",
+      "label": "Browser Usage - Chrome",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
@@ -908,7 +908,7 @@
     {
         "id":           "navigations-by-service-01",
         "label":        "Medicare",
-        "name":         "Navigaations by service - Medicare",
+        "name":         "Navigations by service - Medicare",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -937,7 +937,7 @@
     {
         "id":           "navigations-by-service-03",
         "label":        "Centrelink",
-        "name":         "Navigaations by service - Centrelink",
+        "name":         "Navigations by service - Centrelink",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -967,7 +967,7 @@
     {
         "id":           "navigations-by-service-04",
         "label":        "Child Support",
-        "name":         "Navigaations by service - Child Support",
+        "name":         "Navigations by service - Child Support",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -997,7 +997,7 @@
     {
         "id":           "navigations-by-service-05",
         "label":        "ATO",
-        "name":         "Navigaations by service - ATO",
+        "name":         "Navigations by service - ATO",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note": "note for this dataset",
@@ -1027,7 +1027,7 @@
     {
         "id":           "navigations-by-service-06",
         "label":        "Other",
-        "name":         "Navigaations by service - Other",
+        "name":         "Navigations by service - Other",
         "recorded_at":  "2016-09-06T01:01:01.111Z",
         "units":        "%",
         "note":         "Includes Disability Care, DVA, DSS, PCHER, MyHealth",

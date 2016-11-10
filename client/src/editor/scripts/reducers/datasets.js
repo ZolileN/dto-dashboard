@@ -6,14 +6,14 @@ import isTypeOfState from './../utils/isTypeOfState';
 const datasetsReducer = (state = initialState.datasets, {type, payload}) => {
 
   switch (type) {
+
     case types.UPDATE_DATASET:
-      return state.map((d) => {
+      return state.map(d => {
         if (d.id === payload.id) {
           return {...d, ...payload}
         }
         return d;
       });
-      break;
 
     default:
       return state;
@@ -38,5 +38,5 @@ export const getDatasetById = (state, id) => {
 };
 
 export const getDatasetsByIds = (state, ids) => {
-  return state.filter((d) => ids.includes(Number(d.id)));
+  return state.filter(d => ids.includes(Number(d.id)));
 };

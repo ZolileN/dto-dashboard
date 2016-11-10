@@ -4,19 +4,14 @@ import { Router, Route, IndexRedirect, IndexRoute } from 'react-router';
 
 import Layout from './layout';
 
-import Dashboard from './dashboard';
-import Dashboards from './dashboards';
-import Dataset from './dataset';
-import Datasets from './datasets';
-import DatasetDatapoints from './datasetDatapoints';
 
-import SplashPage from './../pages/splash';
-import DashboardPage from './../pages/dashboard';
-import DashboardWidgetPage from './../pages/dashboardWidget';
-import DatasetPage from './../pages/dataset';
-import DatasetsPage from './../pages/datasets';
-import DatasetDatapointPage from './../pages/datasetDatapoint';
-import DatasetDatapointCreatePage from './../pages/datasetDatapointCreate';
+import Dashboards from './../pages/dashboards';
+import Dashboard from './../pages/dashboard';
+import DashboardWidgets from './../pages/dashboardWidgets';
+import DashboardWidget from './../pages/dashboardWidget';
+import DashboardWidgetDatagroupSimple from './../pages/dashboardWidgetDatagroupSimple';
+import DashboardWidgetDatagroupTimeseries from './../pages/dashboardWidgetDatagroupTimeseries';
+import DashboardWidgetDescriptions from './../pages/dashboardWidgetDescriptions';
 
 import NoMatch from './../pages/noMatch';
 
@@ -28,10 +23,6 @@ export default class Root extends Component {
     history: PropTypes.object.isRequired
   };
 
-  onEnter() {
-    return () => {};
-  }
-
   render() {
     let { store, history } = this.props;
     return (
@@ -39,40 +30,22 @@ export default class Root extends Component {
         <Router history={history}>
           <Route path="/" component={Layout}>
 
-            /*
+            <IndexRedirect to="/dashboards" />
 
-             /
-             dashboards/1
-             dashboards/1/widgets/1
-             datasets
-             datasets/id
-             datasets/id/datapoints/1
-             datasets/id/datapoints-new
-
-             */
-
-            {/*<IndexRedirect to="" />*/}
-
-            <Route path="" component={Dashboards}>
-              <IndexRoute component={SplashPage} onEnter={this.onEnter.bind(this)} />
-              <Route path="dashboards/:dashboard_id" component={Dashboard}>
-                <IndexRoute component={DashboardPage} />
-                <Route path="widgets/:widget_id" component={DashboardWidgetPage} onEnter={this.onEnter.bind(this)} />
-              </Route>
-            </Route>
-
-            <Route path="datasets" component={Datasets}>
-              <IndexRoute component={DatasetsPage} onEnter={this.onEnter.bind(this)} />
-
-              <Route path=":dataset_id" component={Dataset}>
-                <IndexRoute component={DatasetPage} onEnter={this.onEnter.bind(this)} />
-
-                <Route component={DatasetDatapoints}>
-                  <Route path="datapoints/:datapoint_id" component={DatasetDatapointPage} onEnter={this.onEnter.bind(this)} />
-                  <Route path="datapoints-new" component={DatasetDatapointCreatePage} onEnter={this.onEnter.bind(this)} />
-                </Route>
-              </Route>
-            </Route>
+            <Route path="dashboards"
+                   component={Dashboards} />
+            <Route path="dashboards/:dashboard_id"
+                   component={Dashboard} />
+            <Route path="dashboards/:dashboard_id/widgets"
+                   component={DashboardWidgets} />
+            <Route path="dashboards/:dashboard_id/widgets/:widget_id"
+                   component={DashboardWidget} />
+            <Route path="dashboards/:dashboard_id/widgets/:widget_id/datagroup-simple"
+                   component={DashboardWidgetDatagroupSimple} />
+            <Route path="dashboards/:dashboard_id/widgets/:widget_id/datagroup-timeseries/:datagroup_key"
+                   component={DashboardWidgetDatagroupTimeseries} />
+            <Route path="dashboards/:dashboard_id/widgets/:widget_id/descriptions"
+                   component={DashboardWidgetDescriptions} />
 
             <Route path="*" component={NoMatch} />
 
@@ -82,4 +55,3 @@ export default class Root extends Component {
     )
   }
 };
-

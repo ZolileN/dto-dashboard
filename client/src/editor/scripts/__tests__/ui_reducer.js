@@ -36,46 +36,46 @@ describe('Ui Reducer', () => {
   });
 
   describe('Dashboard Page', () => {
-    it('should set pageDashboard isEditing to true', () => {
+    it.skip('should set pageDashboard isEditing to true', () => {
       testSetIseditingOnce('pageDashboard', editFormAtDashboardPage, true);
     });
-    it('should set pageDashboard isEditing to true after setting to false', () => {
+    it.skip('should set pageDashboard isEditing to true after setting to false', () => {
       testSetIseditingTwice('pageDashboard', editFormAtDashboardPage, true, false);
     });
   });
 
   describe('DashboardWidget Page', () => {
-    it('should set pageDashboardWidget isEditing to true', () => {
+    it.skip('should set pageDashboardWidget isEditing to true', () => {
       testSetIseditingOnce('pageDashboardWidget', editFormAtDashboardWidgetPage, true);
     });
-    it('should set pageDashboardWidget isEditing to true after setting to false', () => {
+    it.skip('should set pageDashboardWidget isEditing to true after setting to false', () => {
       testSetIseditingTwice('pageDashboardWidget', editFormAtDashboardWidgetPage, true, false);
     });
   });
 
   describe('Dataset Page', () => {
-    it('should set pageDataset isEditing to true', () => {
+    it.skip('should set pageDataset isEditing to true', () => {
       testSetIseditingOnce('pageDataset', editFormAtDatasetPage, true);
     });
-    it('should set pageDataset isEditing to true after setting to false', () => {
+    it.skip('should set pageDataset isEditing to true after setting to false', () => {
       testSetIseditingTwice('pageDataset', editFormAtDatasetPage, true, false);
     });
   });
 
   describe('DatasetDatapoint Page', () => {
-    it('should set pageDatasetDatapoint isEditing to true', () => {
+    it.skip('should set pageDatasetDatapoint isEditing to true', () => {
       testSetIseditingOnce('pageDatasetDatapoint', editFormAtDatasetDatapointPage, true);
     });
-    it('should set pageDatasetDatapoint isEditing to true after setting to false', () => {
+    it.skip('should set pageDatasetDatapoint isEditing to true after setting to false', () => {
       testSetIseditingTwice('pageDatasetDatapoint', editFormAtDatasetDatapointPage, true, false);
     });
   });
 
   describe('DatasetDatapointCreate Page', () => {
-    it('should set pageDatasetDatapointCreate isEditing to true', () => {
+    it.skip('should set pageDatasetDatapointCreate isEditing to true', () => {
       testSetIseditingOnce('pageDatasetDatapointCreate', editFormAtDatasetDatapointCreatePage, true);
     });
-    it('should set pageDatasetDatapointCreate isEditing to true after setting to false', () => {
+    it.skip('should set pageDatasetDatapointCreate isEditing to true after setting to false', () => {
       testSetIseditingTwice('pageDatasetDatapointCreate', editFormAtDatasetDatapointCreatePage, true, false);
     });
   });

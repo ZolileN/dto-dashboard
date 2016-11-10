@@ -7,14 +7,14 @@ import isTypeOfState from './../utils/isTypeOfState';
 const dashboardsReducer = (state = initialState.dashboards, {type, payload}) => {
 
   switch (type) {
-    case types.UPDATE_DASHBOARD:
-      return state.map((d) => {
-        if (d.id === payload.id) {
-          return {...d, ...payload}
-        }
-        return d;
-      });
-      break;
+    // case types.UPDATE_DASHBOARD:
+    //   return state.map((d) => {
+    //     if (d.id === payload.id) {
+    //       return {...d, ...payload}
+    //     }
+    //     return d;
+    //   });
+    //   break;
 
     default:
       return state;

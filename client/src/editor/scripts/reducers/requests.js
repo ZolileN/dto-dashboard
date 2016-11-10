@@ -6,15 +6,15 @@ import initialState from './../store/initialState';
 const requestsReducer = (state = initialState.requests, {type, meta, payload}) => {
 
   switch (type) {
-    case types.APP_REQUEST_START:
-      return {...state, [meta.key]: {status: 'pending', error: null}};
-      break;
-    case types.APP_REQUEST_SUCCESS:
-      return {...state, [meta.key]: {status: 'success', error: null}};
-      break;
-    case types.APP_REQUEST_FAILED:
-      return {...state, [meta.key]: {status: 'failure', error: payload.error}};
-      break;
+    // case types.APP_REQUEST_START:
+    //   return {...state, [meta.key]: {status: 'pending', error: null}};
+    //   break;
+    // case types.APP_REQUEST_SUCCESS:
+    //   return {...state, [meta.key]: {status: 'success', error: null}};
+    //   break;
+    // case types.APP_REQUEST_FAILED:
+    //   return {...state, [meta.key]: {status: 'failure', error: payload.error}};
+    //   break;
     default:
       return state;
   }
