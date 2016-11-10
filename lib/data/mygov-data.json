@@ -38,7 +38,8 @@
       },
     {
       "id":           "browser-usage-chrome",
-      "name": "Chrome",
+      "label":        "Chrome",
+      "name":         "Browser Usage - Chrome",
       "recorded_at":  "2016-09-06T01:01:01.111Z",
       "units":        "%",
       "note": "note for this dataset",
