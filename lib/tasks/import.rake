@@ -70,15 +70,15 @@ namespace :import do
           :name => dataset['name'],
           :label => dataset['label'] || dataset['name'],
           :notes => dataset['note'],
-          :units => units)
+          :units => units,
+          :period => dataset['period'] || 'month',
+          :start_ts => DateTime.strptime(data['start'], '%Y-%m'))
 
         datasets[dataset['id']] = dataset_model
 
         if dataset['data']
-
-          dataset['data'].each do |data|
-            ts = DateTime.strptime(data['label'], '%Y-%m')
-            dataset_model.datapoints.create!(:ts => ts, :value => data['value'])
+          dataset['data'].each_with_index do |value, idx|
+            dataset_model.datapoints.create! idx: idx, value: value
           end
         end
       end

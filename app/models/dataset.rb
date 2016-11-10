@@ -23,6 +23,25 @@ class Dataset < ApplicationRecord
     datapoints.by_time.offset(1).last
   end
 
+  def datapoint_ts(datapoint)
+    case period
+    when 'month'
+      start_ts >> datapoint.idx
+    when 'day'
+      start_ts + datapoint.idx.days
+    when 'week'
+      start_ts + datapoint.idx.weeks
+    end
+  end
+
+  def multiply_period(factor)
+    case period
+    when 'month'
+      factor.months
+    when 'day'
+      factor.days
+    when
+
   def up?
     difference > 0
   end
