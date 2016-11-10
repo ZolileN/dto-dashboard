@@ -18,29 +18,7 @@
 </head>
 <body class="login <%= body_class(yield(:body_class_names)) %>">
 
-  <div>
-    <div class="phase-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <span>This is a working alpha and has limited functionality. Service data shown is
-          accurate as at the time it was published.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <header class="main__header">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <a href="/" title="Go to GOV.AU Performance Dashboard" class="logo">
-              <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU Performance Dashboard" height="30px" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </header>
-  </div>
+  <%= render :partial => 'govau-header'%>
 
   <main role="main" class="login__main">
     <article>
