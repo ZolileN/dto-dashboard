@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   belongs_to :organisation
 
-  has_and_belongs_to_many :dashboards, :after_add => :add_datasets_to_user
+  has_and_belongs_to_many :dashboards
 
   has_and_belongs_to_many :datasets
 
@@ -58,10 +58,6 @@ class User < ApplicationRecord
 
   def to_s
     email
-  end
-
-  def add_datasets_to_user(dashboard)
-    datasets << dashboard.datasets.all
   end
 
   def need_two_factor_authentication?(_request)

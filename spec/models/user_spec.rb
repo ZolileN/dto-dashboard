@@ -71,19 +71,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe 'assigning dashboards and datasets' do
-    let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets) }
-    let(:datasets)  { dashboard.datasets }
-
-    subject(:user)  { FactoryGirl.create(:user) }
-
-    it { expect(user.datasets).to be_empty }
-
-    context 'adding a dashboard' do
-      before { user.dashboards << dashboard }
-      it { expect(user.datasets).to eq(datasets) }
-    end
-
-  end
 end

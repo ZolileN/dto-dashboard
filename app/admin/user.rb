@@ -41,6 +41,20 @@ ActiveAdmin.register User do
     f.actions
   end
 
+  controller do
+    def update(options={}, &block)
+      params[:user][:dashboard_ids].reject(&:blank?).collect(&:to_i).select{|id|
+        !resource.dashboard_ids.include? id
+      }.each {|id|
+        params[:user][:dataset_ids].concat Dashboard.find(id).dataset_ids
+      }
+
+      params[:user][:dataset_ids].uniq!
+
+      super
+    end
+  end
+
   show do
     panel 'User' do
       attributes_table_for user do
