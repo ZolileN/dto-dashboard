@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { isObject } from 'lodash';
+import { push } from 'react-router-redux';
 
 import { getDashboardById } from './../reducers/dashboards';
 import { getWidgetById } from './../reducers/widgets';
@@ -34,10 +35,15 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({
+  push: bindActionCreators(push, dispatch),
   actions: bindActionCreators(uiActions, dispatch)
 });
 
 class DashboardWidgetDatagroupTimeSeriesPage extends Component {
+
+  onSubmitSuccess() {
+    this.props.push(getDashboardWidgetsUrl(this.props.dashboard.id));
+  }
 
   render() {
     const canUpdate = flags.FLAG_UDPATE_DATAGROUP;
@@ -82,8 +88,12 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
             <div className="col-xs-12 col-lg-8">
               {isUpdateMode && <p>Last updated: {datagroupsetSlice.sliceLastUpdated}</p>}
               {isUpdateMode ?
-                <UpdateDatagroupsetForm formModel={datagroupsetSlice} canSubmit={canUpdate} /> :
-                <CreateDatagroupsetForm formModel={datagroupsetSlice} canSubmit={canCreate} />}
+                <UpdateDatagroupsetForm formModel={datagroupsetSlice}
+                                        canSubmit={canUpdate}
+                                        onSubmitSuccess={this.onSubmitSuccess.bind(this)} /> :
+                <CreateDatagroupsetForm formModel={datagroupsetSlice}
+                                        canSubmit={canCreate}
+                                        onSubmitSuccess={this.onSubmitSuccess.bind(this)} />}
             </div>
           </div>
         </div>

@@ -4,11 +4,7 @@ export default {
   // requests: {},
   ui: {
     // toast: {},
-    pageDashboard: {},
-    pageDashboardWidget: {},
-    pageDataset: {},
-    pageDatasetDatapoint: {},
-    pageDatasetDatapointCreate: {}
+    pageDashboardWidgetDatagroupTimeseries: {}
   },
   // __CONFIG__
   config: {},
