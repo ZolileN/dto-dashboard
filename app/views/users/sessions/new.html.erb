@@ -12,7 +12,7 @@
 %>
 
 <div class="sign-in">
-  <h3>Sign in to GOV.AU Performance Dashboard Editor.</h3>
+  <h3>Sign in to the Editor</h3>
 
   <section class="sign-in-form">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -21,7 +21,7 @@
       <p class="alert"><%= alert %></p>
 
       <p>
-        <%= f.label :email %>
+        <%= f.label :email, 'Email address' %>
         <%= f.email_field :email, autofocus: true %>
       </p>
 
@@ -46,8 +46,6 @@
       </div>
 
     <% end %>
-
-    <br />
 
     <div class="sign-in-footer-links">
       <%= render "devise/shared/links" %>
