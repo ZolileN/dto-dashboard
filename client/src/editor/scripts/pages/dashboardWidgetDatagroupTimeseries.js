@@ -26,11 +26,11 @@ const mapStateToProps = (state, ownProps) => {
   const dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
   const widget = getWidgetById(state.widgets, ownProps.params.widget_id);
   const datagroupset = getDatagroupset(state, {widget});
-  const currentDatagroupset = getDatagroupsetSlice(datagroupset, ownProps.params.datagroup_key);
+  const datagroupsetSlice = getDatagroupsetSlice(datagroupset, ownProps.params.datagroup_key);
   return {
     dashboard,
     widget,
-    datagroupset: currentDatagroupset
+    datagroupsetSlice
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -46,10 +46,10 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
     let {
       widget,
       dashboard,
-      datagroupset
+      datagroupsetSlice
     } = this.props;
 
-    const isUpdateMode = Boolean(datagroupset.groups[0].datapoint);
+    const isUpdateMode = Boolean(datagroupsetSlice.groups[0].datapoint);
 
     return (
       <div className="page page-dashboardwidgetdatagrouptimeseries">
@@ -60,16 +60,16 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                 <Breadcrumbs paths={[
                   {path: '/', name:'Home'},
                   {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
-                  {path: '', name:`${widget.name} - ${datagroupset.sliceKey}`}
+                  {path: '', name:`${widget.name} - ${datagroupsetSlice.sliceKey}`}
                 ]} />
                 <h1 className="h4">{widget.name}</h1>
 
                 <div className="timeseries-pagination">
                   <span className="">{isUpdateMode ? 'Edit' : 'Create'} data for:</span>
                   <div>
-                    <span className="">{getExpandedShortDate(datagroupset.sliceKey)}</span>
-                    <Pagination prevKey={datagroupset.slicePrevKey}
-                                nextKey={datagroupset.sliceNextKey}
+                    <span className="">{getExpandedShortDate(datagroupsetSlice.sliceKey)}</span>
+                    <Pagination prevKey={datagroupsetSlice.slicePrevKey}
+                                nextKey={datagroupsetSlice.sliceNextKey}
                                 widgetId={widget.id}
                                 dashboardId={dashboard.id} />
                   </div>
@@ -80,10 +80,10 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              {isUpdateMode && <p>Last updated: {datagroupset.sliceLastUpdated}</p>}
+              {isUpdateMode && <p>Last updated: {datagroupsetSlice.sliceLastUpdated}</p>}
               {isUpdateMode ?
-                <UpdateDatagroupsetForm formModel={datagroupset} canSubmit={canUpdate} /> :
-                <CreateDatagroupsetForm formModel={datagroupset} canSubmit={canCreate} />}
+                <UpdateDatagroupsetForm formModel={datagroupsetSlice} canSubmit={canUpdate} /> :
+                <CreateDatagroupsetForm formModel={datagroupsetSlice} canSubmit={canCreate} />}
             </div>
           </div>
         </div>

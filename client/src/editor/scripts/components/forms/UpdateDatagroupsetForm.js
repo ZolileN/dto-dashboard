@@ -21,11 +21,12 @@ let UpdateDatagroupsetForm = ({
         models:formModel.groups,
         canSubmit
       }} />
+
       <div>
         <button type="submit"
                 className="btn primary"
                 disabled={!canSubmit || submitting}
-                onClick={handleSubmit(submit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
+                onClick={handleSubmit(submit.bind(this))}>{!canSubmit ? 'Published' : submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="cancel"
                 className='btn primary-link'
                 disabled={!canSubmit || submitting}
