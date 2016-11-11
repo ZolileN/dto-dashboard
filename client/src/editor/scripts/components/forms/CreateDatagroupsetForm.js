@@ -8,33 +8,27 @@ import { createDatagroupset } from './../../actions/datagroupset';
 
 
 let CreateDatagroupsetForm = ({
-  canUpdate, canCreate, formModel,
+  canSubmit, formModel,
   ...rfProps
 }) => {
 
   const { error, handleSubmit, pristine, valid, submitting } = rfProps;
 
-  const hasSavedValues = formModel.lastUpdated;
-  const notDisabled = canCreate && !hasSavedValues;
-  const disabled = !notDisabled;
-
   return (
     <form noValidate onSubmit={e => e.preventDefault()}>
 
-      {/*<FieldArray name="groups" component={renderFields} props={{*/}
-        {/*models:formModel.groups,*/}
-        {/*canUpdate,*/}
-        {/*canCreate,*/}
-        {/*disabled*/}
-      {/*}} />*/}
+      <FieldArray name="groups" component={renderFields} props={{
+        models:formModel.groups,
+        canSubmit
+      }} />
       <div>
         <button type="submit"
                 className="btn primary"
-                disabled={disabled || submitting}
+                disabled={!canSubmit || submitting}
                 onClick={handleSubmit(submit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="cancel"
                 className='btn primary-link'
-                disabled={disabled || submitting}
+                disabled={!canSubmit || submitting}
                 onClick={cancel.bind({}, rfProps)}>Cancel</button>
       </div>
       <div className="form__help-block">
@@ -44,7 +38,7 @@ let CreateDatagroupsetForm = ({
   )
 };
 
-const renderFields = ({fields, models, canUpdate, canCreate, disabled}) => {
+const renderFields = ({fields, models, canSubmit, disabled}) => {
   return (
     <div>
       {fields.map((member, idx) => {
@@ -53,11 +47,11 @@ const renderFields = ({fields, models, canUpdate, canCreate, disabled}) => {
             <Field name={`${member}.dataset.id`}
                    component={InputHidden} />
 
-            <Field name={`${member}.datapoint.value`}
+            <Field name={`${member}.value`}
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
                    fieldProps={{disabled}}
-                   optionProps={{canUpdate, canCreate}} />
+                   optionProps={{canSubmit}} />
           </fieldset>
         )
       })}
@@ -66,10 +60,11 @@ const renderFields = ({fields, models, canUpdate, canCreate, disabled}) => {
 };
 
 const submit = (values, dispatch, props) => {
+  debugger
   let formData = values.groups.map((g, idx) => {
     return {
-      value: g.datapoint ? g.datapoint.value : '',
-      ts: new Date(props.formModel.currentKey).toJSON(),
+      value: g.value || null,
+      ts: new Date(props.formModel.sliceKey).toJSON(),
       dataset_id: g.dataset.id
     }
   });

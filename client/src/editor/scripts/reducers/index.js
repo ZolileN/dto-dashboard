@@ -215,7 +215,7 @@ export const getDatagroupset = (state, {widget}) => {
     sliceKey,
     slicePrevKey: getPrevKey(key),
     sliceNextKey: getNextKey(key),
-    lastUpdated: '',
+    sliceLastUpdated: '',
     groups: [
       {
         dataset: {},
@@ -234,13 +234,12 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     sliceKey: null,
     slicePrevKey: null,
     sliceNextKey: null,
-    lastUpdated: null,
+    sliceLastUpdated: null,
     groups: []
   };
 
   let datapointItem = null;
   let sliceIndexArray = [];
-  let lastUpdated = null;
 
   if (!key) {
     key = datagroupset.recentKey;
@@ -278,7 +277,6 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     }
 
     if (!hasValidSlice) {
-      debugger
       state.groups = datagroupset.groups.map((g, idx) => {
         return {
           dataset: g.dataset,
@@ -289,9 +287,8 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
       state.groups = datagroupset.groups.map((g, idx) => {
         datapointItem = g.datapoints[sliceIndexArray[idx]];
 
-        if (!lastUpdated) {
-          lastUpdated = datapointItem.updated_at;
-          state.lastUpdated = lastUpdated;
+        if (state.sliceLastUpdated === null) {
+          state.sliceLastUpdated = datapointItem.updated_at;
         }
 
         return {

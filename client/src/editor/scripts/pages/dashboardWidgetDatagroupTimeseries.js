@@ -49,16 +49,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
       datagroupset
     } = this.props;
 
-    const isUpdateMode = datagroupset.groups[0].datapoint;
-
-    const Form = () => {
-      if (isUpdateMode) {
-        return <p>UpdateDatagroupsetForm</p>
-        {/*return <UpdateDatagroupsetForm formModel={datagroupset} canUpdate={canUpdate} />*/}
-      }
-      return <p>CreateDatagroupsetForm</p>
-      {/*return <CreateDatagroupsetForm formModel={datagroupset} canCreate={canCreate} />*/}
-    };
+    const isUpdateMode = Boolean(datagroupset.groups[0].datapoint);
 
     return (
       <div className="page page-dashboardwidgetdatagrouptimeseries">
@@ -89,8 +80,10 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
-              {isUpdateMode && <p>Last updated: {datagroupset.lastUpdated}</p>}
-              <Form />
+              {isUpdateMode && <p>Last updated: {datagroupset.sliceLastUpdated}</p>}
+              {isUpdateMode ?
+                <UpdateDatagroupsetForm formModel={datagroupset} canSubmit={canUpdate} /> :
+                <CreateDatagroupsetForm formModel={datagroupset} canSubmit={canCreate} />}
             </div>
           </div>
         </div>

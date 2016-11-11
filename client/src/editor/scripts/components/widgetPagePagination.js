@@ -17,8 +17,8 @@ const Pagination = ({nextKey, prevKey, dashboardId, widgetId}) => {
     <div>
       <Link to={prevUrl}>Left</Link>
       <Link to={nextUrl}
-            disabled={Boolean(nextKey)}
-            onClick={e => {if (!Boolean(nextKey)) return e.preventDefault()}}>Right</Link>
+            disabled={!nextUrl}
+            onClick={e => {if (!nextUrl) return e.preventDefault()}}>Right</Link>
     </div>
   )
 };
