@@ -7,7 +7,7 @@ import InputHidden from './../fields/inputHidden';
 import { createDatagroupset } from './../../actions/datagroupset';
 
 
-let UpdateDatagroupsetForm = ({
+let CreateDatagroupsetForm = ({
   canUpdate, canCreate, formModel,
   ...rfProps
 }) => {
@@ -17,7 +17,7 @@ let UpdateDatagroupsetForm = ({
   const hasSavedValues = formModel.lastUpdated;
   const notDisabled = canCreate && !hasSavedValues;
   const disabled = !notDisabled;
-debugger
+
   return (
     <form noValidate onSubmit={e => e.preventDefault()}>
 
@@ -65,7 +65,6 @@ const renderFields = ({fields, models, canUpdate, canCreate, disabled}) => {
   )
 };
 
-
 const submit = (values, dispatch, props) => {
   let formData = values.groups.map((g, idx) => {
     return {
@@ -110,20 +109,20 @@ const cancel = (rfProps, cb = null) => {
 };
 
 
-UpdateDatagroupsetForm = reduxForm({
-  form: 'UpdateDatagroupsetForm',
+CreateDatagroupsetForm = reduxForm({
+  form: 'CreateDatagroupsetForm',
   validate,
   deepEqual: true,
   destroyOnUnmount: false
-})(UpdateDatagroupsetForm);
+})(CreateDatagroupsetForm);
 
-UpdateDatagroupsetForm = connect(
+CreateDatagroupsetForm = connect(
   (state, ownProps) => ({
     enableReinitialize: true
   }),
   (dispatch, ownProps) => ({
     initialValues: ownProps.formModel
   })
-)(UpdateDatagroupsetForm);
+)(CreateDatagroupsetForm);
 
-export default UpdateDatagroupsetForm
+export default CreateDatagroupsetForm
