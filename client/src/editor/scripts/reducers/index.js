@@ -103,12 +103,6 @@ const headKey = getHeadKey();
  };
  */
 
-export const getDatagroupsets = (state, {widgets}) => {
-  return widgets.map(widget => {
-    return getDatagroupset(state, {widget});
-  })
-};
-
 export const getDatagroupset = (state, {widget}) => {
 
   let groupState = { // reminder: don't use by direct assignment
@@ -201,6 +195,13 @@ export const getDatagroupset = (state, {widget}) => {
 
   return datagroupset;
 
+};
+
+
+export const getDatagroupsets = (state, {widgets}) => {
+  return widgets.map(widget => {
+    return getDatagroupset(state, {widget});
+  })
 };
 
 
@@ -302,6 +303,13 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
   // console.log(state);
 
   return state;
+};
+
+
+export const getDatagroupsetSlices = (datagroupsets) => {
+  return datagroupsets.map(d => {
+    return getDatagroupsetSlice(d);
+  })
 };
 
 
