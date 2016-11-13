@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import reduceReducers from 'reduce-reducers';
 import { routerReducer } from 'react-router-redux'
+import { uniq, isObject } from 'lodash';
+import moment from 'moment';
 
 import * as types from './../actions/_types';
 
@@ -65,10 +67,15 @@ export default rootReducer;
 import { getDatasetById } from './../reducers/datasets';
 import { getDatapointsByIds } from './../reducers/datapoints';
 
-import { computeLabel, getMaxEditableLabel } from './../helpers/datapoint';
+import {
+  computeLabel,
+  getHeadKey,
+  getPrevKey,
+  getNextKey
+} from './../helpers/datapoint';
 
 
-const maxLabel = getMaxEditableLabel();
+const headKey = getHeadKey();
 
 
 /*
@@ -81,7 +88,6 @@ const maxLabel = getMaxEditableLabel();
  currentLastUpdated: null,
  hasRecent: null,
  recentKey: null,              // most recent saved key
- recentLastUpdated: null,
  groups: [
   {
    key: null,
@@ -97,19 +103,11 @@ const maxLabel = getMaxEditableLabel();
  };
  */
 
-export const getDatagroupsets = (state, {widgets}) => {
-  return widgets.map(widget => {
-    return getDatagroupset(state, {widget});
-  })
-};
-
 export const getDatagroupset = (state, {widget}) => {
 
   let groupState = { // reminder: don't use by direct assignment
     dataset: null,
-    datapoints: null,
-    headDatapointIdx: null,
-    recentDatapointIdx: null
+    datapoints: null
   };
 
   // initialise the groupset
@@ -120,19 +118,14 @@ export const getDatagroupset = (state, {widget}) => {
     groups: [],
 
     // maximum tip of possible data to save
-    hasHead: null,            // i have the max tip saved
-    headKey: maxLabel,        // the url segment identifier of the set
-
-    // i am looking a single slice of data in time
-    currentKey: null,
-    currentLastUpdated: null, // the url segment identifier of the set
+    hasHead: null,
+    headKey: headKey,        // the url segment identifier of the set
 
     // the last saved data in time
-    hasRecent: null,          // recent data exists
-    recentKey: null,          // the url segment identifier of the set
-    recentLastUpdated: null,  //
+    _recentDatpointIdxArr: [],
+    hasRecent: null,
+    recentKey: null          // the url segment identifier of the set
   };
-
 
   if (!widget.datasets.length) {
 
@@ -150,157 +143,173 @@ export const getDatagroupset = (state, {widget}) => {
     datagroupset.type = 'time-series';
 
     datagroupset.groups = widget.datasets.map(datasetId => {
-
       let group = {...groupState};
 
       group.dataset = getDatasetById(state.datasets, datasetId);
       group.datapoints = getDatapointsByIds(state.datapoints, group.dataset.datapoints);
 
-      group.datapoints.some((dp, idx) => {
-        if (computeLabel(dp.ts) === maxLabel) {
-          if (datagroupset.hasHead === null) {
-            datagroupset.hasHead = true;
-          }
-          group.headDatapointIdx = idx;
-          //Exit from the loop
-          return true;
+      group.datapoints.forEach((dp, idx) => {
+        if (!datagroupset.hasHead && computeLabel(dp.ts) === headKey) {
+          datagroupset.hasHead = true;
         }
       });
 
-
       if (group.datapoints && group.datapoints.length) {
-        group.recentDatapointIdx = group.datapoints.reduce((acc, el, idx, arr) => {
-          let nextEl = arr[idx + 1];
-            if (nextEl && nextEl.ts) {
-              if (el.ts > new Date(nextEl.ts)) {
-                return idx; // update the stored index
-              }
-              return idx+1; // update the stored index
-            }
-            return acc; // return recentDatapointIdx
-        }, 0);  // let recentDatapointIdx start at 0
-        console.log(group.dataset.name, group.recentDatapointIdx, group.datapoints, group.datapoints[group.recentDatapointIdx]);
+        let recentIdx = group.datapoints.reduce((iMax, el, i, arr) => {
+          return moment(el.ts) > moment(arr[iMax].ts) ? i : iMax;
+        }, 0);
+        datagroupset._recentDatpointIdxArr.push(recentIdx);
       }
-      return group;
 
+      return group;
     });
 
 
-    // meta
+    // validate and meta
+    //
 
-    datagroupset.hasRecent = datagroupset.groups[0].recentDatapointIdx !== null && datagroupset.groups[0].recentDatapointIdx >= 0;
-    if (datagroupset.hasRecent) {
-      let item = datagroupset.groups[0].datapoints[datagroupset.groups[0].recentDatapointIdx];
-      if (item) {
-        datagroupset.recentKey = computeLabel(item.ts);
-        datagroupset.lastUpdated = item.last_updated_at;
-      }
+    // has datapoints and all datapoints are valid objects
+    let hasValidRecent = datagroupset._recentDatpointIdxArr.length && datagroupset.groups.every((g, idx) => {
+      let index = datagroupset._recentDatpointIdxArr[idx];
+      return isObject(g.datapoints[index]);
+    });
+    // keys are out of sync - if they have the same data length should be 1
+    let hasOutOfSyncKeys = uniq(datagroupset._recentDatpointIdxArr).length > 1;
+
+    if (hasValidRecent === false) {
+      console.warn(`has no recent data for datagroupset: `, datagroupset);
+    }
+    if (hasOutOfSyncKeys) {
+      console.warn(`recent data is out of sync for datagroupset: `, datagroupset);
     }
 
-    console.log(datagroupset);
+    if (hasValidRecent) {
+      let item = datagroupset.groups[0].datapoints[datagroupset._recentDatpointIdxArr[0]];
+      datagroupset.hasRecent = true;
+      datagroupset.recentKey = computeLabel(item.ts);
+    }
 
     // end curate
 
   }
 
-
   return datagroupset;
 
 };
 
-// filter by recent
-export const getRecentDatagroupsetSlice = (datagroupsetState) => {
-  let lastUpdated;
+
+export const getDatagroupsets = (state, {widgets}) => {
+  return widgets.map(widget => {
+    return getDatagroupset(state, {widget});
+  })
+};
 
 
+/**
+ * Get a datagroupset slice in time
+ * @param datagroupset {Object}
+ * @param key {string} (optional) - the key to slice at or none to fetch recent
+ * @returns
 
+  state = {
+    ...datagroupset,
+    sliceKey,
+    slicePrevKey: getPrevKey(key),
+    sliceNextKey: getNextKey(key),
+    sliceLastUpdated: '',
+    groups: [
+      {
+        dataset: {},
+        datapoint: {}
+      }
+    ]
+  };
+
+ *
+ */
+
+export const getDatagroupsetSlice = (datagroupset, key = null) => {
 
   let state = {
-    ...datagroupsetState,
-    groups: datagroupsetState.groups.map(((group, idx) => {
+    ...datagroupset,
+    sliceKey: null,
+    slicePrevKey: null,
+    sliceNextKey: null,
+    sliceLastUpdated: null,
+    groups: []
+  };
 
-      // console.log(group.dataset.name, group.recentDatapointIdx, group.datapoints);
+  let datapointItem = null;
+  let sliceIndexArray = [];
 
-      if (!lastUpdated && group.datapoints.length) {
-        lastUpdated = group.datapoints[idx].ts;
-      }
-      if (group.datapoints.length) {
+  if (!key) {
+    key = datagroupset.recentKey;
+  }
+
+  state.sliceKey = key;
+  state.slicePrevKey = getPrevKey(key);
+  state.sliceNextKey = getNextKey(datagroupset.headKey, key);
 
 
-        const item = group.datapoints[group.recentDatapointIdx];
+  if (datagroupset.groups.length) {
+
+    // validate and meta
+    //
+    datagroupset.groups.forEach((g, idx) => {
+      g.datapoints.forEach((dp, idx2) => {
+        if (computeLabel(dp.ts) === key) {
+          sliceIndexArray.push(idx2);
+        }
+      });
+    });
+
+    // has slice index and corresponds to a valid datapoint
+    let hasValidSlice = datagroupset.groups.every((g,idx) => {
+      return isObject(g.datapoints[sliceIndexArray[idx]]);
+    });
+    // keys are in sync - they all have the same date
+    let hasOutOfSyncKeys = uniq(sliceIndexArray).length > 1;
+
+    if (!hasValidSlice) {
+      console.log(`No datapoint for this slice: `, datagroupset);
+    }
+    if (hasOutOfSyncKeys) {
+      console.warn(`Data is out of sync for slice datagroupset: `, datagroupset);
+    }
+
+    if (!hasValidSlice) {
+      state.groups = datagroupset.groups.map((g, idx) => {
+        return {
+          dataset: g.dataset,
+          datapoint: null
+        }
+      });
+    } else {
+      state.groups = datagroupset.groups.map((g, idx) => {
+        datapointItem = g.datapoints[sliceIndexArray[idx]];
+
+        if (state.sliceLastUpdated === null) {
+          state.sliceLastUpdated = datapointItem.updated_at;
+        }
 
         return {
-          dataset: group.dataset,
-          datapoint: item,
-          isHead: computeLabel(item.ts) === maxLabel
+          dataset: g.dataset,
+          datapoint: datapointItem
         }
-      } else {
-        console.warn('no recent datapoints', datagroupsetState);
-      }
-    }))
-  };
-  if (lastUpdated) {
-    state.recentLastUpdated = lastUpdated;
+      });
+    }
   }
+
+  // console.log(state);
+
   return state;
 };
 
-// filter by current
-export const getCurrentDatagroupsetSlice = (datagroupsetState, datagroupKey) => {
-  let indexOfCurrent = null,
-    lastUpdated;
 
-  datagroupsetState.groups.forEach((g, idx) => {
-    if (indexOfCurrent === null) {
-      g.datapoints.forEach((dp, idx2) => {
-        if (computeLabel(dp.ts) === datagroupKey) {
-          indexOfCurrent = idx2;
-        }
-      })
-    }
-  });
-  if (indexOfCurrent === null){
-    console.log('no current data for datagroupset', datagroupsetState);
-  }
-
-  let state = {
-    ...datagroupsetState,
-    currentKey: datagroupKey,
-    groups: datagroupsetState.groups.map((group => {
-
-      if (indexOfCurrent === null) {
-        return {
-          dataset: group.dataset,
-          datapoint: null,
-          isHead: false
-        }
-      }
-
-      const item = group.datapoints[indexOfCurrent];
-      if (!item) {
-        return {
-          dataset: group.dataset,
-          datapoint: null,
-          isHead: false
-        }
-      } else {
-
-        if (!lastUpdated) {
-          lastUpdated = item.ts;
-        }
-        return {
-          dataset: group.dataset,
-          datapoint: item,
-          isHead: item.ts === maxLabel
-        }
-      }
-
-    }))
-  };
-  if (lastUpdated) {
-    state.currentLastUpdated = lastUpdated;
-  }
-  return state;
+export const getDatagroupsetSlices = (datagroupsets) => {
+  return datagroupsets.map(d => {
+    return getDatagroupsetSlice(d);
+  })
 };
 
 

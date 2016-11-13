@@ -7,9 +7,9 @@ import { getDashboardById } from './../reducers/dashboards';
 import { getWidgetsByDashboardId } from './../reducers/widgets';
 import {
   getDatagroupsets,
+  getDatagroupsetSlices,
   filterDatagroupsetByHeroWidget,
   filterDatagroupsetsByBtlWidgets,
-  getRecentDatagroupsetSlice
 } from './../reducers/index';
 
 import * as uiActions from './../actions/ui';
@@ -25,15 +25,14 @@ import {
 } from './../utils/urlHelpers';
 
 
-
 const mapStateToProps = (state, ownProps) => {
   let dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
   let widgets = getWidgetsByDashboardId(state.widgets, dashboard.id);
   let datagroupsets = getDatagroupsets(state, {widgets});
+  let datagroupsetSlices = getDatagroupsetSlices(datagroupsets, ownProps.params.datagroup_key);
   return {
     dashboard,
-    // heroDatagroupset: filterDatagroupsetByHeroWidget(datagroupsets),
-    btlDatagroupsets: filterDatagroupsetsByBtlWidgets(datagroupsets)
+    datagroupsetSlices
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -46,11 +45,17 @@ class PageDashboardWidgets extends Component {
   render() {
     let {
       dashboard,
-      // heroDatagroupset,
-      btlDatagroupsets
+      datagroupsetSlices
     } = this.props;
 
-    // const recentHeroDatagroupset = getRecentDatagroupsetSlice(heroDatagroupset);
+    let heroDatagroupsetSlice = {}
+    const displayHero = dashboard.display_hero;
+    if (displayHero) {
+      heroDatagroupsetSlice = filterDatagroupsetByHeroWidget(datagroupsetSlices);
+    }
+
+    const btlDatagroupsetsSlices = filterDatagroupsetsByBtlWidgets(datagroupsetSlices);
+
 
     return (
       <div className="page page-dashboardwidgets">
@@ -79,28 +84,28 @@ class PageDashboardWidgets extends Component {
 
               <section className="widget-list">
 
-                {/*<WidgetTypeTimeSeries*/}
-                  {/*recentDatagroupset={recentHeroDatagroupset}*/}
-                  {/*addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, recentHeroDatagroupset.headKey)}*/}
-                  {/*editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, recentHeroDatagroupset.recentKey)}*/}
-                  {/*editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, recentHeroDatagroupset.id)}*/}
-                  {/*dashboard={dashboard} />*/}
+                {displayHero && <WidgetTypeTimeSeries
+                  recentDatagroupset={heroDatagroupsetSlice}
+                  addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceNextKey)}
+                  editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceKey)}
+                  editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
+                  dashboard={dashboard} />}
 
 
-                {btlDatagroupsets.map((datagroupset, idx) => {
-                  if (datagroupset.type === 'simple') {
+                {btlDatagroupsetsSlices.map((slice, idx) => {
+                  if (slice.type === 'simple') {
                     return <WidgetTypeSimple key={idx}
-                               editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, datagroupset.widget.id)}
-                               widget={datagroupset.widget}
+                               editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, slice.widget.id)}
+                               widget={slice.widget}
                                dashboard={dashboard} />
                   }
-                  else if (datagroupset.type === 'time-series') {
-                    const recentDatagroupset = getRecentDatagroupsetSlice(datagroupset);
+                  else if (slice.type === 'time-series') {
+
                     return <WidgetTypeTimeSeries key={idx}
-                               recentDatagroupset={recentDatagroupset}
-                               addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, datagroupset.widget.id, datagroupset.headKey)}
-                               editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, datagroupset.widget.id, datagroupset.recentKey)}
-                               editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, datagroupset.widget.id)}
+                               recentDatagroupset={slice}
+                               addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceNextKey)}
+                               editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceKey)}
+                               editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
                                dashboard={dashboard} />
                   }
                 })}

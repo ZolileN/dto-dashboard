@@ -7,7 +7,7 @@ import InputHidden from './../fields/inputHidden';
 import { createDatagroupset } from './../../actions/datagroupset';
 
 
-let UpdateDatagroupsetForm = ({
+let CreateDatagroupsetForm = ({
   canSubmit, formModel,
   ...rfProps
 }) => {
@@ -21,12 +21,11 @@ let UpdateDatagroupsetForm = ({
         models:formModel.groups,
         canSubmit
       }} />
-
       <div>
         <button type="submit"
                 className="btn primary"
                 disabled={!canSubmit || submitting}
-                onClick={handleSubmit(submit.bind(this))}>{!canSubmit ? 'Published' : submitting ? 'Publishing...' : 'Publish'}</button>
+                onClick={handleSubmit(submit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="cancel"
                 className='btn primary-link'
                 disabled={!canSubmit || submitting}
@@ -48,7 +47,7 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
             <Field name={`${member}.dataset.id`}
                    component={InputHidden} />
 
-            <Field name={`${member}.datapoint.value`}
+            <Field name={`${member}.value`}
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
                    fieldProps={{disabled}}
@@ -60,36 +59,35 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
   )
 };
 
-
 const submit = (values, dispatch, props) => {
+  debugger
   let formData = values.groups.map((g, idx) => {
     return {
-      value: g.datapoint ? g.datapoint.value : '',
+      value: g.value || null,
       ts: new Date(props.formModel.sliceKey).toJSON(),
       dataset_id: g.dataset.id
     }
   });
 
   return new Promise((resolve, reject) => {
-    resolve();
-  //   dispatch(updateDatagroupset(formData)) // todo
-  //     .then(
-  //       (data) => { // promise success
-  //         if (data && data.length) {
-  //           return resolve();
-  //         }
-  //         // server error
-  //         // return reject({message: data.message || 'Server error'});
-  //         debugger
-  //         return reject({message:'Server error'});
-  //       },
-  //       (error) => { // promise failed
-  //         return reject(error);
-  //       },
-  //     ).catch((error) => {
-  //       debugger
-  //       throw new SubmissionError({_error: error.message || 'Submit failed'});
-  //     });
+    dispatch(createDatagroupset(formData))
+      .then(
+        (data) => { // promise success
+          if (data && data.length) {
+            return resolve();
+          }
+          // server error
+          // return reject({message: data.message || 'Server error'});
+          debugger
+          return reject({message:'Server error'});
+        },
+        (error) => { // promise failed
+          return reject(error);
+        },
+      ).catch((error) => {
+        debugger
+        throw new SubmissionError({_error: error.message || 'Submit failed'});
+      });
   });
 };
 
@@ -106,20 +104,20 @@ const cancel = (rfProps, cb = null) => {
 };
 
 
-UpdateDatagroupsetForm = reduxForm({
-  form: 'UpdateDatagroupsetForm',
+CreateDatagroupsetForm = reduxForm({
+  form: 'CreateDatagroupsetForm',
   validate,
   deepEqual: true,
   destroyOnUnmount: false
-})(UpdateDatagroupsetForm);
+})(CreateDatagroupsetForm);
 
-UpdateDatagroupsetForm = connect(
+CreateDatagroupsetForm = connect(
   (state, ownProps) => ({
     enableReinitialize: true
   }),
   (dispatch, ownProps) => ({
     initialValues: ownProps.formModel
   })
-)(UpdateDatagroupsetForm);
+)(CreateDatagroupsetForm);
 
-export default UpdateDatagroupsetForm
+export default CreateDatagroupsetForm

@@ -13,7 +13,6 @@ const WidgetTypeTimeSeries = ({
 }) => {
 
   const canUpdate = FLAG_UDPATE_DATAGROUP;
-  const disableUpdate = !canUpdate;
 
 
   return (
@@ -23,8 +22,8 @@ const WidgetTypeTimeSeries = ({
           <h1 className="h5">{recentDatagroupset.widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Key: {recentDatagroupset.recentKey}</span>
-          {/*<span className="date-meta">Last updated: {humanisedShortDate(recentDatagroupset.recentLastUpdated)}</span>*/}
+          <span className="date-meta">Key: {recentDatagroupset.sliceKey}</span>
+          <span className="date-meta">Last updated: {humanisedShortDate(recentDatagroupset.sliceLastUpdated)}</span>
         </div>
       </header>
 
@@ -37,11 +36,11 @@ const WidgetTypeTimeSeries = ({
                 disabled={recentDatagroupset.hasHead}
                 onClick={e => {if (recentDatagroupset.hasHead) return e.preventDefault()}}>Add data</Link><br/>
           <Link to={editUrl}
-                disabled={disableUpdate}
-                onClick={e => disableUpdate && e.preventDefault()}>Edit data</Link><br/>
+                disabled={!canUpdate}
+                onClick={e => !canUpdate && e.preventDefault()}>Edit data</Link><br/>
           <Link to={editDescriptionsUrl}
-                disabled={disableUpdate}
-                onClick={e => disableUpdate && e.preventDefault()}>Edit KPI descriptions</Link><br/>
+                disabled={!canUpdate}
+                onClick={e => !canUpdate && e.preventDefault()}>Edit KPI descriptions</Link><br/>
         </div>
       </div>
     </article>
