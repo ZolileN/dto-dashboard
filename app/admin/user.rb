@@ -3,6 +3,12 @@ ActiveAdmin.register User do
 
   filter :email
 
+  actions :all, :except => [:new]
+
+  action_item :view, only: :index do
+    link_to 'Invite user', new_user_invitation_path
+  end
+
   index do
     selectable_column
     column :email
