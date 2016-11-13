@@ -4,7 +4,7 @@ import { Field, FieldArray, reduxForm, SubmissionError } from 'redux-form';
 
 import DatagroupsetInput from './../fields/datagroupsetInput';
 import InputHidden from './../fields/inputHidden';
-import { createDatagroupset } from './../../actions/datagroupset';
+import { updateDatagroupset } from './../../actions/datagroupset';
 
 
 let UpdateDatagroupsetForm = ({
@@ -71,25 +71,24 @@ const submit = (values, dispatch, props) => {
   });
 
   return new Promise((resolve, reject) => {
-    resolve();
-  //   dispatch(updateDatagroupset(formData)) // todo
-  //     .then(
-  //       (data) => { // promise success
-  //         if (data && data.length) {
-  //           return resolve();
-  //         }
-  //         // server error
-  //         // return reject({message: data.message || 'Server error'});
-  //         debugger
-  //         return reject({message:'Server error'});
-  //       },
-  //       (error) => { // promise failed
-  //         return reject(error);
-  //       },
-  //     ).catch((error) => {
-  //       debugger
-  //       throw new SubmissionError({_error: error.message || 'Submit failed'});
-  //     });
+    dispatch(updateDatagroupset(formData))
+      .then(
+        (data) => { // promise success
+          if (data && data.length) {
+            return resolve();
+          }
+          // server error
+          // return reject({message: data.message || 'Server error'});
+          debugger
+          return reject({message:'Server error'});
+        },
+        (error) => { // promise failed
+          return reject(error);
+        },
+      ).catch((error) => {
+        debugger
+        throw new SubmissionError({_error: error.message || 'Submit failed'});
+      });
   });
 };
 

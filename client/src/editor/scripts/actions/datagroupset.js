@@ -2,7 +2,7 @@ import { pick } from 'lodash';
 import * as types from "./_types";
 
 
-export const createDatagroupset = formData => {
+export const updateDatagroupset = formData => {
 
   return (dispatch, getState) => {
     const config = getState().config;
