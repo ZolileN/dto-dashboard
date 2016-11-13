@@ -91,7 +91,7 @@ const submit = (values, dispatch, props) => {
   //       debugger
   //       throw new SubmissionError({_error: error.message || 'Submit failed'});
   //     });
-  // });
+  });
 };
 
 const validate = (values, props) => {   // todo - validate
