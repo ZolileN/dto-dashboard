@@ -4,7 +4,9 @@ import { Field, FieldArray, reduxForm, SubmissionError } from 'redux-form';
 
 import DatagroupsetInput from './../fields/datagroupsetInput';
 import InputHidden from './../fields/inputHidden';
-// import { createDatagroupset } from './../../actions/datagroupset';
+import { createDatagroupset } from './../../actions/datagroupset';
+import { setToast } from './../../actions/toast';
+import { getHumanisedMonth } from './../../utils/humanisedDates';
 
 
 let CreateDatagroupsetForm = ({
@@ -69,28 +71,30 @@ const submit = (values, dispatch, props) => {
     }
   });
 
-
-
   return new Promise((resolve, reject) => {
-    resolve();
-  //   dispatch(createDatagroupset(formData))
-  //     .then(
-  //       (data) => { // promise success
-  //         if (data && data.length) {
-  //           return resolve();
-  //         }
-  //         // server error
-  //         // return reject({message: data.message || 'Server error'});
-  //         debugger
-  //         return reject({message:'Server error'});
-  //       },
-  //       (error) => { // promise failed
-  //         return reject(error);
-  //       },
-  //     ).catch((error) => {
-  //       debugger
-  //       throw new SubmissionError({_error: error.message || 'Submit failed'});
-  //     });
+    dispatch(createDatagroupset(formData))
+      .then(
+        (data) => { // promise success
+          if (data && data.length) {
+            dispatch(setToast(`Published data for: ${getHumanisedMonth(data[0].ts)} -
+              ${data.map((el, idx) => {
+                return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? 'No data' : el.value}` 
+              })}
+            `, 'success'));
+            return resolve();
+          }
+          // server error
+          // return reject({message: data.message || 'Server error'});
+          debugger
+          return reject({message:'Server error'});
+        },
+        (error) => { // promise failed
+          return reject(error);
+        },
+      ).catch((error) => {
+        debugger
+        throw new SubmissionError({_error: error.message || 'Submit failed'});
+      });
   });
 };
 

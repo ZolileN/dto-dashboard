@@ -19,8 +19,8 @@ import Pagination from './../components/widgetPagePagination';
 import * as uiActions from './../actions/ui';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import { getExpandedShortDate } from './../utils/humanisedDates';
-import CreateDatagroupsetForm from './../components/forms/CreateDatagroupsetForm';
-import UpdateDatagroupsetForm from './../components/forms/UpdateDatagroupsetForm';
+import CreateDatagroupsetForm from './../components/forms/createDatagroupsetForm';
+import UpdateDatagroupsetForm from './../components/forms/updateDatagroupsetForm';
 
 
 const mapStateToProps = (state, ownProps) => {

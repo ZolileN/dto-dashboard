@@ -17,3 +17,7 @@ export const humanisedVeryShortDate = ts => {
 export const getExpandedShortDate = key => {
   return moment(key).format(`MMMM 'YY`);
 };
+
+export const getHumanisedMonth = ts => {
+  return moment(ts).format('m');
+};

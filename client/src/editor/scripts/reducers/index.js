@@ -318,6 +318,7 @@ export const filterDatagroupsetByHeroWidget = datagroupsets => {
     return d.widget.type === 'full';
   });
 };
+
 export const filterDatagroupsetsByBtlWidgets = datagroupsets => {
   return datagroupsets.filter(d => {
     return !(d.widget.type === 'full' || d.widget.type === 'kpi-sparkline');

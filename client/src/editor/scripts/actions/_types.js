@@ -12,8 +12,8 @@ export const UPDATE_DATAGROUPSET = 'datagroupset/update';
 // export const APP_REQUEST_SUCCESS = 'request/markSuccess';
 // export const APP_REQUEST_FAILED = 'request/markFailed';
 //
-// export const SET_TOAST = 'app/setToast';
-// export const CLEAR_TOAST = 'app/clearToast';
+export const SET_TOAST = 'app/setToast';
+export const CLEAR_TOAST = 'app/clearToast';
 
 // export const UPDATE_DASHBOARD = 'dashboard/update';
 //

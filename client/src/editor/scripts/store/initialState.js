@@ -3,7 +3,7 @@ export default {
   app: {},
   // requests: {},
   ui: {
-    // toast: {},
+    toast: {},
     pageDashboardWidgetDatagroupTimeseries: {}
   },
   // __CONFIG__

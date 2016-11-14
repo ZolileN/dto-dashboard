@@ -2,7 +2,7 @@ import { pick } from 'lodash';
 import * as types from "./_types";
 
 
-export const updateDatagroupset = formData => {
+export const createDatagroupset = formData => {
 
   return (dispatch, getState) => {
     const config = getState().config;
@@ -40,7 +40,6 @@ export const updateDatagroupset = formData => {
 
     return Promise.all(promises)
       .then(responses => {
-        debugger
         responses.map(data => {
           dispatch({
             type: types.UPDATE_DATAGROUPSET,
