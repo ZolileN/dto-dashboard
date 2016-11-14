@@ -165,6 +165,15 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 yarn run test
 ```
 
+#### Issues with npm
+
+```
+rm -rf node_modules
+npm cache clean
+yarn install 
+```
+
+
 ## Tests
 
 ```
