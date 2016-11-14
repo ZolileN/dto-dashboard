@@ -10,7 +10,7 @@
 
 # charts
 - legend colors should be meaningful (or at least consistent) like KPI colors are meaningful
-
+- deprecate stacking:true, instead have type=stacked-bar
 
 
 

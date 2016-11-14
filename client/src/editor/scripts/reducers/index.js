@@ -133,7 +133,6 @@ export const getDatagroupset = (state, {widget}) => {
     //
 
     // no datasets, assume this means type is simple
-    // *then exit*
     datagroupset.type = 'simple';
 
   } else {
@@ -196,7 +195,6 @@ export const getDatagroupset = (state, {widget}) => {
   return datagroupset;
 
 };
-
 
 export const getDatagroupsets = (state, {widgets}) => {
   return widgets.map(widget => {
@@ -305,13 +303,11 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
   return state;
 };
 
-
 export const getDatagroupsetSlices = (datagroupsets) => {
   return datagroupsets.map(d => {
     return getDatagroupsetSlice(d);
   })
 };
-
 
 export const filterDatagroupsetByHeroWidget = datagroupsets => {
   return datagroupsets.find(d => {

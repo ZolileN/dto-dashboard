@@ -21,6 +21,7 @@ import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import { getExpandedShortDate } from './../utils/humanisedDates';
 import CreateDatagroupsetForm from './../components/forms/createDatagroupsetForm';
 import UpdateDatagroupsetForm from './../components/forms/updateDatagroupsetForm';
+import metadata from './../data/widgetMetadata';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -41,6 +42,13 @@ const mapDispatchToProps = dispatch => ({
 
 class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      metadata: (this.props.widget.type && this.props.widget.units) ? metadata[this.props.widget.type][this.props.widget.units] : null
+    };
+  }
+
   onSubmitSuccess() {
     this.props.push(getDashboardWidgetsUrl(this.props.dashboard.id));
   }
@@ -55,6 +63,10 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
       datagroupsetSlice
     } = this.props;
 
+    let {
+      metadata
+    } = this.state;
+
     const isUpdateMode = Boolean(datagroupsetSlice.groups[0].datapoint);
 
     return (
@@ -68,7 +80,9 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                   {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
                   {path: '', name:`${widget.name} - ${datagroupsetSlice.sliceKey}`}
                 ]} />
-                <h1 className="h4">{widget.name}</h1>
+                <h1 className="h4">{metadata.label || widget.name}</h1>
+
+                {metadata.widget_help && <p>{metadata.widget_help}</p>}
 
                 <div className="timeseries-pagination">
                   <span className="">{isUpdateMode ? 'Edit' : 'Create'} data for:</span>
@@ -86,6 +100,9 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
           <div className="row">
             <div className="col-xs-12 col-lg-8">
+
+              {metadata.widget_form_help && <p>{metadata.widget_form_help}</p>}
+
               {isUpdateMode && <p>Last updated: {datagroupsetSlice.sliceLastUpdated}</p>}
               {isUpdateMode ?
                 <UpdateDatagroupsetForm formModel={datagroupsetSlice}
