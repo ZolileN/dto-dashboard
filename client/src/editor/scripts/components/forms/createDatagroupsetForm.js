@@ -88,7 +88,8 @@ const submit = (values, dispatch, props) => {
           return reject({message:'Server error'});
         },
         (error) => { // promise failed
-          return reject(error);
+          debugger
+          return reject({message:error});
         },
       ).catch((error) => {
         debugger
@@ -97,8 +98,26 @@ const submit = (values, dispatch, props) => {
   });
 };
 
-const validate = (values, props) => {   // todo - validate
+
+// not much point to validate if only one field
+const validate = (values, props) => {
+
   const errors = {};
+  const memberArrayErrors = [];
+
+  values.groups.forEach((member, idx) => {
+    const memberErrors = {};
+
+    if (!member || !member.value) {
+      memberErrors.firstName = 'Required';
+      memberArrayErrors[idx] = memberErrors;
+    }
+  });
+
+  if (memberArrayErrors.length) {
+    errors.groups = memberArrayErrors;
+  }
+
   return errors;
 };
 
