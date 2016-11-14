@@ -34,26 +34,35 @@ class DashboardWidgetDescriptionsPage extends Component {
 
     return (
       <div className="page page-dashboardwidgetdescriptions">
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
-              <div className="page__header">
+
+        <div className="page__header">
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+
                 <Breadcrumbs paths={[
-                  {path: '/', name:'Home'},
-                  {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
-                  {path: '', name:`Labels and descriptions`}
-                ]} />
+                    {path: '/', name:'Home'},
+                    {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
+                    {path: '', name:`Labels and descriptions`}
+                  ]} />
+
                 <h1 className="h4">{widget.name}: Labels and descriptions</h1>
+
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
-              DashboardWidgetDescriptions
+        <div className="container">
+          <div className="page__body">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+                DashboardWidgetDescriptions
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     )
   }

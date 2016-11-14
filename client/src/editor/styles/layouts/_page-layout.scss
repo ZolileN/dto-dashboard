@@ -1,0 +1,23 @@
+.page {
+  &__header {
+    padding: $spacer/2 0;
+
+    background: $color-background-blue;
+
+    h1 {
+      line-height: 1;
+
+      @media (min-width:$screen-md) {
+        padding-top: 1em;
+      }
+    }
+
+    .title-description {
+      color: $color-text-grey;
+    }
+  }
+
+  &__body {
+    padding: map-get(map-get($spacers, 2), y) 0;  // todo - create helper function for access
+  }
+}

@@ -77,70 +77,79 @@ class PageDashboardWidgets extends Component {
 
     return (
       <div className="page page-dashboardwidgets" ref="page">
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
-              <div className="page__header">
+
+        <div className="page__header">
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+
                 <Breadcrumbs paths={[
-                  {path: '/', name:'Home'},
+                  {path: '/', name:'Manage Dashboards'},
                   {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
                 ]} />
-                <h1 className="h4">Manage Dashboards</h1>
-              </div>
-            </div>
-          </div>
 
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
-              <div className="page-dashboardwidgets__title-block">
                 <h1>{dashboard.name}</h1>
-                <p>{dashboard.description}</p>
-                <Link to={getDashboardUrl(dashboard.id)}
-                      disabled={true}
-                      onClick={e => e.preventDefault()}>Edit dashboard overview</Link>
+
+                <p className="title-description">Edit service overview</p>
+
               </div>
-
-              <section className="widget-list">
-
-                {heroDatagroupsetSlice && <div ref={String(heroDatagroupsetSlice.widget.id)}>
-                  <WidgetTypeTimeSeries
-                  recentDatagroupset={heroDatagroupsetSlice}
-                  addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceNextKey)}
-                  editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceKey)}
-                  editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
-                  dashboard={dashboard} />
-                </div>}
-
-
-                {btlDatagroupsetsSlices.map((slice, idx) => {
-                  if (slice.type === 'simple') {
-                    return (
-                      <div key={idx} ref={String(slice.widget.id)}>
-                        <WidgetTypeSimple editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, slice.widget.id)}
-                                          widget={slice.widget}
-                                          dashboard={dashboard} />
-                      </div>
-                    )
-
-
-
-                  }
-                  else if (slice.type === 'time-series') {
-                    return (
-                      <div key={idx} ref={String(slice.widget.id)}>
-                        <WidgetTypeTimeSeries recentDatagroupset={slice}
-                                              addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceNextKey)}
-                                              editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceKey)}
-                                              editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
-                                              dashboard={dashboard} />
-                      </div>
-                    )
-                  }
-                })}
-              </section>
             </div>
           </div>
         </div>
+
+        <div className="container">
+          <div className="page__body">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+
+                {/*<div className="page-dashboardwidgets__title-block">*/}
+                  {/*<p>{dashboard.description}</p>*/}
+                  {/*<Link to={getDashboardUrl(dashboard.id)}*/}
+                        {/*disabled={true}*/}
+                        {/*onClick={e => e.preventDefault()}>Edit dashboard overview</Link>*/}
+                {/*</div>*/}
+
+                <section className="widget-list">
+
+                  {heroDatagroupsetSlice && <div ref={String(heroDatagroupsetSlice.widget.id)}>
+                    <WidgetTypeTimeSeries
+                      recentDatagroupset={heroDatagroupsetSlice}
+                      addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceNextKey)}
+                      editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceKey)}
+                      editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
+                      dashboard={dashboard} />
+                  </div>}
+
+
+                  {btlDatagroupsetsSlices.map((slice, idx) => {
+                    if (slice.type === 'simple') {
+                      return (
+                        <div key={idx} ref={String(slice.widget.id)}>
+                          <WidgetTypeSimple editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, slice.widget.id)}
+                                            widget={slice.widget}
+                                            dashboard={dashboard} />
+                        </div>
+                      )
+                    }
+                    else if (slice.type === 'time-series') {
+                      return (
+                        <div key={idx} ref={String(slice.widget.id)}>
+                          <WidgetTypeTimeSeries recentDatagroupset={slice}
+                                                addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceNextKey)}
+                                                editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceKey)}
+                                                editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
+                                                dashboard={dashboard} />
+                        </div>
+                      )
+                    }
+                  })}
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     )
   }

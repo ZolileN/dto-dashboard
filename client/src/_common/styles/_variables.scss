@@ -3,6 +3,8 @@ $dashboard-constants: (
   COLOR_CERULEAN: #0579c7,
   COLOR_PALE_BLUE: #e6fafc,
 
+  COLOR_LIGHT_GREY: #828282,
+
   COLOR_GROUP_LEGEND_A: #f2b038,
   COLOR_GROUP_LEGEND_B: #75a370,
   COLOR_GROUP_LEGEND_C: #4892c0,
@@ -29,6 +31,8 @@ $color-brand-primary: get(COLOR_CERULEAN) !default;
 $color-brand-supp: #00a1bb !default;
 $color-line-border: #ccc !default;
 $color-background-blue: get(COLOR_PALE_BLUE) !default;
+
+$color-text-grey: get(COLOR_LIGHT_GREY) !default;
 
 $color-user-satisfaction: get(COLOR_GROUP_LEGEND_A);
 $color-cost-per-transaction: get(COLOR_GROUP_LEGEND_B);

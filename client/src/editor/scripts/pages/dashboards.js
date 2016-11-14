@@ -43,26 +43,33 @@ class DashboardsIndex extends Component {
 
     return (
       <div className="page page-dashboards">
-        <div className="container">
 
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
-              <div className="page__header">
+        <div className="page__header">
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+
                 <Breadcrumbs paths={[
-                  {path:'', name:'Home'}
+                  {path:'', name:'Manage Dashboards'}
                 ]} />
-                <h1 className="h4">Manage Dashboards</h1>
+
+                <h1>Manage Dashboards</h1>
+
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
-              <DashboardItems dashboards={sortedDashboards} />
+        <div className="container">
+          <div className="page__body">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+                <DashboardItems dashboards={sortedDashboards} />
+              </div>
             </div>
           </div>
-
         </div>
+
       </div>
     )
   }

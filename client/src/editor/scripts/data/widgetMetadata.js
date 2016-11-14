@@ -17,7 +17,8 @@ const metadata = {
     'n': {
       label: '',
       widget_help: 'This is represented as a single-point bar chart. Enter your data in the fields below.',
-      widget_form_help: `These figures are numerical. You can include up to 2 decimal places.`
+      widget_form_help: `These figures are numerical. You can include up to 2 decimal places.`,
+      validator: '' // todo
     },
     's': {
       label: '',

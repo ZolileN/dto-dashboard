@@ -1,0 +1,20 @@
+.timeseries-pagination {
+
+  &__title,
+  &__supp-title {
+    display: block;
+  }
+
+  &__supp-title {
+    font-size: $font-size-h5;
+  }
+  &__title {
+    font-size: $font-size-h2;
+    margin-bottom: $spacer-y;
+  }
+
+  .btn {
+    min-width: 140px;
+    text-align: center;
+  }
+}

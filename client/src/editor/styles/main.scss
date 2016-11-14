@@ -12,6 +12,7 @@
 @import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/buttons';
 @import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/forms';
 
+@import './../../_common/styles/_vendor/bootstrap/bootstrap-spacing';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-cards';
 
@@ -30,10 +31,9 @@
 
 // layout
 @import 'layouts/app-layout';
-@import 'layouts/main';
+@import 'layouts/page-layout';
 
 // components
-@import "components/page";
 
 @import '../../_common/styles/components/type';
 @import '../../_common/styles/components/flex-grid';
@@ -43,10 +43,13 @@
 @import '../../_common/styles/ui-patterns/main-footer';
 @import 'components/date-fields';
 @import 'components/toast';
+@import 'components/timeseries-pagination';
 
 // pages
 @import 'pages/dashboards';
 @import 'pages/dashboardwidgets';
+@import 'pages/dashboardwidgetdatagroupsimple';
+@import 'pages/dashboardwidgetdatagrouptimeseries';
 
 
 // themes

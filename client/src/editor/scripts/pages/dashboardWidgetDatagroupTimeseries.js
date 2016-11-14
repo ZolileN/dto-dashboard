@@ -84,49 +84,58 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
     return (
       <div className="page page-dashboardwidgetdatagrouptimeseries">
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
-              <div className="page__header">
+
+        <div className="page__header">
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
+
                 <Breadcrumbs paths={[
-                  {path: '/', name:'Home'},
+                  {path: '/', name:'Manage Dashboards'},
                   {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
                   {path: '', name:`${widget.name} - ${datagroupsetSlice.sliceKey}`}
                 ]} />
-                <h1 className="h4">{metadata.label || widget.name}</h1>
 
-                {metadata.widget_help && <p>{metadata.widget_help}</p>}
+                <h1>{metadata.label || widget.name}</h1>
 
-                <div className="timeseries-pagination">
-                  <span className="">{isUpdateMode ? 'Edit' : 'Create'} data for:</span>
-                  <div>
-                    <span className="">{getExpandedShortDate(datagroupsetSlice.sliceKey)}</span>
-                    <Pagination prevKey={datagroupsetSlice.slicePrevKey}
-                                nextKey={datagroupsetSlice.sliceNextKey}
-                                widgetId={widget.id}
-                                dashboardId={dashboard.id} />
-                  </div>
-                </div>
+                {metadata.widget_help && <p className="title-description">{metadata.widget_help}</p>}
+
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="row">
-            <div className="col-xs-12 col-lg-8">
 
-              {metadata.widget_form_help && <p>{metadata.widget_form_help}</p>}
+        <div className="container">
+          <div className="page__body">
+            <div className="row">
+              <div className="col-xs-12 col-lg-8">
 
-              {isUpdateMode && <p>Last updated: {datagroupsetSlice.sliceLastUpdated}</p>}
-              {isUpdateMode ?
-                <UpdateDatagroupsetForm formModel={datagroupsetSlice}
-                                        canSubmit={canUpdate}
-                                        onSubmitSuccess={this.onSubmitSuccess.bind(this)} /> :
-                <CreateDatagroupsetForm formModel={datagroupsetSlice}
-                                        canSubmit={canCreate}
-                                        onSubmitSuccess={this.onSubmitSuccess.bind(this)} />}
+                <div className="timeseries-pagination">
+                  <span className="timeseries-pagination__supp-title">{isUpdateMode ? 'View' : 'Add'} data for:</span>
+                  <span className="timeseries-pagination__title">{getExpandedShortDate(datagroupsetSlice.sliceKey)}</span>
+                  <Pagination prevKey={datagroupsetSlice.slicePrevKey}
+                              nextKey={datagroupsetSlice.sliceNextKey}
+                              widgetId={widget.id}
+                              dashboardId={dashboard.id} />
+                </div>
+
+
+                {metadata.widget_form_help && <p>{metadata.widget_form_help}</p>}
+
+                {isUpdateMode && <p>Last updated: {datagroupsetSlice.sliceLastUpdated}</p>}
+                {isUpdateMode ?
+                  <UpdateDatagroupsetForm formModel={datagroupsetSlice}
+                                          canSubmit={canUpdate}
+                                          onSubmitSuccess={this.onSubmitSuccess.bind(this)} /> :
+                  <CreateDatagroupsetForm formModel={datagroupsetSlice}
+                                          canSubmit={canCreate}
+                                          onSubmitSuccess={this.onSubmitSuccess.bind(this)} />}
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     )
   }

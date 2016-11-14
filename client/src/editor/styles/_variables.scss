@@ -17,7 +17,7 @@ $editor-constants: (
 }
 
 
-$spacer: 1.4em !default;
+$spacer: 1.4em !default;      // todo - deprecate and use $spacer-y instead client/src/_common/styles/_vendor/bootstrap/_bootstrap-spacing.scss
 
 $screen-sm-min: get(SCREEN_MIN);
 $screen-sm-minor: map-get($grid-breakpoints, 'sm'); //544
