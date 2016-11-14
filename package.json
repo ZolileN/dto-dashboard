@@ -35,6 +35,7 @@
     "bourbon": "https://github.com/thoughtbot/bourbon#v5.0.0.beta.6",
     "bourbon-neat": "https://github.com/thoughtbot/neat#v1.8.0",
     "browserify": "^13.1.0",
+    "classnames": "^2.2.5",
     "css-loader": "^0.23.1",
     "d3": "^3.5.17",
     "d3-selection": "^1.0.2",

@@ -3,6 +3,8 @@ export const CREATE_DATAPOINT = 'datapoint/create';
 
 export const UPDATE_DATAGROUPSET = 'datagroupset/update';
 
+export const UI_PAGE_DASHBOARDWIDGETS_SET_ANCHOR_TO = 'pageDashboardWidgets/setAnchorTo';
+export const UI_PAGE_DASHBOARDWIDGETS_CLEAR_ANCHOR_TO = 'pageDashboardWidgets/clearAnchorTo';
 
 // todo
 

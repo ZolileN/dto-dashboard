@@ -59,6 +59,11 @@ const metadata = {
       label: '',
       widget_help: '',
       widget_form_help: ''
+    },
+    'n': {
+      label: '',
+      widget_help: '',
+      widget_form_help: ''
     }
   },
   'kpi-sparkline': {

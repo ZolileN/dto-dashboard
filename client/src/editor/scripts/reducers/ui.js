@@ -3,9 +3,15 @@ import initialState from './../store/initialState';
 import { combineReducers } from 'redux';
 
 
-let pageDashboardWidgetDatagroupTimeseries = (state = initialState.ui.pageDashboardWidgetDatagroupTimeseries, {type, payload}) => {
 
+const pageDashboardWidgets = (state = initialState.ui.pageDashboardWidgets, {type, payload}) => {
   switch (type) {
+    case types.UI_PAGE_DASHBOARDWIDGETS_SET_ANCHOR_TO:
+      return {...state, anchorTo:payload.anchorTo};
+
+    case types.UI_PAGE_DASHBOARDWIDGETS_CLEAR_ANCHOR_TO:
+      return {...state, anchorTo:null};
+
     default:
       return state;
   }
@@ -29,7 +35,7 @@ const toastsReducer = (state = initialState.ui.toast, {type, payload}) => {
 
 
 const uiReducer = combineReducers({
-  pageDashboardWidgetDatagroupTimeseries,
+  pageDashboardWidgets,
   toast: toastsReducer
 });
 

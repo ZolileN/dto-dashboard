@@ -44,13 +44,26 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
   constructor(props, context) {
     super(props, context);
+
     this.state = {
-      metadata: (this.props.widget.type && this.props.widget.units) ? metadata[this.props.widget.type][this.props.widget.units] : null
+      metadata: {}
     };
+
+    if (this.props.widget.type && this.props.widget.units) {
+      try {
+        let metadata = metadata[this.props.widget.type][this.props.widget.units];
+        if (metadata) {
+          this.setState('metadata', metadata);
+        }
+      } catch(e) {
+        console.warn('no widget metadata for that permutation', this.props.widget.type, this.props.widget.units);
+      }
+    }
   }
 
   onSubmitSuccess() {
     this.props.push(getDashboardWidgetsUrl(this.props.dashboard.id));
+    this.props.actions.setAnchorToAtDashboardWidgets(this.props.widget.id);
   }
 
   render() {

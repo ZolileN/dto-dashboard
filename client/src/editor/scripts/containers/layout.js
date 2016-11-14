@@ -8,7 +8,7 @@ import Toast from './../components/toast';
 class Layout extends Component {
 
   componentDidUpdate() {
-    let appScrollNode = document.getElementsByClassName('l-app');
+    let appScrollNode = document.getElementsByClassName('editor__app');
     if (appScrollNode && appScrollNode.length) {
       setTimeout(() => {
         appScrollNode[0].scrollTop = 0;

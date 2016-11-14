@@ -4,7 +4,7 @@ export default {
   // requests: {},
   ui: {
     toast: {},
-    pageDashboardWidgetDatagroupTimeseries: {}
+    pageDashboardWidgets: {}
   },
   // __CONFIG__
   config: {},

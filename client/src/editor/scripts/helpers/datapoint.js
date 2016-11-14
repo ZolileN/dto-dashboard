@@ -2,7 +2,6 @@ import moment from 'moment';
 import * as dateFormats from './../constants/dateFormats';
 
 
-
 export const getHeadKey = () => {
   let maxMonth = moment(new Date()).subtract(1, 'months');
   return maxMonth.format(dateFormats.DATAGROUP_KEY_ROUTE_SEGMENT);

@@ -52,7 +52,7 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
             <Field name={`${member}.value`}
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
-                   fieldProps={{disabled}}
+                   fieldProps={{disabled}}  // todo - elementProps
                    optionProps={{canSubmit}} />
           </fieldset>
         )
@@ -62,7 +62,6 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
 };
 
 const submit = (values, dispatch, props) => {
-  debugger
   let formData = values.groups.map((g, idx) => {
     return {
       value: g.value || null,
@@ -78,7 +77,7 @@ const submit = (values, dispatch, props) => {
           if (data && data.length) {
             dispatch(setToast(`Published data for: ${getHumanisedMonth(data[0].ts)} -
               ${data.map((el, idx) => {
-                return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? 'No data' : el.value}` 
+                return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}` 
               })}
             `, 'success'));
             return resolve();
