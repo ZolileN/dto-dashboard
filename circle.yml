@@ -12,6 +12,8 @@ machine:
 dependencies:
   pre:
     - npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm
+    - npm -g uninstall strip-ansi which
+    - rm -rf node_modules
     - npm cache clean
     - npm install -g yarn
     - yarn cache clean
