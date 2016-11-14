@@ -15,6 +15,16 @@ RSpec.describe EditorController, :type => :controller do
     it { expect(response).to be_success }
   end
 
+  context 'with logged in user' do
+    login_user
+
+    describe 'handles any url for react and browser history' do
+      before{ get :index, :path => '/blah/vtha' }
+
+      it { expect(response).to be_success }
+    end
+  end
+
   describe 'log out from the controller' do
     logout_user
 

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/editor', :to => 'editor#index'
+  get '/editor(*path)', :to => 'editor#index', :as => 'editor'
 
   get root :to => 'dashboards#index'
 
