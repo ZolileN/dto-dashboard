@@ -277,6 +277,9 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
 
     if (!hasValidSlice) {
       state.groups = datagroupset.groups.map((g, idx) => {
+        if (state.sliceLastUpdated === null) {
+          state.sliceLastUpdated = g.dataset.updated_at;
+        }
         return {
           dataset: g.dataset,
           datapoint: null
@@ -284,12 +287,10 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
       });
     } else {
       state.groups = datagroupset.groups.map((g, idx) => {
-        datapointItem = g.datapoints[sliceIndexArray[idx]];
-
         if (state.sliceLastUpdated === null) {
-          state.sliceLastUpdated = datapointItem.updated_at;
+          state.sliceLastUpdated = g.dataset.updated_at;
         }
-
+        datapointItem = g.datapoints[sliceIndexArray[idx]];
         return {
           dataset: g.dataset,
           datapoint: datapointItem

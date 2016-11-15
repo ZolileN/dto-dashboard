@@ -22,6 +22,7 @@ import { getExpandedShortDate } from './../utils/humanisedDates';
 import CreateDatagroupsetForm from './../components/forms/createDatagroupsetForm';
 import UpdateDatagroupsetForm from './../components/forms/updateDatagroupsetForm';
 import metadata from './../data/widgetMetadata';
+import TrafficLight from './../components/trafficLight';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -96,7 +97,14 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                   {path: '', name:`${widget.name} - ${datagroupsetSlice.sliceKey}`}
                 ]} />
 
-                <h1>{metadata.label || widget.name}</h1>
+                <div className="page__title">
+                  <div className="page__title__left">
+                    <h1>{metadata.label || widget.name}</h1>
+                  </div>
+                  <div className="page__title__right">
+                    <TrafficLight lastUpdatedDate={datagroupsetSlice.sliceKey} />
+                  </div>
+                </div>
 
                 {metadata.widget_help && <p className="title-description">{metadata.widget_help}</p>}
 

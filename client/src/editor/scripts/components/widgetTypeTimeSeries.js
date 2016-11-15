@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
 import Preview from './datagroupPreview';
+import TrafficLight from './../components/trafficLight';
 
 
 const WidgetTypeTimeSeries = ({
@@ -22,8 +23,7 @@ const WidgetTypeTimeSeries = ({
           <h1 className="h5">{recentDatagroupset.widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Key: {recentDatagroupset.sliceKey}</span>
-          <span className="date-meta">Last updated: {humanisedShortDate(recentDatagroupset.sliceLastUpdated)}</span>
+          <TrafficLight lastUpdatedDate={recentDatagroupset.sliceKey} />
         </div>
       </header>
 

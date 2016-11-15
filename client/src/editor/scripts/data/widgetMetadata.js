@@ -10,7 +10,8 @@ const metadata = {
     'n': {
       label: 'Key performance indicators',
       widget_help: 'The 4 key performance indicators are required by the Digital Service Standard. They appear at the top of your service dashboard. Enter your data in the fields below.',
-      widget_form_help: ''
+      widget_form_help: '',
+      validator: {}
     }
   },
   'bar': {
@@ -18,7 +19,7 @@ const metadata = {
       label: '',
       widget_help: 'This is represented as a single-point bar chart. Enter your data in the fields below.',
       widget_form_help: `These figures are numerical. You can include up to 2 decimal places.`,
-      validator: '' // todo
+      validator: ''
     },
     's': {
       label: '',

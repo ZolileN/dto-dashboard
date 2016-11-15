@@ -1,4 +1,5 @@
 import moment from 'moment';
+import 'moment-range';
 import * as dateFormats from './../constants/dateFormats';
 
 
@@ -25,6 +26,13 @@ export const getPrevKey = (recentKey) => {
   let prevKey = prevMonth.format(dateFormats.DATAGROUP_KEY_ROUTE_SEGMENT);
 
   return prevKey;
+};
+
+export const getNumberOfMonthsFromHead = (sliceKey) => {
+  const headMonth = moment(new Date()).subtract(1, 'months');
+  const month = moment(sliceKey);
+  const dateRange = moment.range(month, headMonth);
+  return dateRange.diff('months');
 };
 
 export const computeLabel = ts => {

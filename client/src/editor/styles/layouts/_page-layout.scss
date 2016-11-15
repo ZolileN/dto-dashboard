@@ -17,6 +17,16 @@
     }
   }
 
+  &__title {
+    display: table;
+    width: 100%;
+    &__left,
+    &__right {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
   &__body {
     padding: map-get(map-get($spacers, 2), y) 0;  // todo - create helper function for access
   }

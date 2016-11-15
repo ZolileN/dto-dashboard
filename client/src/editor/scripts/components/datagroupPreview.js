@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { isEmpty } from 'lodash';
 
-import LegendDot, { getPaletteColor } from './svgs/legend-dot';
+import LegendDot, { getPaletteColor } from './svgs/legendDot';
 
 
 const Preview = ({recentDatagroupset}) => {
