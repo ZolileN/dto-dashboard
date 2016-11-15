@@ -11,10 +11,11 @@ machine:
 
 dependencies:
   pre:
+    - npm uninstall -g strip-ansi which
     - npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm
-    - npm -g uninstall strip-ansi which
     - rm -rf node_modules
     - npm cache clean
+    - npm install -g strip-ansi which semver
     - npm install -g yarn
     - yarn cache clean
     - yarn install
