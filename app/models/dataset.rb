@@ -2,6 +2,8 @@ class Dataset < ApplicationRecord
   include Measurable
   include Nameable
 
+  PERIODS = %w(free month week day)
+
   has_and_belongs_to_many :users
 
   has_many :datapoints, :dependent => :destroy
@@ -14,6 +16,7 @@ class Dataset < ApplicationRecord
   before_validation :set_label
 
   validates :name, :label, :units, :presence => true
+  validates :period, inclusion: { in: PERIODS, allow_nil: true } # Defaults to 'month'
 
   def latest
     datapoints.by_time.last
