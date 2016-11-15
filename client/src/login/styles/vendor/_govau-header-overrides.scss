@@ -1,0 +1,22 @@
+.govau-masthead .banner {
+  display:block;
+}
+
+.sign-out {
+  float: right;
+
+  .user-email {
+    &::before {
+    background-image: url("user.svg");
+    }
+  }
+}
+
+.sign-out-link {
+  color: $white;
+	background-color: #224a61;
+  display: block;
+  padding: 10px 22px;
+  text-decoration: none;
+  margin-top: 14px;
+}
