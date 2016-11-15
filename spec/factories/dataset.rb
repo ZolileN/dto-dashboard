@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:name)   { |n| "dataset-#{n}" }
     sequence(:label)  { |n| "d-#{n}" }
     units '$'
+    period 'free'
 
     factory :dataset_with_datapoints do
       transient do
