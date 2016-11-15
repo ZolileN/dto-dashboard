@@ -11,18 +11,16 @@ machine:
 
 dependencies:
   pre:
-    - npm uninstall -g strip-ansi which
     - npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm
+    - npm uninstall -g strip-ansi which
     - rm -rf node_modules
     - npm cache clean
-    - npm install -g strip-ansi which semver
-    - npm install -g yarn
-    - yarn cache clean
+    - npm i -g yarn@0.16.1
+    - yarn global add strip-ansi which
+  override:
     - yarn install
     - yarn build
     - bundle install
-  override:
-    # - noop
   post:
     # - noop
 
