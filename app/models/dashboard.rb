@@ -7,7 +7,8 @@ class Dashboard < ApplicationRecord
 
   has_many :datasets, :through => :widgets
 
-  has_and_belongs_to_many :users
+  has_many :permissions, dependent: :destroy
+  has_many :users, through: :permissions
 
   validates :name, :description, :target_users, :presence => true
 

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   it { is_expected.to have_many :tokens }
-  it { is_expected.to have_and_belong_to_many :dashboards }
-  it { is_expected.to have_and_belong_to_many :datasets }
+  it { is_expected.to have_many :dashboards }
+  it { is_expected.to have_many :datasets }
 
   describe '#generate_session_token!' do
     subject(:user) { FactoryGirl.create(:user) }
@@ -70,5 +70,27 @@ RSpec.describe User, type: :model do
         it { expect{ User.authenticate!('blahvtha') }.to raise_error(ActiveRecord::RecordNotFound) }
       end
     end
+  end
+
+  describe 'unique association rows' do
+    subject { FactoryGirl.create(:user) }
+    let(:dashboard) { FactoryGirl.create(:dashboard) }
+    let(:dataset) { FactoryGirl.create(:dataset) }
+
+    let(:dashboard_joins) {
+      ActiveRecord::Base.connection.execute(
+        "SELECT * FROM dashboards_users WHERE user_id = #{subject.id}") }
+
+    let(:dataset_joins) {
+      ActiveRecord::Base.connection.execute(
+        "SELECT * FROM datasets_users WHERE user_id = #{subject.id}") }
+
+    before do
+      subject.dashboards << dashboard
+      subject.datasets << dataset
+    end
+
+    specify { expect { subject.dashboards << dashboard }.to raise_error }
+    specify { expect { subject.datasets << dataset }.to raise_error }
   end
 end

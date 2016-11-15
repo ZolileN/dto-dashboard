@@ -4,7 +4,8 @@ class Dataset < ApplicationRecord
 
   PERIODS = %w(free month week day)
 
-  has_and_belongs_to_many :users
+  has_many :permissions, dependent: :destroy
+  has_many :users, through: :permissions
 
   has_many :datapoints, :dependent => :destroy
 

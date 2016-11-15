@@ -13,9 +13,12 @@ class User < ApplicationRecord
 
   belongs_to :organisation
 
-  has_and_belongs_to_many :dashboards
+  has_many :permissions, dependent: :destroy
+  has_many :dashboards, through: :permissions, source: :resource, source_type: 'Dashboard'
+  has_many :datasets, through: :permissions, source: :resource, source_type: 'Dataset'
 
-  has_and_belongs_to_many :datasets
+  # has_and_belongs_to_many :dashboards
+  # has_and_belongs_to_many :datasets
 
   has_many :datapoints, :through => :datasets
 

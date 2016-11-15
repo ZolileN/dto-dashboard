@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110224423) do
+ActiveRecord::Schema.define(version: 20161115032409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,15 +46,6 @@ ActiveRecord::Schema.define(version: 20161110224423) do
     t.index ["published_at"], name: "index_dashboards_on_published_at", using: :btree
   end
 
-  create_table "dashboards_users", force: :cascade do |t|
-    t.integer  "dashboard_id", null: false
-    t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["dashboard_id"], name: "index_dashboards_users_on_dashboard_id", using: :btree
-    t.index ["user_id"], name: "index_dashboards_users_on_user_id", using: :btree
-  end
-
   create_table "datapoints", force: :cascade do |t|
     t.integer  "dataset_id", null: false
     t.datetime "ts",         null: false
@@ -86,15 +77,6 @@ ActiveRecord::Schema.define(version: 20161110224423) do
     t.index ["organisation_id"], name: "index_datasets_on_organisation_id", using: :btree
   end
 
-  create_table "datasets_users", force: :cascade do |t|
-    t.integer  "dataset_id", null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dataset_id"], name: "index_datasets_users_on_dataset_id", using: :btree
-    t.index ["user_id"], name: "index_datasets_users_on_user_id", using: :btree
-  end
-
   create_table "flipper_features", force: :cascade do |t|
     t.string   "key",        null: false
     t.datetime "created_at", null: false
@@ -117,6 +99,16 @@ ActiveRecord::Schema.define(version: 20161110224423) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["resource_type", "resource_id"], name: "index_permissions_on_resource_type_and_resource_id", using: :btree
+    t.index ["user_id"], name: "index_permissions_on_user_id", using: :btree
   end
 
   create_table "tokens", force: :cascade do |t|

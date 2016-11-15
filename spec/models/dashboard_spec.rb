@@ -6,10 +6,10 @@ RSpec.describe Dashboard, type: :model do
 
   it { is_expected.to have_many :widgets }
 
-  it { is_expected.to have_and_belong_to_many :users }
+  it { is_expected.to have_many :users }
 
   it { is_expected.to validate_presence_of :name }
-    
+
   subject!(:dashboard)    { FactoryGirl.create(:dashboard) }
 
   its(:to_param) { is_expected.to include(dashboard.name.parameterize) }
