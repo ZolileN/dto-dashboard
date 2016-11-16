@@ -15,7 +15,7 @@ json.widgets current_user.widgets do |widget|
 end
 
 json.datasets current_user.datasets.uniq do |dataset|
-  json.(dataset, :id, :name, :label, :units, :notes, :updated_at)
+  json.(dataset, :id, :name, :label, :units, :notes, :updated_at, :data_updated_at)
   json.datapoints dataset.datapoints.collect {|datapoint| datapoint.id }
 end
 
