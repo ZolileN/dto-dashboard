@@ -29,7 +29,7 @@ const metadata = {
     's': {
       label: '',
       widget_help: 'This is represented as a bar chart. Enter your data in the fields below.',
-      widget_form_help: `Enter figures in seconds. For example, 5 hours 2 minutes 35 seconds = 18,155 seconds. It will show on your chart in hours, minutes and seconds.`,
+      widget_form_help: `Enter figures in seconds. For example, 5 hours 2 minutes 35 seconds = 18155 seconds. It will show on your chart in hours, minutes and seconds.`,
       validators: [{validator:'seconds', message:validators.MESSAGE_SECONDS}]
     },
     '%': {
@@ -57,7 +57,7 @@ const metadata = {
     's': {
       label: '',
       widget_help: `This is represented as a line chart. Enter your data in the fields below.`,
-      widget_form_help: `Enter figures in seconds. For example, 5 hours 2 minutes 35 seconds = 18,155 seconds. It will show on your chart in hours, minutes and seconds.`,
+      widget_form_help: `Enter figures in seconds. For example, 5 hours 2 minutes 35 seconds = 18155 seconds. It will show on your chart in hours, minutes and seconds.`,
       validators: [{validator:'seconds', message:validators.MESSAGE_SECONDS}]
     },
     '%': {
