@@ -10,6 +10,8 @@ RSpec.describe Dataset, type: :model do
 
   it { is_expected.to validate_presence_of :name }
 
+  its(:data_updated_at) { is_expected.to_not be_present }
+
   context 'with no data' do
     subject(:dataset) { FactoryGirl.create(:dataset) }
 
@@ -19,6 +21,14 @@ RSpec.describe Dataset, type: :model do
   context 'with data' do
     subject(:dataset) { FactoryGirl.create(:dataset_with_datapoints) }
     it { is_expected.to have_data }
+  end
+
+  describe 'data_updated_at' do
+    subject!(:dataset)    { FactoryGirl.create(:dataset, :updated_at => 7.days.ago) }
+
+    let!(:datapoint)      { FactoryGirl.create(:datapoint, :dataset => dataset, :updated_at => 2.days.ago) }
+
+    its(:data_updated_at) { is_expected.to eq datapoint.updated_at }
   end
 
   describe 'calculations' do
@@ -74,6 +84,7 @@ RSpec.describe Dataset, type: :model do
     end
 
   end
+
 
   describe 'measurable' do
     let(:unit)        { 'n' }

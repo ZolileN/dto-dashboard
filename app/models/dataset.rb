@@ -59,4 +59,9 @@ class Dataset < ApplicationRecord
   def set_label
     self.label = 'n' if self.label.blank?
   end
+
+  def data_updated_at
+    datapoints.by_time_desc.first&.updated_at
+  end
+
 end
