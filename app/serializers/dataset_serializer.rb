@@ -1,5 +1,5 @@
 class DatasetSerializer < ActiveModel::Serializer
-  attributes :id, :name, :units, :notes, :data
+  attributes :id, :name, :units, :notes, :data, :data_updated_at
 
   has_many :datapoints
   has_many :widgets
