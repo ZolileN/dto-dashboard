@@ -63,20 +63,20 @@ const metadata = {
     '%': {
       label: '',
       widget_help: `This is represented as a single-line chart. Enter your data in the fields below.`,
-      widget_form_help: '',
+      widget_form_help: `This figure is a percentage and can't be more than 100. You can include up to 2 decimal places — for example, 32.25.`,
       validators: [{validator:'percentile', message:validators.MESSAGE_PERCENTILE}]
     }
   },
   'sparkline': {
     '%': {
       label: '',
-      widget_help: '',
-      widget_form_help: '',
+      widget_help: ``,
+      widget_form_help: `This figure is a percentage and can't be more than 100. You can include up to 2 decimal places — for example, 32.25.`,
       validators: [{validator:'percentile', message:validators.MESSAGE_PERCENTILE}]
     },
     'n': {
       label: '',
-      widget_help: '',
+      widget_help: ``,
       widget_form_help: '',
       validators: [{validator:'numericNull', message:validators.MESSAGE_NUMERICNULL}]
     }
