@@ -13,7 +13,7 @@ import {
   filterDatagroupsetsByBtlWidgets,
 } from './../reducers/index';
 
-import * as uiActions from './../actions/ui';
+import * as uiAppActions from './../actions/uiApp';
 import Breadcrumbs from './../components/breadcrumbs';
 import WidgetTypeSimple from './../components/widgetTypeSimple';
 import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
@@ -39,6 +39,8 @@ const mapStateToProps = (state, ownProps) => {
   let btlDatagroupsetsSlices = filterDatagroupsetsByBtlWidgets(datagroupsetSlices);
 
   return {
+    uiApp: state.ui.app,
+    // ui: ownProps.ui.pageDashboardWidgets
     dashboard,
     heroDatagroupsetSlice,
     btlDatagroupsetsSlices,
@@ -46,16 +48,16 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiActions, dispatch)
+  actions: bindActionCreators(uiAppActions, dispatch)
 });
 
 
 class PageDashboardWidgets extends Component {
 
   componentDidMount() {
-    if (this.props.ui.anchorTo) {
-      this.scrollToWidget(this.props.ui.anchorTo);
-      this.props.actions.clearAnchorToAtDashboardWidgets();
+    if (this.props.uiApp.didTransactionDatagroup.widgetId) {
+      this.scrollToWidget(this.props.uiApp.didTransactionDatagroup.widgetId);
+      this.props.actions.clearDatagroupTransacted();
     }
   }
 
@@ -63,12 +65,13 @@ class PageDashboardWidgets extends Component {
     let pageNode = this.refs.page;
     let node = findDOMNode(this.refs[widgetId]);
     if (pageNode && node) {
-      pageNode.scrollTop = window.innerHeight + node.offsetTop;
+      pageNode.scrollTop = window.innerHeight + node.offsetTop; // todo - bug here
     }
   }
 
   render() {
     let {
+      uiApp,
       dashboard,
       heroDatagroupsetSlice,
       btlDatagroupsetsSlices
@@ -102,21 +105,24 @@ class PageDashboardWidgets extends Component {
               <div className="col-xs-12 col-lg-8">
 
                 {/*<div className="page-dashboardwidgets__title-block">*/}
-                  {/*<p>{dashboard.description}</p>*/}
-                  {/*<Link to={getDashboardUrl(dashboard.id)}*/}
-                        {/*disabled={true}*/}
-                        {/*onClick={e => e.preventDefault()}>Edit dashboard overview</Link>*/}
+                {/*<p>{dashboard.description}</p>*/}
+                {/*<Link to={getDashboardUrl(dashboard.id)}*/}
+                {/*disabled={true}*/}
+                {/*onClick={e => e.preventDefault()}>Edit dashboard overview</Link>*/}
                 {/*</div>*/}
 
                 <section className="widget-list">
 
+                  {/* todo - kpi widget will have different alertprops check because 5 widget id not 1 */}
                   {heroDatagroupsetSlice && <div ref={String(heroDatagroupsetSlice.widget.id)}>
                     <WidgetTypeTimeSeries
                       recentDatagroupset={heroDatagroupsetSlice}
                       addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceNextKey)}
                       editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceKey)}
                       editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
-                      dashboard={dashboard} />
+                      dashboard={dashboard}
+                      alertProps={uiApp.didTransactionDatagroup.widgetId === heroDatagroupsetSlice.widget.id ? uiApp.didTransactionDatagroup : null}
+                    />
                   </div>}
 
 
@@ -125,8 +131,10 @@ class PageDashboardWidgets extends Component {
                       return (
                         <div key={idx} ref={String(slice.widget.id)}>
                           <WidgetTypeSimple editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, slice.widget.id)}
-                                            widget={slice.widget}
-                                            dashboard={dashboard} />
+                            widget={slice.widget}
+                            dashboard={dashboard}
+                            alertProps={uiApp.didTransactionDatagroup.widgetId === slice.widget.id ? uiApp.didTransactionDatagroup : null}
+                          />
                         </div>
                       )
                     }
@@ -134,10 +142,12 @@ class PageDashboardWidgets extends Component {
                       return (
                         <div key={idx} ref={String(slice.widget.id)}>
                           <WidgetTypeTimeSeries recentDatagroupset={slice}
-                                                addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceNextKey)}
-                                                editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceKey)}
-                                                editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
-                                                dashboard={dashboard} />
+                            addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceNextKey)}
+                            editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceKey)}
+                            editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
+                            dashboard={dashboard}
+                            alertProps={uiApp.didTransactionDatagroup.widgetId === slice.widget.id ? uiApp.didTransactionDatagroup : null}
+                           />
                         </div>
                       )
                     }

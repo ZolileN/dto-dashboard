@@ -3,7 +3,7 @@ import { v1 as makeUuid } from 'uuid';
 
 
 export const setToast = (message, level = 'info', id = makeUuid()) => ({
-  type: types.SET_TOAST,
+  type: types.UI_TOAST_SET_TOAST,
   payload: {
     id,
     message,
@@ -12,7 +12,7 @@ export const setToast = (message, level = 'info', id = makeUuid()) => ({
 });
 
 export const clearToast = id => ({
-  type: types.CLEAR_TOAST,
+  type: types.UI_TOAST_CLEAR_TOAST,
   payload: {
     id
   }

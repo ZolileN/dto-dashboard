@@ -22,7 +22,7 @@ export const seconds = value => {
 };
 
 export const percentile = value => {
-  return isFloat(value, {min:0, max:100});
+  return isFloat(String(value), {min:0, max:100});
 };
 
 export const money = value => {

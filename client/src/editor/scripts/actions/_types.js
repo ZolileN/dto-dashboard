@@ -3,8 +3,15 @@ export const CREATE_DATAPOINT = 'datapoint/create';
 
 export const UPDATE_DATAGROUPSET = 'datagroupset/update';
 
-export const UI_PAGE_DASHBOARDWIDGETS_SET_ANCHOR_TO = 'pageDashboardWidgets/setAnchorTo';
-export const UI_PAGE_DASHBOARDWIDGETS_CLEAR_ANCHOR_TO = 'pageDashboardWidgets/clearAnchorTo';
+
+// UI
+
+export const UI_APP_SET_DATAGROUP_TRANSACTED = 'uiApp/setDatagroupTransacted';
+export const UI_APP_CLEAR_DATAGROUP_TRANSACTED = 'uiApp/clearDatagroupTransacted';
+
+export const UI_TOAST_SET_TOAST = 'uiToast/setToast';
+export const UI_TOAST_CLEAR_TOAST = 'uiToast/clearToast';
+
 
 // todo
 
@@ -14,8 +21,6 @@ export const UI_PAGE_DASHBOARDWIDGETS_CLEAR_ANCHOR_TO = 'pageDashboardWidgets/cl
 // export const APP_REQUEST_SUCCESS = 'request/markSuccess';
 // export const APP_REQUEST_FAILED = 'request/markFailed';
 //
-export const SET_TOAST = 'app/setToast';
-export const CLEAR_TOAST = 'app/clearToast';
 
 // export const UPDATE_DASHBOARD = 'dashboard/update';
 //

@@ -10,7 +10,7 @@ import { getDatapointsByDatasets } from './../reducers/datapoints';
 import { isPendingRequest } from './../reducers/requests';
 
 import Breadcrumbs from './../components/breadcrumbs';
-import * as uiActions from './../actions/ui';
+import * as uiAppActions from './../actions/uiApp';
 import UpdateWidgetForm from './../components/forms/updateWidgetForm';
 import { getRequestKey } from './../actions/widget';
 
@@ -32,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiActions, dispatch)
+  actions: bindActionCreators(uiAppActions, dispatch)
 });
 
 

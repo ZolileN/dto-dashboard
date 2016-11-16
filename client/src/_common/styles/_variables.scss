@@ -11,6 +11,11 @@ $dashboard-constants: (
   COLOR_GROUP_LEGEND_D: #7066a5,
   COLOR_GROUP_LEGEND_E: #40bdac,
 
+  COLOR_SUCCESS: #51a351,
+  COLOR_ERROR: #bd362f,
+  COLOR_INFO: #f9edbe,
+  COLOR_WARNING: #f89406,
+
   // breakpoints
   SCREEN_MIN: 320px
 );
@@ -38,3 +43,8 @@ $color-user-satisfaction: get(COLOR_GROUP_LEGEND_A);
 $color-cost-per-transaction: get(COLOR_GROUP_LEGEND_B);
 $color-digital-take-up: get(COLOR_GROUP_LEGEND_C);
 $color-completion-rate: get(COLOR_GROUP_LEGEND_D);
+
+$color-is-success: get(COLOR_SUCCESS);
+$color-is-error: get(COLOR_ERROR);
+$color-is-info: get(COLOR_INFO);
+$color-is-warning: get(COLOR_WARNING);

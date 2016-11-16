@@ -7,7 +7,7 @@ import { getDashboardById } from './../reducers/dashboards';
 import { isPendingRequest } from './../reducers/requests';
 
 import Breadcrumbs from './../components/breadcrumbs';
-import * as uiActions from './../actions/ui';
+import * as uiAppActions from './../actions/uiApp';
 import UpdateDashboardForm from './../components/forms/updateDashboardForm';
 import { getRequestKey } from './../actions/dashboard';
 import {
@@ -25,7 +25,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(uiActions, dispatch)
+    actions: bindActionCreators(uiAppActions, dispatch)
 });
 
 class DashboardIndex extends Component {

@@ -6,6 +6,7 @@ import DatagroupsetInput from './../fields/datagroupsetInput';
 import InputHidden from './../fields/inputHidden';
 import { createDatagroupset } from './../../actions/datagroupset';
 import { setToast } from './../../actions/toast';
+import { setDatagroupTransacted } from './../../actions/uiApp';
 import { getHumanisedMonth } from './../../utils/humanisedDates';
 import * as validators from './../../utils/validators';
 
@@ -89,6 +90,18 @@ const submit = (values, dispatch, props) => {
       .then(
         (data) => { // promise success
           if (data && data.length) {
+
+            dispatch(setDatagroupTransacted({
+              widgetId: props.formModel.widget.id,
+              description: `Published data for: ${getHumanisedMonth(data[0].ts)} -
+                ${data.map((el, idx) => {
+                  return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
+                })}
+              `,
+              type: 'created'
+            }));
+
+            // todo - remove this one
             dispatch(setToast(`Published data for: ${getHumanisedMonth(data[0].ts)} -
               ${data.map((el, idx) => {
                 return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}` 

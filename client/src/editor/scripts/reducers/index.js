@@ -6,7 +6,6 @@ import moment from 'moment';
 
 import * as types from './../actions/_types';
 
-import app from './app';
 import config from './config';
 // import requests from './requests';
 import ui from './ui';
@@ -21,7 +20,6 @@ import { reducer as formReducer } from 'redux-form';
 const rootReducer = reduceReducers(
   combineReducers({
     routing: routerReducer,
-    app,
     config,
     // requests,
     ui,

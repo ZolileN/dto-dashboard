@@ -7,7 +7,7 @@ import { getDashboardById } from './../reducers/dashboards';
 import { getWidgetById } from './../reducers/widgets';
 
 import Breadcrumbs from './../components/breadcrumbs';
-import * as uiActions from './../actions/ui';
+import * as uiAppActions from './../actions/uiApp';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import UpdateDatagroupSimpleForm from './../components/forms/updateDatagroupSimple';
 import metadata from './../data/widgetMetadata';
@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiActions, dispatch)
+  actions: bindActionCreators(uiAppActions, dispatch)
 });
 
 

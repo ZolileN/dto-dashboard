@@ -16,7 +16,7 @@ import {
 
 import Breadcrumbs from './../components/breadcrumbs';
 import Pagination from './../components/widgetPagePagination';
-import * as uiActions from './../actions/ui';
+import * as uiAppActions from './../actions/uiApp';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import { getExpandedShortDate } from './../utils/humanisedDates';
 import CreateDatagroupsetForm from './../components/forms/createDatagroupsetForm';
@@ -38,7 +38,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = dispatch => ({
   push: bindActionCreators(push, dispatch),
-  actions: bindActionCreators(uiActions, dispatch)
+  actions: bindActionCreators(uiAppActions, dispatch)
 });
 
 class DashboardWidgetDatagroupTimeSeriesPage extends Component {
@@ -60,7 +60,6 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
   onSubmitSuccess() {
     this.props.push(getDashboardWidgetsUrl(this.props.dashboard.id));
-    this.props.actions.setAnchorToAtDashboardWidgets(this.props.widget.id);
   }
 
   render() {

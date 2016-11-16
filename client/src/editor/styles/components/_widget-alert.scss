@@ -1,0 +1,18 @@
+.widget-alert {
+  border: 1px solid;
+
+  &__main {
+    border: 1px solid;
+  }
+
+  &.is-created,
+  &.is-updated {
+    border-color: $color-is-success;
+  }
+  &.is-deleted {
+    border-color: $color-is-error;
+  }
+  &.is-info {
+    border-color: $color-is-info;
+  }
+}

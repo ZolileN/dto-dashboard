@@ -3,14 +3,23 @@ import initialState from './../store/initialState';
 import { combineReducers } from 'redux';
 
 
-
-const pageDashboardWidgets = (state = initialState.ui.pageDashboardWidgets, {type, payload}) => {
+const app = (state = initialState.ui.app, {type, payload}) => {
   switch (type) {
-    case types.UI_PAGE_DASHBOARDWIDGETS_SET_ANCHOR_TO:
-      return {...state, anchorTo:payload.anchorTo};
-
-    case types.UI_PAGE_DASHBOARDWIDGETS_CLEAR_ANCHOR_TO:
-      return {...state, anchorTo:null};
+    case types.UI_APP_SET_DATAGROUP_TRANSACTED:
+      debugger
+      return {
+        ...state,
+        didTransactionDatagroup: {
+          widgetId: payload.widgetId,
+          description: payload.description,
+          type: payload.type
+        }
+      };
+    case types.UI_APP_CLEAR_DATAGROUP_TRANSACTED:
+      return {
+        ...state,
+        didTransactionDatagroup: {}
+      };
 
     default:
       return state;
@@ -20,11 +29,11 @@ const pageDashboardWidgets = (state = initialState.ui.pageDashboardWidgets, {typ
 
 const toastsReducer = (state = initialState.ui.toast, {type, payload}) => {
   switch (type) {
-    case types.SET_TOAST:
+    case types.UI_TOAST_SET_TOAST:
       return payload;
       break;
 
-    case types.CLEAR_TOAST:
+    case types.UI_TOAST_CLEAR_TOAST:
       return null;
       break;
 
@@ -35,7 +44,7 @@ const toastsReducer = (state = initialState.ui.toast, {type, payload}) => {
 
 
 const uiReducer = combineReducers({
-  pageDashboardWidgets,
+  app,
   toast: toastsReducer
 });
 

@@ -15,6 +15,8 @@
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-spacing';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-cards';
+@import './../../_common/styles/_vendor/bootstrap/bootstrap-media';
+
 
 /**
  *
@@ -45,6 +47,7 @@
 @import 'components/toast';
 @import 'components/timeseries-pagination';
 @import 'components/traffic-light';
+@import 'components/widget-alert';
 
 // pages
 @import 'pages/dashboards';

@@ -3,8 +3,6 @@ json.currentUser do
   json.token current_user.session_token.token
 end
 
-json.app({})
-
 json.dashboards current_user.dashboards do |dashboard|
   json.(dashboard, :id, :name, :description, :notes, :url, :target_users,
     :display_hero, :display_kpis, :published_at)

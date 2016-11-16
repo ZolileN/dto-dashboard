@@ -1,10 +1,11 @@
 export default {
   routing: {},
-  app: {},
   // requests: {},
   ui: {
-    toast: {},
-    pageDashboardWidgets: {}
+    app: {
+      didTransactionDatagroup: {}
+    },
+    toast: {}
   },
   // __CONFIG__
   config: {},

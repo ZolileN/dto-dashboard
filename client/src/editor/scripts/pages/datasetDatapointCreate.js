@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
-import * as uiActions from './../actions/ui';
 import CreateDatapointForm from './../components/forms/createDatapointForm';
 import { getRequestKey } from './../actions/datapoint';
 import { isPendingRequest } from './../reducers/requests';
@@ -21,8 +20,7 @@ const mapStateToProps = ({ui, requests}, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({
-  push: bindActionCreators(push, dispatch),
-  editForm: bindActionCreators(uiActions.editFormAtDatasetDatapointCreatePage, dispatch),
+  push: bindActionCreators(push, dispatch)
 });
 
 

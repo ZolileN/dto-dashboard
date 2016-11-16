@@ -6,18 +6,25 @@ import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
 import Preview from './datagroupPreview';
+import WidgetAlert from './widgetAlert';
 import TrafficLight from './../components/trafficLight';
 
 
 const WidgetTypeTimeSeries = ({
-  recentDatagroupset, editUrl, addUrl, editDescriptionsUrl
+  recentDatagroupset,
+  editUrl,
+  addUrl,
+  editDescriptionsUrl,
+  alertProps
 }) => {
 
   const canUpdate = FLAG_UDPATE_DATAGROUP;
 
-
   return (
     <article className="widget-list__item">
+
+      {alertProps && <WidgetAlert {...alertProps} />}
+
       <header className="clearfix">
         <div className="title">
           <h1 className="h5">{recentDatagroupset.widget.name}</h1>

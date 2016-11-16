@@ -4,15 +4,23 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
+import WidgetAlert from './widgetAlert';
 
 
-const WidgetTypeSimple = ({widget, editUrl}) => {
+const WidgetTypeSimple = ({
+  widget,
+  editUrl,
+  alertProps
+}) => {
 
   const disableEdit = FLAG_UDPATE_DATAGROUP === false;
   const isFact = widget.type === 'fact';
 
   return (
     <article className="widget-list__item">
+
+      {alertProps && <WidgetAlert {...alertProps} />}
+
       <header className="clearfix">
         <div className="title">
           <h1 className="h5">{widget.name}</h1>

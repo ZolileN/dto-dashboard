@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { getDashboardById } from './../reducers/dashboards';
 import { getWidgetById } from './../reducers/widgets';
 
-import * as uiActions from './../actions/ui';
+import * as uiAppActions from './../actions/uiApp';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import Breadcrumbs from './../components/breadcrumbs';
 
@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiActions, dispatch)
+  actions: bindActionCreators(uiAppActions, dispatch)
 });
 
 

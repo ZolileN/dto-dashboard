@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 
 import Breadcrumbs from './../components/breadcrumbs';
-import * as uiActions from './../actions/ui';
+import * as uiAppActions from './../actions/uiApp';
 import { getDatapointById, computeLabel } from './../reducers/datapoints';
 import UpdateDatapointForm from './../components/forms/updateDatapointForm';
 import { getRequestKey } from './../actions/datapoint';
@@ -25,7 +25,7 @@ const mapStateToProps = ({datapoints, ui, requests}, ownProps) => {
 };
 const mapDispatchToProps = dispatch => ({
   push: bindActionCreators(push, dispatch),
-  actions: bindActionCreators(uiActions, dispatch)
+  actions: bindActionCreators(uiAppActions, dispatch)
 });
 
 class DatasetDatapointPage extends Component {
