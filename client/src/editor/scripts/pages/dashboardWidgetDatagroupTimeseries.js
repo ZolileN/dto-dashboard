@@ -21,7 +21,7 @@ import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import { getExpandedShortDate } from './../utils/humanisedDates';
 import CreateDatagroupsetForm from './../components/forms/createDatagroupsetForm';
 import UpdateDatagroupsetForm from './../components/forms/updateDatagroupsetForm';
-import metadata from './../data/widgetMetadata';
+import metadatas from './../data/widgetMetadata';
 import TrafficLight from './../components/trafficLight';
 
 
@@ -51,13 +51,9 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
     };
 
     if (this.props.widget.type && this.props.widget.units) {
-      try {
-        let metadata = metadata[this.props.widget.type][this.props.widget.units];
-        if (metadata) {
-          this.setState('metadata', metadata);
-        }
-      } catch(e) {
-        console.warn('no widget metadata for that permutation', this.props.widget.type, this.props.widget.units);
+      let metadata = metadatas[this.props.widget.type][this.props.widget.units];
+      if (metadata) {
+        this.state.metadata = metadata;
       }
     }
   }
@@ -135,8 +131,10 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                 {isUpdateMode ?
                   <UpdateDatagroupsetForm formModel={datagroupsetSlice}
                                           canSubmit={canUpdate}
+                                          formMetadata={metadata}
                                           onSubmitSuccess={this.onSubmitSuccess.bind(this)} /> :
                   <CreateDatagroupsetForm formModel={datagroupsetSlice}
+                                          formMetadata={metadata}
                                           canSubmit={canCreate}
                                           onSubmitSuccess={this.onSubmitSuccess.bind(this)} />}
               </div>

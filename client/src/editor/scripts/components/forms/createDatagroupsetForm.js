@@ -7,6 +7,7 @@ import InputHidden from './../fields/inputHidden';
 import { createDatagroupset } from './../../actions/datagroupset';
 import { setToast } from './../../actions/toast';
 import { getHumanisedMonth } from './../../utils/humanisedDates';
+import * as validators from './../../utils/validators';
 
 
 let CreateDatagroupsetForm = ({
@@ -23,6 +24,7 @@ let CreateDatagroupsetForm = ({
         models:formModel.groups,
         canSubmit
       }} />
+
       <div>
         <button type="submit"
                 className="btn primary"
@@ -33,6 +35,7 @@ let CreateDatagroupsetForm = ({
                 disabled={!canSubmit || submitting}
                 onClick={cancel.bind({}, rfProps)}>Cancel</button>
       </div>
+
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
       </div>
@@ -40,7 +43,10 @@ let CreateDatagroupsetForm = ({
   )
 };
 
-const renderFields = ({fields, models, canSubmit, disabled}) => {
+const renderFields = ({
+  fields, models, canSubmit, disabled
+}) => {
+
   return (
     <div>
       {fields.map((member, idx) => {
@@ -52,7 +58,7 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
             <Field name={`${member}.value`}
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
-                   fieldProps={{disabled}}  // todo - elementProps
+                   elementProps={{disabled}}
                    optionProps={{canSubmit}} />
           </fieldset>
         )
@@ -61,6 +67,14 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
   )
 };
 
+
+/**
+ * Submit the form
+ * @param values
+ * @param dispatch
+ * @param props
+ * @return {Promise} resolves redux-form submission
+ */
 const submit = (values, dispatch, props) => {
   let formData = values.groups.map((g, idx) => {
     return {
@@ -99,27 +113,38 @@ const submit = (values, dispatch, props) => {
 };
 
 
-// not much point to validate if only one field
+/**
+ * Validate the form
+ * @param values
+ * @param props
+ * @return {{}} - errors - which maps to shape of values
+ */
 const validate = (values, props) => {
 
   const errors = {};
-  const memberArrayErrors = [];
 
-  values.groups.forEach((member, idx) => {
-    const memberErrors = {};
+  errors.groups = values.groups.map((member, idx) => {
 
-    if (!member || !member.value) {
-      memberErrors.firstName = 'Required';
-      memberArrayErrors[idx] = memberErrors;
+    if (props.formMetadata && props.formMetadata.validators) {
+
+      let groupErrors = {value:''};
+
+      props.formMetadata.validators.forEach(v => {  // todo - only handles single validator now
+
+        if (validators[v.validator](member.value) === false) {
+
+          groupErrors.value = v.message;
+        }
+      });
+
+      return groupErrors;
     }
-  });
 
-  if (memberArrayErrors.length) {
-    errors.groups = memberArrayErrors;
-  }
+  });
 
   return errors;
 };
+
 
 const cancel = (rfProps, cb = null) => {
   rfProps.reset();

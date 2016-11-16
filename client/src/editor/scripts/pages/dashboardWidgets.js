@@ -74,7 +74,6 @@ class PageDashboardWidgets extends Component {
       btlDatagroupsetsSlices
     } = this.props;
 
-
     return (
       <div className="page page-dashboardwidgets" ref="page">
 

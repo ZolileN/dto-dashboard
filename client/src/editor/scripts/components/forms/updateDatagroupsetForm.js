@@ -51,7 +51,7 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
             <Field name={`${member}.datapoint.value`}
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
-                   fieldProps={{disabled}}
+                   elementProps={{disabled}}
                    optionProps={{canSubmit}} />
           </fieldset>
         )

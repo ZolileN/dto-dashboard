@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 
-const DatagroupsetInput = ({input, name, type, label, meta, fieldProps, optionProps, groupModel}) => {
+const DatagroupsetInput = ({input, name, type, label, meta, elementProps, optionProps, groupModel}) => {
   const { isOptional, infoText, canSubmit } = optionProps;
   const { touched, error } = meta;
 
@@ -15,8 +15,8 @@ const DatagroupsetInput = ({input, name, type, label, meta, fieldProps, optionPr
              className="control-label">{label}{isOptional && <sup> Optional</sup>}</label>
       {infoText && <label className="info-block">{infoText}</label>}
       <div>
-        <input {...input} {...fieldProps}
-          type="number"
+        <input {...input} {...elementProps}
+          type="text"
           name={name}
           id={name} disabled={!canSubmit}
           className={touched && error ? `form-control invalid` : `form-control`} />
@@ -27,7 +27,7 @@ const DatagroupsetInput = ({input, name, type, label, meta, fieldProps, optionPr
 };
 
 DatagroupsetInput.defaultProps = {
-  fieldProps: {
+  elementProps: {
     autoComplete: 'off'
   },
   optionProps: {
