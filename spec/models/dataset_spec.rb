@@ -24,10 +24,12 @@ RSpec.describe Dataset, type: :model do
   end
 
   describe 'data_updated_at' do
-    subject!(:dataset)    { FactoryGirl.create(:dataset, :updated_at => 7.days.ago) }
-
+    subject(:dataset)     { FactoryGirl.create(:dataset, :updated_at => 7.days.ago) }
     let!(:datapoint)      { FactoryGirl.create(:datapoint, :dataset => dataset, :updated_at => 2.days.ago) }
 
+    before {
+      dataset.reload
+    }
     its(:data_updated_at) { is_expected.to eq datapoint.updated_at }
   end
 
