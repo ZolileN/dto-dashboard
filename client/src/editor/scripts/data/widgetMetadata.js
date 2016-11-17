@@ -42,7 +42,7 @@ const metadata = {
   'fact': {
     'n': {
       label: '',
-      widget_help: '',
+      widget_help: `This is information you'd like to tell users about your service. Enter text in the field below.`,
       widget_form_help: '',
       validators: [{validator:'required', message:validators.MESSAGE_REQUIRED}]
     }
