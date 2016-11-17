@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import Donut from './svgs/donut';
 import { statusColors } from './../constants/styleVariables';
 import { humanisedShortDate } from './../utils/humanisedDates';
-import { getNumberOfMonthsFromHead } from './../helpers/datapoint';
+import { getNumMonthsBetweenHeadKeyAndRecentKey } from './../helpers/datapoint';
 import { isNumber } from 'lodash';
 
 
@@ -22,9 +22,9 @@ const STATUSES = [
   }
 ];
 
-const TrafficLight = ({lastUpdatedDate}) => {
+const TrafficLight = ({recentKey}) => {
 
-  const numMonths = getNumberOfMonthsFromHead(lastUpdatedDate);
+  const numMonths = getNumMonthsBetweenHeadKeyAndRecentKey(recentKey);
 
   if (!isNumber(numMonths)) {
     return null;
@@ -44,7 +44,7 @@ const TrafficLight = ({lastUpdatedDate}) => {
       </span>
 
       </span>
-      <span className="traffic-light__bottom">Published: <time>{humanisedShortDate(lastUpdatedDate)}</time></span>
+      <span className="traffic-light__bottom">Published: <time>{humanisedShortDate(recentKey)}</time></span>
     </div>
   )
 };

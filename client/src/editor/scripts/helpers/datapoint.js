@@ -28,9 +28,9 @@ export const getPrevKey = (recentKey) => {
   return prevKey;
 };
 
-export const getNumberOfMonthsFromHead = (sliceKey) => {
+export const getNumMonthsBetweenHeadKeyAndRecentKey = recentKey => {
   const headMonth = moment(new Date()).subtract(1, 'months');
-  const month = moment(sliceKey);
+  const month = moment(recentKey);
   const dateRange = moment.range(month, headMonth);
   return dateRange.diff('months');
 };

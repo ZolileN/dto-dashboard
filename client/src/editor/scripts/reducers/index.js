@@ -232,7 +232,8 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     slicePrevKey: null,
     sliceNextKey: null,
     sliceLastUpdated: null,
-    groups: []
+    groups: [],
+    recentKey: datagroupset.recentKey
   };
 
   let datapointItem = null;
@@ -251,6 +252,7 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
 
     // validate and meta
     //
+
     datagroupset.groups.forEach((g, idx) => {
       g.datapoints.forEach((dp, idx2) => {
         if (computeLabel(dp.ts) === key) {
@@ -276,7 +278,7 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     if (!hasValidSlice) {
       state.groups = datagroupset.groups.map((g, idx) => {
         if (state.sliceLastUpdated === null) {
-          state.sliceLastUpdated = g.dataset.updated_at;
+          state.sliceLastUpdated = g.data_updated_at;
         }
         return {
           dataset: g.dataset,
@@ -286,7 +288,7 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     } else {
       state.groups = datagroupset.groups.map((g, idx) => {
         if (state.sliceLastUpdated === null) {
-          state.sliceLastUpdated = g.dataset.updated_at;
+          state.sliceLastUpdated = g.data_updated_at;
         }
         datapointItem = g.datapoints[sliceIndexArray[idx]];
         return {

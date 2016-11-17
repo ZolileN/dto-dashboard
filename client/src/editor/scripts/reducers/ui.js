@@ -6,7 +6,6 @@ import { combineReducers } from 'redux';
 const app = (state = initialState.ui.app, {type, payload}) => {
   switch (type) {
     case types.UI_APP_SET_DATAGROUP_TRANSACTED:
-      debugger
       return {
         ...state,
         didTransactionDatagroup: {
