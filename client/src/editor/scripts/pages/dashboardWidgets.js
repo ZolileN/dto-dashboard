@@ -158,6 +158,17 @@ class PageDashboardWidgets extends Component {
                     }
                   })}
                 </section>
+
+
+                <section className="page-dashboardwidgets__bookend-ctas">
+                  <Link to="" className="btn primary pr-1"
+                        disabled={true}
+                        onClick={e => e.preventDefault()}>Add new chart</Link>
+                  <Link to="" className="btn primary"
+                        disabled={true}
+                        onClick={e => e.preventDefault()}>Add new fact</Link>
+                </section>
+
               </div>
             </div>
           </div>

@@ -26,7 +26,7 @@ const WidgetTypeSimple = ({
           <h1 className="h5">{widget.name}</h1>
         </div>
         <div className="ancillary">
-          <span className="date-meta">Last updated: {humanisedShortDate(widget.last_updated_at)}</span>
+          <span className="date-meta">Published: {humanisedShortDate(widget.last_updated_at)}</span>
         </div>
       </header>
 

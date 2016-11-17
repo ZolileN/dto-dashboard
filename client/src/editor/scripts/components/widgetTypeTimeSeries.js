@@ -41,13 +41,15 @@ const WidgetTypeTimeSeries = ({
         <div className="col-xs-12 col-lg-6">
           <Link to={addUrl} className="btn primary"
                 disabled={recentDatagroupset.hasHead}
-                onClick={e => {if (recentDatagroupset.hasHead) return e.preventDefault()}}>Add data</Link><br/>
+                onClick={e => {if (recentDatagroupset.hasHead) return e.preventDefault()}}>Add new data</Link><br/>
           <Link to={editUrl}
+                className="a--ui-kit"
                 disabled={!canUpdate}
-                onClick={e => !canUpdate && e.preventDefault()}>Edit data</Link><br/>
+                onClick={e => !canUpdate && e.preventDefault()}>Edit existing data</Link><br/>
           <Link to={editDescriptionsUrl}
+                className="a--ui-kit"
                 disabled={!canUpdate}
-                onClick={e => !canUpdate && e.preventDefault()}>Edit KPI descriptions</Link><br/>
+                onClick={e => !canUpdate && e.preventDefault()}>Edit labels and descriptions</Link><br/>
         </div>
       </div>
     </article>

@@ -9,6 +9,7 @@ import { setToast } from './../../actions/toast';
 import { setDatagroupTransacted } from './../../actions/uiApp';
 import { getHumanisedMonth } from './../../utils/humanisedDates';
 import * as validators from './../../utils/validators';
+import { getHumanisedUnits } from './../../helpers/dataset';
 
 
 let CreateDatagroupsetForm = ({
@@ -16,13 +17,14 @@ let CreateDatagroupsetForm = ({
   ...rfProps
 }) => {
 
-  const { error, handleSubmit, pristine, valid, submitting } = rfProps;
+  const { handleSubmit, pristine, valid, submitting, error } = rfProps;
 
   return (
     <form noValidate onSubmit={e => e.preventDefault()}>
 
       <FieldArray name="groups" component={renderFields} props={{
         models:formModel.groups,
+        formModel: formModel,
         canSubmit
       }} />
 
@@ -45,14 +47,14 @@ let CreateDatagroupsetForm = ({
 };
 
 const renderFields = ({
-  fields, models, canSubmit, disabled
+  fields, models, canSubmit, disabled, formModel, meta: {error}
 }) => {
 
   return (
     <div>
       {fields.map((member, idx) => {
         return (
-          <fieldset key={idx}>
+            <fieldset key={idx}>
             <Field name={`${member}.dataset.id`}
                    component={InputHidden} />
 
@@ -61,6 +63,8 @@ const renderFields = ({
                    component={DatagroupsetInput}
                    elementProps={{disabled}}
                    optionProps={{canSubmit}} />
+
+            <span>{getHumanisedUnits(formModel.groups[idx].dataset.units)}</span>
           </fieldset>
         )
       })}
@@ -87,40 +91,36 @@ const submit = (values, dispatch, props) => {
 
   return new Promise((resolve, reject) => {
     dispatch(createDatagroupset(formData))
-      .then(
-        (data) => { // promise success
-          if (data && data.length) {
-
-            dispatch(setDatagroupTransacted({
-              widgetId: props.formModel.widget.id,
-              description: `Published data for: ${getHumanisedMonth(data[0].ts)} -
+      .then((data) => { // check for server error
+        if (data && data.length && data[0].message) {
+          throw {message: data[0].message};
+        }
+        return data;
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      .then((data) => { // dispatch actions
+        dispatch(setDatagroupTransacted({
+          widgetId: props.formModel.widget.id,
+          description: `Published data for: ${getHumanisedMonth(data[0].ts)} -
                 ${data.map((el, idx) => {
-                  return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
-                })}
-              `,
-              type: 'created'
-            }));
-
-            // todo - remove this one
-            dispatch(setToast(`Published data for: ${getHumanisedMonth(data[0].ts)} -
+            return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
+          })}`,
+          type: 'created'
+        }));
+        return data;
+      })
+      .then((data) => { // dispatch actions
+        dispatch(setToast(`Published data for: ${getHumanisedMonth(data[0].ts)} -
               ${data.map((el, idx) => {
-                return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}` 
-              })}
-            `, 'success'));
-            return resolve();
-          }
-          // server error
-          // return reject({message: data.message || 'Server error'});
-          debugger
-          return reject({message:'Server error'});
-        },
-        (error) => { // promise failed
-          debugger
-          return reject({message:error});
-        },
-      ).catch((error) => {
-        debugger
-        throw new SubmissionError({_error: error.message || 'Submit failed'});
+          return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
+        })}`, 'success'));
+        return data;
+      })
+      .catch((e) => {
+        console.log(e);
+        reject(new SubmissionError({_error: e.message || 'Submit failed'}));
       });
   });
 };

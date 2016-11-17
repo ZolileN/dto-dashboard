@@ -10,14 +10,10 @@ export const humanisedShortDate = ts => {
   return moment(ts).format(dateFormats.SHORT_DATE);
 };
 
-export const humanisedVeryShortDate = ts => {
+export const getHumanisedVeryShortDate = ts => {
   return moment(ts).format(dateFormats.VERY_SHORT_DATE);
 };
 
-export const getExpandedShortDate = key => {
-  return moment(key).format(`MMMM 'YY`);
-};
-
 export const getHumanisedMonth = ts => {
-  return moment(ts).format('m');
+  return moment(ts).format(dateFormats.MONTH_EXPANDED);
 };

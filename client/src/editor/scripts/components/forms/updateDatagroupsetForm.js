@@ -5,6 +5,7 @@ import { Field, FieldArray, reduxForm, SubmissionError } from 'redux-form';
 import DatagroupsetInput from './../fields/datagroupsetInput';
 import InputHidden from './../fields/inputHidden';
 import { updateDatagroupset } from './../../actions/datagroupset';
+import { getHumanisedUnits } from './../../helpers/dataset';
 
 
 let UpdateDatagroupsetForm = ({
@@ -19,6 +20,7 @@ let UpdateDatagroupsetForm = ({
 
       <FieldArray name="groups" component={renderFields} props={{
         models:formModel.groups,
+        formModel: formModel,
         canSubmit
       }} />
 
@@ -26,7 +28,7 @@ let UpdateDatagroupsetForm = ({
         <button type="submit"
                 className="btn primary"
                 disabled={!canSubmit || submitting}
-                onClick={handleSubmit(submit.bind(this))}>{!canSubmit ? 'Published' : submitting ? 'Publishing...' : 'Publish'}</button>
+                onClick={handleSubmit(submit.bind(this))}>{!canSubmit ? 'Edit existing data' : submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="cancel"
                 className='btn primary-link'
                 disabled={!canSubmit || submitting}
@@ -39,7 +41,7 @@ let UpdateDatagroupsetForm = ({
   )
 };
 
-const renderFields = ({fields, models, canSubmit, disabled}) => {
+const renderFields = ({fields, models, canSubmit, disabled, formModel}) => {
   return (
     <div>
       {fields.map((member, idx) => {
@@ -53,6 +55,9 @@ const renderFields = ({fields, models, canSubmit, disabled}) => {
                    component={DatagroupsetInput}
                    elementProps={{disabled}}
                    optionProps={{canSubmit}} />
+
+            <span>{getHumanisedUnits(formModel.groups[idx].dataset.units)}</span>
+
           </fieldset>
         )
       })}

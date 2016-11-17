@@ -8,6 +8,8 @@ const Preview = ({recentDatagroupset}) => {
 
   return (
     <div className="preview">
+      <p>Most recent data: {recentDatagroupset.recentKey}</p>
+
       {recentDatagroupset.groups.map((group, idx) => {
         if (!(group.datapoint && group.datapoint.value)) {  // todo - remove
           console.warn('datapoint is null, this means your widget has no data for this slice of time which is probably an error in the data integrity', group);

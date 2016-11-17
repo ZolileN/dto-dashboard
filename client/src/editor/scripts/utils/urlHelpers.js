@@ -22,3 +22,8 @@ export const getDashboardWidgetDatagroupTimeSeriesUrl = (dashboardId, widgetId, 
 export const getDashboardWidgetDescriptionsUrl = (dashboardId, widgetId) => {
   return `/dashboards/${dashboardId}/widgets/${widgetId}/descriptions`;
 };
+
+export const getServiceDashboardUrl = (dashboardId, dashboardName) => {
+  let name = dashboardName.toLowerCase().replace(/\s/g, '-');
+  return `/dashboards/${dashboardId}-${name}`;
+};

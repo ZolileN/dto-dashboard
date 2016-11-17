@@ -2,7 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
+import {
+  getServiceDashboardUrl,
+  getDashboardWidgetsUrl
+} from './../utils/urlHelpers';
 import Breadcrumbs from './../components/breadcrumbs';
 
 
@@ -23,8 +26,8 @@ const DashboardItem = ({dashboard}) => {
   return (
     <article className="dashboard-list__item">
       <h1 className="h5">{dashboard.name}</h1>
-      <p>{dashboard.description}</p>
       <Link to={getDashboardWidgetsUrl(dashboard.id)} className="btn primary">Edit Dashboard</Link>
+      <a href={getServiceDashboardUrl(dashboard.id, dashboard.name)} className="a--ui-kit">View service dashboard</a>
     </article>
   )
 };

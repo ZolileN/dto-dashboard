@@ -18,7 +18,7 @@ import Breadcrumbs from './../components/breadcrumbs';
 import Pagination from './../components/widgetPagePagination';
 import * as uiAppActions from './../actions/uiApp';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
-import { getExpandedShortDate } from './../utils/humanisedDates';
+import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
 import CreateDatagroupsetForm from './../components/forms/createDatagroupsetForm';
 import UpdateDatagroupsetForm from './../components/forms/updateDatagroupsetForm';
 import metadatas from './../data/widgetMetadata';
@@ -89,7 +89,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                 <Breadcrumbs paths={[
                   {path: '/', name:'Manage Dashboards'},
                   {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
-                  {path: '', name:`${widget.name} - ${datagroupsetSlice.sliceKey}`}
+                  {path: '', name:`${widget.name} - ${getHumanisedVeryShortDate(datagroupsetSlice.sliceKey)}`}
                 ]} />
 
                 <div className="page__title">
@@ -116,17 +116,17 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
                 <div className="timeseries-pagination">
                   <span className="timeseries-pagination__supp-title">{isUpdateMode ? 'View' : 'Add'} data for:</span>
-                  <span className="timeseries-pagination__title">{getExpandedShortDate(datagroupsetSlice.sliceKey)}</span>
+                  <span className="timeseries-pagination__title">{getHumanisedVeryShortDate(datagroupsetSlice.sliceKey)}</span>
                   <Pagination prevKey={datagroupsetSlice.slicePrevKey}
                               nextKey={datagroupsetSlice.sliceNextKey}
                               widgetId={widget.id}
                               dashboardId={dashboard.id} />
                 </div>
 
+                <hr/>
 
                 {metadata.widget_form_help && <p>{metadata.widget_form_help}</p>}
 
-                {isUpdateMode && <p>Last updated: {datagroupsetSlice.sliceLastUpdated}</p>}
                 {isUpdateMode ?
                   <UpdateDatagroupsetForm formModel={datagroupsetSlice}
                                           canSubmit={canUpdate}

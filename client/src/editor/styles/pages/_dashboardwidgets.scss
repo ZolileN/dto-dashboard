@@ -4,12 +4,23 @@
   }
 
   .widget-list__item {
-    padding: $spacer 0;
-    border-top: 1px solid $color-line-border;
+    padding: $spacer-y 0;
+    border-bottom: 1px solid $color-line-border;
   }
 
   &__title-block {
-    margin-bottom: $spacer;
+    margin-bottom: $spacer-y;
+  }
+
+  &__bookend-ctas {
+    @include clearfix;
+    padding: $spacer-y*2 0 $spacer-y;
+
+    .btn {
+      display: inline-block;
+      float: left;
+      margin-bottom:0;
+    }
   }
 }
 
