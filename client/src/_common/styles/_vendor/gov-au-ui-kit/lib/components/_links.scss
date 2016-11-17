@@ -218,7 +218,8 @@ Style guide: Link styles.1 Hover links
 
 .a--ui-kit {
   @include link-colours($non-black, $light-aqua, $non-black);
-  [disabled] {
+
+  &[disabled] {
     color: transparentize($non-black, 0.3);
     border-bottom: none;
     cursor: not-allowed;
