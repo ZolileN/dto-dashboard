@@ -57,6 +57,11 @@ class PageDashboardWidgets extends Component {
   componentDidMount() {
     if (this.props.uiApp.didTransactionDatagroup.widgetId) {
       this.scrollToWidget(this.props.uiApp.didTransactionDatagroup.widgetId);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.uiApp.didTransactionDatagroup.widgetId) {
       this.props.actions.clearDatagroupTransacted();
     }
   }

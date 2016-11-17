@@ -97,9 +97,6 @@ const submit = (values, dispatch, props) => {
         }
         return data;
       })
-      .then((data) => {
-        resolve(data);
-      })
       .then((data) => { // dispatch actions
         dispatch(setDatagroupTransacted({
           widgetId: props.formModel.widget.id,
@@ -111,12 +108,10 @@ const submit = (values, dispatch, props) => {
         }));
         return data;
       })
-      .then((data) => { // dispatch actions
-        dispatch(setToast(`Published data for: ${getHumanisedMonth(data[0].ts)} -
-              ${data.map((el, idx) => {
-          return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
-        })}`, 'success'));
-        return data;
+      .then((data) => {
+        // resolve(data);
+        // return data;
+        return resolve(data);
       })
       .catch((e) => {
         console.log(e);
