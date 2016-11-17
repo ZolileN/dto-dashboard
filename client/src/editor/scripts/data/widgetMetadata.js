@@ -35,7 +35,7 @@ const metadata = {
     '%': {
       label: '',
       widget_help: '',
-      widget_form_help: `These figures are percentages and can’t add up to more than 100. You can include up to 2 decimal places — for example, 32.25.`,
+      widget_form_help: `These figures are percentages and have to add up to 100. You can include up to 2 decimal places — for example, 32.25.`,
       validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     }
   },
@@ -63,20 +63,20 @@ const metadata = {
     '%': {
       label: '',
       widget_help: `This is represented as a line chart. Enter your data in the fields below.`,
-      widget_form_help: `These figures are percentages and can’t add up to more than 100. You can include up to 2 decimal places — for example, 32.25.`,
+      widget_form_help: `These figures are percentages and have to add up to 100. You can include up to 2 decimal places — for example, 32.25.`,
       validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     }
   },
   'sparkline': {
     '%': {
       label: '',
-      widget_help: ``,
+      widget_help: `This is represented as a sparkline chart. Enter your data in the field below.`,
       widget_form_help: `This figure is a percentage and can't be more than 100. You can include up to 2 decimal places — for example, 32.25.`,
       validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     },
     'n': {
       label: '',
-      widget_help: ``,
+      widget_help: `This is represented as a sparkline chart. Enter your data in the field below.`,
       widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Leave a field blank if you have no data.`,
       validators: [{validator:'emptyOrNumeric', message:validators.MESSAGE_NUMERICNULL}]
     }
@@ -84,13 +84,13 @@ const metadata = {
   'kpi-sparkline': {
     '%': {
       label: '',
-      widget_help: '',
+      widget_help: `This is represented as a sparkline chart. Enter your data in the field below.`,
       widget_form_help: `This figure is a percentage and can't be more than 100. You can include up to 2 decimal places — for example, 32.25.`,
       validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     },
     '$': {
       label: '',
-      widget_help: '',
+      widget_help: `This is represented as a sparkline chart. Enter your data in the field below.`,
       widget_form_help: `This figure is in dollars. You can include up to 2 decimal places — for example, 32.25.`,
       validators: [{validator:'emptyOrMoney', message:validators.MESSAGE_MONEY}]
     }
@@ -99,7 +99,7 @@ const metadata = {
     '%': {
       label: '',
       widget_help: `This is represented as a pie chart. Enter your data in the fields below.`,
-      widget_form_help: 'These figures are percentages and can’t add up to more than 100. You can include up to 2 decimal places — for example, 32.25.',
+      widget_form_help: 'These figures are percentages and have to add up to 100. You can include up to 2 decimal places — for example, 32.25.',
       validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     }
   }
