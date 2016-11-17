@@ -24,6 +24,10 @@ const STATUSES = [
 
 const TrafficLight = ({recentKey}) => {
 
+  if (!recentKey) {
+    return null;
+  }
+
   const numMonths = getNumMonthsBetweenHeadKeyAndRecentKey(recentKey);
 
   if (!isNumber(numMonths)) {
@@ -31,6 +35,7 @@ const TrafficLight = ({recentKey}) => {
   }
 
   const status = numMonths >= 2 ? STATUSES[2] : STATUSES[numMonths];
+
 
   return (
     <div className="traffic-light">
@@ -50,7 +55,7 @@ const TrafficLight = ({recentKey}) => {
 };
 
 TrafficLight.propTypes = {
-  recentKey: PropTypes.string.isRequired
+  recentKey: PropTypes.string
 };
 
 export default TrafficLight;

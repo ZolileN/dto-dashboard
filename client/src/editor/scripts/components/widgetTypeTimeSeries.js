@@ -4,7 +4,6 @@ import { FLAG_UDPATE_DATAGROUP } from './../constants/flags';
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import { humanisedShortDate } from './../utils/humanisedDates';
 import Preview from './datagroupPreview';
 import WidgetAlert from './widgetAlert';
 import TrafficLight from './../components/widgetTrafficLight';
@@ -19,6 +18,7 @@ const WidgetTypeTimeSeries = ({
 }) => {
 
   const canUpdate = FLAG_UDPATE_DATAGROUP;
+
 
   return (
     <article className="widget-list__item">
