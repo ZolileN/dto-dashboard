@@ -23,20 +23,20 @@ const metadata = {
     'n': {
       label: '',
       widget_help: 'This is represented as a bar chart. Enter your data in the fields below.',
-      widget_form_help: `These figures are numerical. You can include up to 2 decimal places.`,
-      validators: [{validator:'numericNull', message:validators.MESSAGE_NUMERICNULL}]
+      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Or you publish the empty field to save as "No data".`,
+      validators: [{validator:'emptyOrNumeric', message:validators.MESSAGE_NUMERICNULL}]
     },
     's': {
       label: '',
       widget_help: 'This is represented as a bar chart. Enter your data in the fields below.',
       widget_form_help: `Enter figures in seconds. For example, 5 hours 2 minutes 35 seconds = 18155 seconds. It will show on your chart in hours, minutes and seconds.`,
-      validators: [{validator:'seconds', message:validators.MESSAGE_SECONDS}]
+      validators: [{validator:'emptyOrSeconds', message:validators.MESSAGE_SECONDS}]
     },
     '%': {
       label: '',
       widget_help: '',
       widget_form_help: `These figures are percentages and can’t add up to more than 100. You can include up to 2 decimal places — for example, 32.25.`,
-      validators: [{validator:'percentile', message:validators.MESSAGE_PERCENTILE}]
+      validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     }
   },
   'fact': {
@@ -51,20 +51,20 @@ const metadata = {
     'n': {
       label: '',
       widget_help: `This is represented as a line chart. Enter your data in the fields below.`,
-      widget_form_help: `These figures are numerical. You can include up to 2 decimal places.`,
-      validators: [{validator:'numericNull', message:validators.MESSAGE_NUMERICNULL}]
+      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Or you publish the empty field to save as "No data".`,
+      validators: [{validator:'emptyOrNumeric', message:validators.MESSAGE_NUMERICNULL}]
     },
     's': {
       label: '',
       widget_help: `This is represented as a line chart. Enter your data in the fields below.`,
       widget_form_help: `Enter figures in seconds. For example, 5 hours 2 minutes 35 seconds = 18155 seconds. It will show on your chart in hours, minutes and seconds.`,
-      validators: [{validator:'seconds', message:validators.MESSAGE_SECONDS}]
+      validators: [{validator:'emptyOrSeconds', message:validators.MESSAGE_SECONDS}]
     },
     '%': {
       label: '',
       widget_help: `This is represented as a line chart. Enter your data in the fields below.`,
       widget_form_help: `These figures are percentages and can’t add up to more than 100. You can include up to 2 decimal places — for example, 32.25.`,
-      validators: [{validator:'percentile', message:validators.MESSAGE_PERCENTILE}]
+      validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     }
   },
   'sparkline': {
@@ -72,13 +72,13 @@ const metadata = {
       label: '',
       widget_help: ``,
       widget_form_help: `This figure is a percentage and can't be more than 100. You can include up to 2 decimal places — for example, 32.25.`,
-      validators: [{validator:'percentile', message:validators.MESSAGE_PERCENTILE}]
+      validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     },
     'n': {
       label: '',
       widget_help: ``,
-      widget_form_help: `These figures are numerical. You can include up to 2 decimal places.`,
-      validators: [{validator:'numericNull', message:validators.MESSAGE_NUMERICNULL}]
+      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Or you publish the empty field to save as "No data".`,
+      validators: [{validator:'emptyOrNumeric', message:validators.MESSAGE_NUMERICNULL}]
     }
   },
   'kpi-sparkline': {
@@ -86,13 +86,13 @@ const metadata = {
       label: '',
       widget_help: '',
       widget_form_help: `This figure is a percentage and can't be more than 100. You can include up to 2 decimal places — for example, 32.25.`,
-      validators: [{validator:'percentile', message:validators.MESSAGE_PERCENTILE}]
+      validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     },
     '$': {
       label: '',
       widget_help: '',
       widget_form_help: `This figure is in dollars. You can include up to 2 decimal places — for example, 32.25.`,
-      validators: [{validator:'money', message:validators.MESSAGE_MONEY}]
+      validators: [{validator:'emptyOrMoney', message:validators.MESSAGE_MONEY}]
     }
   },
   'pie': {
@@ -100,7 +100,7 @@ const metadata = {
       label: '',
       widget_help: `This is represented as a pie chart. Enter your data in the fields below.`,
       widget_form_help: 'These figures are percentages and can’t add up to more than 100. You can include up to 2 decimal places — for example, 32.25.',
-      validators: [{validator:'percentile', message:validators.MESSAGE_PERCENTILE}]
+      validators: [{validator:'emptyOrPercentile', message:validators.MESSAGE_PERCENTILE}]
     }
   }
 };

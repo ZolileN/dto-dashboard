@@ -50,7 +50,7 @@ const TrafficLight = ({recentKey}) => {
 };
 
 TrafficLight.propTypes = {
-  lastUpdatedDate: PropTypes.string.isRequired
+  recentKey: PropTypes.string.isRequired
 };
 
 export default TrafficLight;

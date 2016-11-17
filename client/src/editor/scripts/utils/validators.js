@@ -13,18 +13,18 @@ export const required = value => {
   return Boolean(value);
 };
 
-export const numericNull = value => {
-  return value === null || Boolean(Number(value) && Number(value) >= 0);
+export const emptyOrNumeric = value => {
+  return typeof value === 'undefined' || Boolean(Number(value) && Number(value) >= 0);
 };
 
-export const seconds = value => {
-  return isNumber(value) && value >= 0;
+export const emptyOrSeconds = value => {
+  return typeof value === 'undefined' || isNumber(value) && value >= 0;
 };
 
-export const percentile = value => {
-  return isFloat(String(value), {min:0, max:100});
+export const emptyOrPercentile = value => {
+  return typeof value === 'undefined' || isFloat(String(value), {min:0, max:100});
 };
 
-export const money = value => {
-  return isCurrency(value);
+export const emptyOrMoney = value => {
+  return typeof value === 'undefined' || isCurrency(value);
 };
