@@ -23,7 +23,7 @@ const metadata = {
     'n': {
       label: '',
       widget_help: 'This is represented as a bar chart. Enter your data in the fields below.',
-      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Or you publish the empty field to save as "No data".`,
+      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Leave a field blank if you have no data.`,
       validators: [{validator:'emptyOrNumeric', message:validators.MESSAGE_NUMERICNULL}]
     },
     's': {
@@ -51,7 +51,7 @@ const metadata = {
     'n': {
       label: '',
       widget_help: `This is represented as a line chart. Enter your data in the fields below.`,
-      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Or you publish the empty field to save as "No data".`,
+      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Leave a field blank if you have no data.`,
       validators: [{validator:'emptyOrNumeric', message:validators.MESSAGE_NUMERICNULL}]
     },
     's': {
@@ -77,7 +77,7 @@ const metadata = {
     'n': {
       label: '',
       widget_help: ``,
-      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Or you publish the empty field to save as "No data".`,
+      widget_form_help: `These figures are numerical. You can include up to 2 decimal places. Leave a field blank if you have no data.`,
       validators: [{validator:'emptyOrNumeric', message:validators.MESSAGE_NUMERICNULL}]
     }
   },

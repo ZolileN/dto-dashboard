@@ -63,9 +63,14 @@ class PageDashboardWidgets extends Component {
 
   scrollToWidget(widgetId) {
     let pageNode = this.refs.page;
+    let headerNode = document.getElementsByClassName('editor__top-bar')[0];
+    let headerNodeHeight = headerNode.offsetHeight;
+
     let node = findDOMNode(this.refs[widgetId]);
-    if (pageNode && node) {
-      pageNode.scrollTop = window.innerHeight + node.offsetTop; // todo - bug here
+
+    if (node) {
+      let nodeYPosition = (node.offsetTop - node.scrollTop + node.clientTop) + headerNodeHeight;
+      pageNode.scrollTop = nodeYPosition;
     }
   }
 
