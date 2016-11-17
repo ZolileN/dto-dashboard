@@ -1,5 +1,3 @@
-$header-height: 118px;
-
 html,
 body {
   min-width: $screen-sm-min;
@@ -47,7 +45,13 @@ body {
 }
 
 .editor__top-bar {
-  height: $header-height;
+
+  // header-height - todo
+  height: 104px;
+  @media (min-width:$screen-sm) {
+    height: 84px;
+  }
+
   //border: 8px solid orange;
   position: fixed;
   left: 0;
@@ -60,7 +64,12 @@ body {
   //border: 6px solid purple;
   height: 100%;
   width: 100%;
-  padding-top: $header-height;
+
+  // header-height - todo
+  padding-top: 104px;
+  @media (min-width:$screen-sm) {
+    padding-top: 84px;
+  }
 
   > div {
     height: 100%;
