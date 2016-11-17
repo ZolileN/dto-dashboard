@@ -68,6 +68,10 @@ class Widget < ApplicationRecord
     by_last_updated.last
   end
 
+  def data_updated_at
+    datapoints.by_time_desc.first&.updated_at
+  end
+
   def multiple?
     datasets.many?
   end

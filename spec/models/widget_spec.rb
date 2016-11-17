@@ -20,6 +20,8 @@ RSpec.describe Widget, type: :model do
   it { is_expected.to validate_inclusion_of(:type).in_array(type) }
   it { is_expected.to validate_inclusion_of(:units).in_array(units) }
 
+  its(:data_updated_at) { is_expected.to_not be_present }
+
   context 'with no data' do
     subject(:widget) { FactoryGirl.create(:widget) }
     it { is_expected.to_not have_data }
@@ -74,5 +76,15 @@ RSpec.describe Widget, type: :model do
       its(:prefix) { is_expected.to eq '$' }
     end
   end
+
+  describe 'data_updated_at' do
+    subject(:widget)  { FactoryGirl.create(:widget, :datasets => [dataset]) }
+
+    let(:dataset)     { FactoryGirl.create(:dataset_with_datapoints) }
+    let(:datapoint)   { dataset.datapoints.last }
+
+    it { expect(widget.data_updated_at.to_s).to eq datapoint.updated_at.to_s }
+  end
+
 
 end

@@ -1,6 +1,6 @@
 class WidgetSerializer < ActiveModel::Serializer
   attributes :id, :name, :type, :size, :latest, :units,
-              :definition, :description, :updated_at,
+              :definition, :description, :updated_at, :data_updated_at,
               :prefix, :suffix,
               :stacking
 

@@ -10,7 +10,7 @@ end
 
 json.widgets current_user.widgets do |widget|
   json.(widget, :id, :dashboard_id, :row, :pos, :name, :type, :size, :units,
-    :description, :options, :is_hero, :last_updated_at)
+    :description, :options, :is_hero, :last_updated_at, :data_updated_at)
   json.datasets widget.dataset_widgets.collect {|dw| dw.dataset_id }
 end
 
