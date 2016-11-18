@@ -4,7 +4,7 @@
   "url":      "",
   "description":  "This service simplifies the permit validation process for importers and brokers. It enables the digital validation of permits directly with the Permit Issuing Authority.",
   "target_users": "Importers and brokers",
-  "notes":    "<dl> <dt> User satisfaction <dd> We do not have this data at the moment because we are still in the process of collecting this feedback from users. <dt> Cost per Transaction <dd> This data is not available. <dt> Digital Take-up <dd> Digital take-up measures the percentage of import declaration lines where a permit number was provided electronically. <dt> Completion Rate <dd> This data is not available. </dl>",
+  "notes":    "<dl> <dt> User satisfaction <dd> We do not have this data at the moment because we are still in the process of collecting this feedback from users. <dt> Cost per transaction <dd> This data is not available. <dt> Digital Take-up <dd> Digital take-up measures the percentage of import declaration lines where a permit number was provided electronically. <dt> Completion Rate <dd> This data is not available. </dl>",
   "widgets":  [
     {
       "id":   "kpis",
@@ -29,7 +29,7 @@
     {
       "id":   "cost-per-transaction",
       "updated_at": "2016-07-30T01:01:01.111Z",
-      "name": "Cost Per Transaction",
+      "name": "Cost per transaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "$",
