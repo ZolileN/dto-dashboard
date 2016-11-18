@@ -47,7 +47,7 @@
     {
       "id":   "completion-rate",
       "updated_at": "2016-10-28T01:01:01.111Z",
-      "name": "Completion Rate",
+      "name": "Completion rate",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "%",
