@@ -38,7 +38,7 @@ RSpec.describe Dashboard, type: :model do
   end
 
   describe 'kpi widgets' do
-    let!(:widget) { FactoryGirl.create(:widget, :name => 'User Satisfaction', :dashboard => dashboard) }
+    let!(:widget) { FactoryGirl.create(:widget, :name => 'User satisfaction', :dashboard => dashboard) }
     subject { dashboard.widgets.kpis }
     it { is_expected.to have(1).widget }
   end

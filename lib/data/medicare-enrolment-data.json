@@ -11,7 +11,7 @@
         "id":            "user-satisfaction",
         "recorded_at":  "2016-08-01T01:01:01.111Z",
         "units":        "%",
-        "name":         "User Satisfaction",
+        "name":         "User satisfaction",
         "data":[
             { "label":"2016-07", "value":96.5 }
         ]

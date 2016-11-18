@@ -19,7 +19,7 @@
     {
       "id":   "user-satisfaction",
       "updated_at": "2016-10-28T01:01:01.111Z",
-      "name": "User Satisfaction",
+      "name": "User satisfaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "%",
