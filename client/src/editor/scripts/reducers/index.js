@@ -125,6 +125,7 @@ export const getDatagroupset = (state, {widget}) => {
     recentKey: null          // the url segment identifier of the set
   };
 
+
   if (!widget.datasets.length) {
 
     // simple type
@@ -165,8 +166,9 @@ export const getDatagroupset = (state, {widget}) => {
     // validate and meta
     //
 
-    // has datapoints and all datapoints are valid objects
-    let hasValidRecent = datagroupset._recentDatpointIdxArr.length && datagroupset.groups.every((g, idx) => {
+    // has datapoints and *some not all* datapoints are valid objects
+    // some not all because KPIs CPT is usually no data.
+    let hasValidRecent = datagroupset._recentDatpointIdxArr.length && datagroupset.groups.some((g, idx) => {
       let index = datagroupset._recentDatpointIdxArr[idx];
       return isObject(g.datapoints[index]);
     });
