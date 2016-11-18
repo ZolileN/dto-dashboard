@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import reduceReducers from 'reduce-reducers';
 import { routerReducer } from 'react-router-redux'
-import { uniq, isObject } from 'lodash';
+import { uniq, isObject, without } from 'lodash';
 import moment from 'moment';
 
 import * as types from './../actions/_types';
@@ -152,12 +152,14 @@ export const getDatagroupset = (state, {widget}) => {
         }
       });
 
+      // curate an array of recent data index
+      let recentIdx = null;
       if (group.datapoints && group.datapoints.length) {
-        let recentIdx = group.datapoints.reduce((iMax, el, i, arr) => {
+        recentIdx = group.datapoints.reduce((iMax, el, i, arr) => {
           return moment(el.ts) > moment(arr[iMax].ts) ? i : iMax;
         }, 0);
-        datagroupset._recentDatpointIdxArr.push(recentIdx);
       }
+      datagroupset._recentDatpointIdxArr.push(recentIdx);
 
       return group;
     });
@@ -172,8 +174,10 @@ export const getDatagroupset = (state, {widget}) => {
       let index = datagroupset._recentDatpointIdxArr[idx];
       return isObject(g.datapoints[index]);
     });
-    // keys are out of sync - if they have the same data length should be 1
-    let hasOutOfSyncKeys = uniq(datagroupset._recentDatpointIdxArr).length > 1;
+
+    // keys are out of sync - if they have the same data length should be 1. exclude nulls.
+    let _recentDatpointIdxArrWithoutNull = without(datagroupset._recentDatpointIdxArr, null);
+    let hasOutOfSyncKeys = uniq(_recentDatpointIdxArrWithoutNull).length > 1;
 
     if (hasValidRecent === false) {
       console.warn(`has no recent data for datagroupset: `, datagroupset);
@@ -183,7 +187,10 @@ export const getDatagroupset = (state, {widget}) => {
     }
 
     if (hasValidRecent) {
-      let item = datagroupset.groups[0].datapoints[datagroupset._recentDatpointIdxArr[0]];
+      let item = datagroupset.groups[0].datapoints[_recentDatpointIdxArrWithoutNull[0]];
+      if (!item && datagroupset.groups.length >= 1) {
+        item = datagroupset.groups[1].datapoints[_recentDatpointIdxArrWithoutNull[0]];
+      }
       datagroupset.hasRecent = true;
       datagroupset.recentKey = computeLabel(item.ts);
     }
