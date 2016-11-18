@@ -20,6 +20,23 @@ const WidgetTypeTimeSeries = ({
   const canUpdate = FLAG_UDPATE_DATAGROUP;
 
 
+  const hasNoDatapoints = recentDatagroupset.groups.every(g => {
+    return !recentDatagroupset.groups[0].dataset.datapoints.length;
+  });
+
+  if (hasNoDatapoints) {
+    return (
+      <article className="widget-list__item">
+        <div className="row">
+          <div className="col-xs-12 col-lg-6">
+            <p>Datasets for this widget have not been set up. Please contact the Dashboard Team to set up your first datapoints.</p>
+          </div>
+        </div>
+      </article>
+    )
+  }
+
+
   return (
     <article className="widget-list__item">
 
