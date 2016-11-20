@@ -39,9 +39,7 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProps = ({config}) => ({
-  config
-});
+const mapStateToProps = ({}) => ({});
 
 export default connect(
   mapStateToProps,

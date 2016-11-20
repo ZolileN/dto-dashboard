@@ -27,7 +27,6 @@ const mapStateToProps = (state, ownProps) => {
     datasets,
     datapoints,
     ui: state.ui.pageDashboardWidget,
-    config: state.config,
     isPendingRequest: isPendingRequest(state.requests, requestKey)
   }
 };
@@ -62,8 +61,7 @@ class PageDashboardWidget extends Component {
       dashboard,
       datasets,
       ui,
-      isPendingRequest,
-      config: { OPTIONS_WIDGET_TYPE, OPTIONS_WIDGET_UNITS}
+      isPendingRequest
     } = this.props;
 
     let sortedDatasets = datasets.sort((a,b) => {

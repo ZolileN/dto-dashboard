@@ -6,7 +6,6 @@ import moment from 'moment';
 
 import * as types from './../actions/_types';
 
-import config from './config';
 // import requests from './requests';
 import ui from './ui';
 import currentUser from './currentUser';
@@ -20,7 +19,6 @@ import { reducer as formReducer } from 'redux-form';
 const rootReducer = reduceReducers(
   combineReducers({
     routing: routerReducer,
-    config,
     // requests,
     ui,
     form: formReducer,
@@ -101,7 +99,7 @@ const headKey = getHeadKey();
  };
  */
 
-export const getDatagroupset = (state, {widget}) => {
+export const getDatagroupset = (state, widget) => {
 
   let groupState = { // reminder: don't use by direct assignment
     dataset: null,
@@ -116,7 +114,7 @@ export const getDatagroupset = (state, {widget}) => {
     groups: [],
 
     // maximum tip of possible data to save
-    hasHead: null,
+    hasHead: false,
     headKey: headKey,        // the url segment identifier of the set
 
     // the last saved data in time
@@ -126,7 +124,7 @@ export const getDatagroupset = (state, {widget}) => {
   };
 
 
-  if (!widget.datasets.length) {
+  if (widget.datasets && !widget.datasets.length) {
 
     // simple type
     //
@@ -203,9 +201,9 @@ export const getDatagroupset = (state, {widget}) => {
 
 };
 
-export const getDatagroupsets = (state, {widgets}) => {
+export const getDatagroupsets = (state, widgets) => {
   return widgets.map(widget => {
-    return getDatagroupset(state, {widget});
+    return getDatagroupset(state, widget);
   })
 };
 

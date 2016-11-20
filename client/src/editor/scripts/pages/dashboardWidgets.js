@@ -29,7 +29,7 @@ import {
 const mapStateToProps = (state, ownProps) => {
   let dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
   let widgets = getWidgetsByDashboardId(state.widgets, dashboard.id);
-  let datagroupsets = getDatagroupsets(state, {widgets});
+  let datagroupsets = getDatagroupsets(state, widgets);
   let datagroupsetSlices = getDatagroupsetSlices(datagroupsets, ownProps.params.datagroup_key);
 
   let heroDatagroupsetSlice = dashboard.display_hero ?
@@ -127,7 +127,7 @@ class PageDashboardWidgets extends Component {
                   {heroDatagroupsetSlice && <div ref={String(heroDatagroupsetSlice.widget.id)}>
                     <WidgetTypeTimeSeries
                       recentDatagroupset={heroDatagroupsetSlice}
-                      addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceNextKey)}
+                      addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.widget.id, heroDatagroupsetSlice.sliceNextKey)}
                       editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceKey)}
                       editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
                       dashboard={dashboard}

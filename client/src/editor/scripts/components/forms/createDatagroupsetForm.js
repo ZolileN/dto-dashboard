@@ -91,21 +91,19 @@ const submit = (values, dispatch, props) => {
 
   return new Promise((resolve, reject) => {
     dispatch(createDatagroupset(formData))
-      .then((data) => { // check for server error
-        if (data && data.length && data[0].message) {
-          throw {message: data[0].message};
-        }
-        return data;
-      })
       .then((data) => { // dispatch actions
-        dispatch(setDatagroupTransacted({
-          widgetId: props.formModel.widget.id,
-          description: `Published data for: ${getHumanisedMonth(data[0].ts)} -
+        try {
+          dispatch(setDatagroupTransacted({
+            widgetId: props.formModel.widget.id,
+            description: `Published data for: ${getHumanisedMonth(data[0].ts)} -
                 ${data.map((el, idx) => {
-            return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
-          })}`,
-          type: 'created'
-        }));
+              return ` ${props.formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
+            })}`,
+            type: 'created'
+          }));
+        } catch(e) {
+          console.warn('problem with dispatching success message', props.formModel, data);
+        }
         return data;
       })
       .then((data) => {
@@ -114,8 +112,8 @@ const submit = (values, dispatch, props) => {
         return resolve(data);
       })
       .catch((e) => {
-        console.log(e);
-        reject(new SubmissionError({_error: e.message || 'Submit failed'}));
+        console.error(e);
+        reject(new SubmissionError({_error: e && e.message || 'Submit failed'}));
       });
   });
 };

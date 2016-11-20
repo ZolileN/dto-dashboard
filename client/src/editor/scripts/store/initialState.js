@@ -7,10 +7,8 @@ export default {
     },
     toast: {}
   },
-  // __CONFIG__
-  config: {},
   // __STATE__
-  currentUser: {},
+  currentUser: {},  // todo - call this session
   dashboards: [],
   widgets: [],
   datasets: [],

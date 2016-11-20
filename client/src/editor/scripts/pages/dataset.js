@@ -19,8 +19,7 @@ const mapStateToProps = ({datapoints, ui, config, requests}, ownProps) => {
     dataset,
     datapoints: getDatapointsById(datapoints, dataset.datapoints),
     ui: ui.pageDataset,
-    isPendingRequest: isPendingRequest(requests, requestKey),
-    config
+    isPendingRequest: isPendingRequest(requests, requestKey)
   }
 };
 const mapDispatchToProps = dispatch => ({
@@ -54,8 +53,7 @@ class DatasetIndex extends Component {
       dataset,
       datapoints,
       ui,
-      isPendingRequest,
-      config: { OPTIONS_DATASET_LABEL }
+      isPendingRequest
     } = this.props;
 
     let sortedDatapoints = datapoints.sort((a,b) => {

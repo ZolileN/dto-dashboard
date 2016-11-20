@@ -28,7 +28,7 @@ import TrafficLight from './../components/widgetTrafficLight';
 const mapStateToProps = (state, ownProps) => {
   const dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
   const widget = getWidgetById(state.widgets, ownProps.params.widget_id);
-  const datagroupset = getDatagroupset(state, {widget});
+  const datagroupset = getDatagroupset(state, widget);
   const datagroupsetSlice = getDatagroupsetSlice(datagroupset, ownProps.params.datagroup_key);
   return {
     dashboard,

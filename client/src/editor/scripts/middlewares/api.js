@@ -1,6 +1,7 @@
 import 'isomorphic-fetch';
 import { v1 as makeUuid } from 'uuid';
 
+import config from './../config';
 import * as types from './../actions/_types';
 import {
   markRequestStart,
@@ -18,7 +19,7 @@ import {
 const apiMiddleware = ({dispatch, getState}) => next => action => {
 
   const state = getState();
-  let { config, currentUser: {token}} = state;
+  let { currentUser: {token}} = state;
 
   // if not an API call, do not decorate with middleware
   if (action.type !== types.API) {
