@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 20161115032409) do
 
   create_table "datasets", force: :cascade do |t|
     t.integer  "organisation_id"
-    t.text     "name",            null: false
-    t.text     "label",           null: false
-    t.text     "units",           null: false
+    t.text     "name",                              null: false
+    t.text     "label",                             null: false
+    t.text     "units",                             null: false
     t.text     "notes"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "period"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "period",          default: "month", null: false
     t.index ["organisation_id"], name: "index_datasets_on_organisation_id", using: :btree
   end
 
