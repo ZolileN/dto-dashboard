@@ -45,7 +45,7 @@ const WidgetTypeTimeSeries = ({
 
       <header>
         <div className="title">
-          <h1 className="h5">{recentDatagroupset.widget.name}</h1>
+          <h1 className="h5">{recentDatagroupset.widget.name === 'Kpis' ? 'Key performance indicators' : recentDatagroupset.widget.name}</h1>
         </div>
         <div className="meta-status">
           <TrafficLight recentKey={recentDatagroupset.recentKey} />
