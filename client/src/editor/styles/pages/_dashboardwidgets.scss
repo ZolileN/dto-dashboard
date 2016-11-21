@@ -31,7 +31,7 @@
 .widget-list__item {
   .desc-title {
     display: block;
-    font-weight: $font-weight-bold;
+    font-weight: $DB-font-weight-bold;
   }
 
   .date-meta {
@@ -79,7 +79,7 @@
 
     .value {
       text-align: right;
-      font-weight: $font-weight-bold;
+      font-weight: $DB-font-weight-bold;
     }
   }
 }

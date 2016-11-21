@@ -110,12 +110,12 @@ Style guide: Buttons.1 Creating buttons
   display: inline-block;
   height: $base-spacing * 2;
   margin: 0 $base-spacing $small-spacing 0;
-  padding: $small-spacing $base-spacing;
+  padding: 12px 20px 8px; //$small-spacing $base-spacing;
   border-radius: $tiny-border-radius;
   border: 0;
   outline: 0;
   text-decoration: none;
-  font-weight: $bold-font-weight;
+  font-weight: $DB-font-weight-semi-bold; //$bold-font-weight;
 
   @include media($tablet) {
     height: $base-spacing * 1.75;

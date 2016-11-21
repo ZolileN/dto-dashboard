@@ -2,20 +2,32 @@
 
 @import '../../_common/styles/variables';
 
+
 /**
  *
- * Ui-kit and overrides
+ * Ui-kit
  *
  */
 
-@import 'vendor/gov-au-ui-kit/ui-kit';
+@import '_vendor/gov-au-ui-kit/ui-kit';
 @import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/buttons';
 @import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/forms';
+
+
+/**
+ *
+ * Other vendor, inc Bootstrap Components
+ *
+ */
 
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-spacing';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-cards';
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-media';
+
+@import './../../_common/styles/_vendor/animate';
+@import './../../_common/styles/_vendor/ceaser-easings';
+
 
 
 /**
@@ -26,17 +38,11 @@
 
 @import 'variables';
 
-// vendor
-@import 'vendor/animate';
-@import 'vendor/ceaser-easings';
-
-
 // layout
 @import 'layouts/app-layout';
 @import 'layouts/page-layout';
 
 // components
-
 @import '../../_common/styles/components/type';
 @import '../../_common/styles/components/flex-grid';
 @import '../../_common/styles/components/forms';
@@ -49,7 +55,7 @@
 @import 'components/traffic-light';
 @import 'components/widget-alert';
 
-// pages
+// page components
 @import 'pages/dashboards';
 @import 'pages/dashboardwidgets';
 @import 'pages/dashboardwidgetdatagroupsimple';
