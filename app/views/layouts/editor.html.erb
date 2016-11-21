@@ -16,33 +16,7 @@
   <% end %>
 </head>
 <body class="editor <%= body_class(yield(:body_class_names)) %>">
-
-  <div class="editor__top-bar">
-    <div class="phase-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-          <span>This is a working alpha and has limited functionality. Service data shown is
-        accurate as at the time it was published.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <header class="main__header">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-9">
-            <a href="/editor" title="Go to the GOV.AU Portal's homepage" class="logo">
-              <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU Performance Dashboard" height="30px" />
-            </a>
-          </div>
-          <div class="col-xs-3">
-            <%= render 'layouts/account' %>
-          </div>
-        </div>
-      </div>
-    </header>
-  </div>
+  <%= render :partial => './partials/govau-header'%>
 
   <div class="editor__app">
     <noscript>
