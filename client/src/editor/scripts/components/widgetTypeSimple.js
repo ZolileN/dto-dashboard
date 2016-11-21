@@ -32,7 +32,7 @@ const WidgetTypeSimple = ({
 
       <p>{widget.description}</p>
       <Link to={editUrl}
-            className="btn primary"
+            className="UIKIT-button btn btn-primary"
             disabled={disableEdit}
             onClick={e => disableEdit && e.preventDefault()}>{isFact ? 'Edit fact' : 'Edit'}</Link>
     </article>

@@ -1,10 +1,14 @@
 .page-dashboards {
-  .dashboard-list {
-
-  }
-
   .dashboard-list__item {
-    padding: $spacer 0;
-    border-bottom: 1px solid $color-line-border;
+    padding: $spacer-y*1.8 0 $spacer-y*2;
+    border-bottom: 1px solid $DB-color-grey-border;
+
+    h1 {
+      margin-bottom: 1em;
+    }
+
+    .btn {
+      margin-right: $spacer-x * 2;
+    }
   }
 }

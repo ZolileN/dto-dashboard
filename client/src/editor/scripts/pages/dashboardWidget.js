@@ -79,7 +79,7 @@ class PageDashboardWidget extends Component {
           <tbody>
           {datasets.map((d, idx) => (
             <tr key={idx}>
-              <td>{d.id}</td><td>{d.name}</td><td><Link to={`/datasets/${d.id}`} className="a--ui-kit">Edit</Link></td>
+              <td>{d.id}</td><td>{d.name}</td><td><Link to={`/datasets/${d.id}`} className="UIK-link">Edit</Link></td>
             </tr>
           ))}
           </tbody>
@@ -120,7 +120,7 @@ class PageDashboardWidget extends Component {
           <div className="row">
             <div className="col-xs-12 col-lg-8">
               <button
-                className="btn primary small"
+                className="UIKIT-button btn btn-primary small"
                 disabled={ui.isEditing}
                 onClick={this.enterForm.bind(this)}>Edit</button>
 

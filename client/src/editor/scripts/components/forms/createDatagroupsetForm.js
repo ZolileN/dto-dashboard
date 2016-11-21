@@ -30,11 +30,11 @@ let CreateDatagroupsetForm = ({
 
       <div>
         <button type="submit"
-                className="btn primary"
+                className="UIKIT-button btn btn-primary"
                 disabled={!canSubmit || submitting}
                 onClick={handleSubmit(submit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="cancel"
-                className='btn primary-link'
+                className='UIKIT-button btn btn-link'
                 disabled={!canSubmit || submitting}
                 onClick={cancel.bind({}, rfProps)}>Cancel</button>
       </div>

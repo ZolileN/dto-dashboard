@@ -3,7 +3,7 @@ $dashboard-constants: (
   COLOR_CERULEAN: #0579c7,
   COLOR_PALE_BLUE: #e6fafc,
 
-  COLOR_LIGHT_GREY: #828282,
+  COLOR_LIGHT_GREY: #717171,
 
   COLOR_GROUP_LEGEND_A: #f2b038,
   COLOR_GROUP_LEGEND_B: #75a370,
@@ -15,22 +15,6 @@ $dashboard-constants: (
   COLOR_ERROR: #bd362f,
   COLOR_INFO: #f9edbe,
   COLOR_WARNING: #f89406,
-
-  FONT_SIZE_H1: rem(40),
-  FONT_SIZE_H2: rem(32),
-  FONT_SIZE_H3: rem(28),
-  FONT_SIZE_H4: rem(24),
-  FONT_SIZE_H5: rem(18),
-  FONT_SIZE_H6: rem(18),
-
-  FONT_WEIGHT_LIGHT: 300,
-  FONT_WEIGHT_REGULAR: 400,
-  FONT_WEIGHT_SEMI_BOLD: 600,
-  FONT_WEIGHT_BOLD: 700,
-
-  FONT_FAMILY_SERIF: "'Book Antiqua', Georgia, 'Bitstream Vera Serif', serif",
-  FONT_FAMILY_SANS_SERIF: "'Open Sans', Verdana, 'Bitstream Vera Sans', sans-serif",
-  FONT_FAMILY_MONOSPACE: "'Lucida Sans Typewriter', 'Lucida Console', Monaco, 'Bitstream Vera Sans Mono', monospace",
 
   // breakpoints
   SCREEN_MIN: 320px
@@ -50,7 +34,6 @@ $dashboard-constants: (
 // semantic colors
 $color-brand-primary: get(COLOR_CERULEAN) !default;
 $color-brand-supp: #00a1bb !default;
-$color-line-border: #ccc !default;
 $color-background-blue: get(COLOR_PALE_BLUE) !default;
 
 $color-text-grey: get(COLOR_LIGHT_GREY) !default;
@@ -64,19 +47,3 @@ $color-is-success: get(COLOR_SUCCESS);
 $color-is-error: get(COLOR_ERROR);
 $color-is-info: get(COLOR_INFO);
 $color-is-warning: get(COLOR_WARNING);
-
-$DB-font-weight-light: get(FONT_WEIGHT_LIGHT);
-$DB-font-weight-regular: get(FONT_WEIGHT_REGULAR);
-$DB-font-weight-semi-bold: get(FONT_WEIGHT_SEMI_BOLD);
-$DB-font-weight-bold: get(FONT_WEIGHT_BOLD);
-
-$DB-font-family-serif: get(FONT_FAMILY_SERIF);
-$DB-font-family-sans-serif: get(FONT_FAMILY_SANS_SERIF);
-$DB-font-family-monospace: get(FONT_FAMILY_MONOSPACE);
-
-$DB-font-size-h1: get(FONT-SIZE-H1);
-$DB-font-size-h2: get(FONT-SIZE-H2);
-$DB-font-size-h3: get(FONT-SIZE-H3);
-$DB-font-size-h4: get(FONT-SIZE-H4);
-$DB-font-size-h5: get(FONT-SIZE-H5);
-$DB-font-size-h6: get(FONT-SIZE-H6);

@@ -71,7 +71,7 @@ class DashboardWidgetDatagroupSimplePage extends Component {
                   {path: '', name:`Fact: ${widget.name}`}
                 ]} />
 
-                <h1>{widget.name}</h1>
+                <h1 className="h3">{widget.name}</h1>
 
                 {metadata.widget_help && <p className="title-description">{metadata.widget_help}</p>}
 

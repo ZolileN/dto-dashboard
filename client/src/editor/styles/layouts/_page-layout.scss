@@ -1,14 +1,12 @@
 .page {
   &__header {
-    padding: $spacer/2 0;
+    background: $DB-color-heading-bg;
 
-    background: $color-background-blue;
+    padding: ($spacer-y / 2) 0 $spacer-y;
 
     h1 {
-      line-height: 1;
-
       @media (min-width:$screen-md) {
-        padding-top: 1em;
+        padding: ($spacer-y * 1.3) 0 ($spacer-y * 1.2);
       }
     }
 

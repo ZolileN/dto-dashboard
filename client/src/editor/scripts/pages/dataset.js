@@ -74,7 +74,7 @@ class DatasetIndex extends Component {
               <td>{d.id}</td>
               <td>{computeLabel(d.ts)}</td>
               <td>{d.value || 'No data'}</td>
-              <td><Link to={`/datasets/${dataset.id}/datapoints/${d.id}`} className="a--ui-kit">Edit</Link></td>
+              <td><Link to={`/datasets/${dataset.id}/datapoints/${d.id}`} className="UIK-link">Edit</Link></td>
             </tr>
           ))}
           </tbody>
@@ -100,7 +100,7 @@ class DatasetIndex extends Component {
             <h1>Dataset: {dataset.name}</h1>
 
             <button
-              className="btn primary small"
+              className="UIKIT-button btn btn-primary small"
               disabled={ui.isEditing}
               onClick={this.enterForm.bind(this)}>Edit</button>
 
@@ -120,7 +120,7 @@ class DatasetIndex extends Component {
 
             <h2 className="h4">Datapoints</h2>
 
-            <Link to={`/datasets/${dataset.id}/datapoints-new`} className="btn primary ghost">Create new datapoint</Link>
+            <Link to={`/datasets/${dataset.id}/datapoints-new`} className="UIKIT-button btn btn-primary ghost">Create new datapoint</Link>
 
 
             {sortedDatapoints.length ?

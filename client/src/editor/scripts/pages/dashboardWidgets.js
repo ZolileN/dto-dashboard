@@ -100,7 +100,7 @@ class PageDashboardWidgets extends Component {
                   {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
                 ]} />
 
-                <h1>{dashboard.name}</h1>
+                <h1 className="h3">{dashboard.name}</h1>
 
                 <p className="title-description">Edit service overview</p>
 
@@ -166,10 +166,10 @@ class PageDashboardWidgets extends Component {
 
 
                 <section className="page-dashboardwidgets__bookend-ctas">
-                  <Link to="" className="btn primary pr-1"
+                  <Link to="" className="UIKIT-button btn btn-primary pr-1"
                         disabled={true}
                         onClick={e => e.preventDefault()}>Add new chart</Link>
-                  <Link to="" className="btn primary"
+                  <Link to="" className="UIKIT-button btn btn-primary"
                         disabled={true}
                         onClick={e => e.preventDefault()}>Add new fact</Link>
                 </section>

@@ -35,12 +35,12 @@ let UpdateDatapointForm = ({
       <div>
         <SubmitButton type="submit"
                 btnText={isSubmitting ? 'Saving...' : 'Save'}
-                className='btn primary'
+                className='UIKIT-button btn btn-primary'
                 disabled={isSubmitting || !valid}
                 onClick={handleSubmit(submit.bind(this))} />
 
         <button type="cancel"
-                className='btn primary-link'
+                className='UIKIT-button btn btn-link'
                 disabled={isSubmitting}
                 onClick={cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>

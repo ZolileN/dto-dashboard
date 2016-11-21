@@ -47,8 +47,8 @@ class DatasetsIndex extends Component {
               <td>{d.name}</td>
               <td>{humanisedLongDate(d.updated_at)}</td>
               <td>{d.datapoints.length}</td>
-              <td><Link to={`/datasets/${d.id}`} className="a--ui-kit">Edit</Link></td>
-              <td><Link to={`/datasets/${d.id}/datapoints-new`} className="a--ui-kit">Create datapoint</Link></td>
+              <td><Link to={`/datasets/${d.id}`} className="UIK-link">Edit</Link></td>
+              <td><Link to={`/datasets/${d.id}/datapoints-new`} className="UIK-link">Create datapoint</Link></td>
             </tr>
           ))}
           </tbody>

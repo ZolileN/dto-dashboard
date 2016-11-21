@@ -66,7 +66,7 @@ class DashboardIndex extends Component {
                   {path: getDashboardWidgetsUrl(dashboard.id), name:`${dashboard.name}`},
                   {path: '', name:`Edit dashboard information`}
                 ]} />
-                <h1 className="h4">Update Dashboards</h1>
+                <h1 className="h3">Update Dashboards</h1>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@ class DashboardIndex extends Component {
           <div className="row">
             <div className="col-xs-12 col-lg-8">
               <button
-                className="btn primary small"
+                className="UIKIT-button btn btn-primary small"
                 disabled={ui.isEditing}
                 onClick={this.enterForm.bind(this)}>Edit</button>
 

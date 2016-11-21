@@ -21,9 +21,9 @@ const Pagination = ({nextKey, prevKey, dashboardId, widgetId}) => {
 
   return (
     <div>
-      <Link to={prevUrl} className="btn primary"><i className="tmp-icon pr-1">{`<`}</i>{getHumanisedMonth(prevKey)}</Link>
+      <Link to={prevUrl} className="UIKIT-button btn btn-primary"><i className="tmp-icon pr-1">{`<`}</i>{getHumanisedMonth(prevKey)}</Link>
       <Link to={nextUrl}
-            className="btn primary"
+            className="UIKIT-button btn btn-primary"
             disabled={!nextUrl}
             onClick={e => {if (!nextUrl) return e.preventDefault()}}>{getHumanisedMonth(nextKey)}<i className="tmp-icon pl-1">{`>`}</i></Link>
     </div>

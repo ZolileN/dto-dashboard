@@ -94,7 +94,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
                 <div className="page__title">
                   <div className="page__title__left">
-                    <h1>{metadata.label || widget.name}</h1>
+                    <h1 className="h3">{metadata.label || widget.name}</h1>
                   </div>
                   <div className="page__title__right">
                     <TrafficLight recentKey={datagroupsetSlice.recentKey} />

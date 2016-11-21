@@ -31,11 +31,11 @@ let UpdateDatagroupSimpleForm = ({
       <div>
         <SubmitButton type="submit"
                       btnText={isSubmitting ? 'Saving...' : 'Save'}
-                      className='btn primary'
+                      className='UIKIT-button btn btn-primary'
                       disabled={disableEdit || isSubmitting || pristine || !valid}
                       onClick={disableEdit || handleSubmit(submit.bind(this))} />
         <button type="cancel"
-                className='btn primary-link'
+                className='UIKIT-button btn btn-link'
                 disabled={disableEdit || !isEditing || isSubmitting}
                 onClick={disableEdit || cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>

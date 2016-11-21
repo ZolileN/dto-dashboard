@@ -47,12 +47,12 @@ let UpdateWidgetForm = ({
       <div>
         <SubmitButton type="submit"
                       btnText={isSubmitting ? 'Saving...' : 'Save'}
-                      className='btn primary'
+                      className='UIKIT-button btn btn-primary'
                       disabled={isSubmitting || pristine || !valid}
                       onClick={handleSubmit(submit.bind(this))} />
 
         <button type="cancel"
-                className='btn primary-link'
+                className='UIKIT-button btn btn-link'
                 disabled={!isEditing || submitting}
                 onClick={cancel.bind({}, rfProps, onCancelSuccess)}>Cancel</button>
       </div>

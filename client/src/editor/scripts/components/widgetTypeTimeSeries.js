@@ -56,15 +56,15 @@ const WidgetTypeTimeSeries = ({
           {recentDatagroupset.recentKey && <Preview recentDatagroupset={recentDatagroupset} />}
         </div>
         <div className="col-xs-12 col-lg-6">
-          <Link to={addUrl} className="btn primary"
+          <Link to={addUrl} className="UIKIT-button btn btn-primary"
                 disabled={recentDatagroupset.hasHead}
                 onClick={e => {if (recentDatagroupset.hasHead) return e.preventDefault()}}>Add new data</Link><br/>
           <Link to={editUrl}
-                className="a--ui-kit"
+                className="UIK-link"
                 disabled={!canUpdate}
                 onClick={e => !canUpdate && e.preventDefault()}>Edit existing data</Link><br/>
           <Link to={editDescriptionsUrl}
-                className="a--ui-kit"
+                className="UIK-link"
                 disabled={!canUpdate}
                 onClick={e => !canUpdate && e.preventDefault()}>Edit labels and descriptions</Link><br/>
         </div>

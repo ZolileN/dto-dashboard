@@ -9,7 +9,7 @@ const Breadcrumbs = ({paths}) => {
       <ol>
         {paths.map((c, idx) => (
           <li key={idx}>
-            <Link to={c.path}>{c.name}</Link>
+            <Link to={c.path} className="UIK-link">{c.name}</Link>
           </li>
         ))}
         <li>{activePath.name}</li>

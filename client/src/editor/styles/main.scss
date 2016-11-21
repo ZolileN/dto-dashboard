@@ -1,32 +1,24 @@
 @charset "utf-8";
 
-@import '../../_common/styles/variables';
+
+@import '../../_shared/styles/variables';
 
 
 /**
  *
- * Ui-kit
+ * Vendor, inc Bootstrap and its ui-kit themed bootstrap components
  *
  */
 
-@import '_vendor/gov-au-ui-kit/ui-kit';
-@import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/buttons';
-@import '../../_common/styles/_vendor/gov-au-ui-kit/extensions/forms';
+@import './../../_shared/styles/_vendor/bootstrap/bootstrap';
+@import './../../_shared/styles/_vendor/bootstrap/uikit-components/links';
+@import './../../_shared/styles/_vendor/bootstrap/uikit-components/buttons';
+@import './../../_shared/styles/_vendor/bootstrap/uikit-components/breadcrumbs';
+@import './../../_shared/styles/_vendor/bootstrap/uikit-components/type';
 
 
-/**
- *
- * Other vendor, inc Bootstrap Components
- *
- */
-
-@import './../../_common/styles/_vendor/bootstrap/bootstrap-spacing';
-@import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
-@import './../../_common/styles/_vendor/bootstrap/bootstrap-cards';
-@import './../../_common/styles/_vendor/bootstrap/bootstrap-media';
-
-@import './../../_common/styles/_vendor/animate';
-@import './../../_common/styles/_vendor/ceaser-easings';
+@import './../../_shared/styles/_vendor/animate';
+@import './../../_shared/styles/_vendor/ceaser-easings';
 
 
 

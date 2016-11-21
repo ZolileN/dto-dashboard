@@ -46,7 +46,7 @@ class DashboardWidgetDescriptionsPage extends Component {
                     {path: '', name:`Labels and descriptions`}
                   ]} />
 
-                <h1 className="h4">{widget.name}: Labels and descriptions</h1>
+                <h1 className="h3">{widget.name}: Labels and descriptions</h1>
 
               </div>
             </div>

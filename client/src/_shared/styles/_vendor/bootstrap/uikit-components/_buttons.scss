@@ -1,0 +1,15 @@
+.UIKIT-button {
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      cursor: $cursor-disabled;
+      opacity: .65;
+      @include box-shadow(none);
+      @include button-variant(inherit, $UIKIT_180_button-bg-colour--disabled, $UIKIT_180_button-bg-colour--disabled);
+      background-color: $UIKIT_180_button-bg-colour--disabled !important;
+    }
+  }
+}

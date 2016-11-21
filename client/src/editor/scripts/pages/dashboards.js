@@ -26,8 +26,8 @@ const DashboardItem = ({dashboard}) => {
   return (
     <article className="dashboard-list__item">
       <h1 className="h5">{dashboard.name}</h1>
-      <Link to={getDashboardWidgetsUrl(dashboard.id)} className="btn primary">Edit Dashboard</Link>
-      <a href={getServiceDashboardUrl(dashboard.id, dashboard.name)} className="a--ui-kit">View service dashboard</a>
+      <Link to={getDashboardWidgetsUrl(dashboard.id)} className="btn btn-primary">Edit Dashboard</Link>
+      <a href={getServiceDashboardUrl(dashboard.id, dashboard.name)} className="UIK-link" target="blank" rel="external">View service dashboard</a>
     </article>
   )
 };
@@ -56,7 +56,7 @@ class DashboardsIndex extends Component {
                   {path:'', name:'Manage Dashboards'}
                 ]} />
 
-                <h1>Manage Dashboards</h1>
+                <h1 className="h3">Manage Dashboards</h1>
 
               </div>
             </div>
