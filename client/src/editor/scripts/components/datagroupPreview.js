@@ -3,13 +3,14 @@ import { isEmpty } from 'lodash';
 
 import LegendDot, { getPaletteColor } from './svgs/legendDot';
 import { getHumanisedUnits } from './../helpers/dataset';
+import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
 
 
 const Preview = ({recentDatagroupset}) => {
 
   return (
     <div className="preview">
-      <p>Most recent data: {recentDatagroupset.recentKey}</p>
+      <p className="most-recent-text">Most recent data: <span className="strong">{getHumanisedVeryShortDate(recentDatagroupset.recentKey)}</span></p>
 
       {recentDatagroupset.groups.map((group, idx) => {
         if (!(group.datapoint && group.datapoint.value)) {  // todo - remove

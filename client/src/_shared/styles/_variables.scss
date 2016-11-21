@@ -55,8 +55,6 @@ $color-brand-primary: $UIKIT_180_aqua;
 $color-brand-supp: #00a1bb !default;
 $color-line-border: #ccc !default;
 
-$color-text-grey: get(COLOR_LIGHT_GREY) !default;
-
 $color-user-satisfaction: get(COLOR_GROUP_LEGEND_A);
 $color-cost-per-transaction: get(COLOR_GROUP_LEGEND_B);
 $color-digital-take-up: get(COLOR_GROUP_LEGEND_C);
@@ -86,7 +84,8 @@ $DB-color-warning: $color-is-warning;
 
 $DB-color-body-bg: $UIKIT_180_background-colour;
 $DB-color-body-text: $UIKIT_180_body-text-colour;
-$DB-color-heading-bg: get(COLOR_PALE_BLUE) !default;
+$DB-color-body-text-grey: get(COLOR_LIGHT_GREY);
+$DB-color-heading-bg: get(COLOR_PALE_BLUE);
 $DB-color-grey-border: get(COLOR_LIGHT_GREY_LIGHTEST);
 
 $DB-font-weight-light: get(FONT_WEIGHT_LIGHT);

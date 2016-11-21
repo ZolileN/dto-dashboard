@@ -4,8 +4,12 @@
   }
 
   .widget-list__item {
-    padding: $spacer-y 0;
-    border-bottom: 1px solid $color-line-border;
+    padding: $spacer-y*1.8 0 $spacer-y*2;
+    border-bottom: 1px solid $DB-color-grey-border;
+
+    h1 {
+      margin-bottom: 1em;
+    }
   }
 
   &__title-block {
@@ -20,66 +24,7 @@
       display: inline-block;
       float: left;
       margin-bottom:0;
-    }
-  }
-}
-
-
-.widget-list {
-}
-
-.widget-list__item {
-  .desc-title {
-    display: block;
-    font-weight: $DB-font-weight-bold;
-  }
-
-  .date-meta {
-    font-size: $font-size-sm;
-    text-transform: uppercase;
-  }
-
-  header {
-    .title {
-      @media (min-width:$screen-md) {
-        float:left;
-      }
-      h1 {
-        margin:0;
-      }
-    }
-
-    .ancillary {
-      @media (min-width:$screen-md) {
-        text-align: right;
-      }
-    }
-  }
-
-  .preview {
-    padding: $spacer $spacer+.2;
-    background-color: $DB-color-heading-bg;
-  }
-
-  .preview-table {
-    display: table;
-    width: 100%;
-
-    .key,
-    .description,
-    .value {
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    .key {
-      width: 32px;
-      padding-top: 2px;
-    }
-
-    .value {
-      text-align: right;
-      font-weight: $DB-font-weight-bold;
+      margin-right: $spacer-x * 2;
     }
   }
 }

@@ -1,6 +1,6 @@
 .traffic-light {
   text-transform: uppercase;
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
 
   &__top,
   &__bottom {
@@ -9,29 +9,28 @@
   }
 
   &__top {
-    @include clearfix;
+    margin-bottom: 6px;
   }
 
   time {
-    font-weight: bold;
+    @include strong;
+  }
+
+  .status-label {
+    @include strong;
   }
 
   .status-key-group {
-    display: table;
-    float:right;
+    position: relative;
   }
 
   .status-key {
-    padding-right: 2px;
-  }
+    position: absolute;
+    right: 100%;
+    top: -3px;
 
-  .status-key,
-  .status-label {
-    display: table-cell;
-  }
-
-  .status-label {
-    vertical-align: top;
-    padding-top: 1px;
+    svg {
+      margin-right: 3px;
+    }
   }
 }

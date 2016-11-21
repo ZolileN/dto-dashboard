@@ -1,0 +1,6 @@
+@import './../mixins/strong';
+
+strong,
+.strong {
+  @include strong;
+}

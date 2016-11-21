@@ -40,15 +40,14 @@ const TrafficLight = ({recentKey}) => {
   return (
     <div className="traffic-light">
       <span className="traffic-light__top">
-
-      <span className="status-key-group">
-        <span className="status-key">
-          <Donut innerColor="white" strokeColor={status.color} />
+        <span className="status-key-group">
+          <span className="status-key">
+            <Donut innerColor="white" strokeColor={status.color} />
+          </span>
+          <span className="status-label">{status.label}</span>
         </span>
-        <span className="status-label">{status.label}</span>
       </span>
 
-      </span>
       <span className="traffic-light__bottom">Published: <time>{humanisedShortDate(recentKey)}</time></span>
     </div>
   )

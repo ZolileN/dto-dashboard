@@ -21,12 +21,14 @@ const WidgetTypeSimple = ({
 
       {alertProps && <WidgetAlert {...alertProps} />}
 
-      <header className="clearfix">
+      <header>
         <div className="title">
           <h1 className="h5">{widget.name}</h1>
         </div>
-        <div className="ancillary">
-          <span className="date-meta">Published: {humanisedShortDate(widget.last_updated_at)}</span>
+        <div className="meta-status">
+          <div className="traffic-light">
+            <span className="traffic-light__bottom">Edited: <time>{humanisedShortDate(widget.last_updated_at)}</time></span>
+          </div>
         </div>
       </header>
 

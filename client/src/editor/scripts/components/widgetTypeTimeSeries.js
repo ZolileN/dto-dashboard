@@ -42,11 +42,11 @@ const WidgetTypeTimeSeries = ({
 
       {alertProps && <WidgetAlert {...alertProps} />}
 
-      <header className="clearfix">
+      <header>
         <div className="title">
           <h1 className="h5">{recentDatagroupset.widget.name}</h1>
         </div>
-        <div className="ancillary">
+        <div className="meta-status">
           <TrafficLight recentKey={recentDatagroupset.recentKey} />
         </div>
       </header>
@@ -55,7 +55,7 @@ const WidgetTypeTimeSeries = ({
         <div className="col-xs-12 col-lg-6">
           {recentDatagroupset.recentKey && <Preview recentDatagroupset={recentDatagroupset} />}
         </div>
-        <div className="col-xs-12 col-lg-6">
+        <div className="col-xs-12 col-lg-6 ctas">
           <Link to={addUrl} className="UIKIT-button btn btn-primary"
                 disabled={recentDatagroupset.hasHead}
                 onClick={e => {if (recentDatagroupset.hasHead) return e.preventDefault()}}>Add new data</Link><br/>
