@@ -1,6 +1,8 @@
 <% if !Rails.env.production? && current_user.present? -%>
-  <span class="sign-out">
-    <i class="fa fa-user" aria-hidden="true"></i><span>&nbsp;<%= current_user.email%></span>
+  <div class="sign-out">
+    <div class="user-email">
+      <i class="fa fa-user" aria-hidden="true"></i>&nbsp;<%= current_user.email%>
+    </div>
     <%= link_to 'Sign out', destroy_user_session_path, class: "sign-out-link" %>
-  </span>
+  </div>
 <% end %>
