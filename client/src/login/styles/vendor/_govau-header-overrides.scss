@@ -17,5 +17,9 @@
 
 .user-email {
   margin-bottom: 14px;
+  display: none;
 
+  @media(min-width: $screen-md){
+    display: block;
+  }
 }
