@@ -4,12 +4,6 @@
 
 .sign-out {
   float: right;
-
-  .user-email {
-    &::before {
-    background-image: url("user.svg");
-    }
-  }
 }
 
 .sign-out-link {
