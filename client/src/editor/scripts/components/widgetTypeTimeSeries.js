@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import Preview from './datagroupPreview';
 import WidgetAlert from './widgetAlert';
 import TrafficLight from './../components/widgetTrafficLight';
+import UikitAlert from './uikit/alert';
 
 
 const WidgetTypeTimeSeries = ({
@@ -28,8 +29,8 @@ const WidgetTypeTimeSeries = ({
     return (
       <article className="widget-list__item">
         <div className="row">
-          <div className="col-xs-12 col-lg-6">
-            <p>Datasets for this widget have not been set up. Please contact the Dashboard Team to set up your first datapoints.</p>
+          <div className="col-xs-12">
+            <UikitAlert type="info" text="Datasets for this widget have not been set up. Please contact the Dashboard Team to set up your first datapoints." />
           </div>
         </div>
       </article>

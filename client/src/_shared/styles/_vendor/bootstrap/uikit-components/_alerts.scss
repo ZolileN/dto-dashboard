@@ -1,0 +1,59 @@
+/**
+
+<div class="UIK-alert alert alert-success" role="alert">
+  <div class="alert__icon"><i>!</i></div>
+  <div class="alert__text">
+    <span class="heading-text">Heading text</span>
+    <p>Description text </p>
+  </div>
+</div>
+
+ */
+
+.UIK-alert {
+  display: table;
+  width: 100%;
+  border-radius: $border-radius-lg;
+  padding: 0;
+
+  .alert__icon {
+    color: white;
+  }
+
+  &.alert-success {
+    .alert__icon {
+      background: $alert-success-border;
+    }
+  }
+  &.alert-error {
+    .alert__icon {
+      background: $alert-danger-border;
+    }
+  }
+  &.alert-info {
+    .alert__icon {
+      background: $alert-info-border;
+    }
+  }
+  &.alert-warning {
+    .alert__icon {
+      background: $alert-warning-border;
+    }
+  }
+
+  .alert__icon,
+  .alert__text {
+    display: table-cell;
+    vertical-align: middle;
+    padding: $alert-padding-y $alert-padding-x;
+  }
+
+  .alert__text {
+    span {
+      display:block;
+    }
+    p {
+      margin-bottom: 4px;
+    }
+  }
+}
