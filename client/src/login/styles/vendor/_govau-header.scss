@@ -40,8 +40,8 @@
   margin: $base-spacing 0;
 
   .banner {
-    display: table; //display table for fluid layout of unknown widths and vertical-align;
-    width: 100%;
+    // display: table; //display table for fluid layout of unknown widths and vertical-align;
+    // width: 100%; coomented out beacuse does not allow for boostraps columns 
   }//.banner
 
   //The space for the logo/branding
