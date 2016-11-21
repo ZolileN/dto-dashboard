@@ -22,8 +22,8 @@
 @import "variables";
 
 // vendor
-@import 'vendor/govau-header';
-@import 'vendor/govau-header-overrides';
+@import '../../_common/styles/_vendor/govau-header';
+@import '../../_common/styles/components/govau-header-overrides';
 
 // components
 @import "../../_common/styles/components/type";

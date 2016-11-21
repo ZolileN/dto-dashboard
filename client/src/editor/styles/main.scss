@@ -20,7 +20,7 @@
 
 @import './../../_shared/styles/_vendor/animate';
 @import './../../_shared/styles/_vendor/ceaser-easings';
-
+@import './../../_common/styles/_vendor/govau-header';      
 
 
 /**
@@ -48,6 +48,8 @@
 @import 'components/traffic-light';
 @import 'components/widget-list';
 @import 'components/widget-list-alert';
+@import '../../_common/styles/components/govau-header-overrides';
+
 
 // page components
 @import 'pages/dashboards';
