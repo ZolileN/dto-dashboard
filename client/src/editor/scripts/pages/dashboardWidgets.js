@@ -22,7 +22,9 @@ import {
   getDashboardUrl,
   getDashboardWidgetDatagroupSimpleUrl,
   getDashboardWidgetDatagroupTimeSeriesUrl,
-  getDashboardWidgetDescriptionsUrl
+  getDashboardWidgetDescriptionsUrl,
+  getServiceDashboardUrl,
+  getServiceDashboardUrlAnchor
 } from './../utils/urlHelpers';
 
 
@@ -129,6 +131,7 @@ class PageDashboardWidgets extends Component {
                       recentDatagroupset={heroDatagroupsetSlice}
                       addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.widget.id, heroDatagroupsetSlice.sliceNextKey)}
                       editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceKey)}
+                      serviceDashboardUrl={getServiceDashboardUrl(dashboard.id, dashboard.name)}
                       editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
                       dashboard={dashboard}
                       alertProps={uiApp.didTransactionDatagroup.widgetId === heroDatagroupsetSlice.widget.id ? uiApp.didTransactionDatagroup : null}
@@ -155,6 +158,7 @@ class PageDashboardWidgets extends Component {
                             addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceNextKey)}
                             editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceKey)}
                             editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
+                            serviceDashboardUrl={getServiceDashboardUrlAnchor(dashboard.id, dashboard.name, slice.widget.name)}
                             dashboard={dashboard}
                             alertProps={uiApp.didTransactionDatagroup.widgetId === slice.widget.id ? uiApp.didTransactionDatagroup : null}
                            />

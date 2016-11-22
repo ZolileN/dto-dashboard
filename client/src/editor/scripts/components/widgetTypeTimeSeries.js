@@ -13,6 +13,7 @@ const WidgetTypeTimeSeries = ({
   recentDatagroupset,
   editUrl,
   addUrl,
+  serviceDashboardUrl,
   editDescriptionsUrl,
   alertProps
 }) => {
@@ -67,6 +68,8 @@ const WidgetTypeTimeSeries = ({
                 className="UIK-link"
                 disabled={!canUpdate}
                 onClick={e => !canUpdate && e.preventDefault()}>Edit labels and descriptions</Link><br/>
+
+          <a href={serviceDashboardUrl} className="UIK-link" target="blank" rel="external">View on Dashboard</a>
         </div>
       </div>
     </article>

@@ -27,3 +27,9 @@ export const getServiceDashboardUrl = (dashboardId, dashboardName) => {
   let name = dashboardName.toLowerCase().replace(/\s/g, '-');
   return `/dashboards/${dashboardId}-${name}`;
 };
+
+export const getServiceDashboardUrlAnchor = (dashboardId, dashboardName, widgetName) => {
+  let name = dashboardName.toLowerCase().replace(/\s/g, '-');
+  let anchor = widgetName.toLowerCase().replace(/\s/g, '-');
+  return `/dashboards/${dashboardId}-${name}#${anchor}`;
+};
