@@ -425,7 +425,7 @@
     text-align: left;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 100px;
+    max-width: 88px;  // todo - improve magical numbers - charts can grow taller if legends go over 2 lines
     overflow: hidden;
     position: relative;
   }

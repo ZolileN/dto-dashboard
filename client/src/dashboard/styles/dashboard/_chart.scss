@@ -126,7 +126,7 @@ svg:not(:root) {
   }
 }
 
-hero-widget {
+hero-widget { // todo - this probably is a bug, needs class .hero-widget
   path {
     fill-opacity: 1;
     stroke-width: 6px;
