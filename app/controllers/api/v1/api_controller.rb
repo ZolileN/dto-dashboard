@@ -44,6 +44,6 @@ class Api::V1::ApiController < ActionController::API
 
   def render_unauthorized
     self.headers['WWW-Authenticate'] = 'Token realm="Application"'
-    render json: 'Bad credentials', status: :unauthorized
+    render :json => { :code => '401', message: 'Method not Found' }, :status => :unauthorized
   end
 end
