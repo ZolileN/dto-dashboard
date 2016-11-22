@@ -1,4 +1,21 @@
 .page-dashboardwidgetdatagrouptimeseries {
 
+  &__form-help {
+    font-size: $font-size-sm;
+    line-height: 1.8;
+    margin-bottom: $spacer-y * 2;
+  }
+
+  .form-actions-buttons {
+    margin-top: $spacer-y * 2;
+
+    .btn:first-child {
+      margin-right: $spacer-x * 2;
+    }
+  }
+
+  .UIK-form-group {
+    max-width: 220px;
+  }
 
 }

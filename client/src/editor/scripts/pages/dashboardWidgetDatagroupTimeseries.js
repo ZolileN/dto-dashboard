@@ -123,9 +123,9 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                               dashboardId={dashboard.id} />
                 </div>
 
-                <hr/>
+                <hr />
 
-                {metadata.widget_form_help && <p>{metadata.widget_form_help}</p>}
+                {metadata.widget_form_help && <p className="page-dashboardwidgetdatagrouptimeseries__form-help">{metadata.widget_form_help}</p>}
 
                 {isUpdateMode ?
                   <UpdateDatagroupsetForm formModel={datagroupsetSlice}

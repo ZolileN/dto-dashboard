@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 
 const DatagroupsetInput = ({input, name, type, label, meta, elementProps, optionProps, groupModel}) => {
-  const { isOptional, infoText, canSubmit } = optionProps;
+  const { isOptional, infoText, canSubmit, suffix } = optionProps;
   const { touched, error } = meta;
 
   // if (!input.value) {
@@ -10,17 +10,19 @@ const DatagroupsetInput = ({input, name, type, label, meta, elementProps, option
   // }
 
   return (
-    <div className="form-group">
+    <div className="UIK-form-group form-group">
       <label htmlFor={name}
              className="control-label">{label}{isOptional && <sup> Optional</sup>}</label>
       {infoText && <label className="info-block">{infoText}</label>}
-      <div>
+      <div className="input-group">
         <input {...input} {...elementProps}
           type="text"
           name={name}
           id={name} disabled={!canSubmit}
           className={touched && error ? `form-control invalid` : `form-control`} />
         {touched && error && <span className="help-block">{error}</span>}
+
+        {suffix && <div className="input-group-addon">{suffix}</div>}
       </div>
     </div>
   )

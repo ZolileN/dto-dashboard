@@ -1,4 +1,5 @@
 .timeseries-pagination {
+  margin-bottom: $spacer-y * 2;
 
   &__title,
   &__supp-title {
@@ -7,14 +8,19 @@
 
   &__supp-title {
     font-size: $font-size-h5;
+    margin-bottom: 10px;
   }
   &__title {
     font-size: $font-size-h2;
-    margin-bottom: $spacer-y;
+    margin-bottom: 12px;
   }
 
   .btn {
     min-width: 140px;
     text-align: center;
+  }
+
+  a:first-of-type {
+    margin-right: $spacer-x;
   }
 }

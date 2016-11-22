@@ -1,4 +1,13 @@
 .page-dashboardwidgets {
+
+  .page__header {
+    .title-description {
+      @media (min-width:$screen-md) {
+        margin-top: -8px;
+      }
+    }
+  }
+
   .widget-list {
 
   }

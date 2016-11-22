@@ -24,7 +24,9 @@ let UpdateDatagroupsetForm = ({
         canSubmit
       }} />
 
-      <div>
+      <hr />
+
+      <div className="form-actions-buttons">
         <button type="submit"
                 className="UIKIT-button btn btn-primary"
                 disabled={!canSubmit || submitting}
@@ -34,6 +36,7 @@ let UpdateDatagroupsetForm = ({
                 disabled={!canSubmit || submitting}
                 onClick={cancel.bind({}, rfProps)}>Cancel</button>
       </div>
+
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
       </div>
@@ -54,9 +57,7 @@ const renderFields = ({fields, models, canSubmit, disabled, formModel}) => {
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
                    elementProps={{disabled}}
-                   optionProps={{canSubmit}} />
-
-            <span>{getHumanisedUnits(formModel.groups[idx].dataset.units)}</span>
+                   optionProps={{canSubmit, suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)}} />
 
           </fieldset>
         )

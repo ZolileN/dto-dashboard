@@ -28,7 +28,9 @@ let CreateDatagroupsetForm = ({
         canSubmit
       }} />
 
-      <div>
+      <hr />
+
+      <div className="form-actions-buttons">
         <button type="submit"
                 className="UIKIT-button btn btn-primary"
                 disabled={!canSubmit || submitting}
@@ -49,7 +51,6 @@ let CreateDatagroupsetForm = ({
 const renderFields = ({
   fields, models, canSubmit, disabled, formModel, meta: {error}
 }) => {
-
   return (
     <div>
       {fields.map((member, idx) => {
@@ -62,9 +63,8 @@ const renderFields = ({
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
                    elementProps={{disabled}}
-                   optionProps={{canSubmit}} />
+                   optionProps={{canSubmit, suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)}} />
 
-            <span>{getHumanisedUnits(formModel.groups[idx].dataset.units)}</span>
           </fieldset>
         )
       })}

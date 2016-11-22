@@ -12,4 +12,13 @@
       background-color: $UIKIT_180_button-bg-colour--disabled !important;
     }
   }
+
+  &.btn-link {
+    &.disabled,
+    &[disabled] {
+      font-weight: $DB-font-weight-semi-bold;
+      backround-color: transparent;
+      color: rgba($DB-color-body-text, .65);
+    }
+  }
 }
