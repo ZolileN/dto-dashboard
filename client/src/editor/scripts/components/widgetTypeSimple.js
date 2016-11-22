@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
-import WidgetAlert from './widgetAlert';
+import UikitAlert from './uikit/alert';
 
 
 const WidgetTypeSimple = ({
@@ -19,7 +19,7 @@ const WidgetTypeSimple = ({
   return (
     <article className="widget-list__item">
 
-      {alertProps && <WidgetAlert {...alertProps} />}
+      {alertProps && <UikitAlert type={alertProps.type === 'created' || alertProps.type === 'updated' ? 'success' : 'error'} text={alertProps.description} />}
 
       <header>
         <div className="title">

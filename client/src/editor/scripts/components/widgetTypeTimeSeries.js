@@ -5,7 +5,6 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import Preview from './datagroupPreview';
-import WidgetAlert from './widgetAlert';
 import TrafficLight from './../components/widgetTrafficLight';
 import UikitAlert from './uikit/alert';
 
@@ -41,7 +40,7 @@ const WidgetTypeTimeSeries = ({
   return (
     <article className="widget-list__item">
 
-      {alertProps && <WidgetAlert {...alertProps} />}
+      {alertProps && <UikitAlert type={alertProps.type === 'created' || alertProps.type === 'updated' ? 'success' : 'error'} text={alertProps.description} />}
 
       <header>
         <div className="title">
