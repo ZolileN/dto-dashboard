@@ -25,7 +25,7 @@ let webpackConfig = {
       // This does not produce a real file. It's just the virtual path that is
       // served by WebpackDevServer in development. This is the JS bundle
       // containing code from all our entry points, and the Webpack runtime.
-	  filename: 'javascripts/[name].js',       // relative     - determines output file
+	    filename: 'javascripts/[name].js',       // relative     - determines output file
       // In development, we always serve from the root. This makes config easier.
       publicPath:  `/`,     // Web root. publicPath + filename must equal resource path in dev server
       // publicPath:  `http://${CONFIG.WEBPACK_HOST}:${CONFIG.WEBPACK_PORT}/` could be this
@@ -52,7 +52,8 @@ let webpackConfig = {
 			},
 			{
 				test: /\.(jpe?g|gif|png|svg)$/,
-        loader: "url?limit=10000&name=/images/[name].[ext]"
+        // loader: "file?name=images/[name].[ext]"
+        loader: "url?limit=10000&name=/images/[name].[ext]"  // todo - this wont work for non-react land
 			},
       // {  // todo - enable if we have fonts - must prefix regex with fonts/ and images with images/
       //   test: /\.(eot|ttf|woff|svg|woff2)$/,

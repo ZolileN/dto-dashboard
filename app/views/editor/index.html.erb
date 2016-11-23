@@ -8,7 +8,10 @@
     # the user won't see this HTML and will only see the interstitial.
    %>
   document.getElementById('editor_index').innerHTML +=
-    '<div class="container" style="padding-top:1em;">' +
-      '<img src="<%= image_path('editor-skeleton.png') %>" width="1112" height="262" />' +
+    '<div>' +
+      '<div style="background:#e6fafc;height:150px;"></div>' +
+      '<div class="container">' +
+        '<img src="<%= image_path('editor-skeleton-2.png') %>" width="1110" height="190" />' +
+      '</div>' +
     '</div>';
 </script>
