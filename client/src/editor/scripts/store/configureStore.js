@@ -1,22 +1,35 @@
-let window = window || global;
+let win = typeof global === 'undefined' ? window : global;
+
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
 
 import api from './../api';
-// import apiMiddleware from './../middlewares/api';
 import rootReducer from './../reducers';
 
 
 export default function configureStore(bootState, history, debug = __DEV__) {
   const middlewares = [
-    // apiMiddleware,
     thunkMiddleware.withExtraArgument(api),
     routerMiddleware(history)
   ];
 
-  return compose(applyMiddleware(...middlewares), debug && window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore)(
-    rootReducer,
-    bootState
+
+  let createStoreWithMiddleware = compose(
+    applyMiddleware(...middlewares),
+    debug && win.__REDUX_DEVTOOLS_EXTENSION__ ? win.__REDUX_DEVTOOLS_EXTENSION__() : f => f
   );
+  const store = createStoreWithMiddleware(createStore)(
+    rootReducer, bootState
+  );
+
+  // Make reducers hot reloadable
+  if (module.hot) {
+    module.hot.accept('./../reducers', () => {
+      const nextRootReducer = require('./../reducers');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+  return store;
 }

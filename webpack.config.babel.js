@@ -68,8 +68,10 @@ let webpackConfig = {
       },
       {
         test: /\.(jpe?g|gif|png|svg)$/,
-        // loader: "file?name=images/[name].[ext]"
-        loader: "url?limit=10000&name=/images/[name].[ext]"
+        loader: "url?limit=10000&name=/images/[name].[ext]",
+
+        // "file?name=../../public/images/[name].[ext]",
+        // 'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
       },
       // {  // todo - enable if we have fonts - must prefix regex with fonts/ and images with images/
       //   test: /\.(eot|ttf|woff|svg|woff2)$/,
@@ -117,6 +119,7 @@ let webpackConfig = {
 
 if (!DEBUG) {
   webpackConfig.plugins.push(
+    // Merge all duplicate modules
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
