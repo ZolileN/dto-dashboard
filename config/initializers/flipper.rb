@@ -6,7 +6,11 @@ require 'flipper/adapters/active_record'
 class CanAccessFlipperUI
   def self.matches?(request)
     current_user = request.env['warden'].user
-    current_user.present? && current_user.respond_to?(:admin?) && current_user.admin?
+    CanAccessFlipperUI.two_factor_authenticated?(request) && current_user.present? && current_user.respond_to?(:admin?) && current_user.admin?
+  end
+
+  def self.two_factor_authenticated?(request)
+    request.env['warden'].session(:user)[TwoFactorAuthentication::NEED_AUTHENTICATION] != true
   end
 end
 
