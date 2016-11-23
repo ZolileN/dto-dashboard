@@ -10,6 +10,7 @@ class CanAccessFlipperUI
   end
 
   def self.two_factor_authenticated?(request)
+    return true unless $flipper[:auth].enabled?
     request.env['warden'].session(:user)[TwoFactorAuthentication::NEED_AUTHENTICATION] != true
   end
 end
