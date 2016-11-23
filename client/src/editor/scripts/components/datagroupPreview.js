@@ -13,12 +13,14 @@ const Preview = ({recentDatagroupset}) => {
       <p className="most-recent-text">Most recent data: <span className="strong">{getHumanisedVeryShortDate(recentDatagroupset.recentKey)}</span></p>
 
       {recentDatagroupset.groups.map((group, idx) => {
-        if (!(group.datapoint && group.datapoint.value)) {  // todo - remove
-          console.warn('datapoint is null, this means your widget has no data for this slice of time which is probably an error in the data integrity', group);
-        }
+
+        let value;
 
         let units = getHumanisedUnits(group.dataset.units);
         let unitsStr = units ? ` ${units}` : '';
+        if (group.datapoint) {
+          value = group.datapoint.value === null ? 'No data' : group.datapoint.value + unitsStr;
+        }
 
         return (
           <div key={idx} className="preview-table">
@@ -26,8 +28,7 @@ const Preview = ({recentDatagroupset}) => {
               <LegendDot color={getPaletteColor(idx)} />
             </span>
             <span className="description">{group.dataset.label}</span>
-            <span className="value">{group.datapoint && `${group.datapoint.value}${unitsStr}` || 'No data'}</span>
-            {/*<span className="value">{group.datapoint.value || 'No data'}</span>*/}
+            <span className="value">{value}</span>
           </div>
         );
       })}
