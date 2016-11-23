@@ -1,25 +1,25 @@
 import React, { PropTypes } from 'react';
 
+import Icon from './../../../../_shared/scripts/components/icon';
 
-const META = { // todo - make this a real icon font
+
+const META = {
   'success': {
-    icon: '✓'
   },
   'error': {
-    icon: '✗'
   },
   'warning': {
-    icon: '!'
   },
   'info': {
-    icon: '!'
   }
 };
 
 const UikitAlert = ({type, headingText, text}) => {
   return (
     <div className={`UIK-alert alert alert-${type}`} role="alert">
-      <div className="alert__icon"><i>{META[type].icon}</i></div>
+      <div className="alert__icon">
+        <Icon name={type} size="31" />
+      </div>
       <div className="alert__text">
         {headingText && <span className="heading-text">{headingText}</span>}
         <p>{text}</p>

@@ -3,6 +3,7 @@ import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import { connect } from 'react-redux';
 
 import Toast from './../components/toast';
+import IconLoader from './../../../_shared/scripts/components/iconLoader';
 
 
 class Layout extends Component {
@@ -19,6 +20,7 @@ class Layout extends Component {
   render() {
     return (
       <div className="app-scene">
+        <IconLoader />
         <Toast />
         <TransitionGroup
           transitionAppear={false}
