@@ -5,4 +5,12 @@ class TokenDecorator < Draper::Decorator
     "Token #{id}"
   end
 
+  def to_short_s
+    object.to_s[0,7]
+  end
+
+  def active?
+    object.active? ? 'Yes' : 'No'
+  end
+
 end

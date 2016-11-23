@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     mount Flipper::UI.app($flipper) => '/flipper'
   end
 
+  resource :user, :only => 'show' do
+    resources :tokens, :only => 'create'
+  end
+
   namespace :users do
     resources :shared_secrets, only: [:new, :create, :index] do
       collection do

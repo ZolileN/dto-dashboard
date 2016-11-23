@@ -1,7 +1,8 @@
 <% if !Rails.env.production? && current_user.present? -%>
   <span style="color:white; float:right;">
-    <%= current_user.email %>
-    |
+
+    <%= link_to current_user.email, user_path, style: 'color:white' %>|
+
     <%= link_to 'Sign out', destroy_user_session_path, style: 'color:white' %>
   </span>
 <% end %>

@@ -34,10 +34,10 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context 'development' do
       before do
-        ENV['DEV_SERVER'] == 'true'
+        ENV['DEV_SERVER'] = 'true'
         Rails.env.stub(:development? => true)
       end
-      it{ expect(helper).to_not be_development_server }
+      it{ expect(helper).to be_development_server }
     end
 
   end
