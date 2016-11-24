@@ -6,6 +6,10 @@ import sassLintPlugin from 'sasslint-webpack-plugin';
 import * as CONFIG from './_config';
 const projectName = require('./../../package').name;
 
+// spawn a Dashboard in Terminal
+// https://github.com/FormidableLabs/webpack-dashboard
+import DashboardPlugin from 'webpack-dashboard/plugin';
+
 
 let webpackConfig = {
 	name: projectName,
@@ -62,6 +66,8 @@ let webpackConfig = {
 		]
 	},
 	plugins: [
+    new DashboardPlugin(),
+
     // new sassLintPlugin({ // todo
     //   config: './../.sass-lint.yml'
     // }),

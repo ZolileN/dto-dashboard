@@ -119,7 +119,7 @@
   "scripts": {
     "prebuild": "del public/images/**/* && del public/javascripts/**/* && del public/stylesheets/**/*",
     "build": "NODE_ENV=production webpack -p --release",
-    "dev": "node devServer.js",
+    "dev": "webpack-dashboard -- node devServer.js",
     "start": "echo no start task, 'npm run' to see all tasks",
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
     "test:react": "jest --verbose",
@@ -149,6 +149,7 @@
     }
   },
   "devDependencies": {
-    "react-test-renderer": "^15.3.2"
+    "react-test-renderer": "^15.3.2",
+    "webpack-dashboard": "^0.2.0"
   }
 }
