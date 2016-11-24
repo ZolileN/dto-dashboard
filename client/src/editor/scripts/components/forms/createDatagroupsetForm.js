@@ -35,6 +35,9 @@ let CreateDatagroupsetForm = ({
                 className="UIKIT-button btn btn-primary"
                 disabled={!canSubmit || submitting}
                 onClick={handleSubmit(submit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
+        <button type="preview"
+                className="btn primary-link"
+                onClick={preview.bind(this, formModel)}>Preview</button>
         <button type="cancel"
                 className='UIKIT-button btn btn-link'
                 disabled={!canSubmit || submitting}
@@ -44,6 +47,8 @@ let CreateDatagroupsetForm = ({
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
       </div>
+
+      <iframe id="preview" name="preview" style={{height: '500px', width: '100%'}}></iframe>
     </form>
   )
 };
@@ -159,6 +164,43 @@ const cancel = (rfProps, cb = null) => {
   }
 };
 
+const preview = (data) => {
+  let formData = data.groups.map((g, idx) => {
+    return {
+      value: document.getElementById(`groups[${idx}].value`).value || null,
+      ts: new Date(data.sliceKey).toJSON(), // props.formModel.sliceKey
+      dataset_id: g.dataset.id
+    }
+  });
+
+  let previewForm = document.createElement('form');
+  previewForm.setAttribute('method', 'post');
+  previewForm.setAttribute('target', 'preview')
+  previewForm.setAttribute('action', `widgets/${data.widget.id}/preview`);
+
+  let input = document.createElement('input');
+  input.setAttribute('type', 'hidden');
+  input.setAttribute('name', 'datapoints');
+  input.setAttribute('value', JSON.stringify(formData));
+
+  previewForm.appendChild(input);
+  document.getElementsByTagName('body')[0].appendChild(previewForm);
+  previewForm.submit();
+
+  return;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', `widgets/${data.widget.id}/preview`, true);
+  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+  // send the collected data as JSON
+  xhr.send(JSON.stringify({datapoints: formData}));
+
+  xhr.onload = function () {
+    let preview = document.getElementById('preview');
+    preview.innerHTML = xhr.responseText;
+  };
+};
 
 CreateDatagroupsetForm = reduxForm({
   form: 'CreateDatagroupsetForm',

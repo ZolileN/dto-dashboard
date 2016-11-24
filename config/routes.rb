@@ -49,6 +49,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :widgets, only: [] do
+    post 'preview', to: 'preview#widget'
+  end
+
   get 'feedback', :to => 'feedback#index'
 
   get '/index.html', :to => redirect('/')

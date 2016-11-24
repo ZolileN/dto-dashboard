@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  
+
   attr_reader :dashboards, :dashboard, :widgets
   helper_method :dashboards, :dashboard
 
@@ -20,9 +20,6 @@ class DashboardsController < ApplicationController
 
   def export
     @dashboard = Dashboard.find(params[:id])
-
-    respond_to do |format|
-      format.csv { send_data DashboardCSVSerializer.new(@dashboard).to_csv, :type => 'text/csv', :disposition=>'attachment', :filename=>'dashboard.csv' }
-    end
+    @filename = "#{@dashboard.name} dashboard.csv"
   end
 end

@@ -27,11 +27,11 @@ RSpec.describe WidgetDecorator, type: :decorator do
   its(:last_updated_at) { is_expected.to eq '1 Jan 2020'}
   its(:units_to_s)      { is_expected.to eq 'Seconds'}
 
+  #TODO Refactor this portion into its own spec as it's no longer #to_chart
   describe 'rendering data for charts' do
 
     let(:widget)  { FactoryGirl.create(:widget_with_datasets) }
-
-    let(:chart)     { widget.decorate.to_chart }
+    let(:chart) { ApplicationController.new.render_to_string('chart/_widget', locals: { widget: widget })}
     subject(:data)  { JSON.parse(chart) }
 
     it { is_expected.to include('id') }
@@ -54,9 +54,9 @@ RSpec.describe WidgetDecorator, type: :decorator do
       end
     end
 
-    describe 'dataset_to_chart' do
+    describe 'datasets' do
 
-      subject(:datasets) { widget.decorate.datasets_to_chart }
+      let(:datasets) { ApplicationController.new.render_to_string('chart/_datasets', locals: { datasets: widget.datasets }) }
       subject(:data)  { JSON.parse(datasets) }
 
       it { is_expected.to have(2).datasets }

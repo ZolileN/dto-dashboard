@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+  <% if !development_server? %>
+    <%= stylesheet_link_tag 'dashboard.css' %>
+  <% end %>
+</head>
+
+<body class="<%= body_class(yield(:body_class_names)) %>" data-route="<%= body_route %>">
+  <main>
+    <%= yield %>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+  <% if development_server? %>
+      <script src="http://localhost:8080/javascripts/dashboard.js"></script>
+  <% else %>
+    <%= javascript_include_tag 'dashboard.js' %>
+  <% end %>
+</body>
+</html>

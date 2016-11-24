@@ -50,15 +50,6 @@ class WidgetDecorator < Draper::Decorator
     end
   end
 
-  def to_chart
-    serializer = WidgetSerializer.new(widget, :include => 'datasets.datapoints')
-    serializer.to_json
-  end
-
-  def datasets_to_chart
-    object.datasets.collect{ |d| DatasetSerializer.new(d) }.to_json
-  end
-
   def name_slug
     name.downcase.parameterize()
   end

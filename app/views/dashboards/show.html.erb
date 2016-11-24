@@ -32,7 +32,7 @@
             </div>
             <% if dashboard.show_hero? %>
                 <div class="clearfix">
-                  <div class="hero-widget hero" data-data="<%= dashboard.hero.decorate.datasets_to_chart %>"></div>
+                  <div class="hero-widget hero" data-data="<%= render partial: 'chart/datasets', locals: { datasets: dashboard.hero.decorate.datasets } %>"></div>
                 </div>
             <% end %>
           </div>

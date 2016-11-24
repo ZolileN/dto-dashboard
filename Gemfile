@@ -27,6 +27,7 @@ gem 'devise_invitable'
 gem 'maildown'
 gem 'flipper-ui',               '~> 0.9.2'
 gem 'flipper-active_record',    '~> 0.9.2'
+gem 'csv_shaper',               '~> 1.3.0'
 
 group :production do
   gem 'rails_12factor'
