@@ -1,6 +1,6 @@
 /**
 
-  client/src/editor/scripts/components/uikit/alert.js
+  client/src/_shared/scripts/components/uikit-components/alert.js
 
  */
 
@@ -15,11 +15,17 @@
       background: $alert-success-border;
     }
   }
+
   &.alert-error {
+    @extend .alert-danger;
+  }
+  &.alert-error,
+  &.alert-danger {
     .alert__icon {
       background: $alert-danger-border;
     }
   }
+
   &.alert-info {
     .alert__icon {
       background: $alert-info-border;
@@ -42,6 +48,7 @@
     color: white;
     text-align: center;
     padding: 16px;
+    max-width: 32px;
   }
 
   .alert__text {

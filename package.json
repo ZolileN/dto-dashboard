@@ -128,7 +128,10 @@
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
     "test-browser:tap": "NODE_ENV=test npm run test-browser -- --tap | tap-spec",
     "test-browser:watch": "NODE_ENV=test DEBUG=ava:watcher ava 'client/test/**/*.test.js' --require=babel-register --watch --verbose",
-    "test-browser:legacy": "NODE_ENV=test karma start"
+    "test-browser:legacy": "NODE_ENV=test karma start",
+    "storybook": "start-storybook -p 6006 -c client/.storybook",
+    "build-storybook": "build-storybook -c client/.storybook -o client/.out",
+    "deploy-storybook": "npm run build-storybook && surge -p client/.out -d performance-dashboard-ui.surge.sh"
   },
   "engines": {
     "node": "6.7.0"
@@ -149,7 +152,10 @@
     }
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
+    "@kadira/storybook-addon-knobs": "^1.6.0",
     "react-test-renderer": "^15.3.2",
+    "surge": "^0.18.0",
     "webpack-dashboard": "^0.2.0"
   }
 }

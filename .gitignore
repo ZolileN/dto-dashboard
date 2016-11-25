@@ -1,4 +1,5 @@
 lib/assets/
+client/.out/
 
 _trash
 coverage

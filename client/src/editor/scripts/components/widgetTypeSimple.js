@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { humanisedShortDate } from './../utils/humanisedDates';
-import UikitAlert from './uikit/alert';
+import UikitAlert from './../../../_shared/scripts/components/uikit-components/alert';
 
 
 const WidgetTypeSimple = ({

@@ -165,6 +165,24 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 yarn run test
 ```
 
+
+#### Run Style Guide? 
+
+```
+yarn run storybook
+```
+
+#### Deploy Style Guide? 
+
+```
+yarn run deploy-storybook
+```
+
+#### View Style Guide?
+
+http://performance-dashboard-ui.surge.sh/
+
+
 #### Issues with npm
 
 ```
@@ -339,6 +357,7 @@ Merge conflicts need to be carefully resolved as part of the rebase process. A t
 - [Staging](https://dashboard.apps.staging.digital.gov.au/)
 - [Production](https://dashboard.gov.au/)
 - [Cool](https://dashboard.cool/)
+- [Style Guide](http://performance-dashboard-ui.surge.sh/)
 
 
 ## Deployment
