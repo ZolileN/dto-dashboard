@@ -14,7 +14,7 @@ import {
   getDatagroupsetSlice
 } from './../reducers/index';
 
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import Pagination from './../components/widgetPagePagination';
 import * as uiAppActions from './../actions/uiApp';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';

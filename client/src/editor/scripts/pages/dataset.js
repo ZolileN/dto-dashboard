@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import * as uiAppActions from './../actions/uiApp';
 import { getDatapointsById, computeLabel } from './../reducers/datapoints';
 import UpdateDatasetForm from './../components/forms/updateDatasetForm';

@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 
 
 export default class NoMatch extends Component {
+
+  // Since state and props are static,
+  // there's no need to re-render this component
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     return (
       <div className="container">

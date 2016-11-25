@@ -14,7 +14,7 @@ import {
 } from './../reducers/index';
 
 import * as uiAppActions from './../actions/uiApp';
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import WidgetTypeSimple from './../components/widgetTypeSimple';
 import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
 

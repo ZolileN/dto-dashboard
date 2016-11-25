@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { getDashboardById } from './../reducers/dashboards';
 import { getWidgetById } from './../reducers/widgets';
 
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import * as uiAppActions from './../actions/uiApp';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
 import UpdateDatagroupSimpleForm from './../components/forms/updateDatagroupSimple';

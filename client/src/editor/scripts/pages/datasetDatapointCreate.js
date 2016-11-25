@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { push } from 'react-router-redux';
 
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import CreateDatapointForm from './../components/forms/createDatapointForm';
 import { getRequestKey } from './../actions/datapoint';
 import { isPendingRequest } from './../reducers/requests';

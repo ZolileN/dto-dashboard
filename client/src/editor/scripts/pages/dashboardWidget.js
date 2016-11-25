@@ -9,7 +9,7 @@ import { getDatasetsByIds } from './../reducers/datasets';
 import { getDatapointsByDatasets } from './../reducers/datapoints';
 import { isPendingRequest } from './../reducers/requests';
 
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import * as uiAppActions from './../actions/uiApp';
 import UpdateWidgetForm from './../components/forms/updateWidgetForm';
 import { getRequestKey } from './../actions/widget';

@@ -1,4 +1,8 @@
 .UIKIT-button {
+  &.btn-error {
+    @extend .btn-danger;
+  }
+
   &.disabled,
   &[disabled] {
     &,

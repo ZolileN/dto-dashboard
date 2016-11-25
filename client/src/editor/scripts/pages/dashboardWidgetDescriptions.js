@@ -8,7 +8,7 @@ import { getWidgetById } from './../reducers/widgets';
 
 import * as uiAppActions from './../actions/uiApp';
 import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 
 
 const mapStateToProps = (state, ownProps) => {

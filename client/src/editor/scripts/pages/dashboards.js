@@ -6,7 +6,7 @@ import {
   getServiceDashboardUrl,
   getDashboardWidgetsUrl
 } from './../utils/urlHelpers';
-import Breadcrumbs from './../components/breadcrumbs';
+import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
 
 
 const DashboardItems = ({dashboards}) => {
