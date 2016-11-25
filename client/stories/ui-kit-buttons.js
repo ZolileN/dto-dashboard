@@ -27,6 +27,9 @@ const BtnTemplate = ({name, variant}) => {
       <tr>
         <td>{name} block</td><td><button className={`UIK-button btn btn-${variant} btn-block`}>Click me</button></td>
       </tr>
+      <tr>
+        <td>{name} link</td><td><button className={`UIK-button btn btn-${variant} btn-link`}>Click me</button></td>
+      </tr>
     </table>
   )
 };
