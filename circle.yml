@@ -17,8 +17,8 @@ dependencies:
     - sudo apt-get update -qq
     - sudo apt-get install -y -qq yarn
   cache_directories:
-    - ~/.yarn-cache
-        
+    -
+
   override:
     - yarn install
     - yarn build
