@@ -11,7 +11,7 @@ module.exports = function(config, env) {
 
   config.module.loaders.push({
     test: /.scss$/,
-    loaders: ["style", "css", "sass"],
+    loaders: ["style", "css", "resolve-url", "sass?sourceMap"],
     include: path.resolve(__dirname, '../')
   });
 

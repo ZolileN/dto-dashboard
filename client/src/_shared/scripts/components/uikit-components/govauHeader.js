@@ -11,7 +11,8 @@ const GovauHeader = ({isLoggedIn, userEmail, signInUrl, signOutUrl}) => {
 
           <div className="govau-header__container__logo">
             <a href="/editor">
-              <img src="`./../../../images/editor-logo.svg`" width="240" height="54" alt="Performance Dashboards - Editor" />
+
+              <img src="./../../../images/editor-logo.svg" width="240" height="54" alt="Performance Dashboards - Editor" />
             </a>
           </div>
 
