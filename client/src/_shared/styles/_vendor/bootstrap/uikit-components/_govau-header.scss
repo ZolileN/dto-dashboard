@@ -1,0 +1,48 @@
+.govau-header {
+
+  background-color: $UIKIT_180_navy;
+  background-image: url('~gov-au-ui-kit/assets/img/header-bg.jpg');
+  background-position: top right;
+  background-repeat: no-repeat;
+
+  &__container {
+    display: table;
+    width: 100%;
+    min-height: 90px;
+    padding: $spacer-y 0 $spacer-y *1.4;
+
+    &__logo,
+    &__utils {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    &__logo {
+
+    }
+
+    &__utils {
+      text-align: right;
+      color: white;
+
+      @include clearfix;
+
+      .user-email {
+        display: block;
+        margin-bottom: 8px;
+        svg {
+          padding-right: 1em;
+        }
+      }
+
+      .btn {
+        float: right;
+      }
+    }
+  }
+
+  .btn.sign-out {
+    @include button-variant(white, #224a61, #224a61);
+    font-weight: $DB-font-weight-regular;
+  }
+}

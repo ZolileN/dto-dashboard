@@ -15,8 +15,7 @@ module.exports = function(config, env) {
     include: path.resolve(__dirname, '../')
   });
 
-  config.resolve.extensions = [...config.resolve.extensions, ...['.scss']];
-
+  config.resolve.extensions = [...config.resolve.extensions, '.scss'];
 
   return config;
 };
