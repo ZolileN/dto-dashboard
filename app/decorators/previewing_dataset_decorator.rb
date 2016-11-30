@@ -5,7 +5,7 @@ class PreviewingDatasetDecorator < Draper::Decorator
     points = object.datapoints.to_a
 
     if preview_data.present?
-      points.concat preview_data
+      points = preview_data.concat points 
     end
 
     points

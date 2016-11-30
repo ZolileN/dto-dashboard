@@ -19,6 +19,6 @@ RSpec.describe PreviewingDatasetDecorator, type: :decorator do
     let(:dataset_id) { dataset.id }
 
     specify { expect(subject.datapoints.count).to eq dataset.datapoints.count + 1 }
-    specify { expect(subject.datapoints.last.value).to eq 40 }
+    specify { expect(subject.datapoints.first.value).to eq 40 }
   end
 end
