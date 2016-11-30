@@ -1,7 +1,7 @@
 class Api::V1::DashboardsController < Api::V1::ApiController
+  attr_reader :dashboard
 
   before_action :find_dashboard, :only => [:show, :update]
-  attr_reader :dashboard
 
   def index
     dashboards = current_user.dashboards.by_name.all
@@ -14,6 +14,7 @@ class Api::V1::DashboardsController < Api::V1::ApiController
 
   def update
     with_invalid_record_handler do
+      invalidate_dashboards dashboard 
       dashboard.update_attributes!(data)
       render :json => dashboard.to_json, :status => :ok
     end

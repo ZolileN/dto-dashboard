@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+# https://github.com/bundler/bundler/blob/master/lib/bundler/dsl.rb#L263
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 gem 'rails', '~> 5.0.0.1'
 gem 'pg'
 gem 'puma', '~> 3.0'
@@ -28,6 +34,7 @@ gem 'maildown'
 gem 'flipper-ui',               '~> 0.9.2'
 gem 'flipper-active_record',    '~> 0.9.2'
 gem 'csv_shaper',               '~> 1.3.0'
+gem 'actionpack-page_caching', github: 'rails/actionpack-page_caching', ref: '0ab22eab6d81ec8e38e5e1ed16319770d0001ea9'
 
 group :production do
   gem 'rails_12factor'
@@ -55,7 +62,7 @@ end
 
 group :test do
   gem 'capybara', '~> 2.8.1'
-  gem "codeclimate-test-reporter", require: false
+  gem "codeclimate-test-reporter", '0.6.0', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'

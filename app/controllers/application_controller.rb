@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
+  include ActionController::Caching::Pages
   include Sslify
-  include HttpBasicate
+  include CacheInvalidation
 
   protect_from_forgery with: :exception
 

@@ -14,8 +14,8 @@ describe 'dashboards/export.csv.shaper', type: :view do
   specify { expect(subject[0].length).to eq 5 }
 
   specify { expect(subject.length).to eq dashboard.datasets.collect {|ds|
-    ds.datapoints.count
-  }.inject(:+) + 1 }
+      ds.datapoints.count
+    }.inject(:+) + 1 }
 
   describe 'headers' do
     let(:headers) { ['Dataset name', 'Units', 'Time stamp', 'Label', 'Value'] }
@@ -24,8 +24,8 @@ describe 'dashboards/export.csv.shaper', type: :view do
 
   describe 'row' do
     let(:row) { subject.second } # Ignore header row
-    let(:dataset) { dashboard.datasets.first }
-    let(:datapoint) { dataset.datapoints.first }
+    let(:dataset) { dashboard.datasets.by_created.first }
+    let(:datapoint) { dataset.datapoints.by_time.first }
 
     specify { expect(row[0]).to eq dataset.name }
     specify { expect(row[1]).to eq dataset.units }

@@ -1,15 +1,13 @@
 csv.headers :dataset_name, :units, :time_stamp, :label, :value
 
-@dashboard.widgets.each do |widget|
-  widget.datasets.each do |dataset|
-    dataset.datapoints.each do |datapoint|
-      csv.row datapoint do |csv, dp|
-        csv.cell :dataset_name, dataset.name
-        csv.cell :units, dataset.units
-        csv.cell :time_stamp, dp.ts.strftime("%d/%m/%Y %H:%M")
-        csv.cell :label, dp.label
-        csv.cell :value, dp.value.to_s
-      end
+@dashboard.datasets.by_created.each do |dataset|
+  dataset.datapoints.by_time.each do |datapoint|
+    csv.row datapoint do |csv, dp|
+      csv.cell :dataset_name, dataset.name
+      csv.cell :units, dataset.units
+      csv.cell :time_stamp, dp.ts.strftime("%d/%m/%Y %H:%M")
+      csv.cell :label, dp.label
+      csv.cell :value, dp.value.to_s
     end
   end
 end

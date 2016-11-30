@@ -1,6 +1,7 @@
 class Widget < ApplicationRecord
   include Nameable
   include Measurable
+  include CreationOrderable
 
   self.inheritance_column = :_type_disabled
 
