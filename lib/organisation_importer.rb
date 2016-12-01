@@ -1,18 +1,15 @@
-class OrganisationImporter
+require 'json-schema'
 
+class OrganisationImporter
   def initialize(organisation, data_json, definition_json)
     @organisation = organisation
     @data_json = data_json
     @definition_json = definition_json
   end
 
-  def valid?
-    validate if @valid.nil?
-    @valid
-  end
-
   def import!
-    raise JSON::Schema::ValidationError, errors.join(', ') unless valid?
+    JSON::Validator.validate! data_schema, data
+    JSON::Validator.validate! definition_schema, definition
 
     display_hero = definition['displayHero'].nil?
     display_kpis = definition['displayKPIs'].nil?
@@ -104,15 +101,15 @@ class OrganisationImporter
     @data ||= JSON.parse @data_json
   end
 
+  def data_schema
+    @data_schema ||= JSON.parse File.read 'lib/schema/data.schema.json'
+  end
+
   def definition
     @definition ||= JSON.parse @definition_json
   end
 
-  def validate
-    @valid = true #TODO validate against schema
-  end
-
-  def errors
-    [] #TODO return validation errors
+  def definition_schema
+    @definition_schema ||= JSON.parse File.read 'lib/schema/definition.schema.json'
   end
 end

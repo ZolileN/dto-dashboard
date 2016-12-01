@@ -2,16 +2,13 @@ require 'rails_helper'
 require 'organisation_importer'
 
 describe OrganisationImporter do
-
   let(:organisation) { FactoryGirl.create :organisation }
+  let(:definition_json) { File.read("spec/fixtures/valid-definition.json") }
 
   subject { OrganisationImporter.new organisation, data_json, definition_json }
 
-  context 'Good data' do
+  context 'Valid data' do
     let(:data_json) { File.read("spec/fixtures/valid-data.json") }
-    let(:definition_json) { File.read("spec/fixtures/valid-definition.json") }
-
-    it { is_expected.to be_valid }
 
     describe 'post-import' do
       let(:dashboard) { organisation.dashboards.first }
@@ -32,5 +29,17 @@ describe OrganisationImporter do
 
       specify { expect(dataset.widgets.count).to eq 2 }
     end
+  end
+
+  context 'Non-conforming data' do
+    let(:data_json) { File.read("spec/fixtures/invalid-data.json") }
+
+    specify { expect{ subject.import! }.to raise_error JSON::Schema::ValidationError }
+  end
+
+  context 'Non-JSON data' do
+    let(:data_json) { File.read("spec/fixtures/broken-data.json") }
+
+    specify { expect{ subject.import! }.to raise_error JSON::ParserError }
   end
 end
