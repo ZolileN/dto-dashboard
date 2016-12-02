@@ -1,6 +1,6 @@
 {
     "version": "1",
-    "updated_at": "2016-08-30T01:01:01.111Z",
+    "updated_at": "2016-11-09T01:01:01.111Z",
     "name": "Hobby or Business Determination Tool",
     "url": "https://start.business.gov.au/",
     "agency": "DIIS",
@@ -10,11 +10,12 @@
     "displayHero": false,
     "datasets": [{
         "id": "user-satisfaction",
-        "recorded_at": "2016-07-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "name": "User satisfaction",
         "note": "This data is currently unavailable due to....",
         "data":         [
+          { "label": "2016-06", "value": null},
           { "label": "2016-07", "value": 76.8},
           { "label": "2016-08", "value": 75.6},
           { "label": "2016-09", "value": 74.5}
@@ -22,14 +23,14 @@
     },
     {
         "id": "cost-per-transaction",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "$",
         "name": "Cost per transaction",
         "note": "This data is currently unavailable due to....",
         "data": null
     }, {
         "id": "completion-rate",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "name": "Completion rate",
         "note": "The percentage of visitors to the business.gov.au \'A business or a hobby?\' page who go on to use the tool. This is calculated by dividing the total number of ..... by the total number of .......",
@@ -38,12 +39,10 @@
           { "label": "2016-07", "value": 56.1},
           { "label": "2016-08", "value": 58.2},
           { "label": "2016-09", "value": 57.9}
-          
-          
         ]
     }, {
         "id": "digital-take-up",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "name": "Digital take-up",
         "note": "The percentage of users who successfully generate a result after starting the tool. This is calculated by dividing the total number of successfully completed transactions by the total number of started transactions.",
@@ -62,9 +61,9 @@
         "note": "",
         "data": [
           { "label": "2016-06", "value": 8.0},
-          { "label": "2016-07", "value": 7},
-          { "label": "2016-08", "value": 10},
-          { "label": "2016-09", "value": 12}
+          { "label": "2016-07", "value": 7.0},
+          { "label": "2016-08", "value": 10.0},
+          { "label": "2016-09", "value": 12.0}
         ]
     }, {
         "id": "click-through-ato",
@@ -75,9 +74,9 @@
         "note": "",
         "data": [
           { "label": "2016-06", "value": 46.0},
-          { "label": "2016-07", "value": 47},
-          { "label": "2016-08", "value": 41},
-          { "label": "2016-09", "value": 41}
+          { "label": "2016-07", "value": 47.0},
+          { "label": "2016-08", "value": 41.0},
+          { "label": "2016-09", "value": 41.0}
         ]
     }, {
         "id": "click-through-bus.gov",
@@ -89,8 +88,8 @@
         "data": [
           { "label": "2016-06", "value": 28.0},
           { "label": "2016-07", "value": 28.0},
-          { "label": "2016-08", "value": 32},
-          { "label": "2016-09", "value": 27}
+          { "label": "2016-08", "value": 32.0},
+          { "label": "2016-09", "value": 27.0}
         ]
     }, {
         "id": "click-through-ip",
@@ -102,8 +101,8 @@
         "data": [
           { "label": "2016-06", "value": 6.0},
           { "label": "2016-07", "value": 3.0},
-          { "label": "2016-08", "value": 4},
-          { "label": "2016-09", "value": 5}
+          { "label": "2016-08", "value": 4.0},
+          { "label": "2016-09", "value": 5.0}
         ]
     },
     {
@@ -116,8 +115,8 @@
         "data": [
           { "label": "2016-06", "value": 11.0},
           { "label": "2016-07", "value": 18.0},
-          { "label": "2016-08", "value": 13},
-          { "label": "2016-09", "value": 16}
+          { "label": "2016-08", "value": 13.0},
+          { "label": "2016-09", "value": 16.0}
       ]
     },
     {
@@ -148,33 +147,33 @@
         ]
     }, {
         "id": "help-sought-none",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "No help required",
         "name": "Help sought - No help required",
         "note": "",
         "data": [
-          { "label": "2016-06", "value": 98},
+          { "label": "2016-06", "value": 98.0},
           { "label": "2016-07", "value": 99.6},
           { "label": "2016-08", "value": 99.4},
           { "label": "2016-09", "value": 98.4}
         ]
     }, {
         "id": "help-sought-contact",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Help required",
         "name": "Help sought - Help required",
         "note": "",
         "data": [
-          { "label": "2016-06", "value": 2},
+          { "label": "2016-06", "value": 2.0},
           { "label": "2016-07", "value": 0.4},
           { "label": "2016-08", "value": 0.6},
           { "label": "2016-09", "value": 1.6}
         ]
     }, {
         "id": "device-usage-desktop",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Desktop",
         "name": "Device usage - Desktop",
@@ -187,7 +186,7 @@
         ]
     }, {
         "id": "device-usage-mobile",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Mobile",
         "name": "Device usage - Mobile",
@@ -200,7 +199,7 @@
         ]
     }, {
         "id": "device-usage-tablet",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Tablet",
         "name": "Device usage - Tablet",
@@ -213,7 +212,7 @@
         ]
     }, {
         "id": "browser-usage-chrome",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Chrome",
         "name": "Device usage - Chrome",
@@ -226,7 +225,7 @@
         ]
     }, {
         "id": "browser-usage-safari",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Safari",
         "name": "Broswer usage - Safari",
@@ -239,7 +238,7 @@
         ]
     }, {
         "id": "browser-usage-ie",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "IE",
         "name": "Broswer usage - IE",
@@ -252,7 +251,7 @@
         ]
     }, {
         "id": "browser-usage-firefox",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Firefox",
         "name": "Broswer usage - Firefox",
@@ -265,7 +264,7 @@
         ]
     }, {
         "id": "browser-usage-other",
-        "recorded_at": "2016-08-30T01:01:01.111Z",
+        "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "label": "Other",
         "name": "Broswer usage - Other",

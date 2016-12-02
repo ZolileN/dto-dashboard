@@ -8,7 +8,7 @@
   "widgets":  [
     {
       "id":   "kpis",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Kpis",
       "type": "full",
       "size": "extra-large",
@@ -18,7 +18,8 @@
     },
     {
       "id":   "user-satisfaction",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "User satisfaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -28,7 +29,8 @@
     },
     {
       "id":   "cost-per-transaction",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Cost per transaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -37,7 +39,7 @@
     },
     {
       "id":   "digital-take-up",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Digital take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -46,7 +48,7 @@
     },
     {
       "id":   "completion-rate",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Completion rate",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -56,7 +58,7 @@
     },
     {
       "id":   "click-through",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Users who navigated to another site",
       "type": "bar",
       "size": "medium",
@@ -68,7 +70,7 @@
     },
     {
       "id":   "external-referrals",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "How users are finding the hobby or business tool",
       "type": "bar",
       "size": "medium",
@@ -80,7 +82,7 @@
     },
     {
       "id":   "help-sought",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Users requiring help from contact centre",
       "type": "bar",
       "size": "medium",
@@ -92,7 +94,7 @@
     },
     {
       "id":   "device",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Devices used by users",
       "type": "bar",
       "size": "medium",
@@ -104,7 +106,7 @@
     },
     {
       "id":   "browser",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Browsers used by users",
       "type": "line",
       "size": "medium",
@@ -115,7 +117,7 @@
     },
     {
       "id":   "fact-2",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "extra-small",
@@ -124,7 +126,7 @@
     },
     {
       "id":   "fact-1",
-      "updated_at": "2016-08-30T01:01:01.111Z",
+      "updated_at": "2016-11-09T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "extra-small",
