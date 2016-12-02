@@ -11,13 +11,13 @@ const GovauHeader = ({isLoggedIn, userEmail, signInUrl, signOutUrl}) => {
 
           <div className="govau-header__container__logo">
             <a href="/editor">
-
-              <img src="./../../../images/editor-logo.svg" width="240" height="54" alt="Performance Dashboards - Editor" />
+              <img src={require("./../../../images/editor-logo.svg")} width="240" height="54" alt="Performance Dashboards - Editor" />
             </a>
           </div>
 
           <div className="govau-header__container__utils">
-            {isLoggedIn && <span className="user-email"><Icon name='avatar' size="16" />{userEmail}</span>}
+            {isLoggedIn && <span className="block-user-email">
+              <span className="user-email"><Icon name="avatar" size="16" />{userEmail}</span></span>}
             <a href={isLoggedIn ? signOutUrl : signInUrl} className="UIKIT-button btn sign-out">{isLoggedIn ? 'Sign out' : 'Sign in'}</a>
           </div>
 

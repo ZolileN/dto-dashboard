@@ -7,9 +7,10 @@
 
   &__container {
     display: table;
+
     width: 100%;
-    min-height: 90px;
     padding: $spacer-y 0 $spacer-y *1.4;
+    min-height: 116px;
 
     &__logo,
     &__utils {
@@ -27,11 +28,18 @@
 
       @include clearfix;
 
-      .user-email {
+      .block-user-email {
         display: block;
         margin-bottom: 8px;
+      }
+
+      .user-email {
+        position: relative;
+
         svg {
-          padding-right: 1em;
+          position: absolute;
+          left: -26px;
+          top: 3px;
         }
       }
 
