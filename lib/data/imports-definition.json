@@ -4,11 +4,11 @@
   "url":      "",
   "description":  "This service simplifies the permit validation process for importers and brokers. It enables the digital validation of permits directly with the Permit Issuing Authority.",
   "target_users": "Importers and brokers",
-  "notes":    "<dl> <dt> User satisfaction <dd> We do not have this data at the moment because we are still in the process of collecting this feedback from users. <dt> Cost per transaction <dd> This data is not available. <dt> Digital take-up <dd> Digital take-up measures the percentage of import declaration lines where a permit number was provided electronically. <dt> Completion rate <dd> This data is not available. </dl>",
+  "notes":    "<dl> <dt> User satisfaction <dd> Pre-Clearance Intervention Officers were surveyed in August\September 2016 regarding satisfaction levels together with other feedback on the service. <dt> Cost per transaction <dd> This data is not available. <dt> Digital take-up <dd> Digital take-up measures the percentage of import declaration lines where a permit number was provided electronically. <dt> Completion rate <dd> This data is not available. </dl>",
   "widgets":  [
     {
       "id":   "kpis",
-      "updated_at": "2016-10-14T01:01:01.111Z",
+      "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "Kpis",
       "type": "full",
       "size": "extra-large",
@@ -18,7 +18,7 @@
     },
     {
       "id":   "user-satisfaction",
-      "updated_at": "2016-07-30T01:01:01.111Z",
+      "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "User satisfaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -28,7 +28,7 @@
     },
     {
       "id":   "cost-per-transaction",
-      "updated_at": "2016-07-30T01:01:01.111Z",
+      "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "Cost per transaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -37,7 +37,7 @@
     },
     {
       "id":   "digital-take-up",
-      "updated_at": "2016-10-14T01:01:01.111Z",
+      "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "Digital take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -46,7 +46,7 @@
     },
     {
       "id":   "completion-rate",
-      "updated_at": "2016-07-30T01:01:01.111Z",
+      "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "Completion rate",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -56,7 +56,7 @@
     },
     {
       "id":   "clearing-time",
-      "updated_at": "2016-10-14T01:01:01.111Z",
+      "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "Time taken to clear permits",
       "type": "bar",
       "size": "medium",
@@ -67,7 +67,7 @@
     },
     {
       "id":   "fact-1",
-      "updated_at": "2016-07-30T01:01:01.111Z",
+      "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
       "size": "medium",
