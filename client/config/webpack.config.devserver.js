@@ -15,7 +15,7 @@ let webpackConfig = {
 	name: projectName,
 	bail: true,
 	debug: true,
-	devtool: 'cheap-module-eval-source-map',        // or 'eval', or ...
+	devtool: 'cheap-eval-source-map',        // or 'eval', or ...
 	context: CONFIG.DIR_SRC,
     entry: {
       ['dashboard']: [`./dashboard`],

@@ -109,9 +109,29 @@
     padding: $spacing-unit / 4 $spacing-unit / 4 $spacing-unit / 2 $spacing-unit / 4;
   }
 
+
+  // resize fact text if overflow in the js
   @include media($screen-md) {
-    min-height: $widget-height;
+    height: $widget-height;
   }
+
+  &.fact {
+    @include media($screen-md) {
+      display:inline-block;
+      overflow: hidden;
+    }
+    .widget__inner {
+      display: block;
+      height: auto !important;
+    }
+  }
+
+  .fact__inner {
+    @include media($screen-md) {
+      overflow: hidden;
+    }
+  }
+  // end resize if overflow in the js
 
   .widget__data {
     @extend .sr-only;
@@ -133,11 +153,6 @@
     margin-top: 0;
     margin-bottom: 0.5em;
     padding: 0 $spacing-unit / 2;
-
-    @media screen and(min-width: $screen-md) {
-      position: relative;
-      z-index: 100;
-    }
 
     h3 {
       font-size: 1.25 * $fallback;
