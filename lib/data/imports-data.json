@@ -14,7 +14,9 @@
         "units":        "%",
         "name":         "User satisfaction",
         "note":         "We do not have this data at the moment because we are....",
-        "data":         null
+        "data": [
+         { "label": "2016-10", "value": 76}  
+        ]
     },
     {
         "id":           "cost-per-transaction",
@@ -43,7 +45,8 @@
           { "label": "2016-06", "value": 89},
           { "label": "2016-07", "value": 90},
           { "label": "2016-08", "value": 93},
-          { "label": "2016-09", "value": 91}
+          { "label": "2016-09", "value": 91},
+          { "label": "2016-10", "value": 91}
         ]
     },
     {
@@ -57,7 +60,8 @@
           { "label": "2016-06", "value": 48317},
           { "label": "2016-07", "value": 51420},
           { "label": "2016-08", "value": 62400},
-          { "label": "2016-09", "value": 48060}
+          { "label": "2016-09", "value": 48060},
+          { "label": "2016-10", "value": 37560}
       ]
     }
   ]
