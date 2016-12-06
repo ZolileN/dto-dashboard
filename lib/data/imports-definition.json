@@ -4,7 +4,7 @@
   "url":      "",
   "description":  "This service simplifies the permit validation process for importers and brokers. It enables the digital validation of permits directly with the Permit Issuing Authority.",
   "target_users": "Importers and brokers",
-  "notes":    "<dl> <dt> User satisfaction <dd> Pre-Clearance Intervention Officers were surveyed in August\September 2016 regarding satisfaction levels together with other feedback on the service. <dt> Cost per transaction <dd> This data is not available. <dt> Digital take-up <dd> Digital take-up measures the percentage of import declaration lines where a permit number was provided electronically. <dt> Completion rate <dd> This data is not available. </dl>",
+  "notes":    "<dl> <dt> What is the Import Permit Validation Service? <dd> This service simplifies the permit validation process for importers and brokers. It enables the digital validation of permits directly with the Permit Issuing Authority. <dt> User satisfaction <dd> Pre-Clearance Intervention Officers were surveyed in August/September 2016 regarding satisfaction levels together with other feedback on the service. <dt> Cost per transaction <dd> This data is not available. <dt> Digital take-up <dd> Digital take-up measures the percentage of import declaration lines where a permit number was provided electronically. <dt> Completion rate <dd> This data is not available. </dl>",
   "widgets":  [
     {
       "id":   "kpis",
