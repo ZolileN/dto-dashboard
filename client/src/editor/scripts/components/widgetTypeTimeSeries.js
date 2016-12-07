@@ -57,7 +57,7 @@ const WidgetTypeTimeSeries = ({
           {recentDatagroupset.recentKey && <Preview recentDatagroupset={recentDatagroupset} />}
         </div>
         <div className="col-xs-12 col-lg-6 ctas">
-          <Link to={addUrl} className="UIKIT-button btn btn-primary"
+          <Link to={addUrl} className="UIK-button btn btn-primary"
                 disabled={recentDatagroupset.hasHead}
                 onClick={e => {if (recentDatagroupset.hasHead) return e.preventDefault()}}>Add new data</Link><br/>
           <Link to={editUrl}

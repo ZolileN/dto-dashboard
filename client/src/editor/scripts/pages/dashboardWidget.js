@@ -120,7 +120,7 @@ class PageDashboardWidget extends Component {
           <div className="row">
             <div className="col-xs-12 col-lg-8">
               <button
-                className="UIKIT-button btn btn-primary small"
+                className="UIK-button btn btn-primary small"
                 disabled={ui.isEditing}
                 onClick={this.enterForm.bind(this)}>Edit</button>
 

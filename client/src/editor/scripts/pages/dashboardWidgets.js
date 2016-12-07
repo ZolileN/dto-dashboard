@@ -164,10 +164,10 @@ class PageDashboardWidgets extends Component {
 
 
                 <section className="page-dashboardwidgets__bookend-ctas">
-                  <Link to="" className="UIKIT-button btn btn-primary pr-1"
+                  <Link to="" className="UIK-button btn btn-primary pr-1"
                         disabled={true}
                         onClick={e => e.preventDefault()}>Add new chart</Link>
-                  <Link to="" className="UIKIT-button btn btn-primary"
+                  <Link to="" className="UIK-button btn btn-primary"
                         disabled={true}
                         onClick={e => e.preventDefault()}>Add new fact</Link>
                 </section>

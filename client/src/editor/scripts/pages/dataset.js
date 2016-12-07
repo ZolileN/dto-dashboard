@@ -100,7 +100,7 @@ class DatasetIndex extends Component {
             <h1>Dataset: {dataset.name}</h1>
 
             <button
-              className="UIKIT-button btn btn-primary small"
+              className="UIK-button btn btn-primary small"
               disabled={ui.isEditing}
               onClick={this.enterForm.bind(this)}>Edit</button>
 
@@ -120,7 +120,7 @@ class DatasetIndex extends Component {
 
             <h2 className="h4">Datapoints</h2>
 
-            <Link to={`/datasets/${dataset.id}/datapoints-new`} className="UIKIT-button btn btn-primary ghost">Create new datapoint</Link>
+            <Link to={`/datasets/${dataset.id}/datapoints-new`} className="UIK-button btn btn-primary ghost">Create new datapoint</Link>
 
 
             {sortedDatapoints.length ?
