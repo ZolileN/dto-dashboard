@@ -1,6 +1,10 @@
 /*global fetch*/
-import 'babel-polyfill';
-require('es6-promise').polyfill();
+
+if (typeof Promise === 'undefined') {
+  require('es6-promise').polyfill();
+}
+
+
 import 'whatwg-fetch'
 
 import React from 'react';

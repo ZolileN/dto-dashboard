@@ -1,0 +1,39 @@
+.govau-footer {
+
+  background-color: $UIKIT_180_non-white;
+  border-top: 6px solid #224a61;
+
+  &__container {
+    display: table;
+
+    width: 100%;
+    padding: ($spacer-y*1.4) 0 $spacer-y*2;
+
+    .report-an-issue {
+      margin-bottom: 16px;
+    }
+
+    &__logo,
+    &__utils {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    &__utils {
+      .line-1,
+      .line-2 {
+        display: block;
+      }
+
+      small,
+      .small {
+        font-size: 14px;
+        display: block;
+      }
+    }
+
+    [rel~='external']::after {
+      background-position: right 0.2em;
+    }
+  }
+}

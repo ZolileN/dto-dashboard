@@ -57,7 +57,7 @@ export const ICON_DATA = [
 
 const IconLoader = () => {
   return (
-    <svg width="0" height="0" className="invisible">
+    <svg width="0" height="0" style={{position:'absolute'}} className="invisible">
       <defs>
         {ICON_DATA.map((data, idx) => {
           return (

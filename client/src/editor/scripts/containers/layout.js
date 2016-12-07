@@ -9,12 +9,7 @@ import IconLoader from './../../../_shared/scripts/components/iconLoader';
 class Layout extends Component {
 
   componentDidUpdate() {
-    let appScrollNode = document.getElementsByClassName('editor__app');
-    if (appScrollNode && appScrollNode.length) {
-      setTimeout(() => {
-        appScrollNode[0].scrollTop = 0;
-      }, 400);
-    }
+    document.body.scrollTop = 0;
   }
 
   render() {

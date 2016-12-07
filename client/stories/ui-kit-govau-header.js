@@ -7,7 +7,6 @@ import GovauHeader from './../src/_shared/scripts/components/uikit-components/go
 
 
 storiesOf('Ui-kit GOV.AU Header', module)
-  .add('Default', () => <GovauHeader />)
   .add('Sign in', () => <GovauHeader isLoggedIn={false} />)
   .add('Sign out', () => <GovauHeader isLoggedIn={true} userEmail="hannah.ho@dto.gov.au" />)
 ;

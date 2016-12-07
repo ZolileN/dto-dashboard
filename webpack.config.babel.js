@@ -26,6 +26,7 @@ let webpackConfig = {
   context: CONFIG.DIR_SRC,
   entry: {
     ['dashboard']: [`./dashboard`],
+    ['app_shell']: [`./app_shell`],
     ['editor']: [`./editor`],
     ['login']: [`./login`],
   },
@@ -68,15 +69,11 @@ let webpackConfig = {
       },
       {
         test: /\.(jpe?g|gif|png|svg)$/,
-        loader: "url?limit=10000&name=/images/[name].[ext]",
-
-        // "file?name=../../public/images/[name].[ext]",
-        // 'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
-      },
-      // {  // todo - enable if we have fonts - must prefix regex with fonts/ and images with images/
-      //   test: /\.(eot|ttf|woff|svg|woff2)$/,
-      //   loader: "url?limit=10000&name=fonts/[name].[ext]"
-      // }
+        loaders: [
+          "file?name=/images/[name].[ext]?[hash]"
+          // 'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
+        ]
+      }
     ]
   },
   // Add functionality typically related to bundles in webpack

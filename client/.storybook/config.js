@@ -5,7 +5,7 @@ import { withKnobs } from '@kadira/storybook-addon-knobs';
 const context = require.context('./../stories', true, /\.js$/);
 
 
-import './../src/editor/styles/main';
+import './../src/_storybook/styles/main';
 
 import IconLoader from './../src/_shared/scripts/components/iconLoader';
 

@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
   <% if !development_server? %>
-    <%= stylesheet_link_tag 'dashboard.css' %>
+    <%= getPublicStylesheet('dashboard.css') %>
   <% end %>
 
   <%= render 'layouts/analytics' %>
@@ -37,7 +37,7 @@
       <div class="container-deprecated-dont-add-this-anywhere-else">
         <div class="l-site-title">
           <a href="/" class="site-title">
-            <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU"/>
+            <img src="<%= getPublicImageSrc('gov-performance.svg') %>" alt="Logo of GOV.AU"/>
           </a>
         </div>
         <div class="l-toggle-switch">
@@ -55,7 +55,7 @@
     <div class="container-deprecated-dont-add-this-anywhere-else">
       <div class="l-footer-logo">
         <div class="footer__logo-container">
-          <img src="<%= image_path('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms" />
+          <img src="<%= getPublicImageSrc('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms" />
         </div>
       </div>
       <div class="l-footer-links">
@@ -77,7 +77,7 @@
   <% if development_server? %>
       <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% else %>
-    <%= javascript_include_tag 'dashboard.js' %>
+    <%= getPublicJavascript('dashboard.js') %>
   <% end %>
 
 </body>

@@ -1,0 +1,29 @@
+<%
+  #
+  # client/src/_shared/scripts/components/uikit-components/govauHeader.js
+  #
+%>
+<div class="govau-header">
+  <div class="container">
+    <div class="govau-header__container">
+
+      <div class="govau-header__container__logo">
+        <a href="/editor">
+          <img src="<%= getPublicImageSrc('editor-logo.svg') %>" width="240" height="54" alt="Performance Dashboards - Editor" />
+        </a>
+      </div>
+
+      <div class="govau-header__container__utils">
+        <% if !Rails.env.production? && current_user.present? -%>
+                <span class="block-user-email"><span class="user-email">
+                  <%= link_to current_user.email, user_path %>
+                </span></span>
+            <%= link_to 'Sign out', destroy_user_session_path, class: "UIKIT-button btn sign-out" %>
+        <% else %>
+            <a href="/sign-in" class="UIKIT-button btn sign-out">Sign in</a>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 
 
 @import '../../_shared/styles/variables';
-
+@import '../../app_shell/styles/variables';
 
 /**
  *
@@ -17,7 +17,6 @@
 @import './../../_shared/styles/_vendor/bootstrap/uikit-components/breadcrumbs';
 @import './../../_shared/styles/_vendor/bootstrap/uikit-components/alerts';
 @import './../../_shared/styles/_vendor/bootstrap/uikit-components/form-groups';
-@import './../../_shared/styles/_vendor/bootstrap/uikit-components/govau-header';
 
 
 @import './../../_shared/styles/_vendor/animate';
@@ -31,8 +30,6 @@
  *
  */
 
-@import 'variables';
-
 // layout
 @import 'layouts/app-layout';
 @import 'layouts/page-layout';
@@ -42,7 +39,6 @@
 @import '../../_common/styles/components/flex-grid';
 @import '../../_common/styles/components/forms';
 @import '../../_common/styles/ui-patterns/phase-banner';
-@import '../../_common/styles/ui-patterns/main-header';
 @import '../../_common/styles/ui-patterns/main-footer';
 @import 'components/date-fields';
 @import 'components/toast';

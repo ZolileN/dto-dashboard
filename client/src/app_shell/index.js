@@ -1,8 +1,8 @@
-import './styles/main';
-
+import './styles/main'
 import './scripts/main';
 
-import './images/editor-skeleton-2.png';
+import './../_shared/images/editor-logo.svg'
+import './../_shared/images/coat-of-arms.png'
 
 
 // // check if HMR is enabled

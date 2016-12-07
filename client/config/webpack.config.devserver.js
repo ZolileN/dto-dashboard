@@ -19,6 +19,7 @@ let webpackConfig = {
 	context: CONFIG.DIR_SRC,
     entry: {
       ['dashboard']: [`./dashboard`],
+      ['app_shell']: [`./app_shell`],
       ['editor']: [`./editor`],
       ['login']: [`./login`],
     },
@@ -54,15 +55,13 @@ let webpackConfig = {
         test: /\.(scss)$/,
 				loader: 'style!css?&sourceMap!postcss!resolve-url!sass?sourceMap'
 			},
-			{
-				test: /\.(jpe?g|gif|png|svg)$/,
-        // loader: "file?name=images/[name].[ext]"
-        loader: "url?limit=10000&name=/images/[name].[ext]"  // todo - this wont work for non-react land
-			},
-      // {  // todo - enable if we have fonts - must prefix regex with fonts/ and images with images/
-      //   test: /\.(eot|ttf|woff|svg|woff2)$/,
-      //   loader: "url?limit=10000&name=fonts/[name].[ext]"
-      // }
+      {
+        test: /\.(jpe?g|gif|png|svg)$/,
+        loaders: [
+          "file?name=images/[name].[ext]?[hash]"
+          // 'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
+        ]
+      }
 		]
 	},
 	plugins: [
