@@ -35,7 +35,11 @@ class Dashboard < ApplicationRecord
   end
 
   def remaining_rows
-    rows.drop(1)
+    if widgets.kpis.any?
+      rows.drop(1)
+    else
+      rows
+    end
   end
 
   def to_param
