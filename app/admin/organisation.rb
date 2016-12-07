@@ -1,7 +1,7 @@
 require 'organisation_importer'
 
 ActiveAdmin.register Organisation do
-  permit_params :name
+  permit_params :name, :url
 
   index do
     selectable_column
@@ -15,6 +15,7 @@ ActiveAdmin.register Organisation do
   form do |f|
     f.inputs "Organisation" do
       f.input :name, :as => :string
+      f.input :url, :as => :string
     end
     f.actions
   end
@@ -33,7 +34,8 @@ ActiveAdmin.register Organisation do
       data_json = params[:organisation][:data].read
       definition_json = params[:organisation][:definition].read
 
-      importer = OrganisationImporter.new resource, data_json, definition_json
+      importer = OrganisationImporter.new resource, data_json, definition_json,
+        resource.dashboards.first&.id # Retain ID if dashboard exists
 
       begin
         importer.import!
