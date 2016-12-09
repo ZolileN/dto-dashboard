@@ -15,7 +15,8 @@ namespace :import do
       'industry' => 3,
       'imports' => 4,
       'medicare-enrolment' => 6,
-      'marketplace' => 7 }
+      'marketplace' => 7,
+      'pmnc' => 9 }
     run(orgs)
   end
 
