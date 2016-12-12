@@ -3,6 +3,14 @@
   "description": "Draft Format for describing definitions for dashboards",
   "name": "Dashboard Definition",
   "definitions": {
+    "note": {
+      "type": "object",
+      "description": "An explanatory note to provide context for a dashboard",
+      "properties": {
+        "title": { "type": "string" },
+        "body": { "type": "string" }
+      }
+    },
     "recorded_at": {
       "type": "string",
       "format": "date-time",
@@ -83,7 +91,9 @@
       "type": "string"
     },
     "notes": {
-      "type": "string"
+      "type": "array",
+      "description": "An array of notes",
+      "items": { "$ref": "#/definitions/note" }
     },
     "widgets": {
       "type": "array",

@@ -1,5 +1,6 @@
 ActiveAdmin.register Dashboard do
-  permit_params :name, :url, :notes, :display_hero, :display_kpis, :published_at
+  permit_params :name, :url, :notes, :display_hero, :display_kpis,
+    :published_at, :description, :target_users, :notes => []
 
   sidebar 'Details', only: [:show, :edit] do
     ul do
@@ -18,13 +19,29 @@ ActiveAdmin.register Dashboard do
   filter :name
   filter :organisation
 
+  controller do
+    def update(options={}, &block)
+      if params.dig(:dashboard, :notes).present?
+        begin
+          resource.notes = JSON.parse params[:dashboard].delete(:notes)
+        rescue JSON::ParserError => e
+          redirect_to edit_admin_dashboard_path(resource),
+            alert: "Invalid JSON structure. Details: #{e.message}"
+          return
+        end
+      end
+
+      super
+    end
+  end
+
   form do |f|
     f.inputs "Dashboard" do
       f.input :name, :as => :string
       f.input :url, :as => :string
       f.input :description, :label => 'What is the service?'
       f.input :target_users, :label => 'Who is the user group?'
-      f.input :notes
+      f.input :notes, :input_html => { value: resource.notes.to_json }
       f.input :display_hero
       f.input :display_kpis
       f.input :published_at

@@ -28,6 +28,8 @@ describe OrganisationImporter do
       specify { expect(dataset.datapoints.first.value).to eq 99 }
 
       specify { expect(dataset.widgets.count).to eq 2 }
+
+      specify { expect(dashboard.notes.count).to eq 6 }
     end
   end
 

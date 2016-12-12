@@ -2,17 +2,15 @@ class Dashboard < ApplicationRecord
   include Nameable
 
   belongs_to :organisation
-
   has_many :widgets
-
   has_many :datasets, :through => :widgets
-
   has_many :permissions, dependent: :destroy
   has_many :users, through: :permissions
 
   validates :name, :description, :target_users, :presence => true
-
   validates :url, :url => true, :allow_nil => true
+
+  serialize :notes, JSON
 
   def self.published
     where('published_at <= NOW()')
