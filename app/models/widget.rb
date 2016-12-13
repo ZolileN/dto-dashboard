@@ -17,7 +17,7 @@ class Widget < ApplicationRecord
 
   KPIS = ['User satisfaction', 'Cost per transaction', 'Digital take-up', 'Completion rate']
 
-  validates :size, :type, :presence => true
+  validates :size, :type, :dashboard_id, :presence => true
 
   validates :size, inclusion: { in: %w(extra-small small medium large extra-large),
       message: "%{value} is not a valid size" }
@@ -27,7 +27,7 @@ class Widget < ApplicationRecord
 
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
 
-  validates :name, :slug, uniqueness: { scope: :dashboard_id }
+  validates :slug, uniqueness: { scope: :dashboard_id }
 
   after_initialize :set_defaults
   before_save :set_slug
@@ -92,7 +92,20 @@ class Widget < ApplicationRecord
     datasets.first
   end
 
+  private
+
+  # Don't use IDs because widgets can be regenerated with new IDs
   def set_slug
-    self.slug = name.parameterize
+    i = nil
+
+    while dashboard.widgets.where(slug: candidate = slug_candidate(i)).count > 0
+      i = i.to_i + 1
+    end
+
+    self.slug = candidate
+  end
+
+  def slug_candidate(suffix = nil)
+    [name.parameterize, suffix.to_i].compact.join '-'
   end
 end
