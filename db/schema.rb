@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115032409) do
+ActiveRecord::Schema.define(version: 20161213004848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 20161115032409) do
     t.datetime "last_updated_at",                           null: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.string   "slug",                      default: "",    null: false
     t.index ["dashboard_id"], name: "index_widgets_on_dashboard_id", using: :btree
   end
 

@@ -1,0 +1,14 @@
+(function() {
+  <%= raw File.read(Rails.root.join("app/assets/javascripts/embed/ready.js")) %>
+  domready(function() {
+    var widget_link, iframe, i, widget_links;
+    widget_link = document.getElementById('performance-dashboard-widget');
+    iframe = document.createElement('iframe');
+    iframe.setAttribute('src', '<%= badge_dashboard_widget_url(dashboard_id: @widget.dashboard.id, id: @widget.slug) %>');
+    iframe.setAttribute('width', '400');
+    iframe.setAttribute('height', '300');
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('scrolling', 'no');
+    widget_link.parentNode.replaceChild(iframe, widget_link);
+  });
+})();

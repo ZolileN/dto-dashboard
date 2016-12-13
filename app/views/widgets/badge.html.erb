@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row center-block" style="text-align: center">
+    <strong><%= @widget.dashboard.name %></strong>
+  </div>
+  <div class="row">
+    <%= render partial: 'dashboards/widget',
+      locals: { widget: @widget.decorate} %>
+  </div>
+  <div class="row center-block" style="text-align: center">
+    <small>
+      <%= link_to 'View full dashboard on the Performance Dashboards website',
+        dashboard_url(@widget.dashboard), target: '_blank' %>
+    </small>
+  </div>
+</div>

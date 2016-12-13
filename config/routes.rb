@@ -47,6 +47,13 @@ Rails.application.routes.draw do
     member do
       get :export
     end
+
+    resources :widgets, only: [] do
+      member do
+        get 'badge', to: 'widgets#badge'
+        get 'embed', to: 'widgets#embed'
+      end
+    end
   end
 
   resources :widgets, only: [] do

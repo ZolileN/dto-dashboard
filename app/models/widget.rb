@@ -27,7 +27,10 @@ class Widget < ApplicationRecord
 
   validates :row, :pos, :presence => true, :numericality => { :only_integer => true }
 
+  validates :name, :slug, uniqueness: { scope: :dashboard_id }
+
   after_initialize :set_defaults
+  before_save :set_slug
 
   def set_defaults
     options = {} unless options
@@ -89,4 +92,7 @@ class Widget < ApplicationRecord
     datasets.first
   end
 
+  def set_slug
+    self.slug = name.parameterize
+  end
 end
