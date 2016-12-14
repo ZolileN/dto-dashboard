@@ -19,6 +19,16 @@
       "units":        "n",
       "description":  "Number of users and page views",
       "datasets":    ["users", "page-views"] },
+    { "id":           "sessions-by-state",
+      "updated_at":   "2016-12-06T12:38:01.111Z",
+      "name":         "Session by state",
+      "type":         "bar",
+      "size":         "medium",
+      "units":        "n",
+      "description":  "Number of sessions broken down by state",
+      "datasets":    ["state-sessions-act", "state-sessions-nsw",
+        "state-sessions-nt", "state-sessions-qld", "state-sessions-sa",
+        "state-sessions-tas", "state-sessions-vic", "state-sessions-wa"] },
     { "id":           "session-duration",
       "updated_at":   "2016-12-06T12:38:01.111Z",
       "name":         "Session duration",
@@ -73,7 +83,9 @@
   ],
   "url": "http://www.dpmc.gov.au/",
   "layout":   [
-    ["users", "bounce-rate"],
-    ["session-duration", "page-views"]
+    ["users", "users-and-page-views"],
+    ["sessions-by-state", "top-3-dataset-downloads"],
+    ["session-duration", "bounce-rate"],
+    ["total-datasets", "bounce-rate"]
   ]
 }
