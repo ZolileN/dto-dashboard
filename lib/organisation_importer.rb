@@ -16,11 +16,12 @@ class OrganisationImporter
       display_hero = definition['displayHero'].nil?
       display_kpis = definition['displayKPIs'].nil?
 
-      if dashboard = @organisation.dashboards.find_by(name: definition['name'])
+      @organisation.dashboards.each do |dashboard|
         dashboard.widgets.each do |widget|
           widget.datasets.delete_all
           widget.delete
         end
+        
         dashboard.delete
       end
 
