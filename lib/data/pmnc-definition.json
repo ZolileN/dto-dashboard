@@ -24,6 +24,7 @@
       "name":         "Session by state",
       "type":         "bar",
       "size":         "medium",
+      "stacking":     "normal",
       "units":        "n",
       "description":  "Number of sessions broken down by state",
       "datasets":    ["state-sessions-act", "state-sessions-nsw",
@@ -50,7 +51,7 @@
       "updated_at":  "2016-08-25T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
-      "size": "small",
+      "size": "extra-small",
       "units": "n",
       "description": "The top 3 dataset downloads are: {NEED THIS INFO}" },
     {
@@ -58,9 +59,9 @@
       "updated_at":  "2016-08-25T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
-      "size": "small",
+      "size": "extra-small",
       "units": "n",
-      "description": "The total number of datasets published to data.gov.au is {NEED THIS INFO}"
+      "description": "The total number of datasets published to data.gov.au is 7"
     }
   ],
   "notes": [
@@ -84,8 +85,7 @@
   "url": "http://www.dpmc.gov.au/",
   "layout":   [
     ["users", "users-and-page-views"],
-    ["sessions-by-state", "top-3-dataset-downloads"],
-    ["session-duration", "bounce-rate"],
-    ["total-datasets", "bounce-rate"]
+    ["total-datasets", "sessions-by-state", "top-3-dataset-downloads"],
+    ["session-duration", "bounce-rate"]
   ]
 }
