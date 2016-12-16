@@ -32,14 +32,14 @@ let CreateDatagroupsetForm = ({
 
       <div className="form-actions-buttons">
         <button type="submit"
-                className="UIKIT-button btn btn-primary"
+                className="UIK-button btn btn-primary"
                 disabled={!canSubmit || submitting}
                 onClick={handleSubmit(submit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="preview"
                 className="btn primary-link"
                 onClick={preview.bind(this, formModel)}>Preview</button>
         <button type="cancel"
-                className='UIKIT-button btn btn-link'
+                className='UIK-button btn btn-link'
                 disabled={!canSubmit || submitting}
                 onClick={cancel.bind({}, rfProps)}>Cancel</button>
       </div>

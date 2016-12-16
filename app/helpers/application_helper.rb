@@ -24,4 +24,21 @@ module ApplicationHelper
     controller_name == 'dashboards' && action_name == 'show'
   end
 
+  def hashAsset(public_relative_path)
+    public_relative_path + "?" + Digest::MD5.file(File.join(Rails.public_path, public_relative_path)).hexdigest
+  end
+
+  def getPublicImageSrc(relative_path)
+    hashAsset('/images/' + relative_path)
+  end
+
+  def getPublicStylesheet(relative_path)
+    tag('link', href: hashAsset('/stylesheets/' + relative_path), rel: 'stylesheet')
+  end
+
+  def getPublicJavascript(relative_path)
+    opts = { src: hashAsset('/javascripts/' + relative_path), type: 'text/javascript' }
+    tag('script', opts, true) + '</script>'.html_safe
+  end
+
 end

@@ -5,18 +5,19 @@ var genDefaultConfig = require('@kadira/storybook/dist/server/config/defaults/we
 
 
 module.exports = function(config, env) {
+
   var config = genDefaultConfig(config, env);
 
   // Extend it as you need.
 
-  config.module.loaders.push({
-    test: /.scss$/,
-    loaders: ["style", "css", "sass"],
-    include: path.resolve(__dirname, '../')
-  });
+  config.module.loaders = [...config.module.loaders,
+    {
+      test: /\.scss$/,
+      loaders: ["style", "css", "resolve-url", "sass?sourceMap"],
+    }
+  ];
 
-  config.resolve.extensions = [...config.resolve.extensions, ...['.scss']];
-
+  config.resolve.extensions = [...config.resolve.extensions, '.scss'];
 
   return config;
 };

@@ -28,11 +28,11 @@ let UpdateDatagroupsetForm = ({
 
       <div className="form-actions-buttons">
         <button type="submit"
-                className="UIKIT-button btn btn-primary"
+                className="UIK-button btn btn-primary"
                 disabled={!canSubmit || submitting}
                 onClick={handleSubmit(submit.bind(this))}>{!canSubmit ? 'Edit existing data' : submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="cancel"
-                className='UIKIT-button btn btn-link'
+                className='UIK-button btn btn-link'
                 disabled={!canSubmit || submitting}
                 onClick={cancel.bind({}, rfProps)}>Cancel</button>
       </div>

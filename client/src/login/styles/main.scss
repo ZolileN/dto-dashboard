@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import '../../_common/styles/variables';
+@import '../../app_shell/styles/variables';
 
 /**
  *
@@ -19,19 +20,15 @@
  *
  */
 
-@import "variables";
 
 // vendor
 
 // components
 @import "../../_common/styles/components/type";
-//@import '../../_common/styles/components/forms';
 @import '../../_common/styles/ui-patterns/phase-banner';
-@import '../../_common/styles/ui-patterns/main-header';
 @import '../../_common/styles/ui-patterns/main-footer';
 
 @import 'components/sign-in';
-@import 'components/sign-in-overrides';
 
 
 // layout
