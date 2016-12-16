@@ -1,35 +1,27 @@
 <%
-
-  # Layout based off
-  # https://github.com/AusDTO/gov-au-beta/blob/develop/app/views/devise/passwords/new.html.haml
-
   content_for :title, 'Forgot Password Form'
   content_for :description, 'Performance Dashboard Forgot Password Form'
 %>
 
-<div class="sign-in">
+<h1>Forgotten your password?</h1>
 
-  <h1>Forgotten your password?</h1>
-
-  <p class="mb-2">Enter your email address and we will send you a link to reset your password.</p>
+<p class="mb-2">Enter your email address and we will send you a link to reset your password.</p>
 
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}, class: 'login-form') do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}, class: 'login-form') do |f| %>
 
-    <%= devise_error_messages! %>
+  <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :email, "Email address" %>
-      <%= f.email_field :email, autofocus: true, class:'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :email, "Email address" %>
+    <%= f.email_field :email, autofocus: true, class:'form-control' %>
+  </div>
 
-    <div class="login-form__ctas">
-      <%= f.submit "Submit", :role => 'button', class:'UIK-button btn btn-primary' %>
-    </div>
+  <div class="login-form__ctas">
+    <%= f.submit "Submit", :role => 'button', :class => 'UIK-button btn btn-primary' %>
+  </div>
 
-  <% end %>
+<% end %>
 
 
-  <%= render "devise/shared/links" %>
-
-</div>
+<%= render "devise/shared/links" %>

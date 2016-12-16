@@ -7,29 +7,22 @@
   content_for :description, 'Performance Dashboard Unlock Form'
 %>
 
-<p class="content-listing">
-  <h1>Resend unlock instructions</h1>
+<h1>Resend unlock instructions</h1>
 
-  <section class="login-form">
-    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post}) do |f| %>
-        <%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post}) do |f| %>
+  <%= devise_error_messages! %>
 
-        <p>
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true %>
-        </p>
+  <div class="form-group">
+    <%= f.label :email, 'Email address' %>
+    <%= f.email_field :email, autofocus: true, class:'form-control' %>
+  </div>
 
-        <div class="form-footer-actions">
-          <%= f.submit "Resend instructions", :role => 'button' %>
-        </div>
-    <% end %>
+  <%= f.submit "Resend instructions", :role => 'button', :class => 'UIK-button btn btn-primary' %>
 
-    <br />
+<% end %>
 
-    <div class="sign-in-footer-links">
-      <%= render "devise/shared/links" %>
-    </div>
 
-  </section>
-
+<div class="form-ctas">
+  <%= render "devise/shared/links" %>
 </div>
+
