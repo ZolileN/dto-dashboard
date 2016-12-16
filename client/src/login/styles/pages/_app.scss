@@ -1,0 +1,32 @@
+.app-login {
+
+  .form-ctas {
+    margin-bottom: 2em;
+  }
+
+
+  // todo - improve down here
+  .callout {
+    background-color: white;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  .qrcode {
+    p {
+      margin-bottom: 30px;
+    }
+
+    img {
+      height: 125px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+

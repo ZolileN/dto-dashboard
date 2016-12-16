@@ -1,49 +1,38 @@
 <%
-
-  # Layout based off
-  # https://gov-au-beta.apps.platform.digital.gov.au/users/sign_in
-  #
-  # https://github.com/AusDTO/gov-au-beta/blob/develop/app/views/layouts/application.html.haml
-  # https://github.com/AusDTO/gov-au-beta/blob/develop/app/views/devise/sessions/new.html.haml
-  # https://github.com/AusDTO/gov-au-beta/blob/develop/app/assets/stylesheets/_sign-in.scss
-
   content_for :title, 'User Login'
   content_for :description, 'Performance Dashboard Login'
 %>
 
-<div>
-  <h1>Sign in to the Editor</h1>
+<h1>Sign in to the Editor</h1>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'login-form') do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <% # todo - these should be actual components, without invisible height %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <% # todo - these should be actual components, without invisible height %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-    <div class="form-group">
-      <%= f.label :email, 'Email address' %>
-      <%= f.email_field :email, autofocus: true, class:'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :email, 'Email address' %>
+    <%= f.email_field :email, autofocus: true, class:'form-control' %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "off", class:'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off", class:'form-control' %>
+  </div>
 
-    <div class="form-check">
-      <% if devise_mapping.rememberable? -%>
-        <%= f.label :remember_me, class: 'form-check-label' do %>
-          <%= f.check_box :remember_me, class:'form-check-input' %> 'Remember me'
-    <% end %>
-      <% end %>
-    </div>
-
-    <div class="login-form__ctas">
-      <%= f.submit "Sign in", :role => 'button', class:'UIK-button btn btn-primary' %>
-    </div>
-
+  <div class="form-check">
+    <% if devise_mapping.rememberable? -%>
+      <%= f.label :remember_me, class: 'form-check-label' do %>
+        <%= f.check_box :remember_me, class:'form-check-input' %> 'Remember me'
   <% end %>
+    <% end %>
+  </div>
 
-  <%= render "devise/shared/links" %>
+  <div class="form-ctas">
+    <%= f.submit "Sign in", :role => 'button', class:'UIK-button btn btn-primary' %>
+  </div>
 
-</div>
+<% end %>
+
+<%= render "devise/shared/links" %>
