@@ -15,13 +15,10 @@
               <th scope="col">Value</th>
             </tr>
             <% if dataset.datapoints != nil then %>
-                <% dataset.datapoints.each do |datapoint| %>
+                <% dataset.datapoints.decorate.each do |datapoint| %>
                     <tr>
                       <td scope="row"><%= datapoint.label() %></td>
-                      <td scope="row"><%=
-                        @value = datapoint.value.present? ? datapoint.value : 'no data'
-
-                        datapoint.value.round.to_s + " %"  %></td>
+                      <td scope="row"><%= datapoint.value(widget.prefix, widget.suffix) %></td>
                     </tr>
                 <% end %>
             <%end %>

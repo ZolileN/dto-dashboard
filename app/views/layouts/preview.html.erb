@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
   <% if !development_server? %>
-    <%= stylesheet_link_tag 'dashboard.css' %>
+    <%= getPublicStylesheet('dashboard.css') %>
   <% end %>
 </head>
 
@@ -17,11 +17,10 @@
   <main>
     <%= yield %>
   </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
   <% if development_server? %>
       <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% else %>
-    <%= javascript_include_tag 'dashboard.js' %>
+    <%= getPublicJavascript('dashboard.js') %>
   <% end %>
 </body>
 </html>

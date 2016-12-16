@@ -5,16 +5,15 @@
   <title>Sign in - Performance Dashboards</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet" />
   <%
     #
     # Production mode or not required for webpack-dev-server mode
     #
-    if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <%= stylesheet_link_tag 'login.css' %>
-  <% end %>
+    if !development_server? %>
+      <%= getPublicStylesheet('app_shell.css') %>
+      <%= getPublicStylesheet('login.css') %>
+    <% end %>
 </head>
 <body class="login <%= body_class(yield(:body_class_names)) %>">
 
@@ -29,16 +28,9 @@
         </div>
       </div>
     </div>
+
     <header class="main__header">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <a href="/" title="Go to GOV.AU Performance Dashboard" class="logo">
-              <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU Performance Dashboard" height="30px" />
-            </a>
-          </div>
-        </div>
-      </div>
+      <%= render :partial => "partials/header" %>
     </header>
   </div>
 
@@ -54,13 +46,19 @@
     </article>
   </main>
 
+  <footer class="main__footer">
+    <%= render :partial => "partials/footer" %>
+  </footer>
+
   <%
     #
     # Production mode or webpack-dev-server mode
     #
-    if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <%= javascript_include_tag 'login.js' %>
+    if !development_server? %>
+    <%= getPublicJavascript('app_shell.js') %>
+    <%= getPublicJavascript('login.js') %>
   <% else %>
+    <script src="http://localhost:8080/javascripts/app_shell.js"></script>
     <script src="http://localhost:8080/javascripts/login.js"></script>
   <% end %>
 </body>

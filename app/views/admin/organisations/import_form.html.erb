@@ -1,0 +1,16 @@
+<%= semantic_form_for @organisation, url: { action: :import, method: :patch } do |f| %>
+
+  <h2>Warning</h2>
+  <p>Importing data for the organisation <strong><%= @organisation.name %></strong>
+    will overwrite all its existing data with the JSON data you upload below.
+    Any edits made to the existing data will be lost.</p>
+  <p><strong>YOU HAVE BEEN WARNED.</strong></p>
+  <p>&nbsp;</p>
+
+  <%= f.inputs do %>
+    <%= f.input :data, as: :file, label: 'Data JSON' %>
+    <%= f.input :definition, as: :file, label: 'Definition JSON' %>
+  <%- end %>
+
+  <%= f.actions %>
+<%- end %>

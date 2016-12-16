@@ -69,15 +69,9 @@ class PageDashboardWidgets extends Component {
   }
 
   scrollToWidget(widgetId) {
-    let pageNode = this.refs.page;
-    let headerNode = document.getElementsByClassName('editor__top-bar')[0];
-    let headerNodeHeight = headerNode.offsetHeight;
-
     let node = findDOMNode(this.refs[widgetId]);
-
     if (node) {
-      let nodeYPosition = (node.offsetTop - node.scrollTop + node.clientTop) + headerNodeHeight;
-      pageNode.scrollTop = nodeYPosition;
+      document.body.scrollTop = node.offsetTop; // todo - verify
     }
   }
 
@@ -170,10 +164,10 @@ class PageDashboardWidgets extends Component {
 
 
                 <section className="page-dashboardwidgets__bookend-ctas">
-                  <Link to="" className="UIKIT-button btn btn-primary pr-1"
+                  <Link to="" className="UIK-button btn btn-primary pr-1"
                         disabled={true}
                         onClick={e => e.preventDefault()}>Add new chart</Link>
-                  <Link to="" className="UIKIT-button btn btn-primary"
+                  <Link to="" className="UIK-button btn btn-primary"
                         disabled={true}
                         onClick={e => e.preventDefault()}>Add new fact</Link>
                 </section>

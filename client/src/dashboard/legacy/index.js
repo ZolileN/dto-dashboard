@@ -145,7 +145,7 @@ d3.selectAll('.fact .widget__inner').each(function() {
   let widget = JSON.parse(this.getAttribute('data-data'));
   new FactWidget({
     description: widget.description,
-    element: d3.select(this)
+    el: this
   });
 });
 

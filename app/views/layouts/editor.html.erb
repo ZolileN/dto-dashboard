@@ -5,14 +5,14 @@
   <title>Editor - Performance Dashboards</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <%
     #
     # Production mode or not required for webpack-dev-server mode
     #
-    if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-      <%= stylesheet_link_tag 'editor.css' %>
+    if !development_server? %>
+      <%= getPublicStylesheet('app_shell.css') %>
+      <%= getPublicStylesheet('editor.css') %>
   <% end %>
 </head>
 <body class="editor <%= body_class(yield(:body_class_names)) %>">
@@ -28,19 +28,9 @@
         </div>
       </div>
     </div>
+
     <header class="main__header">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-9">
-            <a href="/editor" title="Go to the GOV.AU Portal's homepage" class="logo">
-              <img src="<%= image_path('gov-performance.svg') %>" alt="Logo of GOV.AU Performance Dashboard" height="30px" />
-            </a>
-          </div>
-          <div class="col-xs-3">
-            <%= render 'layouts/account' %>
-          </div>
-        </div>
-      </div>
+      <%= render :partial => "partials/header" %>
     </header>
   </div>
 
@@ -61,13 +51,19 @@
     <%= yield %>
   </div>
 
+  <footer class="main__footer">
+    <%= render :partial => "partials/footer" %>
+  </footer>
+
   <%
     #
     # Production mode or webpack-dev-server mode
     #
-    if !(Rails.env.development? && ENV['DEV_SERVER'] == 'true') %>
-    <%= javascript_include_tag 'editor.js' %>
+    if !development_server? %>
+    <%= getPublicJavascript('app_shell.js') %>
+    <%= getPublicJavascript('editor.js') %>
   <% else %>
+      <script src="http://localhost:8080/javascripts/app_shell.js"></script>
       <script src="http://localhost:8080/javascripts/editor.js"></script>
   <% end %>
 </body>

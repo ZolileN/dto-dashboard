@@ -81,9 +81,9 @@
                   </div>
                   <div id="dashboard-notes" class="widget__body">
                     <% if dashboard.show_notes? %>
-                        <%= raw dashboard.notes %>
+                      <%= render partial: 'notes', locals: { dashboard: dashboard } %>
                     <% else %>
-                        <p>No information available.</p>
+                      <p>No information available.</p>
                     <% end %>
                   </div>
                 </div>

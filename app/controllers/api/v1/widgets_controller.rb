@@ -16,6 +16,7 @@ class Api::V1::WidgetsController < Api::V1::ApiController
   def update
     with_invalid_record_handler do
       widget.update_attributes!(data)
+      invalidate_dashboards widget.dashboard
       render :json => widget.to_json, :status => :ok
     end
   end

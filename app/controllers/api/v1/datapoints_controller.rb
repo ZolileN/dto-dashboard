@@ -15,14 +15,20 @@ class Api::V1::DatapointsController < Api::V1::ApiController
 
   def create
     with_invalid_record_handler do
-      datapoint = dataset.datapoints.create!(data)
-      render :json => datapoint.to_json, :status => :created
+      created = dataset.datapoints.create!(data)
+
+      Array.wrap(created).each do |datapoint|
+        invalidate_dashboards(*dashboards_for_dataset(datapoint.dataset))
+      end
+
+      render :json => created.to_json, :status => :created
     end
   end
 
   def update
     with_invalid_record_handler do
       datapoint.update_attributes!(data)
+      invalidate_dashboards(*dashboards_for_dataset(datapoint.dataset))
       render :json => datapoint.to_json, :status => :ok
     end
   end
@@ -57,5 +63,4 @@ class Api::V1::DatapointsController < Api::V1::ApiController
   def datapoints?
     params[:datapoints].present?
   end
-
 end

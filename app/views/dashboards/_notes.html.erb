@@ -1,0 +1,6 @@
+<dl>
+  <% dashboard.notes.each do |note| %>
+    <dt><%= note['title'] %></dt>
+    <dd><%= note['body'] %></dd>
+  <% end %>
+</dl>

@@ -1,6 +1,8 @@
 class Api::V1::ApiController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
   include Sslify
+  include ActionController::Caching::Pages
+  include CacheInvalidation
 
   # rescue_from ActiveRecord::RecordInvalid, :with => :not_found
 
@@ -24,6 +26,9 @@ class Api::V1::ApiController < ActionController::API
     render :json => { :code => '405', message: 'Method not Found' }, :status => :method_not_allowed
   end
 
+  def self.perform_caching
+    DashboardCool::Application.config.action_controller.perform_caching
+  end
 
   private
 

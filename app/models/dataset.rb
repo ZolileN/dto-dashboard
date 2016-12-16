@@ -1,6 +1,7 @@
 class Dataset < ApplicationRecord
   include Measurable
   include Nameable
+  include CreationOrderable
 
   PERIODS = %w(free month week day)
 

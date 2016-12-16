@@ -1,4 +1,5 @@
 class DashboardsController < ApplicationController
+  caches_page :show, :index
 
   attr_reader :dashboards, :dashboard, :widgets
   helper_method :dashboards, :dashboard

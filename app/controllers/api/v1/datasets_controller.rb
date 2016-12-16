@@ -1,6 +1,7 @@
 class Api::V1::DatasetsController < Api::V1::ApiController
 
   before_action :find_dataset, :only => [:show, :update]
+
   attr_reader :dataset
 
   def index
@@ -15,6 +16,7 @@ class Api::V1::DatasetsController < Api::V1::ApiController
   def create
     with_invalid_record_handler do
       dataset = current_user.datasets.create!(data)
+      invalidate_dashboards(*dashboards_for_dataset(dataset))
       render :json => dataset.to_json, :status => :created
     end
   end
@@ -22,6 +24,7 @@ class Api::V1::DatasetsController < Api::V1::ApiController
   def update
     with_invalid_record_handler do
       dataset.update_attributes!(data)
+      invalidate_dashboards(*dashboards_for_dataset(dataset))
       render :json => dataset.to_json, :status => :ok
     end
   end

@@ -27,10 +27,9 @@ export default function api(route, token, options={}) {
     .then(response => {
       if (response.status === 401) {
         // rather than kick out, pass them a message
-        throw {
-          message: `Unauthorised. If you think you should be authorised try logging out and then logging in again.`,
-          ...response
-        }
+        let error = new Error(response.statusText);
+        error.response = `Unauthorised. If you think you should be authorised try logging out and then logging in again.`
+        throw error
       }
 
       if (response.status === 201) {

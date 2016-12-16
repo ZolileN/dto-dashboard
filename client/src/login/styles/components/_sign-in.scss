@@ -38,8 +38,6 @@
 
 .login-form,
 .sign-in-form {
-  margin-top: 1.5 * $base-spacing;
-
   //should we make all input labels bold?
   label {
     font-weight: 700;
@@ -130,6 +128,183 @@
       &:focus {
         color: $link-colour;
       }
+    }
+  }
+}
+
+
+
+
+// overrides
+
+article { //needed to over ride UI kit styles
+  .sign-in {
+    h1 {
+      @media(min-width: $screen-sm){
+        font-size: 1.625rem;
+        font-weight: 700;
+        margin-bottom: 2.1125rem;
+        line-height: 2.275rem;
+
+        &:first-of-type {
+          margin-top: 2.3125rem;
+        }
+      }
+    }
+
+    h2 {
+      @media(min-width: $screen-sm){
+        font-size: 1.0625rem;
+        font-weight: 700;
+        margin-bottom: 0.7375rem;
+      }
+
+      &.step {
+        @media(min-width: $screen-sm){
+          font-size: 1.125rem;
+          font-weight: 700;
+        }
+      }
+    }
+
+    button, .button, [role='button'], [type='button'] {
+      @media(min-width: $screen-sm){
+        line-height: 25px;
+        font-size: 1.125rem;
+        margin-top: 1.125rem;
+      }
+    }
+
+    .actions {
+      margin-bottom: 13px;
+
+      input[type='submit'] {
+        background-color: $white;
+        color: #313131;
+        border: 0;
+        border-bottom: 1px solid #5bcbe3;
+        padding:0;
+      }
+
+      a {
+        line-height: 28px;
+      }
+
+      form {
+        input[type='submit'] {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .button-link {
+      background-color: $white;
+      color: #313131;
+      border: 0;
+      border-bottom: 1px solid #5bcbe3;
+      padding:0;
+    }
+
+    label {
+      font-weight: normal;
+    }
+
+    .qrcode {
+      p {
+        margin-bottom: 30px;
+      }
+
+      img {
+        height: 125px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .callout {
+      background-color: $white;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+
+      h3 {
+        margin-top: 0;
+      }
+    }
+
+    .sign-in-footer-links {
+      ul{
+        margin-top: 30px;
+        list-style-type: none;
+        text-align: left;
+        padding-left:0;
+
+        li {
+          margin-bottom: 29px;
+        }
+      }
+    }
+  }
+}
+
+.login__main {
+  h1 {
+    @media(min-width: $screen-sm){
+      font-size: 1.625rem;
+      font-weight: 700;
+      margin-bottom: 2.1125rem;
+      line-height: 2.275rem;
+
+      &:first-of-type {
+        margin-top: 2.3125rem;
+      }
+    }
+  }
+
+  input[type='submit'] {
+    padding: 13px 20px;
+    font-weight:700;
+    margin-bottom: 26px;
+  }
+
+  .verify {
+    margin-top: 22px;
+    line-height: 18px;
+  }
+}
+
+.sign-in-form {
+  .form-options {
+    p {
+      input[type="submit"] {
+        margin-top: 22px;
+        // line-height: 25px;
+      }
+    }
+  }
+
+  form.button_to {
+    display:inline-block;
+
+    .button-link {
+      padding: 0;
+    }
+  }
+
+  .inline {
+    display:inline-block;
+  }
+
+  .form-footer-actions {
+    input {
+      line-height: 25px;
+    }
+  }
+}
+
+.login-form {
+  .form-footer-actions {
+    input[type="submit"] {
+      margin-top: 22px;
     }
   }
 }

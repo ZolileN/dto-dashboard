@@ -1,3 +1,5 @@
+require 'non_api_basic_auth'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -94,4 +96,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.middleware.insert_after Rack::Sendfile, NonApiBasicAuth, 'Restricted' do |username, password|
+    [username, password] == [ENV['HTTP_BASIC_USERNAME'], ENV['HTTP_BASIC_PASSWORD']]
+  end
 end
