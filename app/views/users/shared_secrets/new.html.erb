@@ -19,5 +19,5 @@
   </div>
 <% end %>
 
-<p class="inline">Haven't received the code?&nbsp <%= button_to 'Try again', users_shared_secret_path, method: :delete, class: 'UIK-link' %></p>
+<p>Haven't received the code? <%= link_to 'Try again', users_shared_secret_path, method: :delete, class: 'UIK-link' %></p>
 

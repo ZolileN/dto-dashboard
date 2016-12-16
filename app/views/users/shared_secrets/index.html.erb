@@ -8,11 +8,13 @@
   <img alt="QR code" src="/users/shared_secrets/code.png?nocache=<%= rand %>" />
 </div>
 
-<div class="form-ctas">
-  <%= button_to 'Generate a new code', users_shared_secret_path, method: :delete, class:'UIK-button btn btn-primary' %>
-</div>
 
-<ul class="list-unstyled">
+<ul class="list-unstyled sub-link-list">
+  <li><%= link_to 'Generate a new code', users_shared_secret_path, method: :delete, class:'UIK-link' %></li>
   <li><%= link_to 'Can\'t scan it?', code_users_shared_secrets_path, class:'UIK-link' %></li>
-  <li><%= link_to 'Next', new_users_shared_secret_path, role: :button, class:'UIK-link' %></li>
 </ul>
+
+
+<div class="form-ctas mt-2">
+  <%= link_to 'Next >', new_users_shared_secret_path, role: :button, class:'UIK-button btn btn-primary' %>
+</div>
