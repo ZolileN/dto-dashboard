@@ -8,26 +8,27 @@
 %>
 
 <div class="sign-in">
+
   <h1>Forgotten your password?</h1>
 
-  <p>Enter your email address and we will send you a link to reset your password.</p>
+  <p class="mb-2">Enter your email address and we will send you a link to reset your password.</p>
 
-  <section class="login-form">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
-        <%= devise_error_messages! %>
 
-        <%= f.label :email, "Email address" %>
-        <%= f.email_field :email, autofocus: true %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}, class: 'login-form') do |f| %>
 
-        <div class="form-footer-actions">
-          <%= f.submit "Submit", :role => 'button' %>
-        </div>
-    <% end %>
+    <%= devise_error_messages! %>
 
-    <div class="sign-in-footer-links">
-      <%= render "devise/shared/links" %>
+    <div class="form-group">
+      <%= f.label :email, "Email address" %>
+      <%= f.email_field :email, autofocus: true, class:'form-control' %>
     </div>
 
-  </section>
+    <div class="login-form__ctas">
+      <%= f.submit "Submit", :role => 'button', class:'UIK-button btn btn-primary' %>
+    </div>
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>
 
 </div>
