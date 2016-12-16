@@ -3,17 +3,17 @@ class Users::SessionsController < Devise::SessionsController
 
   layout 'devise'
 
-  # GET /resource/sign_in
+  # GET /resource/login
   def new
     super
   end
 
-  # POST /resource/sign_in
+  # POST /resource/login
   def create
     super
   end
 
-  # DELETE /resource/sign_out
+  # DELETE /resource/logout
   def destroy
     super
   end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       invitations: 'users/invitations'
     },
     :path => '',
-    path_names: { sign_in: 'sign-in', sign_out: 'sign-out' }
+    path_names: { sign_in: 'login', sign_out: 'logout' }
 
   ActiveAdmin.routes(self)
 
