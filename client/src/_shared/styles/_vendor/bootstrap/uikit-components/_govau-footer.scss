@@ -4,10 +4,13 @@
   border-top: 6px solid #224a61;
 
   &__container {
-    display: table;
+    padding: $spacer-y 0;
 
-    width: 100%;
-    padding: ($spacer-y*1.4) 0 $spacer-y*2;
+    @media (min-width:$screen-sm) {
+      display:table;
+      width: 100%;
+      padding: $spacer-y*1.4 0;
+    }
 
     .report-an-issue {
       margin-bottom: 16px;
@@ -15,11 +18,30 @@
 
     &__logo,
     &__utils {
-      display: table-cell;
-      vertical-align: middle;
+      margin-bottom: $spacer-y;
+
+      @media (min-width:$screen-sm) {
+        display:table-cell;
+        vertical-align: top;
+      }
+    }
+
+    &__logo {
+      margin-bottom: $spacer-y*1.4;
+      @media (min-width:$screen-sm) {
+        margin-bottom: $spacer-y;
+      }
     }
 
     &__utils {
+      @media (min-width:$screen-sm) {
+        padding-left: $spacer-x*1.4;
+
+        a {
+          margin-top: 8px;
+        }
+      }
+
       .line-1,
       .line-2 {
         display: block;
@@ -30,10 +52,6 @@
         font-size: 14px;
         display: block;
       }
-    }
-
-    [rel~='external']::after {
-      background-position: right 0.2em;
     }
   }
 }

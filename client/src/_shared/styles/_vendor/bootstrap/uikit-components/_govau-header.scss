@@ -7,15 +7,30 @@
 
   &__container {
     display: table;
-
     width: 100%;
-    padding: $spacer-y 0 $spacer-y *1.4;
-    min-height: 116px;
+
+    padding: $spacer-y*.6 0 ($spacer-y *1.2)*.6;
+
+    @media (min-width:$screen-sm) {
+      min-height: 116px;
+      padding: $spacer-y 0 $spacer-y *1.2;
+    }
 
     &__logo,
     &__utils {
       display: table-cell;
       vertical-align: middle;
+    }
+
+    &__logo {
+      a {
+        display:inline-block;
+      }
+    }
+    &__utils {
+      a {
+        margin-left: $spacer-x;
+      }
     }
 
     &__utils {
@@ -24,12 +39,10 @@
 
       @include clearfix;
 
-      .block-user-email {
+      .user-email {
         display: block;
         margin-bottom: 8px;
-      }
 
-      .user-email {
         position: relative;
 
         a {
@@ -50,8 +63,17 @@
     }
   }
 
+  &.is-loggedin {
+    .user-email {
+      display:none;
+    }
+  }
+
+
   .btn.sign-out {
     @include button-variant(white, #224a61, #224a61);
     font-weight: $DB-font-weight-regular;
   }
 }
+
+
