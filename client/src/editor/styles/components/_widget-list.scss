@@ -6,11 +6,15 @@
 
     .title,
     .meta-status {
-      display: inline-block;
+      @media (min-width: $screen-sm) {
+        display: inline-block;
+      }
     }
 
     .meta-status {
-      float:right;
+      @media (min-width: $screen-sm) {
+        float:right;
+      }
     }
   }
 
@@ -21,7 +25,10 @@
   }
 
   .preview {
-    padding: $spacer $spacer+.2;
+    padding: $spacer*.75 $spacer*.75+.2;
+    @media (min-width:$screen-sm) {
+      padding: $spacer $spacer+.2;
+    }
     background-color: $DB-color-heading-bg;
   }
 
@@ -33,7 +40,11 @@
   .preview-table {
     display: table;
     width: 100%;
-    margin-bottom: 1em;
+
+    margin-bottom: .5em;
+    @media (min-width:$screen-sm) {
+      margin-bottom: 1em;
+    }
 
     .key,
     .description,

@@ -11,7 +11,7 @@
 
     padding: $spacer-y*.6 0 ($spacer-y *1.2)*.6;
 
-    @media (min-width:$screen-sm) {
+    @media (min-width:420px) {
       min-height: 116px;
       padding: $spacer-y 0 $spacer-y *1.2;
     }
@@ -23,6 +23,9 @@
     }
 
     &__logo {
+      img {
+        max-width: 100%; // resize the image when screen size gets smaller
+      }
       a {
         display:inline-block;
       }
@@ -66,6 +69,10 @@
   &.is-loggedin {
     .user-email {
       display:none;
+
+      @media (min-width:$screen-sm) {
+        display:block;
+      }
     }
   }
 

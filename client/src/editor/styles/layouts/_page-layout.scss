@@ -13,20 +13,26 @@
     .title-description {
       color: $DB-color-body-text-grey;
       line-height: 1.6;
+      margin-top: 1em;
     }
   }
 
   &__title {
-    display: table;
-    width: 100%;
-    &__left,
-    &__right {
-      display: table-cell;
-      vertical-align: middle;
+    @media (min-width:$screen-sm) {
+      display: table;
+      width: 100%;
+      &__left,
+      &__right {
+        display: table-cell;
+        vertical-align: middle;
+      }
     }
   }
 
   &__body {
-    padding: map-get(map-get($spacers, 2), y) 0;  // todo - create helper function for access
+    padding: $spacer-y 0;
+    @media (min-width:$screen-sm) {
+      padding: $spacer-y*2 0;
+    }
   }
 }

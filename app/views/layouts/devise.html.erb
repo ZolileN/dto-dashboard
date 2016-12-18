@@ -18,16 +18,9 @@
 <body class="login <%= body_class(yield(:body_class_names)) %>">
 
   <div>
-    <div class="phase-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <span>This is a working alpha and has limited functionality. Service data shown is
-          accurate as at the time it was published.</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <section>
+      <%= render :partial => "partials/phase-banner" %>
+    </section>
 
     <header class="main__header">
       <%= render :partial => "partials/header" %>

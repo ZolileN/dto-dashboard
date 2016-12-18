@@ -26,8 +26,8 @@ const DashboardItem = ({dashboard}) => {
   return (
     <article className="dashboard-list__item">
       <h1 className="h5">{dashboard.name}</h1>
-      <Link to={getDashboardWidgetsUrl(dashboard.id)} className="btn btn-primary">Edit Dashboard</Link>
-      <a href={getServiceDashboardUrl(dashboard.id, dashboard.name)} className="UIK-link" target="blank" rel="external">View service dashboard</a>
+      <span className="link-wrap"><Link to={getDashboardWidgetsUrl(dashboard.id)} className="btn btn-primary">Edit Dashboard</Link></span>
+      <span className="link-wrap"><a href={getServiceDashboardUrl(dashboard.id, dashboard.name)} className="UIK-link" target="blank" rel="external">View service dashboard</a></span>
     </article>
   )
 };

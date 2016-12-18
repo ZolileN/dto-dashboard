@@ -5,11 +5,16 @@
   &__top,
   &__bottom {
     display: block;
-    text-align: right;
+
+    @media (min-width: $screen-sm) {
+      text-align: right;
+    }
   }
 
   &__top {
-    margin-bottom: 6px;
+    @media (min-width: $screen-sm) {
+      margin-bottom: 6px;
+    }
   }
 
   time {
@@ -24,11 +29,27 @@
     position: relative;
   }
 
-  .status-key {
+  .status-label {
     position: absolute;
-    right: 100%;
-    top: -3px;
+    top: -6px;
+  }
 
+  @media (min-width: $screen-sm) {
+    .status-label {
+      position: static; // reset
+    }
+    .status-key {
+      position: absolute;
+      right: 100%;
+      top: -3px;
+    }
+  }
+
+  .status-label {
+    white-space: nowrap;
+  }
+
+  .status-key {
     svg {
       margin-right: 3px;
     }
