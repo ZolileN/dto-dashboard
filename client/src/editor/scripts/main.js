@@ -1,12 +1,3 @@
-/*global fetch*/
-
-if (typeof Promise === 'undefined') {
-  require('es6-promise').polyfill();
-}
-
-
-import 'whatwg-fetch'
-
 import React from 'react';
 import { render } from 'react-dom';
 import { merge } from 'lodash';

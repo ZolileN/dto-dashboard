@@ -19,9 +19,10 @@ let ExtractSass = new ExtractTextPlugin("stylesheets/[name].css", {
 
 let webpackConfig = {
   name: projectName,
+  // don't attempt to continue if there are errors
   bail: true,
   debug: DEBUG,
-  devtool: DEBUG ? 'source-map' : 'none',
+  devtool: 'source-map', //DEBUG ? 'source-map' : 'none',
   target: 'web',
   context: CONFIG.DIR_SRC,
   entry: {
@@ -89,8 +90,12 @@ let webpackConfig = {
   resolve: {
     extensions : ['', '.js', '.scss'],
   },
+  // Some libraries import Node modules but don't use them in the browser.
+  // Tell Webpack to provide empty mocks for them so importing them works.
   node: {
-    fs: 'empty'
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   },
 
 
@@ -126,6 +131,5 @@ if (!DEBUG) {
     })
   )
 }
-
 
 export default webpackConfig;

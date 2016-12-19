@@ -1,5 +1,7 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 
 import * as CONFIG from './_config';
 import webpackConfig from './webpack.config.devserver';
@@ -10,8 +12,6 @@ function clearConsole() {
   // The intention is to clear the output so you can focus on most recent build.
   process.stdout.write('\x1bc');
 }
-
-
 
 let devServerPublicPath = `http://${CONFIG.WEBPACK_HOST}:${CONFIG.WEBPACK_PORT}/`;
 webpackConfig.output.publicPath = devServerPublicPath;
@@ -27,6 +27,7 @@ for(let [key, value] of Object.entries(webpackConfig.entry)) {
 	value.unshift(
 	  `webpack-dev-server/client?${devServerPublicPath}`,
 	  'webpack/hot/dev-server',    // reload if HMR fails
+    // require.resolve('react-dev-utils/webpackHotDevClient'),  // todo !!
       // app entry point is not required here because it is carried across
       // from webpack.config, a la unshift.
 	);
@@ -34,7 +35,8 @@ for(let [key, value] of Object.entries(webpackConfig.entry)) {
 
 // same as: --hot
 webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
-
+webpackConfig.plugins.push(new CaseSensitivePathsPlugin());
+webpackConfig.plugins.push(new WatchMissingNodeModulesPlugin(CONFIG.DIR_NPM));
 
 // create an instance of webpack compiler
 var devCompiler = webpack(webpackConfig);
