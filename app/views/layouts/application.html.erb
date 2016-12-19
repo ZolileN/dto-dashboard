@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <%= public_stylesheet 'dashboard' %>
 
   <% if !development_server? %>
-    <%= getPublicStylesheet('dashboard.css') %>
+
   <% end %>
 
   <%= render 'layouts/analytics' %>
@@ -36,7 +37,7 @@
       <div class="container-deprecated-dont-add-this-anywhere-else">
         <div class="l-site-title">
           <a href="/" class="site-title">
-            <img src="<%= getPublicImageSrc('gov-performance.svg') %>" alt="Logo of GOV.AU"/>
+            <img src="<%= public_image_source('gov-performance.svg') %>" alt="Logo of GOV.AU"/>
           </a>
         </div>
         <div class="l-toggle-switch">
@@ -54,7 +55,7 @@
     <div class="container-deprecated-dont-add-this-anywhere-else">
       <div class="l-footer-logo">
         <div class="footer__logo-container">
-          <img src="<%= getPublicImageSrc('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms" />
+          <img src="<%= public_image_source('coatofarms.svg') %>" height="76" alt="Logo of Commonwealth Coat of Arms" />
         </div>
       </div>
       <div class="l-footer-links">
@@ -72,12 +73,6 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-
-  <% if development_server? %>
-      <script src="http://localhost:8080/javascripts/dashboard.js"></script>
-  <% else %>
-    <%= getPublicJavascript('dashboard.js') %>
-  <% end %>
-
+  <%= public_javascript('dashboard') %>
 </body>
 </html>

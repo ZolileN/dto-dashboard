@@ -6,14 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <%
-    #
-    # Production mode or not required for webpack-dev-server mode
-    #
-    if !development_server? %>
-      <%= getPublicStylesheet('app_shell.css') %>
-      <%= getPublicStylesheet('editor.css') %>
-  <% end %>
+  <%= public_stylesheet('app_shell') %>
+  <%= public_stylesheet('editor') %>
 </head>
 <body class="editor <%= body_class(yield(:body_class_names)) %>">
 
@@ -48,16 +42,8 @@
     <%= render :partial => "partials/footer" %>
   </footer>
 
-  <%
-    #
-    # Production mode or webpack-dev-server mode
-    #
-    if !development_server? %>
-    <%= getPublicJavascript('app_shell.js') %>
-    <%= getPublicJavascript('editor.js') %>
-  <% else %>
-      <script src="http://localhost:8080/javascripts/app_shell.js"></script>
-      <script src="http://localhost:8080/javascripts/editor.js"></script>
-  <% end %>
+  <%= public_javascript('app_shell') %>
+  <%= public_javascript('editor') %>
+
 </body>
 </html>

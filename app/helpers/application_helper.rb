@@ -28,16 +28,26 @@ module ApplicationHelper
     public_relative_path + "?" + Digest::MD5.file(File.join(Rails.public_path, public_relative_path)).hexdigest
   end
 
-  def getPublicImageSrc(relative_path)
+  def public_image_source(relative_path)
     hashAsset('/images/' + relative_path)
   end
 
-  def getPublicStylesheet(relative_path)
-    tag('link', href: hashAsset('/stylesheets/' + relative_path), rel: 'stylesheet')
+  def public_stylesheet(sheet)
+    # Not required for webpack-dev-server mode
+    unless development_server?
+      path = hashAsset "/stylesheets/#{sheet}.css"
+      tag 'link', href: path, rel: 'stylesheet'
+    end
   end
 
-  def getPublicJavascript(relative_path)
-    opts = { src: hashAsset('/javascripts/' + relative_path), type: 'text/javascript' }
+  def public_javascript(script)
+    path = if development_server?
+      "http://localhost:8080/javascripts/#{script}.js"
+    else
+      hashAsset "/javascripts/#{script}.js"
+    end
+
+    opts = { src: path, type: 'text/javascript' }
     tag('script', opts, true) + '</script>'.html_safe
   end
 
