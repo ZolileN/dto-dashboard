@@ -41,4 +41,7 @@ module ApplicationHelper
     tag('script', opts, true) + '</script>'.html_safe
   end
 
+  def show_auth?
+    $flipper[:auth].enabled? && !devise_controller?
+  end
 end
