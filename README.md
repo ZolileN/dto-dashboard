@@ -1,7 +1,5 @@
 # Dashboard
 
-## Elise is awesome !
-
 [![CircleCI](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master.svg?style=svg)](https://circleci.com/gh/AusDTO/dto-dashboard/tree/master)
 
 [![Code Climate](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/gpa.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard)
@@ -9,6 +7,9 @@
 [![Issue Count](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/issue_count.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard)
 
 [![Test Coverage](https://codeclimate.com/github/AusDTO/dto-dashboard/badges/coverage.svg)](https://codeclimate.com/github/AusDTO/dto-dashboard/coverage)
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 
 Version 3.0 of the Performance Dashboard.
 
@@ -107,6 +108,17 @@ To test mail in development, we're using mailcatcher.
 
 Once installed, mail can be viewed at
 [http://localhost:1080/](http://localhost:1080/)
+
+
+### Commiting to Git
+
+Before hand: 
+
+Commit messages should follow the commitizen standards: http://commitizen.github.io/cz-cli/
+
+```
+yarn run commit
+```
 
 
 ### Front end
