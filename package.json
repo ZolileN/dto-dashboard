@@ -126,7 +126,7 @@
     "whatwg-fetch": "^1.0.0"
   },
   "scripts": {
-    "commit": "git cz",
+    "commit": "git-cz",
     "prebuild": "del public/images/**/* && del public/javascripts/**/* && del public/stylesheets/**/*",
     "build": "NODE_ENV=production webpack -p --release",
     "start": "echo no start task, 'npm run' to see all tasks",
