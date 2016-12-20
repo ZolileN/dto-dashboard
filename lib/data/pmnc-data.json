@@ -1,11 +1,11 @@
 {
     "version": "1",
     "updated_at": "2016-12-06T12:38:01.111Z",
-    "name": "PM&C Website",
-    "url": "http://www.dpmc.gov.au/",
+    "name": "data.gov.au",
+    "url": "http://www.data.gov.au/",
     "agency": "PM&C",
-    "service": "dto.gov.au",
-    "description": "PM&C Website Performance Dashboard",
+    "service": "data.gov.au",
+    "description": "data.gov.au Performance Dashboard",
     "notes": "",
     "displayHero": false,
     "datasets": [{
