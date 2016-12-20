@@ -62,6 +62,10 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
     this.props.push(getDashboardWidgetsUrl(this.props.dashboard.id));
   }
 
+  onCancelSuccess() {
+    this.props.push(getDashboardWidgetsUrl(this.props.dashboard.id));
+  }
+
   render() {
     const canUpdate = flags.FLAG_UDPATE_DATAGROUP;
     const canCreate = flags.FLAG_CREATE_DATAGROUP;
@@ -135,7 +139,8 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                   <CreateDatagroupsetForm formModel={datagroupsetSlice}
                                           formMetadata={metadata}
                                           canSubmit={canCreate}
-                                          onSubmitSuccess={this.onSubmitSuccess.bind(this)} />}
+                                          onSubmitSuccess={this.onSubmitSuccess.bind(this)}
+                                          onCancelSuccess={this.onCancelSuccess.bind(this)} />}
               </div>
             </div>
           </div>

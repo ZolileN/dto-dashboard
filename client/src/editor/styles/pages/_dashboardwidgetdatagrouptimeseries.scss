@@ -6,11 +6,15 @@
     margin-bottom: $spacer-y * 2;
   }
 
+  .form-preview {
+    margin-top: $spacer-y;
+  }
+
   .form-actions-buttons {
-    margin-top: $spacer-y * 2;
+    margin-top: $spacer-y;
 
     .btn:first-child {
-      margin-right: $spacer-x * 2;
+      margin-right: $spacer-x;
     }
   }
 

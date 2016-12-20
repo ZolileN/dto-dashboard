@@ -30,25 +30,30 @@ let CreateDatagroupsetForm = ({
 
       <hr />
 
+      <div className="form-preview">
+        <button className="UIK-button btn btn-secondary"
+                onClick={preview.bind(this, formModel)} style={{marginBottom: '1em'}}>Click to preview before publishing</button>
+
+        <iframe id="preview" name="preview" style={{height: '500px', width: '100%'}}></iframe>
+      </div>
+
+      <hr className="mt-2" />
+
       <div className="form-actions-buttons">
         <button type="submit"
                 className="UIK-button btn btn-primary"
                 disabled={!canSubmit || submitting}
                 onClick={handleSubmit(submit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
-        <button type="preview"
-                className="btn primary-link"
-                onClick={preview.bind(this, formModel)}>Preview</button>
         <button type="cancel"
                 className='UIK-button btn btn-link'
-                disabled={!canSubmit || submitting}
-                onClick={cancel.bind({}, rfProps)}>Cancel</button>
+                disabled={submitting}
+                onClick={submitting ? () => {} : cancel.bind({}, rfProps)}>Cancel</button>
       </div>
 
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
       </div>
 
-      <iframe id="preview" name="preview" style={{height: '500px', width: '100%'}}></iframe>
     </form>
   )
 };
@@ -164,6 +169,9 @@ const cancel = (rfProps, cb = null) => {
   }
 };
 
+/**
+ todo - this nasty mainly because it violates the separation of React with Rails, we will refactor this out when we deprecate this feature :(
+ */
 const preview = (data) => {
   let formData = data.groups.map((g, idx) => {
     return {
@@ -186,20 +194,6 @@ const preview = (data) => {
   previewForm.appendChild(input);
   document.getElementsByTagName('body')[0].appendChild(previewForm);
   previewForm.submit();
-
-  return;
-
-  let xhr = new XMLHttpRequest();
-  xhr.open('POST', `widgets/${data.widget.id}/preview`, true);
-  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
-  // send the collected data as JSON
-  xhr.send(JSON.stringify({datapoints: formData}));
-
-  xhr.onload = function () {
-    let preview = document.getElementById('preview');
-    preview.innerHTML = xhr.responseText;
-  };
 };
 
 CreateDatagroupsetForm = reduxForm({
