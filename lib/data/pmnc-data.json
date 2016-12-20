@@ -256,7 +256,7 @@
       "id": "state-sessions-sa",
       "recorded_at": "2016-12-06T12:38:01.111Z",
       "units": "n",
-      "name": "South Australia",
+      "name": "SA",
       "note": "User sessions from South Australia",
       "data": [
         { "label": "2015-01", "value": 1125 },
@@ -337,7 +337,7 @@
       "id": "state-sessions-wa",
       "recorded_at": "2016-12-06T12:38:01.111Z",
       "units": "n",
-      "name": "Wa",
+      "name": "WA",
       "note": "User sessions from Western Australia",
       "data": [
         { "label": "2015-01", "value": 1768 },
