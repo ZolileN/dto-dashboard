@@ -28,8 +28,8 @@ module ApplicationHelper
     public_relative_path + "?" + Digest::MD5.file(File.join(Rails.public_path, public_relative_path)).hexdigest
   end
 
-  def public_image_source(relative_path)
-    hashAsset('/images/' + relative_path)
+  def public_image_source(image, ext='svg')
+    hashAsset "/images/#{image}.#{ext}"
   end
 
   def public_stylesheet(sheet)
