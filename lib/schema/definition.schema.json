@@ -8,7 +8,15 @@
       "description": "An explanatory note to provide context for a dashboard",
       "properties": {
         "title": { "type": "string" },
-        "body": { "type": "string" }
+        "body": { "type": "string" },
+        "list": {
+          "type": "array",
+          "name": "list",
+          "description": "An unordered list to be appended to a note.",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "recorded_at": {
