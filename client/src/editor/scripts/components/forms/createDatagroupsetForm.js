@@ -28,15 +28,6 @@ let CreateDatagroupsetForm = ({
         canSubmit
       }} />
 
-      <hr />
-
-      <div className="form-preview">
-        <button className="UIK-button btn btn-secondary"
-                onClick={preview.bind(this, formModel)} style={{marginBottom: '1em'}}>Click to preview before publishing</button>
-
-        <iframe id="preview" name="preview" style={{height: '500px', width: '100%'}}></iframe>
-      </div>
-
       <hr className="mt-2" />
 
       <div className="form-actions-buttons">
@@ -49,6 +40,20 @@ let CreateDatagroupsetForm = ({
                 disabled={submitting}
                 onClick={submitting ? () => {} : cancel.bind({}, rfProps)}>Cancel</button>
       </div>
+
+      <div className="form-preview">
+        <p style={{textAlign:'center'}}><em>-- or --</em></p>
+
+        <br className="mt-1 mb-1" />
+
+        <button className="UIK-button btn btn-secondary"
+                onClick={preview.bind(this, formModel)} style={{marginBottom: '1em'}}>Click to preview before publishing</button>
+
+        <iframe id="preview" name="preview" style={{height: '500px', width: '100%'}}></iframe>
+      </div>
+
+      <hr />
+
 
       <div className="form__help-block">
         {error && <strong>{error}</strong>}
