@@ -16,13 +16,15 @@ class OrganisationImporter
       display_hero = definition['displayHero'].nil?
       display_kpis = definition['displayKPIs'].nil?
 
-      @organisation.dashboards.each do |dashboard|
-        dashboard.widgets.each do |widget|
+      if @force_id.present?
+        existing_dashboard = @organisation.dashboards.find @force_id
+
+        existing_dashboard.widgets.each do |widget|
           widget.datasets.delete_all
           widget.delete
         end
-        
-        dashboard.delete
+
+        existing_dashboard.delete
       end
 
       dashboard = Dashboard.new(

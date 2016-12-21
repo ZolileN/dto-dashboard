@@ -35,7 +35,7 @@ ActiveAdmin.register Organisation do
       definition_json = params[:organisation][:definition].read
 
       importer = OrganisationImporter.new resource, data_json, definition_json,
-        resource.dashboards.first&.id # Retain ID if dashboard exists
+        params.dig(:organisation, :dashboard_id).presence
 
       begin
         importer.import!
