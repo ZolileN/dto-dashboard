@@ -158,7 +158,7 @@ To develop on assets, instead of just building them, toggle `DEV_SERVER = true`
 inside `/.env` and restart Rails. Then run the development server:
 
 ```
-yarn run dev
+yarn run start
 ```
 
 It might be useful to also install these Chrome Extensions to help you work:

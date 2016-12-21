@@ -1,3 +1,9 @@
+// Load environment variables from .env file. Suppress warnings using silent
+// if this file is missing. dotenv will never modify any environment variables
+// that have already been set.
+// https://github.com/motdotla/dotenv
+require('dotenv').config({silent: true});
+
 import webpack from 'webpack';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
@@ -37,10 +43,11 @@ let webpackConfig = {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
 		preLoaders: [
-      {
-        test: /client\/src\/\.(js)$/,
-        loader: "eslint"
-      }
+      // { todo !! enable - or display as warning not breaking error
+      //   test: /\.(js|jsx)$/,
+      //   loader: 'eslint',
+      //   include: CONFIG.DIR_SRC
+      // }
 		],
 		loaders: [
 			{

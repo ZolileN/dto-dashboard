@@ -9,7 +9,7 @@
   },
   "author": "",
   "license": "MIT",
-  "homepage": "https://github.com/AusDTO/dto-dashboard#readme",
+  "homepage": "https://dashboard.gov.au",
   "dependencies": {
     "autoprefixer": "^6.4.1",
     "autotrack": "^1.0.0",
@@ -50,6 +50,7 @@
     "enzyme": "^2.4.1",
     "eslint": "^3.4.0",
     "eslint-config-formidable": "^1.0.1",
+    "eslint-config-react-app": "^0.5.0",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-react": "^6.2.0",
     "eslintify": "^2.1.0",
@@ -129,8 +130,7 @@
     "commit": "git-cz",
     "prebuild": "del public/images/**/* && del public/javascripts/**/* && del public/stylesheets/**/*",
     "build": "NODE_ENV=production webpack -p --release",
-    "start": "echo no start task, 'npm run' to see all tasks",
-    "dev": "node devServer.js",
+    "start": "node client/scripts/start.js",
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
     "test:react": "jest --verbose",
     "test:react:watch": "npm run test:react -- --watch",
@@ -185,5 +185,8 @@
       "helpMessage": "\nPlease fix your commit message (and consider using http://npm.im/commitizen)\n",
       "warnOnFail": false
     }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
