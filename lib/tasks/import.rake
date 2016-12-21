@@ -27,7 +27,7 @@ namespace :import do
       data = JSON.parse(data_json)
       definition_json = File.read("lib/data/#{name}-definition.json")
       organisation = Dashboard.find_by(id: id)&.organisation ||
-        Organisation.find_or_create_by! name: data['agency'], url: data['url']
+        Organisation.find_or_create_by!(name: data['agency'], url: data['url'])
       importer = OrganisationImporter.new organisation, data_json, definition_json, id
       importer.import!
     end
