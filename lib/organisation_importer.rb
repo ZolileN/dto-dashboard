@@ -17,14 +17,14 @@ class OrganisationImporter
       display_kpis = definition['displayKPIs'].nil?
 
       if @force_id.present?
-        existing_dashboard = @organisation.dashboards.find @force_id
+        if existing_dashboard = @organisation.dashboards.find_by(id: @force_id)
+          existing_dashboard.widgets.each do |widget|
+            widget.datasets.delete_all
+            widget.delete
+          end
 
-        existing_dashboard.widgets.each do |widget|
-          widget.datasets.delete_all
-          widget.delete
+          existing_dashboard.delete
         end
-
-        existing_dashboard.delete
       end
 
       dashboard = Dashboard.new(

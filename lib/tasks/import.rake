@@ -16,7 +16,8 @@ namespace :import do
       'imports' => 4,
       'medicare-enrolment' => 6,
       'marketplace' => 7,
-      'pmnc' => 9 }
+      'datagovau' => 9,
+      'nationalmap' => 10 }
     run(ids)
   end
 

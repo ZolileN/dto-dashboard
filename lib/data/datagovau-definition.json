@@ -68,13 +68,9 @@
     { "title":  "Where is this information from?",
       "body":   "The data.gov.au website." },
     { "title":  "What is data.gov.au?",
-      "body":   "Data.gov.au provides an easy way to find, access and reuse public data. Our team works across governments to publish data and continue to improve functionality based on user feedback. We encourage you to use government data to analyse, mashup and develop tools and applications to benefit all Australians." }
+      "body":   "Data.gov.au provides an easy way to find, access and reuse public data. Our team works across governments to publish data and continue to improve functionality based on user feedback. We encourage you to use government data to analyse, mashup and develop tools and applications to benefit all Australians." }      
   ],
-  "notes": [
-    { "title" : "Need some info",
-      "body" : "To populate the notes" }
-  ],
-  "url": "http://www.dpmc.gov.au/",
+  "url": "http://www.data.gov.au/",
   "layout":   [
     ["users", "users-and-page-views"],
     ["total-datasets", "sessions-by-state", "top-3-dataset-downloads"],
