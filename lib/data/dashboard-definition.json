@@ -38,7 +38,7 @@
     {
       "id":   "user-satisfaction",
       "updated_at": "2016-11-08T01:01:01.111Z",
-      "name": "User Satisfaction",
+      "name": "User satisfaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "%",
@@ -48,7 +48,7 @@
     {
       "id":   "cost-per-transaction",
       "updated_at": "2016-11-08T01:01:01.111Z",
-      "name": "Cost Per Transaction",
+      "name": "Cost per transaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "$",
@@ -57,7 +57,7 @@
     {
       "id":   "digital-take-up",
       "updated_at": "2016-11-08T01:01:01.111Z",
-      "name": "Digital Take-up",
+      "name": "Digital take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "%",
@@ -66,7 +66,7 @@
     {
       "id":   "completion-rate",
       "updated_at": "2016-11-08T01:01:01.111Z",
-      "name": "Completion Rate",
+      "name": "Completion rate",
       "type": "kpi-sparkline",
       "size": "extra-small",
       "units": "%",
