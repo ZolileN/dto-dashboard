@@ -178,10 +178,10 @@ export const getDatagroupset = (state, widget) => {
     let hasOutOfSyncKeys = uniq(_recentDatpointIdxArrWithoutNull).length > 1;
 
     if (hasValidRecent === false) {
-      console.warn(`has no recent data for datagroupset: `, datagroupset);
+      // console.warn(`has no recent data for datagroupset: `, datagroupset);
     }
     if (hasOutOfSyncKeys) {
-      console.warn(`recent data is out of sync for datagroupset: `, datagroupset);
+      // console.warn(`recent data is out of sync for datagroupset: `, datagroupset);
     }
 
     if (hasValidRecent) {
@@ -276,10 +276,10 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     let hasOutOfSyncKeys = uniq(sliceIndexArray).length > 1;
 
     if (!hasValidSlice) {
-      console.log(`No datapoint for this slice: `, datagroupset);
+      // console.log(`No datapoint for this slice: `, datagroupset);
     }
     if (hasOutOfSyncKeys) {
-      console.warn(`Data is out of sync for slice datagroupset: `, datagroupset);
+      // console.warn(`Data is out of sync for slice datagroupset: `, datagroupset);
     }
 
     if (!hasValidSlice) {

@@ -26,6 +26,11 @@ import {
   getServiceDashboardUrl,
   getServiceDashboardUrlAnchor
 } from './../utils/urlHelpers';
+import {
+  getElementY,
+  scrollToY
+} from './../utils/scrollPosition';
+import { onNextFrame } from './../utils/DOM';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -57,6 +62,9 @@ const mapDispatchToProps = dispatch => ({
 class PageDashboardWidgets extends Component {
 
   componentDidMount() {
+    // this.scrollToWidget("13"); // "Device Usage"
+    // this.scrollToWidget("14"); // "Browser"
+
     if (this.props.uiApp.didTransactionDatagroup.widgetId) {
       this.scrollToWidget(this.props.uiApp.didTransactionDatagroup.widgetId);
     }
@@ -70,8 +78,12 @@ class PageDashboardWidgets extends Component {
 
   scrollToWidget(widgetId) {
     let node = findDOMNode(this.refs[widgetId]);
-    if (node) {
-      document.body.scrollTop = node.offsetTop; // todo - verify
+
+    if (node !== 'undefined') {
+      onNextFrame(() => {
+        let yPos = getElementY(node);
+        scrollToY(yPos);
+      });
     }
   }
 

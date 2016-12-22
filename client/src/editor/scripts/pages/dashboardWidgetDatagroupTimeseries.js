@@ -140,7 +140,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                                           formMetadata={metadata}
                                           canSubmit={canCreate}
                                           onSubmitSuccess={this.onSubmitSuccess.bind(this)}
-                                          onCancelSuccess={this.onCancelSuccess.bind(this)} />}
+                                          onCancelSuccess={this.onCancelSuccess.bind(this, datagroupsetSlice.widget.id)} />}
               </div>
             </div>
           </div>

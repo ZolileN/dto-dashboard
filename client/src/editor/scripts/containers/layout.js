@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 
 import Toast from './../components/toast';
 import IconLoader from './../../../_shared/scripts/components/iconLoader';
+import { scrollToY } from './../utils/scrollPosition';
+import { onNextFrame } from './../utils/DOM';
 
 
 class Layout extends Component {
 
   componentDidUpdate() {
-    document.body.scrollTop = 0;
+    onNextFrame(() => {
+      scrollToY(0);
+    });
   }
 
   render() {
