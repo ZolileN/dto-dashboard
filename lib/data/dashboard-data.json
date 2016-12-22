@@ -30,9 +30,11 @@
        "data":         [
          { "label": "2016-05", "value": null },
          { "label": "2016-06", "value": null },
-         { "label": "2016-07", "value": 375.66 },
-         { "label": "2016-08", "value": 53.67 },
-         { "label": "2016-09", "value": 53.45 }
+         { "label": "2016-07", "value": null },
+         { "label": "2016-08", "value": 40 },
+         { "label": "2016-09", "value": 40 },
+         { "label": "2016-10", "value": 30 },
+         { "label": "2016-11", "value": 22 },
        ]
      },
     {
