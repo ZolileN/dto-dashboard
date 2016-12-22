@@ -3,6 +3,8 @@ machine:
     version: 2.3.3
   node:
     version: 6.3.0
+  pre:
+    - mkdir ~/.yarn-cache
   post:
     # Install Cloud Foundry command line client for deployment
     # - "curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'"
@@ -17,6 +19,7 @@ dependencies:
     - sudo apt-get update -qq
     - sudo apt-get install -y -qq yarn
   cache_directories:
+    - ~/.yarn
     - ~/.yarn-cache
 
   override:
