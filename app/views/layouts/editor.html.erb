@@ -48,6 +48,9 @@
     <%= render :partial => "partials/footer" %>
   </footer>
 
+  <% if is_production? %>
+    <%= render :partial => 'partials/new_relic_spa' %>
+  <% end %>
   <%
     #
     # Production mode or webpack-dev-server mode

@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def is_production?
+    !Rails.env.development?
+  end
+
   def development_server?
     Rails.env.development? && ENV['DEV_SERVER'] == 'true'
   end
