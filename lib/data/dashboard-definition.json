@@ -1,7 +1,7 @@
 {
   "name":         "Performance Dashboard Dashboard",
   "url":          "https://dashboard.gov.au/",
-  "agency":       "DTO",
+  "agency":       "DTA",
   "description":  "NEED TO CONTENT",
   "target_users": "Users",
   "notes": [
@@ -78,19 +78,19 @@
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "Number of users",
       "type": "bar",
-      "size": "large",
+      "size": "medium",
       "units": "n",
       "displayRoundedData" : false,
       "definition": "This shows the number of people visiting the Performance Dashboard each month.",
       "datasets": ["total-users"]
     },
     {
-      "id":   "most-visited-dashboards",
+      "id":   "fact-5",
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "Most-visited dashboards",
       "type": "fact",
       "units": "n",
-      "size": "small",
+      "size": "medium",
       "description": "The top 3 most-visited service dashboards are: 1. myGov 2. Australian Citizenship Booking Service 3. Hobby or Business Tool."
     },
     {
@@ -100,7 +100,7 @@
       "type": "bar",
       "stacking": "normal",
       "units": "n",
-      "size": "large",
+      "size": "extra-large",
       "description": "This shows which the development phase the services that have published on the Performance Dashboard are in. It also shows services that are not going through a digital transformation and other types of projects such as information websites",
       "datasets": ["dashboards-betapub", "dashboards-prebeta", "dashboards-nontransf", "dashboards-other"]
     },
@@ -110,7 +110,7 @@
       "name": "Fact",
       "type": "fact",
       "units": "n",
-      "size": "small",
+      "size": "medium",
       "description": "The Performance Dashboard’s 3 primary goals are to increase the number of service dashboards it hosts, improve user engagement and to encourage automated publishing of data."
     },
     {
@@ -118,7 +118,7 @@
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "Dashboards viewed",
       "type": "line",
-      "size": "medium",
+      "size": "large",
       "units": "n",
       "displayRoundedData" : false,
       "definition": "This shows the average number of service dashboards viewed each time a user visits the Performance Dashboard.",
@@ -150,7 +150,7 @@
       "name": "Fact",
       "type": "fact",
       "units": "n",
-      "size": "small",
+      "size": "medium",
       "description": "Our user satisfaction figures are not yet statistically significant because of the low feedback response so far. However, the average session length of more than 3 minutes shows that users are engaging well with the data provided."
     },
     {
@@ -159,7 +159,7 @@
       "name": "Fact",
       "type": "fact",
       "units": "n",
-      "size": "small",
+      "size": "medium",
       "description": "The Performance Dashboard is being continuously improved to enable more than 100 high-volume services to publish their own service dashboards in the coming months. The ability to enter data automatically is part of this improvement."
     },
     {
@@ -179,7 +179,7 @@
       "updated_at": "2016-10-23T20:25:04Z",
       "name": "How users find the dashboard",
       "type": "bar",
-      "size": "medium",
+      "size": "large",
       "units": "%",
       "displayRoundedData" : true,
       "definition": "This shows how users navigate to the Performance Dashboard. It show how many users type in the URL directly, find the dashboard on a search engine, click on a link in an article or another website, or come to it via social media.",
@@ -195,7 +195,7 @@
       "updated_at":  "2016-08-25T01:01:01.111Z",
       "name": "New and returning users",
       "type": "pie",
-      "size": "small",
+      "size": "medium",
       "units": "%",
       "displayRoundedData" : true,
       "definition": "This shows the percentage of users visiting the Performance Dashboard for the first time compared to the percentage of users who have visited it before.",
@@ -220,13 +220,12 @@
   "layout": [
     ["kpis"],
     ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
-    ["total-users", "fact-1"],
-    ["top-dashboards"],
+    ["fact-1", "total-users"],
     ["avg-dashboard-page-views", "fact-2"],
-    ["avg-session-time", "fact-3"],
+    ["fact-3", "avg-session-time"],
     ["dashboard-count"],
-    ["automated-vs-manual", "fact-4"],
-    ["traffic-sources"],
-    ["new-vs-returning-users",  "ddd-sessions-by-device"]
+    ["fact-4", "automated-vs-manual"],
+    ["traffic-sources", "ddd-sessions-by-device"],
+    ["new-and-returning-users", "fact-5"]
   ]
 }
