@@ -10,6 +10,7 @@ import Root from './containers/root';
 
 
 const bootState = merge(initialState, window.__STATE__);
+delete window.__STATE__;
 const store = configureStore(bootState, hashHistory);
 
 const history = syncHistoryWithStore(hashHistory, store);
