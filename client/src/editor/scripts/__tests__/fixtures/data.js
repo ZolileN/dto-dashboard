@@ -2,7 +2,6 @@ const fixtureState = {
   app: {},
   // requests: {},
   ui: {
-    // toast: {},
     pageDashboard: {},
     pageDashboardWidget: {},
     pageDataset: {},

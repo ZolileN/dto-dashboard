@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import { connect } from 'react-redux';
 
-import Toast from './../components/toast';
 import IconLoader from './../../../_shared/scripts/components/iconLoader';
 import { scrollToY } from './../utils/scrollPosition';
 import { onNextFrame } from './../utils/DOM';

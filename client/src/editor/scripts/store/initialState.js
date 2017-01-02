@@ -4,11 +4,10 @@ export default {
   ui: {
     app: {
       didTransactionDatagroup: {}
-    },
-    toast: {}
+    }
   },
   // __STATE__
-  currentUser: {},  // todo - call this session
+  currentUser: {},  // todo - rename as session
   dashboards: [],
   widgets: [],
   datasets: [],

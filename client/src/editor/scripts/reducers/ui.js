@@ -26,25 +26,9 @@ const app = (state = initialState.ui.app, {type, payload}) => {
 };
 
 
-const toastsReducer = (state = initialState.ui.toast, {type, payload}) => {
-  switch (type) {
-    case types.UI_TOAST_SET_TOAST:
-      return payload;
-      break;
-
-    case types.UI_TOAST_CLEAR_TOAST:
-      return null;
-      break;
-
-    default:
-      return state;
-  }
-};
-
 
 const uiReducer = combineReducers({
-  app,
-  toast: toastsReducer
+  app
 });
 
 

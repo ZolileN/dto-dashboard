@@ -8,16 +8,6 @@ import { createSelector } from 'reselect';
 
 const widgetsReducer = (state = initialState.widgets, {type, payload}) => {
   switch (type) {
-
-    // case types.UPDATE_WIDGET:
-    //   return state.map((d) => {
-    //     if (d.id === payload.id) {
-    //       return {...d, ...payload}
-    //     }
-    //     return d;
-    //   });
-    //   break;
-
     default:
       return state;
   }
