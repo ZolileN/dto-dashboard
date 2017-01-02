@@ -54,6 +54,7 @@ class Legend {
                 .datum(this.data[0]);
 
     let row = this.container.append('table')
+              .attr('style', this.data.length > 7 ? 'font-size: 0.8rem;' : '')  // stodo - hack fix: scale the legend data down for nationalmap.gov.au
               .selectAll('tr')
               .data(this.data)
               .enter()
