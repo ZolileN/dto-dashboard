@@ -19,7 +19,6 @@ class Layout extends Component {
     return (
       <div className="app-scene">
         <IconLoader />
-        <Toast />
         <TransitionGroup
           transitionAppear={false}
           transitionName={{
