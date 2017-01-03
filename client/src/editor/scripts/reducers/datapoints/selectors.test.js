@@ -4,8 +4,8 @@ import {
   getDatapointById,
   getDatapointsById,
   isDatapoint
-} from './../reducers/datapoints';
-import fixtures from './fixtures/data';
+} from './../../reducers/datapoints';
+import fixtures from './../../_fixtures/data';
 
 
 describe('Datapoints Selectors', () => {

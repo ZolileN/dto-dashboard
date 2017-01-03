@@ -4,8 +4,8 @@ import expect from 'expect';
 import {
   getDashboardById,
   isDashboard
-} from './../reducers/dashboards';
-import fixtures from './fixtures/data';
+} from './../../reducers/dashboards';
+import fixtures from './../../_fixtures/data';
 
 
 describe('Dashboards Selectors', () => {

@@ -4,8 +4,8 @@ import {
   getWidgetById,
   getWidgetsByDashboardId,
   isWidget
-} from './../reducers/widgets';
-import fixtures from './fixtures/data';
+} from './../../reducers/widgets';
+import fixtures from './../../_fixtures/data';
 
 
 describe('Widgets Selectors', () => {

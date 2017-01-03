@@ -5,7 +5,7 @@ import dashboardsReducer, {
   isDashboard,
   getDashboardById
 } from './../../reducers/dashboards';
-import fixtures from './../../__tests__/fixtures/data';
+import fixtures from './../../_fixtures/data';
 import * as types from './../../actions/_types';
 
 

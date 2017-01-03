@@ -2,7 +2,7 @@
 import expect from 'expect';
 
 import uiReducer from './../../reducers/ui';
-import fixtures from './../../__tests__/fixtures/data';
+import fixtures from './../../_fixtures/data';
 import initState from './../../store/initialState';
 
 

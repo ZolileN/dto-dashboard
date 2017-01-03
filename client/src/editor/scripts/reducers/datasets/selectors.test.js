@@ -5,8 +5,8 @@ import {
   getDatasetById,
   getDatasetsByIds,
   isDataset
-} from './../reducers/datasets';
-import fixtures from './fixtures/data';
+} from './../../reducers/datasets';
+import fixtures from './../../_fixtures/data';
 
 
 describe('Datsets Selectors', () => {

@@ -3,7 +3,7 @@ import expect from 'expect';
 
 import datasetsReducer from './../../reducers/datasets';
 import * as types from './../../actions/_types';
-import fixtures from './../../__tests__/fixtures/data';
+import fixtures from './../../_fixtures/data';
 
 
 describe('Datasets Reducer', () => {
