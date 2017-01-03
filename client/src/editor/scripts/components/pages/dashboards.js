@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import {
   getServiceDashboardUrl,
   getDashboardWidgetsUrl
-} from './../utils/urlHelpers';
-import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
+} from './../../utils/urlHelpers';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 
 
 const DashboardItems = ({dashboards}) => {
@@ -32,10 +31,6 @@ const DashboardItem = ({dashboard}) => {
   )
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  dashboards: state.dashboards
-});
-const mapDispatchToProps = dispatch => ({});
 
 class DashboardsIndex extends Component {
 
@@ -78,7 +73,4 @@ class DashboardsIndex extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DashboardsIndex);
+export default DashboardsIndex;

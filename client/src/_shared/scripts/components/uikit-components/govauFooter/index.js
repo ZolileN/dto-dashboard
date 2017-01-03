@@ -8,7 +8,7 @@ const GovauFooter = () => {
         <div className="govau-footer__container">
 
           <div className="govau-footer__container__logo">
-            <img src={require("./../../../images/coat-of-arms.png")} width="185" height="135" alt="Commonwealth of Australia Coat of Arms Logo" />
+            <img src={require("./../../../../../images/coat-of-arms.png")} width="185" height="135" alt="Commonwealth of Australia Coat of Arms Logo" />
           </div>
 
           <div className="govau-footer__container__utils">

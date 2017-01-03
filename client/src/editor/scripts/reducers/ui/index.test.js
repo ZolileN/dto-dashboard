@@ -1,9 +1,9 @@
 /*global describe,it,beforeAll,afterEach*/
 import expect from 'expect';
 
-import uiReducer from './../reducers/ui';
-import fixtures from './fixtures/data';
-import initState from './../store/initialState';
+import uiReducer from './../../reducers/ui';
+import fixtures from './../../__tests__/fixtures/data';
+import initState from './../../store/initialState';
 
 
 describe('Ui Reducer', () => {

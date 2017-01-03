@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import { text as knobText, boolean, number } from '@kadira/storybook-addon-knobs';
 
-import UikitAlert from './../src/_shared/scripts/components/uikit-components/alert';
+import UikitAlert from './index';
 
 
 const AlertTmpl = ({type, text}) => {

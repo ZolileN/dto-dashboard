@@ -1,29 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
-import { getDashboardById } from './../reducers/dashboards';
-import { getWidgetById } from './../reducers/widgets';
+import { getDashboardById } from './../../reducers/dashboards';
+import { getWidgetById } from './../../reducers/widgets';
 
-import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
-import * as uiAppActions from './../actions/uiApp';
-import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
-import UpdateDatagroupSimpleForm from './../components/forms/updateDatagroupSimple';
-import metadata from './../data/widgetMetadata';
-
-
-const mapStateToProps = (state, ownProps) => {
-  let dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
-  let widget = getWidgetById(state.widgets, ownProps.params.widget_id);
-  return {
-    dashboard,
-    widget
-  }
-};
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiAppActions, dispatch)
-});
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import { getDashboardWidgetsUrl } from './../../utils/urlHelpers';
+import UpdateDatagroupSimpleForm from './../../components/forms/updateDatagroupSimple';
+import metadata from './../../data/widgetMetadata';
 
 
 class DashboardWidgetDatagroupSimplePage extends Component {
@@ -95,7 +80,4 @@ class DashboardWidgetDatagroupSimplePage extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DashboardWidgetDatagroupSimplePage);
+export default DashboardWidgetDatagroupSimplePage;

@@ -1,45 +1,18 @@
-import * as flags from './../constants/flags';
+import * as flags from './../../constants/flags';
 
-import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 import { isObject } from 'lodash';
-import { push } from 'react-router-redux';
 
-import { getDashboardById } from './../reducers/dashboards';
-import { getWidgetById } from './../reducers/widgets';
-import {
-  getDatagroupset,
-  getDatagroupsetSlice
-} from './../reducers/index';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import Pagination from './../../components/widgetPagePagination';
+import { getDashboardWidgetsUrl } from './../../utils/urlHelpers';
+import { getHumanisedVeryShortDate } from './../../utils/humanisedDates';
+import CreateDatagroupsetForm from './../../components/forms/createDatagroupsetForm';
+import UpdateDatagroupsetForm from './../../components/forms/updateDatagroupsetForm';
+import metadatas from './../../data/widgetMetadata';
+import TrafficLight from './../../components/widgetTrafficLight';
 
-import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
-import Pagination from './../components/widgetPagePagination';
-import * as uiAppActions from './../actions/uiApp';
-import { getDashboardWidgetsUrl } from './../utils/urlHelpers';
-import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
-import CreateDatagroupsetForm from './../components/forms/createDatagroupsetForm';
-import UpdateDatagroupsetForm from './../components/forms/updateDatagroupsetForm';
-import metadatas from './../data/widgetMetadata';
-import TrafficLight from './../components/widgetTrafficLight';
-
-
-const mapStateToProps = (state, ownProps) => {
-  const dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
-  const widget = getWidgetById(state.widgets, ownProps.params.widget_id);
-  const datagroupset = getDatagroupset(state, widget);
-  const datagroupsetSlice = getDatagroupsetSlice(datagroupset, ownProps.params.datagroup_key);
-  return {
-    dashboard,
-    widget,
-    datagroupsetSlice
-  }
-};
-const mapDispatchToProps = dispatch => ({
-  push: bindActionCreators(push, dispatch),
-  actions: bindActionCreators(uiAppActions, dispatch)
-});
 
 class DashboardWidgetDatagroupTimeSeriesPage extends Component {
 
@@ -151,7 +124,4 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DashboardWidgetDatagroupTimeSeriesPage);
+export default DashboardWidgetDatagroupTimeSeriesPage;

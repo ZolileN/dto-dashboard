@@ -4,9 +4,9 @@ import expect from 'expect';
 import dashboardsReducer, {
   isDashboard,
   getDashboardById
-} from './../reducers/dashboards';
-import fixtures from './fixtures/data';
-import * as types from './../actions/_types';
+} from './../../reducers/dashboards';
+import fixtures from './../../__tests__/fixtures/data';
+import * as types from './../../actions/_types';
 
 
 describe('Dashboards Reducer', () => {

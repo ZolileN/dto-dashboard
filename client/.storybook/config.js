@@ -2,7 +2,7 @@ import React from 'react';
 import { configure, addDecorator } from '@kadira/storybook';
 import { withKnobs } from '@kadira/storybook-addon-knobs';
 
-const context = require.context('./../stories', true, /\.js$/);
+const context = require.context('./../src', true, /story\.js$/);
 
 
 import './../src/_storybook/styles/main';

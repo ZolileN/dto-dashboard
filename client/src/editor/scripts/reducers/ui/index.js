@@ -1,6 +1,6 @@
-import * as types from './../actions/_types';
-import initialState from './../store/initialState';
 import { combineReducers } from 'redux';
+import * as types from './../../actions/_types';
+import initialState from './../../store/initialState';
 
 
 const app = (state = initialState.ui.app, {type, payload}) => {

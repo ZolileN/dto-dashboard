@@ -5,13 +5,13 @@ import { Router, Route, IndexRedirect, IndexRoute } from 'react-router';
 import Layout from './layout';
 
 
-import Dashboards from './../pages/dashboards';
-import DashboardWidgets from './../pages/dashboardWidgets';
-import DashboardWidgetDatagroupSimple from './../pages/dashboardWidgetDatagroupSimple';
-import DashboardWidgetDatagroupTimeseries from './../pages/dashboardWidgetDatagroupTimeseries';
-// import DashboardWidgetDescriptions from './../pages/dashboardWidgetDescriptions';
+import Dashboards from './pageDashboards';
+import DashboardWidgets from './pageDashboardWidgets';
+import DashboardWidgetDatagroupSimple from './pageDashboardWidgetDatagroupSimple';
+import DashboardWidgetDatagroupTimeseries from './pageDashboardWidgetDatagroupTimeseries';
+// import DashboardWidgetDescriptions from './pageDashboardWidgetDescriptions';
 
-import NoMatch from './../pages/noMatch';
+import NoMatch from './pageNoMatch';
 
 
 export default class Root extends Component {

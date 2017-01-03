@@ -4,19 +4,19 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../reducers/dashboards';
-import { getWidgetsByDashboardId } from './../reducers/widgets';
+import { getDashboardById } from './../../reducers/dashboards';
+import { getWidgetsByDashboardId } from './../../reducers/widgets';
 import {
   getDatagroupsets,
   getDatagroupsetSlices,
   filterDatagroupsetByHeroWidget,
   filterDatagroupsetsByBtlWidgets,
-} from './../reducers/index';
+} from './../../reducers/index';
 
-import * as uiAppActions from './../actions/uiApp';
-import Breadcrumbs from './../../../_shared/scripts/components/uikit-components/breadcrumbs';
-import WidgetTypeSimple from './../components/widgetTypeSimple';
-import WidgetTypeTimeSeries from './../components/widgetTypeTimeSeries';
+import * as uiAppActions from './../../actions/uiApp';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import WidgetTypeSimple from './../../components/widgetTypeSimple';
+import WidgetTypeTimeSeries from './../../components/widgetTypeTimeSeries';
 
 import {
   getDashboardUrl,
@@ -25,12 +25,12 @@ import {
   getDashboardWidgetDescriptionsUrl,
   getServiceDashboardUrl,
   getServiceDashboardUrlAnchor
-} from './../utils/urlHelpers';
+} from './../../utils/urlHelpers';
 import {
   getElementY,
   scrollToY
-} from './../utils/scrollPosition';
-import { onNextFrame } from './../utils/DOM';
+} from './../../utils/scrollPosition';
+import { onNextFrame } from './../../utils/DOM';
 
 
 const mapStateToProps = (state, ownProps) => {
