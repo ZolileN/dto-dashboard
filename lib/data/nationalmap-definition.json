@@ -1,4 +1,4 @@
-{ "name":             "nationalmap.gov.au",
+{ "name":             "National Map",
   "agency":           "PM&C",
   "description":      "Description",
   "target_users":     "Users",
@@ -66,9 +66,9 @@
   ],
   "notes": [
     { "title":  "Where is this information from?",
-      "body":   "The nationalmap.gov.au website." },
-    { "title":  "What is nationalmap.gov.au?",
-      "body":   "The NationalMap is a website for map-based access to spatial data from Australian government agencies. It is an initiative of the Department of Communications and the Arts now currently managed by the Department of the Prime Minister and Cabinet and the software has been developed by Data61 working closely with the Department of Communications and the Arts, Geoscience Australia and other government agencies." }
+      "body":   "The National Map website, nationalmap.gov.au." },
+    { "title":  "What is the National Map?",
+      "body":   "The National Map is a website for map-based access to spatial data from Australian government agencies. It is an initiative of the Department of Communications and the Arts now currently managed by the Department of the Prime Minister and Cabinet and the software has been developed by Data61 working closely with the Department of Communications and the Arts, Geoscience Australia and other government agencies." }
   ],
   "url": "https://nationalmap.gov.au/",
   "layout":   [
