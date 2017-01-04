@@ -3,6 +3,7 @@ import LineChart from './../d3-charts-dto/lib/javascripts/Charts/LineChart.js';
 import getDate from './../d3-charts-dto/lib/javascripts/Helpers/getDate';
 import NullDataLayer from './../d3-charts-dto/lib/javascripts/Charts/NullDataLayer.js';
 import defined from './../d3-charts-dto/lib/javascripts/Helpers/defined.js';
+import {hasNonSequentialDataNested} from './../Helpers/normalizeNonSequentialData';
 
 class SparklineWidget {
   constructor(options) {
@@ -12,6 +13,7 @@ class SparklineWidget {
     this.suffix = options.suffix;
     this.units = options.units;
     this.data = options.data;
+    this.hasNonSequential = hasNonSequentialDataNested(this.data);
     this.sparkline = undefined;
     this.metricData = undefined;
     this.metricDataValue = undefined;
@@ -27,7 +29,7 @@ class SparklineWidget {
     this.metricDataValue = this.metricData.append('div').attr('class', 'value');
     this.metricDataValue.text('No data');
 
-    if(this.data && this.data.length){
+    if(this.data && this.data.length && this.hasNonSequential === false){
       this.addChart();
     }
   }

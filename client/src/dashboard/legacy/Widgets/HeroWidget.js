@@ -9,6 +9,7 @@ import getDate from './../d3-charts-dto/lib/javascripts/Helpers/getDate.js';
 import debounceD3Event from './../utilities/debounce-d3-event';
 import { handleGaEvent } from './../services/google-analytics';
 var track = require('./../constants/tracking');
+import {normalizeNonSequentialDataNested} from './../Helpers/normalizeNonSequentialData';
 
 
 // used for GA engagement tracking
@@ -31,7 +32,10 @@ class HeroWidget {
     this.nullData = null;
     if (!this.data || !this.data.length) return;
 
+    // remove dataset if the months are not sequential
     this.normaliseDataByMonthOnMonth();
+    // remove dataset if the y coords are not sequential
+    normalizeNonSequentialDataNested(this.data);
     this.init();
   }
 
