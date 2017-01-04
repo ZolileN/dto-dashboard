@@ -15,8 +15,13 @@
         "name":         "User satisfaction",
         "note":         "We do not have this data at the moment because we are....",
         "data": [
-         { "label": "2016-10", "value": 76},
-         { "label": "2016-11", "value": null}
+          { "label": "2016-05", "value": null},
+          { "label": "2016-06", "value": null},
+          { "label": "2016-07", "value": null},
+          { "label": "2016-08", "value": null},
+          { "label": "2016-09", "value": null},
+          { "label": "2016-10", "value": 76},
+          { "label": "2016-11", "value": null}
         ]
     },
     {
