@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { getDashboardById } from './../reducers/dashboards';
 import { getWidgetById } from './../reducers/widgets';

@@ -8,6 +8,9 @@ const Input = ({input, name, type, label, meta, fieldProps, optionProps}) => {
   if (type === 'checkbox') {
     throw new Error('Use "checkbox" input instead.');
   }
+
+  // todo - removed "name" attribute because of FieldsArray, name is at input.name
+
   return (
     <div className="form-group">
       <label htmlFor={name}
@@ -16,7 +19,6 @@ const Input = ({input, name, type, label, meta, fieldProps, optionProps}) => {
       <div>
         <input {...input} {...fieldProps}
           type={type}
-          name={name}
           id={name}
           className={touched && error ? `form-control invalid` : `form-control`} />
         {touched && error && <span className="help-block">{error}</span>}
@@ -36,7 +38,7 @@ Input.defaultProps = {
 
 Input.propTypes = {
   input: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
+  // name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 };
 

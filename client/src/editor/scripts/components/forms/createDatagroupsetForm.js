@@ -64,7 +64,7 @@ const renderFields = ({
     <div>
       {fields.map((member, idx) => {
         return (
-            <fieldset key={idx}>
+          <fieldset key={idx}>
             <Field name={`${member}.dataset.id`}
                    component={InputHidden} />
 

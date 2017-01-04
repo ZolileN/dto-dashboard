@@ -9,6 +9,8 @@ const DatagroupsetInput = ({input, name, type, label, meta, elementProps, option
   //   input.placeholder = 'No data';
   // }
 
+  // todo - removed "name" attribute because of FieldsArray, name is at input.name
+
   return (
     <div className="UIK-form-group form-group">
       <label htmlFor={name}
@@ -17,7 +19,6 @@ const DatagroupsetInput = ({input, name, type, label, meta, elementProps, option
       <div className="input-group">
         <input {...input} {...elementProps}
           type="text"
-          name={name}
           id={name} disabled={!canSubmit}
           className={touched && error ? `form-control invalid` : `form-control`} />
         {touched && error && <span className="help-block">{error}</span>}
@@ -40,7 +41,7 @@ DatagroupsetInput.defaultProps = {
 
 DatagroupsetInput.propTypes = {
   input: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
+  // name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 };
 
