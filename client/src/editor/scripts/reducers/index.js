@@ -57,9 +57,6 @@ export default rootReducer;
 
 // Selectors
 
-
-
-
 import { getDatasetById } from './../reducers/datasets';
 import { getDatapointsByIds } from './../reducers/datapoints';
 
