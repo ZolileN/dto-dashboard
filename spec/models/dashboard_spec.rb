@@ -14,6 +14,8 @@ RSpec.describe Dashboard, type: :model do
 
   its(:to_param) { is_expected.to include(dashboard.name.parameterize) }
 
+  specify { expect(subject.to_s).to eq subject.name }
+
   describe 'url' do
     it { should_not allow_value('<blah').for(:url) }
     it { should allow_value('blah.com').for(:url) }

@@ -81,7 +81,7 @@ RSpec.describe Widget, type: :model do
     subject(:widget)  { FactoryGirl.create(:widget, :datasets => [dataset]) }
 
     let(:dataset)     { FactoryGirl.create(:dataset_with_datapoints) }
-    let(:datapoint)   { dataset.datapoints.last }
+    let(:datapoint)   { dataset.datapoints.by_time.last }
 
     it { expect(widget.data_updated_at.to_s).to eq datapoint.updated_at.to_s }
   end

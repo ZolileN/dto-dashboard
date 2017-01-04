@@ -256,7 +256,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-public/page_cache_test
-public/page_cache_development
-public/page_cache_staging
-public/page_cache_production
+public/page_cache_*/**/*.html

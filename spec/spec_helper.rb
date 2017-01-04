@@ -25,6 +25,7 @@ require 'rspec/collection_matchers'
 
 SimpleCov.start do
   add_filter 'app/admin/'
+  add_filter 'spec/'
 end
 
 RSpec.configure do |config|

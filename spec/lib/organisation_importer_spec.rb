@@ -31,6 +31,21 @@ describe OrganisationImporter do
 
       specify { expect(dashboard.notes.count).to eq 6 }
     end
+
+    context 'with preexisting dashboard' do
+      let!(:old_dashboard) { FactoryGirl.create :dashboard,
+        name: 'Australian Citizenship Appointment Booking Service',
+        organisation: organisation }
+      let!(:old_widget) { FactoryGirl.create :widget_with_datasets,
+        dashboard: old_dashboard }
+
+      before do
+        subject.import!
+      end
+
+      specify { expect(Dashboard.find_by(id: old_dashboard.id)).to be_nil }
+      specify { expect(Widget.find_by(id: old_widget.id)).to be_nil }
+    end
   end
 
   context 'Non-conforming data' do

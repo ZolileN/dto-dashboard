@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe TokenDecorator, type: :decorator do
-
-  let(:token)         { Token.create! }
-
+  let(:token)         { FactoryGirl.create(:token) }
   subject(:decorator) { token.decorate }
 
-  its(:display_name)  { is_expected.to include "#{token.id}" }
-
+  specify { expect(subject.display_name).to eq "Token #{token.id}" }
+  specify { expect(subject.to_short_s.length).to eq 7 }
+  specify { expect(subject.active?).to eq 'Yes' }
 end

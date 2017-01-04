@@ -5,19 +5,19 @@ class Users::SharedSecretsController < ApplicationController
   before_action :protect_from_abuse, except: [:done]
 
   def create
-    unless secret.present?
-      redirect_to new_users_shared_secret_path
-    end
-
-    if authenticate_code secret, params[:code]
-      current_user.update_attribute :otp_secret_key, secret
-      session.delete :setup_totp
-      warden.session(:user)[TwoFactorAuthentication::NEED_AUTHENTICATION] = false
-      redirect_to done_users_shared_secrets_path
+    if secret.present?
+      if authenticate_code secret, params[:code]
+        current_user.update_attribute :otp_secret_key, secret
+        session.delete :setup_totp
+        warden.session(:user)[TwoFactorAuthentication::NEED_AUTHENTICATION] = false
+        redirect_to done_users_shared_secrets_path
+      else
+        current_user.increment! :second_factor_attempts_count
+        @form_error = 'Your code didn\'t work. Please try again.'
+        render :new
+      end
     else
-      current_user.increment! :second_factor_attempts_count
-      @form_error = 'Your code didn\'t work. Please try again.'
-      render :new
+      redirect_to new_users_shared_secret_path
     end
   end
 
