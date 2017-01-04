@@ -13,7 +13,9 @@
 
 export const normalizeNonSequentialData = function(data) {
   return data.map((d, idx, arr) => {
-    if (d && ( arr[idx+1] || (idx-1>=0 && arr[idx-1]) )) {
+    if (d &&
+      (arr[idx+1] || arr[idx-1])
+    ) {
       return d;
     }
     return null;
