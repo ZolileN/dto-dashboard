@@ -17,8 +17,8 @@
   <section class="sign-in-form">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render partial: 'alert', locals: { alert_type: 'info', message: notice } %>
+      <%= render partial: 'alert', locals: { alert_type: 'warning', message: alert } %>
 
       <p>
         <%= f.label :email, 'Email address' %>

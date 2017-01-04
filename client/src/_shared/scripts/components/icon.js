@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import { ICON_DATA } from './iconLoader';
+import ICONS from './_iconData';
 
 
 const Icon = ({name, size = 16}) => {
@@ -13,7 +13,7 @@ const Icon = ({name, size = 16}) => {
 };
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(ICON_DATA.map(i => i.name)).isRequired,
+  name: PropTypes.oneOf(ICONS.map(i => i.name)).isRequired,
 };
 
 export default Icon;

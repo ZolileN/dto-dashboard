@@ -2,7 +2,7 @@
 
 <p>A 6-digit code has been set up in your <strong>Google Authenticator</strong> app. Enter the code in the box below and then click <strong>Verify</strong>.</p>
 
-<p><%= flash[:notice] %></p>
+<%= render partial: 'alert', locals: { alert_type: 'warning', message: flash[:notice] } %>
 
 <%= form_tag([resource_name, :two_factor_authentication], :method => :put) do %>
 <%= label_tag 'code', 'Enter the 6-digit code' %>
