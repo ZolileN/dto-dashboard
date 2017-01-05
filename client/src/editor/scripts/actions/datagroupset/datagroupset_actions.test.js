@@ -24,8 +24,9 @@ describe('(Actions) Datagroupset', () => {
 
   let store;
 
-  let formDataBasic = [{value: "222", ts: "2016-11-01T00:00:00.000Z", dataset_id: 20}];
-  let responseBasic = {"id":1019,"dataset_id":20,"ts":"2016-11-01T00:00:00.000Z","value":"222.0","created_at":"2017-01-04T21:53:58.024Z","updated_at":"2017-01-04T21:53:58.024Z"};
+  let basicFormData = [{value: "222", ts: "2016-11-01T00:00:00.000Z", dataset_id: 20}];
+  let basic200 = {"id":1019,"dataset_id":20,"ts":"2016-11-01T00:00:00.000Z","value":"222.0","created_at":"2017-01-04T21:53:58.024Z","updated_at":"2017-01-04T21:53:58.024Z"};
+  let basic400 = {"code":"some code here","message":"some message here"};
 
   beforeEach(() => store = mockStore({
     currentUser: {
@@ -33,14 +34,14 @@ describe('(Actions) Datagroupset', () => {
     }
   }));
 
-  it('createDatagroupset should return a Promise', () => {
-    mockFetch(`${rootUrl}datasets/${20}/datapoints`, 201, JSON.stringify(responseBasic));
-    expect(store.dispatch(createDatagroupset(formDataBasic))).toBeA(window.Promise);
+  it('createDatagroupset on Success (201) should return a Promise', () => {
+    mockFetch(`${rootUrl}datasets/${20}/datapoints`, 201, JSON.stringify(basic200));
+    expect(store.dispatch(createDatagroupset(basicFormData))).toBeA(window.Promise);
   });
 
-  it('createDatagroupset should dispatch an action per set provided', () => {
-    mockFetch(`${rootUrl}datasets/${20}/datapoints`, 201, JSON.stringify(responseBasic));
-    return store.dispatch(createDatagroupset(formDataBasic))
+  it('createDatagroupset on Success (201) think should resolve a success response per set provided', () => {
+    mockFetch(`${rootUrl}datasets/${20}/datapoints`, 201, JSON.stringify(basic200));
+    return store.dispatch(createDatagroupset(basicFormData))
       .then((data) => {
         expect(data.length).toBe(1, 'expect an array with a single value');
         expect(data[0].dataset_id).toBe(20, 'expect response to have same dataset_id');
@@ -52,8 +53,32 @@ describe('(Actions) Datagroupset', () => {
       })
   });
 
-  // mockError
+  it('createDatagroupset on Input or Validation Error (400) should respond error', () => {
+    mockFetchError(`${rootUrl}datasets/${20}/datapoints`, 400, JSON.stringify(basic400));
+    return store.dispatch(createDatagroupset(basicFormData))
+      .then(() => {
+        console.warn('should never get here');
+      })
+      .catch((e) => {
+        expect(e).toBeTruthy();
+        // todo - check signature for server errors
+        // todo - check signature for error message
+      });
+  });
 
-  // test for different variations of formData
+  it('createDatagroupset on Not Found Error (404) should respond error', () => {
+    mockFetchError(`${rootUrl}datasets/${20}/datapoints`, 404, JSON.stringify(basic400));
+    return store.dispatch(createDatagroupset(basicFormData))
+      .then(() => {
+        console.warn('should never get here');
+      })
+      .catch((e) => {
+        expect(e).toBeTruthy();
+        // todo - check signature for server errors
+        // todo - check signature for error message
+      });
+  });
+
+  // todo - test for different variations of formData
 
 });

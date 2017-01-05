@@ -14,6 +14,9 @@ export const createDatagroupset = formData => {
     // What's going on here? Basically Promise.all() takes an array of promises as input,
     // and then it gives you another promise that only resolves when every one of those
     // other promises has resolved. It is the asynchronous equivalent of a for-loop.
+    //
+    // It resolves once all promises in the array resolve
+    // or reject as soon as one of them rejects.
     return Promise.all(promises)
       .then(responses => {
         return responses.map(data => {

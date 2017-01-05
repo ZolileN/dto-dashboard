@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import reduceReducers from 'reduce-reducers';
 import { routerReducer } from 'react-router-redux'
-import { uniq, isObject, without } from 'lodash';
+import {uniq,isObject,without,union} from 'lodash';
 import moment from 'moment';
 
 import * as types from './../actions/_types';
@@ -19,7 +19,6 @@ import { reducer as formReducer } from 'redux-form';
 const rootReducer = reduceReducers(
   combineReducers({
     routing: routerReducer,
-    // requests,
     ui,
     form: formReducer,
     currentUser,
@@ -31,16 +30,40 @@ const rootReducer = reduceReducers(
   // cross-cutting concerns because here `state` is the whole state tree
   (state, {type, payload}) => {
     switch (type) {
+
       case types.UPDATE_DATAGROUPSET:
-        state.datapoints = [...state.datapoints, payload.datapoint];
-        state.datasets = state.datasets.map(d => {
-          if (d.id === payload.dataset.id) {
-            return {...d,
-              datapoints: d.datapoints.concat(payload.dataset.datapoint_id)
-            };
+
+        const { datapoint, dataset } = payload;
+        let hasDatapoint = false;
+        let hasDataset = false;
+
+
+        state.datapoints = state.datapoints.map(dp => {
+          if (dp.id === datapoint.id) {
+            hasDatapoint = true;
+            return {...dp, ...datapoint}
           }
-          return d;
+          return dp;
         });
+
+        if (hasDatapoint === false) {
+          throw 'Datapoint does not exist, unable to update.';
+        }
+
+        state.datasets = state.datasets.map(ds => {
+          if (ds.id === dataset.id) {
+            hasDataset = true;
+            return {...ds, ...{
+              datapoints: union(ds.datapoints, dataset.datapoint_id)  // be sure to merge unique
+            }}
+          }
+          return ds;
+        });
+
+        if (hasDataset === false) {
+          throw 'Dataset does not exist, unable to update.';
+        }
+
         return state;
 
       default:
@@ -50,7 +73,6 @@ const rootReducer = reduceReducers(
 );
 
 export default rootReducer;
-
 
 
 

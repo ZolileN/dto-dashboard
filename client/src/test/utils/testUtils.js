@@ -26,9 +26,9 @@ export const mockFetch = (mockedUrl, status = 201, data) => {
 };
 
 // stub failing fetch
-export const mockFetchError = (mockedUrl, state, error) => {
+export const mockFetchError = (mockedUrl, status, error = '{}') => {
   handleResponse(
     mockedUrl,
-    Promise.reject(mockResponse(state, error, '{}'))
+    Promise.reject(mockResponse(status, 'Error', error))
   );
 };

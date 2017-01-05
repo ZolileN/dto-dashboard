@@ -1,11 +1,11 @@
 export default {
   routing: {},
-  // requests: {},
   ui: {
     app: {
       didTransactionDatagroup: {}
     }
   },
+  form: {},
   // __STATE__
   currentUser: {},  // todo - rename as session
   dashboards: [],
