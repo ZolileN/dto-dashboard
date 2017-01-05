@@ -2,7 +2,6 @@ import d3 from 'd3';
 import getColors from './getColors.js';
 import textures from 'textures';
 
-
 /**
  * Use texturejs to create textures for high contrast mode
  * @return {array} an array of patterns created

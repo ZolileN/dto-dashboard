@@ -2,7 +2,6 @@ import d3 from 'd3';
 import { isDate } from 'lodash';
 import Chart from './Chart';
 
-
 /**
  * Class representing a line chart.
  * @extends Chart
