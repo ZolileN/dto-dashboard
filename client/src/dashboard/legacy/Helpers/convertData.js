@@ -1,5 +1,5 @@
 import getColors from './getColors.js';
-
+import strokeDashes from './strokeDashes';
 
 let kpiColors = {
   'user-satisfaction': '#f2b038',
@@ -15,7 +15,6 @@ let kpiLineStyles = {
   'completion-rate': '5, 10'
 };
 
-let lineStyles = ['12,5', '10, 5', '3, 3', '5, 10', '10, 20', '20, 5'];
 
 function getColor(id, i, data) {
   if (kpiColors[id]) {
@@ -30,7 +29,7 @@ function getColor(id, i, data) {
     color: getColors()[i],
     altColor: window.patterns[i],
     altColorDark: window.patternsDark[i],
-    altLineStyle: data.length > 1 ? lineStyles[i] : 0
+    altLineStyle: data.length > 1 ? strokeDashes[i] : 0
   };
 }
 
