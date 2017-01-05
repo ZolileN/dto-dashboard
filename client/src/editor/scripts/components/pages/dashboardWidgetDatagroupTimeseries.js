@@ -1,8 +1,6 @@
 import * as flags from './../../constants/flags';
 
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { isObject } from 'lodash';
 
 import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import Pagination from './../../components/widgetPagePagination';
@@ -12,6 +10,7 @@ import CreateDatagroupsetForm from './../../components/forms/createDatagroupsetF
 import UpdateDatagroupsetForm from './../../components/forms/updateDatagroupsetForm';
 import metadatas from './../../data/widgetMetadata';
 import TrafficLight from './../../components/widgetTrafficLight';
+import {FLAG_UDPATE_DATAGROUP} from './../../constants/flags';
 
 
 class DashboardWidgetDatagroupTimeSeriesPage extends Component {
@@ -107,6 +106,7 @@ class DashboardWidgetDatagroupTimeSeriesPage extends Component {
                 {isUpdateMode ?
                   <UpdateDatagroupsetForm formModel={datagroupsetSlice}
                                           canSubmit={canUpdate}
+                                          disableUpdate={!FLAG_UDPATE_DATAGROUP}
                                           formMetadata={metadata}
                                           onSubmitSuccess={this.onSubmitSuccess.bind(this)} /> :
                   <CreateDatagroupsetForm formModel={datagroupsetSlice}

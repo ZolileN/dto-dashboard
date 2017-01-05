@@ -1,9 +1,8 @@
 import { FLAG_UDPATE_DATAGROUP } from './../../constants/flags';
 
-import React, { Component, PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import { connect } from 'react-redux'
-import { Field, reduxForm, SubmissionError } from 'redux-form';
-import { isURL } from 'validator';
+import { Field, reduxForm } from 'redux-form';
 
 import Textarea from './../fields/textarea';
 import SubmitButton from './../submitButton';
@@ -14,7 +13,7 @@ import SubmitButton from './../submitButton';
  * @component
  */
 let UpdateDatagroupSimpleForm = ({
-  isEditing, isSubmitting, onCancelSuccess,
+  isEditing, isSubmitting, onCancelSuccess, disableUpdate,
   ...rfProps
 }) => {
 

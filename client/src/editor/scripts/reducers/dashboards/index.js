@@ -1,5 +1,3 @@
-import { merge } from 'lodash';
-import * as types from './../../actions/_types';
 import initialState from './../../store/initialState';
 import isTypeOfState from './../../utils/isTypeOfState';
 

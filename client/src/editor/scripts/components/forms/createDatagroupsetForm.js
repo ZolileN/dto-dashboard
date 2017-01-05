@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React  from 'react';
 import { connect } from 'react-redux'
 import { Field, FieldArray, reduxForm, SubmissionError } from 'redux-form';
 
@@ -65,10 +65,12 @@ const renderFields = ({
       {fields.map((member, idx) => {
         return (
           <fieldset key={idx}>
-            <Field name={`${member}.dataset.id`}
+            <Field id={`${member}.dataset.id`}
+                   name={`${member}.dataset.id`}
                    component={InputHidden} />
 
-            <Field name={`${member}.value`}
+            <Field id={`${member}.value`}
+                   name={`${member}.value`}
                    label={models[idx].dataset.label}
                    component={DatagroupsetInput}
                    elementProps={{disabled}}

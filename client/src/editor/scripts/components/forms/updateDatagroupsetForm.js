@@ -1,10 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
-import { Field, FieldArray, reduxForm, SubmissionError } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import DatagroupsetInput from './../fields/datagroupsetInput';
 import InputHidden from './../fields/inputHidden';
-import { updateDatagroupset } from './../../actions/datagroupset';
 import { getHumanisedUnits } from './../../helpers/dataset';
 
 

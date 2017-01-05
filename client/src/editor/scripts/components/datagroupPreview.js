@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import { isEmpty } from 'lodash';
+import React from 'react';
 
 import LegendDot, { getPaletteColor } from './svgs/legendDot';
 import { getHumanisedUnits } from './../helpers/dataset';

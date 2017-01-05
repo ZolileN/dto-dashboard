@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRedirect, IndexRoute } from 'react-router';
+import { Router, Route, IndexRedirect } from 'react-router';
 
 import Layout from './layout';
-
 
 import Dashboards from './pageDashboards';
 import DashboardWidgets from './pageDashboardWidgets';

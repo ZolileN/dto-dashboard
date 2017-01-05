@@ -1,3 +1,5 @@
+import React from 'react';
+
 const ICON_DATA = [
   //https://leungwensen.github.io/svg-icon/#ionic*/
   {

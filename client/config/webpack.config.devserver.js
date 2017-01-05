@@ -43,11 +43,14 @@ let webpackConfig = {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
 		preLoaders: [
-      // { todo !! enable - or display as warning not breaking error
-      //   test: /\.(js|jsx)$/,
-      //   loader: 'eslint',
-      //   include: CONFIG.DIR_SRC
-      // }
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'eslint',
+        include: CONFIG.DIR_SRC,
+        exclude: [
+          `${CONFIG.DIR_SRC}/dashboard`   // todo - switch on
+        ]
+      }
 		],
 		loaders: [
 			{

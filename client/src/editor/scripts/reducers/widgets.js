@@ -1,9 +1,5 @@
-import * as types from './../actions/_types';
 import initialState from './../store/initialState';
 import isTypeOfState from './../utils/isTypeOfState';
-
-import { createSelector } from 'reselect';
-
 
 
 const widgetsReducer = (state = initialState.widgets, {type, payload}) => {

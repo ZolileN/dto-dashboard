@@ -1,14 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
-
-import { getDashboardById } from './../../reducers/dashboards';
-import { getWidgetById } from './../../reducers/widgets';
+import React, { Component } from 'react';
 
 import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import { getDashboardWidgetsUrl } from './../../utils/urlHelpers';
 import UpdateDatagroupSimpleForm from './../../components/forms/updateDatagroupSimple';
-import metadata from './../../data/widgetMetadata';
 
 
 class DashboardWidgetDatagroupSimplePage extends Component {

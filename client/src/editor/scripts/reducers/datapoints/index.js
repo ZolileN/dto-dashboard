@@ -1,9 +1,6 @@
-import moment from 'moment';
-
 import * as types from './../../actions/_types';
 import initialState from './../../store/initialState';
 import isTypeOfState from './../../utils/isTypeOfState';
-import * as dateFormats from './../../constants/dateFormats';
 
 
 const datapointsReducer = (state = initialState.datapoints, {type, payload}) => {
