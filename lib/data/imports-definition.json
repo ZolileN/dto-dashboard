@@ -67,7 +67,7 @@
     },
     {
       "id":   "clearing-time",
-      "updated_at": "2016-11-7T01:01:01.111Z",
+      "updated_at": "2016-12-7T01:01:01.111Z",
       "name": "Time taken to clear permits",
       "type": "bar",
       "size": "medium",
