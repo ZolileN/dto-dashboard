@@ -10,6 +10,7 @@ const Input = ({input, name, type, label, meta, fieldProps, optionProps}) => {
   }
 
   // todo - removed "name" attribute because of FieldsArray, name is at input.name
+  const { name } = input;
 
   return (
     <div className="form-group">

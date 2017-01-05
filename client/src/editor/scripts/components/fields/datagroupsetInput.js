@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 
-const DatagroupsetInput = ({input, name, type, label, meta, elementProps, optionProps, groupModel}) => {
+const DatagroupsetInput = ({input, type, label, meta, elementProps, optionProps, groupModel}) => {
   const { isOptional, infoText, canSubmit, suffix } = optionProps;
   const { touched, error } = meta;
 
@@ -10,6 +10,7 @@ const DatagroupsetInput = ({input, name, type, label, meta, elementProps, option
   // }
 
   // todo - removed "name" attribute because of FieldsArray, name is at input.name
+  const { name } = input;   // todo
 
   return (
     <div className="UIK-form-group form-group">

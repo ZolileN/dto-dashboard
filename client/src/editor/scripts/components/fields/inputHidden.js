@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
 
 
-// todo - removed "name" attribute because of FieldsArray, name is at input.name
-
 const Input = ({input}) => {
-  return <input {...input} type="hidden" />
+
+  // todo - removed "name" attribute because of FieldsArray, name is at input.name
+  const { name } = input;   // todo
+
+  return <input {...input} type="hidden" id={name} />
 };
 
 Input.propTypes = {
