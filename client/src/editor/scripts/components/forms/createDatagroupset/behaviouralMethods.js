@@ -88,7 +88,7 @@ export const cancel = (rfProps, cb = null) => {
 
 /**
    todo - this nasty mainly because it violates the separation of React with Rails,
-        we will refactor this out when we deprecate this feature :(
+      we will refactor this out when we deprecate this feature :(
  */
 export const preview = (data) => {
   let formData = data.groups.map((g, idx) => {
@@ -101,7 +101,7 @@ export const preview = (data) => {
 
   let previewForm = document.createElement('form');
   previewForm.setAttribute('method', 'post');
-  previewForm.setAttribute('target', 'preview')
+  previewForm.setAttribute('target', 'preview');
   previewForm.setAttribute('action', `widgets/${data.widget.id}/preview`);
 
   let input = document.createElement('input');

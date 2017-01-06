@@ -1,18 +1,18 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../reducers/dashboards';
-import { getWidgetsByDashboardId } from './../reducers/widgets';
+import {getDashboardById} from './../../reducers/dashboards';
+import {getWidgetsByDashboardId} from './../../reducers/widgets';
 import {
   getDatagroupsets,
   getDatagroupsetSlices,
   filterDatagroupsetByHeroWidget,
   filterDatagroupsetsByBtlWidgets,
-} from './../reducers';
+} from './../../reducers';
 
-import * as uiAppActions from './../actions/uiApp';
+import * as uiAppActions from './../../actions/uiApp';
 
-import PageDashboardWidgets from './../components/pages/dashboardWidgets';
+import PageDashboardWidgets from './../../components/pages/dashboardWidgets';
 
 
 const mapStateToProps = (state, ownProps) => {

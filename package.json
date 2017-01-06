@@ -162,7 +162,6 @@
       "<rootDir>/client/src/editor/scripts/__tests__/fixtures"
     ],
     "testURL": "http://localhost",
-
     "coverageDirectory": "client/coverage",
     "collectCoverageFrom": [
       "client/src/**/*.js",

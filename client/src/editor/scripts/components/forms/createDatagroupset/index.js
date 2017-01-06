@@ -14,7 +14,7 @@ import {
   cancel,
   validate,
   preview
-} from './behaviour';
+} from './behaviouralMethods';
 
 import DatagroupsetInput from './../../fields/datagroupsetInput';
 import InputHidden from './../../reduxFormFields/inputHidden';
@@ -22,6 +22,10 @@ import InputHidden from './../../reduxFormFields/inputHidden';
 import {getHumanisedUnits} from './../../../helpers/dataset';
 
 
+/**
+ * Container which renders the Create Datagroupset Form
+ * @returns {jsx}
+ */
 let CreateDatagroupsetForm = ({
   canSubmit,
   formModel,
@@ -75,34 +79,32 @@ const renderFields = ({
 }) => {
   return (
     <div>
-      {fields.map((member, idx) => {
-        return (
-          <fieldset key={idx}>
+      {fields.map((member, idx) => (
+        <fieldset key={idx}>
 
-            <Field name={`${member}.dataset.id`}
-                   component={InputHidden}
-                   props={{}} />
+          <Field name={`${member}.dataset.id`}
+                 component={InputHidden}
+                 props={{}} />
 
-            <Field name={`${member}.value`}
-                   component={DatagroupsetInput}
-                   props={{
-                     label: models[idx].dataset.label,
-                     elementProps: {
-                       disabled:!canSubmit
-                     },
-                     optionProps: {
-                       suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)
-                     }
-                   }} />
-          </fieldset>
-        )
-      })}
+          <Field name={`${member}.value`}
+                 component={DatagroupsetInput}
+                 props={{
+                   label: models[idx].dataset.label,
+                   elementProps: {
+                     disabled:!canSubmit
+                   },
+                   optionProps: {
+                     suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)
+                   }
+                 }} />
+        </fieldset>
+      ))}
     </div>
   )
 };
 
 CreateDatagroupsetForm = reduxForm({
-  form: 'CreateDatagroupsetForm',
+  form: 'CreateDatagroupset',
   validate,
   deepEqual: true,
   destroyOnUnmount: false
