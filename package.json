@@ -136,7 +136,7 @@
     "build": "NODE_ENV=production webpack -p --release",
     "start": "node client/scripts/start.js",
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
-    "test:react": "jest --verbose",
+    "test:react": "NODE_ENV=test jest --verbose --env=jsdom",
     "test:react:watch": "npm run test:react -- --watch",
     "test:react:coverage": "npm run test:react -- --coverage",
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
@@ -151,13 +151,6 @@
     "node": "6.7.0"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.spec.js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/node_modules",
-      "<rootDir>/coverage"
-    ],
     "setupFiles": [
       "<rootDir>/client/config/polyfills.js"
     ],
@@ -166,10 +159,32 @@
     ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
     "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]",
       "<rootDir>/client/src/editor/scripts/__tests__/fixtures"
     ],
     "testURL": "http://localhost",
+
+    "coverageDirectory": "client/coverage",
+    "collectCoverageFrom": [
+      "client/src/**/*.js",
+      "!**/node_modules/**"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "client/src/editor/scripts/__tests__",
+      "client/src/test",
+      "client/src/dashboard",
+      "client/src/login",
+      "client/src/app_shell",
+      "client/src/_common",
+      "client/src/_shared",
+      "client/src/_storybook"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/FileStub.js",
+      "^.+\\.css$": "<rootDir>/config/jest/CSSStub.js"
+    },
     "globals": {
       "__DEV__": true
     }
