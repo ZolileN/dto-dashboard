@@ -41,6 +41,6 @@ class Dashboard < ApplicationRecord
   end
 
   def last_updated_at
-    widgets.last_updated.last_updated_at
+    widgets.last_updated&.last_updated_at
   end
 end

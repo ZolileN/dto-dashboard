@@ -8,7 +8,7 @@
   "widgets":  [
     {
       "id":   "kpis",
-      "updated_at": "2016-10-28T01:01:01.111Z",
+      "updated_at": "2016-12-28T01:01:01.111Z",
       "name": "Kpis",
       "type": "full",
       "size": "extra-large",
@@ -18,7 +18,7 @@
     },
     {
       "id":   "user-satisfaction",
-      "updated_at": "2016-10-28T01:01:01.111Z",
+      "updated_at": "2016-12-28T01:01:01.111Z",
       "name": "User satisfaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -28,7 +28,7 @@
     },
     {
       "id":   "cost-per-transaction",
-      "updated_at": "2016-10-28T01:01:01.111Z",
+      "updated_at": "2016-12-28T01:01:01.111Z",
       "name": "Cost per transaction",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -37,7 +37,7 @@
     },
     {
       "id":   "digital-take-up",
-      "updated_at": "2016-10-28T01:01:01.111Z",
+      "updated_at": "2016-12-28T01:01:01.111Z",
       "name": "Digital take-up",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -46,7 +46,7 @@
     },
     {
       "id":   "completion-rate",
-      "updated_at": "2016-10-28T01:01:01.111Z",
+      "updated_at": "2016-12-28T01:01:01.111Z",
       "name": "Completion rate",
       "type": "kpi-sparkline",
       "size": "extra-small",
@@ -56,7 +56,7 @@
     },
     {
       "id":   "new-accounts",
-      "updated_at": "2016-10-28T01:01:01.111Z",
+      "updated_at": "2016-12-28T01:01:01.111Z",
       "name": "New Accounts",
       "type": "bar",
       "size": "large",
@@ -67,7 +67,7 @@
     },
     {
       "id":   "total-accounts",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Total Accounts",
       "type": "sparkline",
       "size": "small",
@@ -95,7 +95,7 @@
     },
     {
       "id":   "member-service-adoption",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Member Service Adoption",
       "type": "line",
       "size": "large",
@@ -106,7 +106,7 @@
     },
     {
       "id":   "sign-ins-per-account",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Sign-ins per myGov Account",
       "type": "line",
       "size": "medium",
@@ -116,7 +116,7 @@
     },
     {
       "id":   "navigations-per-signin",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Visits To Member Services",
       "type": "line",
       "size": "medium",
@@ -126,7 +126,7 @@
     },
     {
       "id":   "device-usage",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Device Usage",
       "type": "line",
       "size": "medium",
@@ -136,7 +136,7 @@
     },
     {
       "id":   "browser-types",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Browser types",
       "type": "bar",
       "stacked": "percentage",
@@ -148,7 +148,7 @@
     },
     {
       "id":   "linked-member-services",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Linked Member Services",
       "type": "bar",
       "size": "medium",
@@ -160,7 +160,7 @@
     },
     {
       "id":   "member-service-activity",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Member Services Activity",
       "type": "bar",
       "size": "medium",
@@ -172,7 +172,7 @@
     },
     {
       "id":   "traffic-source",
-      "updated_at":  "2016-10-28T01:01:01.111Z",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
       "name": "Traffic source",
       "type": "bar",
       "size": "large",
