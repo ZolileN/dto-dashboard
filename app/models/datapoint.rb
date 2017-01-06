@@ -23,7 +23,7 @@ class Datapoint < ApplicationRecord
       case dataset.period
       when 'month'
         if dataset.datapoints.of_month(ts.month).of_year(ts.year).count > 0
-          errors.add :ts, 'Too frequent: this month already has a datapoint'
+          errors.add :base, 'This month already has a datapoint'
         end
       end
     end
