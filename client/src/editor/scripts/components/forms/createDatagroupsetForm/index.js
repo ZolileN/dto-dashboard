@@ -17,7 +17,7 @@ import {
 } from './behaviour';
 
 import DatagroupsetInput from './../../fields/datagroupsetInput';
-import InputHidden from './../../fields/inputHidden';
+import InputHidden from './../../reduxFormFields/inputHidden';
 
 import {getHumanisedUnits} from './../../../helpers/dataset';
 
@@ -28,7 +28,7 @@ let CreateDatagroupsetForm = ({
   ...rfProps
 }) => {
 
-  const { handleSubmit, pristine, valid, submitting, error } = rfProps;
+  const { handleSubmit, submitting, error } = rfProps;
 
   return (
     <form noValidate onSubmit={e => e.preventDefault()}>
@@ -42,8 +42,8 @@ let CreateDatagroupsetForm = ({
       <hr />
 
       <div className="form-preview">
-        <button className="UIK-button btn btn-secondary"
-                onClick={preview.bind(this, formModel)} style={{marginBottom: '1em'}}>Click to preview before publishing</button>
+        <button className="UIK-button btn btn-secondary mb-1"
+                onClick={preview.bind(this, formModel)}>Click to preview before publishing</button>
 
         <iframe id="preview" name="preview" style={{height: '500px', width: '100%'}}></iframe>
       </div>
@@ -61,7 +61,7 @@ let CreateDatagroupsetForm = ({
                 onClick={submitting ? () => {} : cancel.bind({}, rfProps)}>Cancel</button>
       </div>
 
-      <div className="form__help-block">
+      <div className="form__help-block mt-1">
         {error && <strong>{error}</strong>}
       </div>
 
@@ -70,24 +70,29 @@ let CreateDatagroupsetForm = ({
 };
 
 const renderFields = ({
-  fields, models, canSubmit, disabled, formModel, meta: {error}
+  fields, models,
+  canSubmit, disabled, formModel, meta: {error}
 }) => {
   return (
     <div>
       {fields.map((member, idx) => {
         return (
           <fieldset key={idx}>
-            <Field id={`${member}.dataset.id`}
-                   name={`${member}.dataset.id`}
-                   component={InputHidden} />
+            <Field name={`${member}.dataset.id`}
+                   component={InputHidden}
+                   props={{}} />
 
-            <Field id={`${member}.value`}
-                   name={`${member}.value`}
-                   label={models[idx].dataset.label}
+            <Field name={`${member}.value`}
                    component={DatagroupsetInput}
-                   elementProps={{disabled}}
-                   optionProps={{canSubmit, suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)}} />
-
+                   props={{
+                     label: models[idx].dataset.label,
+                     elementProps: {
+                       disabled:!canSubmit
+                     },
+                     optionProps: {
+                       suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)
+                     }
+                   }} />
           </fieldset>
         )
       })}

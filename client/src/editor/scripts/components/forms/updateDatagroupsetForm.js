@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import DatagroupsetInput from './../fields/datagroupsetInput';
-import InputHidden from './../fields/inputHidden';
+import InputHidden from './../reduxFormFields/inputHidden';
 import { getHumanisedUnits } from './../../helpers/dataset';
 
 

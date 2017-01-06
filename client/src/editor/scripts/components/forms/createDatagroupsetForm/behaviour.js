@@ -44,7 +44,7 @@ export const submit = (values, dispatch, props) => {
       })
       .catch((e) => {
         console.error(e);
-        reject(new SubmissionError({_error: e && e.message || 'Submit failed'}));
+        reject(new SubmissionError({_error: String(e) ? e : e.message ? e.message : 'Submit failed'}));
       });
   });
 };

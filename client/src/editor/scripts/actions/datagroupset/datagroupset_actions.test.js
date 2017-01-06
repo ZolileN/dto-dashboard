@@ -26,7 +26,7 @@ describe('(Actions) Datagroupset', () => {
 
   let basicFormData = [{value: "222", ts: "2016-11-01T00:00:00.000Z", dataset_id: 20}];
   let basic200 = {"id":1019,"dataset_id":20,"ts":"2016-11-01T00:00:00.000Z","value":"222.0","created_at":"2017-01-04T21:53:58.024Z","updated_at":"2017-01-04T21:53:58.024Z"};
-  let basic400 = {"code":"some code here","message":"some message here"};
+  let basic400 = {"code":"RecordInvalid","message":"Validation failed: Ts Too frequent: this month already has a datapoint"};
 
   beforeEach(() => store = mockStore({
     currentUser: {
