@@ -78,6 +78,7 @@ const renderFields = ({
       {fields.map((member, idx) => {
         return (
           <fieldset key={idx}>
+
             <Field name={`${member}.dataset.id`}
                    component={InputHidden}
                    props={{}} />

@@ -51,32 +51,27 @@ export const submit = (values, dispatch, props) => {
 
 
 /**
- * Validate the form
+ * Validate the form and provide errors like redux-form expects
  * @param values
  * @param props
  * @return {{}} - errors - which maps to shape of values
  */
 export const validate = (values, props) => {
-
   const errors = {};
 
   errors.groups = values.groups.map((member, idx) => {
 
     if (props.formMetadata && props.formMetadata.validators) {
-
       let groupErrors = {value:''};
 
       props.formMetadata.validators.forEach(v => {  // todo - only handles single validator now
-
         if (validators[v.validator](member.value) === false) {
-
           groupErrors.value = v.message;
         }
       });
 
       return groupErrors;
     }
-
   });
 
   return errors;
