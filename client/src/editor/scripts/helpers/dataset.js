@@ -6,7 +6,11 @@ export const getHumanisedUnits = units => {
       return '';
     case '%':
     case '$':
+      return units;
     default:
+      if (process.env.NODE_ENV !== 'test') {
+        console.error('Units provided do not match those available');
+      }
       return units;
   }
 };

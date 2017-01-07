@@ -1,16 +1,14 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 
-const DatagroupsetInput = ({input, type, label, meta, elementProps, optionProps, groupModel}) => {
-  const { isOptional, infoText, canSubmit, suffix } = optionProps;
-  const { touched, error } = meta;
+const DatagroupsetInput = ({
+  input, meta,
+  // these props are merged down to props by redux-form
+  label, elementProps={}, optionProps={}, suffix, disabled=false, isOptional=false, infoText
+}) => {
 
-  // if (!input.value) {
-  //   input.placeholder = 'No data';
-  // }
-
-  // todo - removed "name" attribute because of FieldsArray, name is at input.name
-  const { name } = input;   // todo
+  const {name} = input;
+  const {touched, error} = meta;
 
   return (
     <div className="UIK-form-group form-group">
@@ -20,7 +18,7 @@ const DatagroupsetInput = ({input, type, label, meta, elementProps, optionProps,
       <div className="input-group">
         <input {...input} {...elementProps}
           type="text"
-          id={name} disabled={!canSubmit}
+          id={name} disabled={disabled}
           className={touched && error ? `form-control invalid` : `form-control`} />
         {touched && error && <span className="help-block">{error}</span>}
 
@@ -40,10 +38,10 @@ DatagroupsetInput.defaultProps = {
   }
 };
 
-DatagroupsetInput.propTypes = {
-  input: PropTypes.object.isRequired,
-  // name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
+DatagroupsetInput.PropTypes = {
+  label: PropTypes.string.isRequired,
+  elementProps: PropTypes.object,
+  optionProps: PropTypes.object
 };
 
 export default DatagroupsetInput;

@@ -6,8 +6,8 @@ import Breadcrumbs from './../../../../_shared/scripts/components/uikit-componen
 import Pagination from './../../components/widgetPagePagination';
 import { getDashboardWidgetsUrl } from './../../utils/urlHelpers';
 import { getHumanisedVeryShortDate } from './../../utils/humanisedDates';
-import CreateDatagroupsetForm from './../../components/forms/createDatagroupsetForm';
-import UpdateDatagroupsetForm from './../../components/forms/updateDatagroupsetForm';
+import CreateDatagroupsetForm from './../../components/forms/createDatagroupset';
+import UpdateDatagroupsetForm from './../../components/forms/updateDatagroupset';
 import metadatas from './../../data/widgetMetadata';
 import TrafficLight from './../../components/widgetTrafficLight';
 import {FLAG_UDPATE_DATAGROUP} from './../../constants/flags';

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 
-const Input = ({input, name, type, label, meta, fieldProps, optionProps}) => {
+const Input = ({input, type, label, meta, fieldProps, optionProps}) => {
   const { isOptional, infoText } = optionProps;
   const { touched, error } = meta;
 

@@ -24,7 +24,6 @@ export const getPrevKey = (recentKey) => {
   let recentMonth = moment(recentKey);
   let prevMonth = recentMonth.subtract(1, 'months');
   let prevKey = prevMonth.format(dateFormats.DATAGROUP_KEY_ROUTE_SEGMENT);
-
   return prevKey;
 };
 

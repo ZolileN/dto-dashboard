@@ -1,6 +1,7 @@
-import { combineReducers } from 'redux';
+
+import {combineReducers} from 'redux';
 import reduceReducers from 'reduce-reducers';
-import { routerReducer } from 'react-router-redux'
+import {routerReducer} from 'react-router-redux'
 import {uniq,isObject,without,union} from 'lodash';
 import moment from 'moment';
 
@@ -34,27 +35,17 @@ const rootReducer = reduceReducers(
       case types.UPDATE_DATAGROUPSET:
 
         const { datapoint, dataset } = payload;
-        let hasDatapoint = false;
         let hasDataset = false;
 
+        // adds the new datapoint
+        state.datapoints = [...state.datapoints, datapoint];
 
-        state.datapoints = state.datapoints.map(dp => {
-          if (dp.id === datapoint.id) {
-            hasDatapoint = true;
-            return {...dp, ...datapoint}
-          }
-          return dp;
-        });
-
-        if (hasDatapoint === false) {
-          throw 'Datapoint does not exist, unable to update.';
-        }
-
+        // update existing dataset with datapoint
         state.datasets = state.datasets.map(ds => {
           if (ds.id === dataset.id) {
             hasDataset = true;
             return {...ds, ...{
-              datapoints: union(ds.datapoints, dataset.datapoint_id)  // be sure to merge unique
+              datapoints: [...ds.datapoints, dataset.datapoint_id]  // merge the new datapoint on to ref arr
             }}
           }
           return ds;
@@ -79,8 +70,8 @@ export default rootReducer;
 
 // Selectors
 
-import { getDatasetById } from './../reducers/datasets';
-import { getDatapointsByIds } from './../reducers/datapoints';
+import {getDatasetById} from './../reducers/datasets';
+import {getDatapointsByIds} from './../reducers/datapoints';
 
 import {
   computeLabel,
@@ -88,7 +79,6 @@ import {
   getPrevKey,
   getNextKey
 } from './../helpers/datapoint';
-
 
 const headKey = getHeadKey();
 
@@ -231,7 +221,7 @@ export const getDatagroupsets = (state, widgets) => {
  * Get a datagroupset slice in time
  * @param datagroupset {Object}
  * @param key {string} (optional) - the key to slice at or none to fetch recent
- * @returns
+ * @returnsget
 
   state = {
     ...datagroupset,

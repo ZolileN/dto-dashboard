@@ -179,6 +179,12 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 yarn run test
 ```
 
+or singular like: 
+
+```
+yarn run test:react -- datapointsReducer
+```
+
 
 #### Run Style Guide? 
 
