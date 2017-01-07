@@ -172,7 +172,7 @@
       "js"
     ],
     "coveragePathIgnorePatterns": [
-      "client/src/editor/scripts/__tests__",
+      "client/src/editor/scripts/_fixtures",
       "client/src/test",
       "client/src/dashboard",
       "client/src/login",
