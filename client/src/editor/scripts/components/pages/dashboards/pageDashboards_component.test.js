@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import {mount} from 'enzyme';
 
 import initialState from './../../../store/initialState';
-import Page from './index';
+import Page from './pageDashboards_component';
 
 const mockStore = configureStore();
 

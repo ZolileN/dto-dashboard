@@ -1,17 +1,16 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 
-import { getDashboardById } from './../../reducers/dashboards';
-import { getWidgetById } from './../../reducers/widgets';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
+
+import {getDashboardById} from './../../../reducers/dashboards';
+import {getWidgetById} from './../../../reducers/widgets';
 import {
   getDatagroupset,
   getDatagroupsetSlice
-} from './../../reducers';
+} from './../../../reducers';
 
-import * as uiAppActions from './../../actions/uiApp';
-
-import DashboardWidgetDatagroupTimeSeriesPage from './../../components/pages/dashboardWidgetDatagroupTimeseries';
+import DashboardWidgetDatagroupTimeSeriesPage from './pageDashboardWidgetDatagroupTimeseries_component';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -26,8 +25,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({
-  push: bindActionCreators(push, dispatch),
-  actions: bindActionCreators(uiAppActions, dispatch)
+  push: bindActionCreators(push, dispatch)
 });
 
 export default connect(

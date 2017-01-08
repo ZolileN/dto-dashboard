@@ -1,13 +1,9 @@
 
-import Reducer from './datasets';
-import {
-  isDataset,
-  getDatasetById,
-  getDatasetsByIds
-} from './datasets';
+import Reducer from './datasetsReducer';
+export default Reducer;
+
 export {
   isDataset,
   getDatasetById,
   getDatasetsByIds
-};
-export default Reducer;
+} from './datasetsReducer';

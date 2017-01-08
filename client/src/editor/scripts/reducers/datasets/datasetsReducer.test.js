@@ -6,7 +6,7 @@ import {
   isDataset,
   getDatasetById,
   getDatasetsByIds
-} from './datasets';
+} from './datasetsReducer';
 import fixtures from './../../_fixtures/data';
 
 

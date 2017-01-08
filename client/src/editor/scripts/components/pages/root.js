@@ -4,13 +4,13 @@ import { Router, Route, IndexRedirect } from 'react-router';
 
 import Layout from './layout';
 
-import Dashboards from './pageDashboards';
-import DashboardWidgets from './pageDashboardWidgets';
-import DashboardWidgetDatagroupSimple from './pageDashboardWidgetDatagroupSimple';
-import DashboardWidgetDatagroupTimeseries from './pageDashboardWidgetDatagroupTimeseries';
-// import DashboardWidgetDescriptions from './pageDashboardWidgetDescriptions';
+import Dashboards from './dashboards';
+import DashboardWidgets from './dashboardWidgets';
+import DashboardWidgetDatagroupSimple from './dashboardWidgetDatagroupSimple';
+import DashboardWidgetDatagroupTimeseries from './dashboardWidgetDatagroupTimeseries';
+// import DashboardWidgetDescriptions from './dashboardWidgetDescriptions';
 
-import NoMatch from './pageNoMatch';
+import NoMatch from './noMatch';
 
 
 export default class Root extends Component {

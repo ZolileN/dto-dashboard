@@ -1,6 +1,7 @@
-import { connect } from 'react-redux';
 
-import PageDashboards from './../../components/pages/dashboards';
+import {connect} from 'react-redux';
+
+import PageDashboards from './pageDashboards_component';
 
 
 const mapStateToProps = (state, ownProps) => ({

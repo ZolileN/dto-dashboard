@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
-import { connect } from 'react-redux';
 
-import IconLoader from './../../../_shared/scripts/components/iconLoader';
-import { scrollToY } from './../utils/scrollPosition';
-import { onNextFrame } from './../utils/DOM';
+import React, {Component} from 'react';
+import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+
+import IconLoader from './../../../../_shared/scripts/components/iconLoader';
+import {onNextFrame} from './../../utils/DOM';
+import {scrollToY} from './../../utils/scrollPosition';
 
 
 class Layout extends Component {
@@ -38,9 +38,4 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProps = ({}) => ({});
-
-export default connect(
-  mapStateToProps,
-  null
-)(Layout);
+export default Layout;

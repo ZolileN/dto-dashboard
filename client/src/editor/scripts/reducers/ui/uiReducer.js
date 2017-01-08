@@ -1,24 +1,26 @@
-import { combineReducers } from 'redux';
-import * as types from './../../actions/_types';
+
+import * as types from './../../actions/types';
 import initialState from './../../store/initialState';
 
 
-const app = (state = initialState.ui.app, {type, payload}) => {
+const ui = (state = initialState.ui, {type, payload}) => {
+
+  let nextState;
+
   switch (type) {
-    case types.UI_APP_SET_DATAGROUP_TRANSACTED:
-      return {
-        ...state,
-        didTransactionDatagroup: {
-          widgetId: payload.widgetId,
-          description: payload.description,
-          type: payload.type
-        }
+    case types.UI_SET_DATAGROUPSET_TRANSACTED:
+      nextState = {...state};
+      nextState.didTransactDatagroupset = {
+        widgetId: payload.widgetId,
+        description: payload.description,
+        type: payload.type
       };
-    case types.UI_APP_CLEAR_DATAGROUP_TRANSACTED:
-      return {
-        ...state,
-        didTransactionDatagroup: {}
-      };
+      return nextState;
+
+    case types.UI_CLEAR_DATAGROUPSET_TRANSACTED:
+      nextState = {...state};
+      nextState.didTransactDatagroupset = {};
+      return nextState;
 
     default:
       return state;
@@ -26,13 +28,4 @@ const app = (state = initialState.ui.app, {type, payload}) => {
 };
 
 
-
-const uiReducer = combineReducers({
-  app
-});
-
-
-export default uiReducer;
-
-
-// Selectors
+export default ui;

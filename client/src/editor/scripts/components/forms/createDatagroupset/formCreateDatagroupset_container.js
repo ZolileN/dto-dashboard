@@ -1,14 +1,15 @@
 
 import {reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {push} from 'react-router-redux';
 
-import Form from './createDatagroupsetForm_component';
+import Form from './formCreateDatagroupset_component';
 import {validate} from './behaviour';
 
 import {createDatagroupset} from './../../../actions/datagroupset';
-import {setDatagroupTransacted} from './../../../actions/uiApp';
+import {setDatagroupsetTransacted} from './../../../actions/ui';
 import {getHumanisedMonth} from './../../../utils/humanisedDates';
+import {getDashboardWidgetsUrl} from './../../../utils/urlHelpers';
 
 
 let Container = reduxForm({
@@ -20,7 +21,7 @@ let Container = reduxForm({
 
 const mapStateToProps = (state, ownProps) => ({
   enableReinitialize: true,
-  initialValues: ownProps.formModel
+  initialValues: ownProps.formModel,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -40,18 +41,25 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
    * @param cb
    * @returns {Promise}
    */
-  onSaveSuccess: (response, formModel, cb) => {
+  onSaveSuccess: (response, props) => {
     console.log('Now running onSaveSuccess');
-    return dispatch(setDatagroupTransacted({
+    const {formModel} = props;
+
+    props.reset();
+
+    dispatch(setDatagroupsetTransacted({
       widgetId: formModel.widget.id,
-      description: `Published data for: ${getHumanisedMonth(response[0].ts)} -
-              ${response.map((el, idx) => {
+      description: `Published data for: ${getHumanisedMonth(response[0].ts)} - ${response.map((el, idx) => {
         return ` ${formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
       })}`,
       type: 'created'
-    })).then(() => {
-      cb();
-    });
+    }));
+
+    console.log('Now running onSaveSuccess thennable');
+    dispatch(push(getDashboardWidgetsUrl(ownProps.dashboard_id)));
+  },
+  onCancelSuccess: (props) => {
+    push(getDashboardWidgetsUrl(ownProps.dashboard_id));
   }
 });
 

@@ -2,7 +2,7 @@
 
 import expect from 'expect';
 
-import {isDashboard,getDashboardById} from './dashboards';
+import {isDashboard, getDashboardById} from './dashboardsReducer';
 import fixtures from './../../_fixtures/data';
 
 

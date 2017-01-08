@@ -1,4 +1,9 @@
 
-import Reducer, {isDashboard,getDashboardById} from './dashboards';
-export {isDashboard,getDashboardById};
+import Reducer from './dashboardsReducer';
 export default Reducer;
+
+export {
+  isDashboard,
+  getDashboardById
+} from './dashboardsReducer';
+

@@ -185,6 +185,12 @@ or singular like:
 yarn run test:react -- datapointsReducer
 ```
 
+set a debugger in test 
+
+```
+NODE_ENV=test node --debug-brk --inspect ./node_modules/.bin/jest -i --runInBand --verbose --env=jsdom --watch
+```
+
 
 #### Run Style Guide? 
 

@@ -1,9 +1,7 @@
 export default {
   routing: {},
   ui: {
-    app: {
-      didTransactionDatagroup: {}
-    }
+    didTransactDatagroupset: {}
   },
   form: {},
   // __STATE__

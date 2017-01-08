@@ -1,13 +1,10 @@
 
-import Reducer from './datapoints';
-import {
-  isDatapoint,
-  getDatapointById,
-  getDatapointsByIds
-} from './datapoints';
+import Reducer from './datapointsReducer';
+export default Reducer;
+
 export {
   isDatapoint,
   getDatapointById,
   getDatapointsByIds
-};
-export default Reducer;
+} from './datapointsReducer';
+

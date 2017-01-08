@@ -7,13 +7,13 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme';
 
-import initialState from './../../store/initialState';
-import Container from './index';
+import initialState from './../../../store/initialState';
+import Container from './pageDashboardWidgets_container';
 
 const mockStore = configureStore();
 
 
-describe('(Component) Dashboard Widgets Page', () => {
+describe('(Container) Dashboard Widgets Page', () => {
 
   it('should render as a normal component without exploding', () => {
     // create a *shallow* render of the page
@@ -29,7 +29,6 @@ describe('(Component) Dashboard Widgets Page', () => {
         {id:1}
       ]
     };
-
     const mockedOwnProps = {
       params: {
         dashboard_id:1,

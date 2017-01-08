@@ -1,12 +1,13 @@
+import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../../reducers/dashboards';
-import { getWidgetById } from './../../reducers/widgets';
+import { getDashboardById } from './../../../reducers/dashboards';
+import { getWidgetById } from './../../../reducers/widgets';
 
-import * as uiAppActions from './../../actions/uiApp';
+import * as uiActions from './../../../actions/ui';
 
-import DashboardWidgetDatagroupSimplePage from './../../components/pages/dashboardWidgetDatagroupSimple';
+import DashboardWidgetDescriptionsPage from './pageDashboardWidgetDescriptions_component';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -24,4 +25,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardWidgetDatagroupSimplePage);
+)(DashboardWidgetDescriptionsPage);

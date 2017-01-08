@@ -2,10 +2,10 @@
 import {combineReducers} from 'redux';
 import reduceReducers from 'reduce-reducers';
 import {routerReducer} from 'react-router-redux'
-import {uniq,isObject,without,union} from 'lodash';
+import {uniq,isObject,without} from 'lodash';
 import moment from 'moment';
 
-import * as types from './../actions/_types';
+import * as types from './../actions/types';
 
 // import requests from './requests';
 import ui from './ui';
@@ -84,7 +84,7 @@ const headKey = getHeadKey();
 
 
 /*
- dataset = {
+ datagroupset = {
  type: null,
  widget: null,
  hasHead: null,
@@ -108,6 +108,12 @@ const headKey = getHeadKey();
  };
  */
 
+/**
+ * @param state {Object} complete state tree
+ * @param widget {Object}
+ * @returns {Object<{type: null, widget: *, groups: Array, hasHead: boolean, headKey, _recentDatpointIdxArr: Array, hasRecent: null, recentKey: null}>} the complete datagroupset **this will get really big with time**
+ * todo - @joshm @elisechant we need to optimise this so the computation and storage is not so HUGE
+ */
 export const getDatagroupset = (state, widget) => {
 
   let groupState = { // reminder: don't use by direct assignment
@@ -210,6 +216,13 @@ export const getDatagroupset = (state, widget) => {
 
 };
 
+/**
+ *
+ * @param state {Object} complete state tree
+ * @param widgets {Array<Object>}
+ * @returns {Array} **complete** datagroupsets
+ * todo - @joshm @elisechant we need to optimise this so the computation and storage is not so HUGE
+ */
 export const getDatagroupsets = (state, widgets) => {
   return widgets.map(widget => {
     return getDatagroupset(state, widget);
@@ -220,8 +233,8 @@ export const getDatagroupsets = (state, widgets) => {
 /**
  * Get a datagroupset slice in time
  * @param datagroupset {Object}
- * @param key {string} (optional) - the key to slice at or none to fetch recent
- * @returnsget
+ * @param key {String} (optional) - the key to slice at or none to fetch recent
+ * @returns
 
   state = {
     ...datagroupset,
@@ -239,7 +252,6 @@ export const getDatagroupsets = (state, widgets) => {
 
  *
  */
-
 export const getDatagroupsetSlice = (datagroupset, key = null) => {
 
   let state = {

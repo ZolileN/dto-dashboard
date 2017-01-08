@@ -4,19 +4,19 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../../reducers/dashboards';
-import { getWidgetsByDashboardId } from './../../reducers/widgets';
+import { getDashboardById } from './../../../reducers/dashboards';
+import { getWidgetsByDashboardId } from './../../../reducers/widgets';
 import {
   getDatagroupsets,
   getDatagroupsetSlices,
   filterDatagroupsetByHeroWidget,
   filterDatagroupsetsByBtlWidgets,
-} from './../../reducers/index';
+} from './../../../reducers/index';
 
-import * as uiAppActions from './../../actions/uiApp';
-import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
-import WidgetTypeSimple from './../../components/widgetTypeSimple';
-import WidgetTypeTimeSeries from './../../components/widgetTypeTimeSeries';
+import * as uiActions from './../../../actions/ui';
+import Breadcrumbs from './../../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import WidgetTypeSimple from './../../widgetTypeSimple';
+import WidgetTypeTimeSeries from './../../widgetTypeTimeSeries';
 
 import {
   getDashboardUrl,
@@ -25,38 +25,12 @@ import {
   getDashboardWidgetDescriptionsUrl,
   getServiceDashboardUrl,
   getServiceDashboardUrlAnchor
-} from './../../utils/urlHelpers';
+} from './../../../utils/urlHelpers';
 import {
   getElementY,
   scrollToY
-} from './../../utils/scrollPosition';
-import { onNextFrame } from './../../utils/DOM';
-
-
-const mapStateToProps = (state, ownProps) => {
-  let dashboard = getDashboardById(state.dashboards, ownProps.params.dashboard_id);
-  let widgets = getWidgetsByDashboardId(state.widgets, dashboard.id);
-  let datagroupsets = getDatagroupsets(state, widgets);
-  let datagroupsetSlices = getDatagroupsetSlices(datagroupsets, ownProps.params.datagroup_key);
-
-  let heroDatagroupsetSlice = dashboard.display_hero ?
-    filterDatagroupsetByHeroWidget(datagroupsetSlices) :
-    null;
-
-  let btlDatagroupsetsSlices = filterDatagroupsetsByBtlWidgets(datagroupsetSlices);
-
-  return {
-    uiApp: state.ui.app,
-    // ui: ownProps.ui.pageDashboardWidgets
-    dashboard,
-    heroDatagroupsetSlice,
-    btlDatagroupsetsSlices,
-    ui: state.ui.pageDashboardWidgets
-  }
-};
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiAppActions, dispatch)
-});
+} from './../../../utils/scrollPosition';
+import { onNextFrame } from './../../../utils/DOM';
 
 
 class PageDashboardWidgets extends Component {
@@ -65,14 +39,14 @@ class PageDashboardWidgets extends Component {
     // this.scrollToWidget("13"); // "Device Usage"
     // this.scrollToWidget("14"); // "Browser"
 
-    if (this.props.uiApp.didTransactionDatagroup.widgetId) {
-      this.scrollToWidget(this.props.uiApp.didTransactionDatagroup.widgetId);
+    if (this.props.ui.didTransactDatagroupset.widgetId) {
+      this.scrollToWidget(this.props.ui.didTransactDatagroupset.widgetId);
     }
   }
 
   componentWillUnmount() {
-    if (this.props.uiApp.didTransactionDatagroup.widgetId) {
-      this.props.actions.clearDatagroupTransacted();
+    if (this.props.ui.didTransactDatagroupset.widgetId) {
+      this.props.actions.clearDatagroupsetTransacted();
     }
   }
 
@@ -89,7 +63,7 @@ class PageDashboardWidgets extends Component {
 
   render() {
     let {
-      uiApp,
+      ui,
       dashboard,
       heroDatagroupsetSlice,
       btlDatagroupsetsSlices
@@ -140,7 +114,7 @@ class PageDashboardWidgets extends Component {
                       serviceDashboardUrl={getServiceDashboardUrl(dashboard.id, dashboard.name)}
                       editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
                       dashboard={dashboard}
-                      alertProps={uiApp.didTransactionDatagroup.widgetId === heroDatagroupsetSlice.widget.id ? uiApp.didTransactionDatagroup : null}
+                      alertProps={ui.didTransactDatagroupset.widgetId === heroDatagroupsetSlice.widget.id ? ui.didTransactDatagroupset : null}
                     />
                   </div>}
 
@@ -152,7 +126,7 @@ class PageDashboardWidgets extends Component {
                           <WidgetTypeSimple editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, slice.widget.id)}
                             widget={slice.widget}
                             dashboard={dashboard}
-                            alertProps={uiApp.didTransactionDatagroup.widgetId === slice.widget.id ? uiApp.didTransactionDatagroup : null}
+                            alertProps={ui.didTransactDatagroupset.widgetId === slice.widget.id ? ui.didTransactDatagroupset : null}
                           />
                         </div>
                       )
@@ -166,7 +140,7 @@ class PageDashboardWidgets extends Component {
                             editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
                             serviceDashboardUrl={getServiceDashboardUrlAnchor(dashboard.id, dashboard.name, slice.widget.name)}
                             dashboard={dashboard}
-                            alertProps={uiApp.didTransactionDatagroup.widgetId === slice.widget.id ? uiApp.didTransactionDatagroup : null}
+                            alertProps={ui.didTransactDatagroupset.widgetId === slice.widget.id ? ui.didTransactDatagroupset : null}
                            />
                         </div>
                       )
@@ -195,8 +169,5 @@ class PageDashboardWidgets extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PageDashboardWidgets);
+export default PageDashboardWidgets;
 

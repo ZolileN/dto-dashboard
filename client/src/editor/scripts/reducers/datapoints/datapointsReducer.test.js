@@ -6,7 +6,7 @@ import {
   isDatapoint,
   getDatapointById,
   getDatapointsByIds
-} from './datapoints';
+} from './datapointsReducer';
 import fixtures from './../../_fixtures/data';
 
 

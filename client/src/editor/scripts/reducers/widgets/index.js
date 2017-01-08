@@ -1,13 +1,9 @@
 
-import Reducer from './widgets';
-import {
-  isWidget,
-  getWidgetById,
-  getWidgetsByDashboardId
-} from './widgets';
+import Reducer from './widgetsReducer';
+export default Reducer;
+
 export {
   isWidget,
   getWidgetById,
   getWidgetsByDashboardId
-} from './widgets';
-export default Reducer;
+} from './widgetsReducer';

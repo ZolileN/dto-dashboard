@@ -7,7 +7,7 @@ import {
   isWidget,
   getWidgetById,
   getWidgetsByDashboardId
-} from './widgets';
+} from './widgetsReducer';
 import fixtures from './../../_fixtures/data';
 
 

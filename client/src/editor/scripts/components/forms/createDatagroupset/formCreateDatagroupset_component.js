@@ -1,3 +1,4 @@
+
 import React, {PropTypes} from 'react';
 import {
   Field,
@@ -40,7 +41,7 @@ const normalizeValues = (values, props) => {
 const mySubmit = (values, dispatch, props) => {
   let payload = normalizeValues(values, props);
   return props.onSave(payload).then(response => {
-    props.onSaveSuccess(response, props.formModel, props.reset);
+    props.onSaveSuccess(response, props);
     return response;
   }).catch(error => {
     // throw new SubmissionError(error);
@@ -48,11 +49,9 @@ const mySubmit = (values, dispatch, props) => {
   });
 };
 
-const cancel = (props, cb = null) => {
+const cancel = (props) => {
   props.reset();
-  if (cb) {
-    cb();
-  }
+  props.onCancelSuccess(props);
 };
 
 const renderFields = ({
@@ -139,6 +138,8 @@ CreateDatagroupsetForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   formModel: PropTypes.object.isRequired,
   formMeta: PropTypes.object,
+  onSubmitSuccess: PropTypes.func,
+  onCancelSuccess: PropTypes.func,
   // redux-form props, but still check this way we know if the form
   // is configured correctly and therefore behaving correctly
   handleSubmit: PropTypes.func.isRequired,

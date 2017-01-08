@@ -6,8 +6,8 @@ import {shallow} from 'enzyme'
 import sinon from 'sinon'
 
 import {SubmissionError} from 'redux-form'
-import CreateDatagroupsetContainer from './createDatagroupsetForm_container';
-import CreateDatagroupsetForm from './createDatagroupsetForm_component';
+import CreateDatagroupsetContainer from './formCreateDatagroupset_container';
+import CreateDatagroupsetForm from './formCreateDatagroupset_component';
 
 
 describe('(Form) Create Datagroupset Form - Container', () => {
