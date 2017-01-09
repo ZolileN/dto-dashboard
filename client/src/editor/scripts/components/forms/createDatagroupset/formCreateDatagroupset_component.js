@@ -45,7 +45,6 @@ const mySubmit = (values, dispatch, props) => {
     props.reset();
     return response;
   }).catch(error => {
-    // throw new SubmissionError(error);
     throw new SubmissionError(String(error) ? error : error.message ? error.message : 'Submit failed')
   });
 };

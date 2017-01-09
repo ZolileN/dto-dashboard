@@ -14,11 +14,11 @@ export const required = value => {
 };
 
 export const emptyOrNumeric = value => {
-  return typeof value === 'undefined' || Boolean(Number(value) && Number(value) >= 0);
+  return typeof value === 'undefined' || (Boolean(Number(value) && Number(value) >= 0));
 };
 
 export const emptyOrSeconds = value => {
-  return typeof value === 'undefined' || isNumber(value) && value >= 0;
+  return typeof value === 'undefined' || (isNumber(value) && value >= 0);
 };
 
 export const emptyOrPercentile = value => {

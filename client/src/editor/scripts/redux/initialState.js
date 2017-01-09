@@ -2,9 +2,7 @@ export default {
   routing: {},
   ui: {
     lastViewedWidget: null,
-    lastDatagroupsetTransaction: null,
-
-    didTransactDatagroupset: {}
+    lastDatagroupsetTransaction: null
   },
   form: {},
   // __STATE__

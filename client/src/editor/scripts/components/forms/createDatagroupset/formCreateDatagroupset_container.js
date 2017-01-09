@@ -7,7 +7,7 @@ import Form from './formCreateDatagroupset_component';
 import {validate} from './behaviour';
 
 import {createDatagroupset} from './../../../redux/datagroupset/datagroupsetActions';
-import {setDatagroupsetTransacted} from './../../../redux/ui/uiActions';
+import {setLastDatagroupsetTransaction} from './../../../redux/ui/uiActions';
 import {getHumanisedMonth} from './../../../utils/humanisedDates';
 import {getDashboardWidgetsUrl} from './../../../utils/urlHelpers';
 
@@ -41,15 +41,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
    * @returns {Promise}
    */
   onSaveSuccess: (response, props) => {
-    console.log('Now running onSaveSuccess');
     const {formModel} = props;
 
-    dispatch(setDatagroupsetTransacted({
+    dispatch(setLastDatagroupsetTransaction({
       widgetId: formModel.widget.id,
       description: `Published data for: ${getHumanisedMonth(response[0].ts)} - ${response.map((el, idx) => {
         return ` ${formModel.groups[idx].dataset.label} ${el.value === null ? "No data" : el.value}`
       })}`,
-      type: 'created'
+      type: 'create'
     }));
 
     dispatch(push(getDashboardWidgetsUrl(ownProps.dashboard_id)));

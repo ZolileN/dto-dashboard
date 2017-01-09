@@ -1,8 +1,8 @@
+
 import { FLAG_UDPATE_DATAGROUP } from './../constants/flags';
 
-
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, {PropTypes} from 'react';
+import {Link} from 'react-router';
 
 import Preview from './datagroupPreview';
 import TrafficLight from './../components/widgetTrafficLight';
@@ -15,11 +15,11 @@ const WidgetTypeTimeSeries = ({
   addUrl,
   serviceDashboardUrl,
   editDescriptionsUrl,
-  alertProps
+  alertProps,
+  setLastViewedWidget
 }) => {
 
   const canUpdate = FLAG_UDPATE_DATAGROUP;
-
 
   const hasNoDatapoints = recentDatagroupset.groups.every(g => {
     return !recentDatagroupset.groups[0].dataset.datapoints.length;
@@ -30,18 +30,27 @@ const WidgetTypeTimeSeries = ({
       <article className="widget-list__item">
         <div className="row">
           <div className="col-xs-12">
-            <UikitAlert type="info" text="Datasets for this widget have not been set up. Please contact the Dashboard Team to set up your first datapoints." />
+            <UikitAlert type="info" text="Datasets for this widget have not been set up. Please contact the Dashboard Team to set up your first dataset." />
           </div>
         </div>
       </article>
     )
   }
 
+  const handleClickAdd = (e) => {
+    if (recentDatagroupset.hasHead) {
+      e.preventDefault();
+    } else {
+      setLastViewedWidget({widgetId:recentDatagroupset.widget.id});
+    }
+  };
 
   return (
     <article className="widget-list__item">
 
-      {alertProps && <UikitAlert type={alertProps.type === 'created' || alertProps.type === 'updated' ? 'success' : 'error'} text={alertProps.description} className="animated fadeIn" />}
+      {alertProps && <UikitAlert type={alertProps.type === 'create' || alertProps.type === 'update' ? 'success' : 'info'}
+                                 text={alertProps.description}
+                                 className="animated fadeIn" />}
 
       <header>
         <div className="title">
@@ -59,7 +68,7 @@ const WidgetTypeTimeSeries = ({
         <div className="col-xs-12 col-lg-6 ctas">
           <Link to={addUrl} className="UIK-button btn btn-primary"
                 disabled={recentDatagroupset.hasHead}
-                onClick={e => {if (recentDatagroupset.hasHead) return e.preventDefault()}}>Add new data</Link><br/>
+                onClick={handleClickAdd}>Add new data</Link><br/>
           <Link to={editUrl}
                 className="UIK-link"
                 disabled={!canUpdate}
@@ -78,7 +87,19 @@ const WidgetTypeTimeSeries = ({
 
 WidgetTypeTimeSeries.propTypes = {
   recentDatagroupset: PropTypes.object.isRequired,
-  editUrl: PropTypes.string.isRequired
+  editUrl: PropTypes.string.isRequired,
+  addUrl: PropTypes.string.isRequired,
+  serviceDashboardUrl: PropTypes.string.isRequired,
+  editDescriptionsUrl: PropTypes.string.isRequired,
+  alertProps: PropTypes.shape({
+    widgetId: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
+    description: PropTypes.string.isRequired,
+    type: PropTypes.string
+  }),
+  setLastViewedWidget: PropTypes.func.isRequired
 };
 
 export default WidgetTypeTimeSeries;

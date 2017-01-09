@@ -16,46 +16,62 @@ describe('(Reducers) UI - uiReducer', () => {
     expect(output).toEqual({});
   });
 
-  describe('UI_SET_DATAGROUPSET_TRANSACTED', () => {
-    it('should handle expected', () => {
+  describe('UI_SET_LASTVIEWEDWIDGET', () => {
+    it('should correctly update a widgetId that is a Number', () => {
       const action = {
-        type: types.UI_SET_DATAGROUPSET_TRANSACTED,
+        type: types.UI_SET_LASTVIEWEDWIDGET,
         payload: {
-          widgetId: 1,
-          description: 'this description',
-          type: 'this type'
+          widgetId:100
         }
       };
-      const outcome = reducer(initialState, action);
-      expect(outcome.didTransactDatagroupset).toEqual(action.payload)
+      const outcome = reducer(undefined, action);
+      expect(outcome.lastViewedWidget).toEqual(100);
+    });
+
+    it('should correctly update a widgetId that is Null', () => {
+      const action = {
+        type: types.UI_SET_LASTVIEWEDWIDGET,
+        payload: {
+          widgetId:null
+        }
+      };
+      const outcome = reducer(undefined, action);
+      expect(outcome.lastViewedWidget).toEqual(null);
+    });
+
+    it('should correctly update when empty payload is supplied', () => {
+      const action = {
+        type: types.UI_SET_LASTVIEWEDWIDGET,
+        payload: {}
+      };
+      const outcome = reducer(undefined, action);
+      expect(outcome.lastViewedWidget).toEqual(null);
     });
   });
 
-  describe('UI_CLEAR_DATAGROUPSET_TRANSACTED', () => {
-    it('should handle initial state change', () => {
+  describe('UI_SET_LASTDATAGROUPSETTRANSACTION', () => {
+    it('should correctly update all props supplied', () => {
       const action = {
-        type: types.UI_CLEAR_DATAGROUPSET_TRANSACTED
-      };
-      const outcome = reducer(initialState, action);
-      expect(outcome.didTransactDatagroupset).toEqual({})
-    });
-
-    it('should handle subsequent state changes ', () => {
-      const firstAction = {
-        type: types.UI_SET_DATAGROUPSET_TRANSACTED,
+        type: types.UI_SET_LASTDATAGROUPSETTRANSACTION,
         payload: {
-          widgetId: 1,
-          description: 'this description',
-          type: 'this type'
+          widgetId: 8,
+          description: 'cats are better than dogs',
+          type: 'create'
         }
       };
-      const firstOutcome = reducer(initialState, firstAction);
+      const outcome = reducer(undefined, action);
+      expect(outcome.lastDatagroupsetTransaction).toEqual(action.payload);
+    });
 
-      const secondAction = {
-        type: types.UI_CLEAR_DATAGROUPSET_TRANSACTED
+    it('should correctly update no props supplied', () => {
+      const action = {
+        type: types.UI_SET_LASTDATAGROUPSETTRANSACTION,
+        payload: {}
       };
-      const secondOutcome = reducer(firstOutcome, secondAction);
-      expect(secondOutcome.didTransactDatagroupset).toEqual({})
+      const outcome = reducer(undefined, action);
+      expect(outcome.lastDatagroupsetTransaction.widgetId).toBe(null);
+      expect(outcome.lastDatagroupsetTransaction.description).toBe(null);
+      expect(outcome.lastDatagroupsetTransaction.type).toBe(null);
     });
   });
 

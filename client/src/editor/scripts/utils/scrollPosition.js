@@ -1,8 +1,7 @@
 /**
  * Gets the element's y position relative to document.body
  * @param element <Element>
- * @param parentElement <Element> []
- * @returns yOffset <Number> value in pixels
+ * @returns <Number> yOffset - value in pixels
  */
 export const getElementY = element => {
   // get the position in window in the current browser screen boundary
@@ -11,7 +10,7 @@ export const getElementY = element => {
   // get the scroll offset from top of body to top of screen boundary and
   // add that to rect. Assume parent element is document.body as that is
   // the page scroll region
-  return screenY + document.body.scrollTop;
+  return Number(screenY + document.body.scrollTop);
 };
 
 /**

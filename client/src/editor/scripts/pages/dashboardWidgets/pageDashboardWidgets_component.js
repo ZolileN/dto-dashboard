@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+
+import React, {Component, PropTypes} from 'react';
 import { findDOMNode } from 'react-dom'
-import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
 import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import WidgetTypeSimple from './../../components/widgetTypeSimple';
@@ -26,23 +25,25 @@ import { onNextFrame } from './../../utils/DOM';
 class PageDashboardWidgets extends Component {
 
   componentDidMount() {
-    // this.scrollToWidget("13"); // "Device Usage"
+		// this.scrollToWidget("13"); // "Device Usage"
     // this.scrollToWidget("14"); // "Browser"
 
-    if (this.props.ui.didTransactDatagroupset.widgetId) {
-      this.scrollToWidget(this.props.ui.didTransactDatagroupset.widgetId);
+    console.log('mounted', this.props.ui.lastViewedWidget);
+
+    if (this.props.ui.lastViewedWidget) {
+      console.log('scroll SCROLL');
+      this.scrollToWidget(this.props.ui.lastViewedWidget);
     }
   }
 
   componentWillUnmount() {
-    if (this.props.ui.didTransactDatagroupset.widgetId) {
-      this.props.clearDatagroupsetTransacted();
+    if (this.props.ui.lastDatagroupsetTransaction && this.props.ui.lastDatagroupsetTransaction.widgetId) {
+      this.props.actions.setLastDatagroupsetTransaction({});
     }
   }
 
   scrollToWidget(widgetId) {
     let node = findDOMNode(this.refs[widgetId]);
-
     if (node !== 'undefined') {
       onNextFrame(() => {
         let yPos = getElementY(node);
@@ -56,7 +57,8 @@ class PageDashboardWidgets extends Component {
       ui,
       dashboard,
       heroDatagroupsetSlice,
-      btlDatagroupsetsSlices
+      btlDatagroupsetsSlices,
+      actions
     } = this.props;
 
     return (
@@ -66,16 +68,12 @@ class PageDashboardWidgets extends Component {
           <div className="container">
             <div className="row">
               <div className="col-xs-12 col-lg-8">
-
                 <Breadcrumbs paths={[
                   {path: '/', name:'Manage Dashboards'},
                   {path: getDashboardUrl(dashboard.id), name:`${dashboard.name}`}
                 ]} />
-
                 <h1 className="h3">{dashboard.name}</h1>
-
                 <p className="title-description">Edit service overview</p>
-
               </div>
             </div>
           </div>
@@ -104,7 +102,8 @@ class PageDashboardWidgets extends Component {
                       serviceDashboardUrl={getServiceDashboardUrl(dashboard.id, dashboard.name)}
                       editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, heroDatagroupsetSlice.id)}
                       dashboard={dashboard}
-                      alertProps={ui.didTransactDatagroupset.widgetId === heroDatagroupsetSlice.widget.id ? ui.didTransactDatagroupset : null}
+                      alertProps={ui.lastDatagroupsetTransaction && ui.lastDatagroupsetTransaction.widgetId === heroDatagroupsetSlice.widget.id ? ui.lastDatagroupsetTransaction : null}
+                      setLastViewedWidget={actions.setLastViewedWidget.bind(this)}
                     />
                   </div>}
 
@@ -116,7 +115,8 @@ class PageDashboardWidgets extends Component {
                           <WidgetTypeSimple editUrl={getDashboardWidgetDatagroupSimpleUrl(dashboard.id, slice.widget.id)}
                             widget={slice.widget}
                             dashboard={dashboard}
-                            alertProps={ui.didTransactDatagroupset.widgetId === slice.widget.id ? ui.didTransactDatagroupset : null}
+                            alertProps={ui.lastDatagroupsetTransaction && ui.lastDatagroupsetTransaction.widgetId === slice.widget.id ? ui.lastDatagroupsetTransaction : null}
+                            setLastViewedWidget={actions.setLastViewedWidget.bind(this)}
                           />
                         </div>
                       )
@@ -130,10 +130,13 @@ class PageDashboardWidgets extends Component {
                             editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}
                             serviceDashboardUrl={getServiceDashboardUrlAnchor(dashboard.id, dashboard.name, slice.widget.name)}
                             dashboard={dashboard}
-                            alertProps={ui.didTransactDatagroupset.widgetId === slice.widget.id ? ui.didTransactDatagroupset : null}
+                            alertProps={ui.lastDatagroupsetTransaction && ui.lastDatagroupsetTransaction.widgetId === slice.widget.id ? ui.lastDatagroupsetTransaction : null}
+                            setLastViewedWidget={actions.setLastViewedWidget.bind(this)}
                            />
                         </div>
                       )
+                    } else {
+                      return null;
                     }
                   })}
                 </section>
@@ -158,6 +161,14 @@ class PageDashboardWidgets extends Component {
     )
   }
 }
+
+PageDashboardWidgets.propTypes = {
+  ui: PropTypes.object.isRequired,
+  dashboard: PropTypes.object.isRequired,
+  heroDatagroupsetSlice: PropTypes.object,
+  btlDatagroupsetsSlices: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+};
 
 export default PageDashboardWidgets;
 

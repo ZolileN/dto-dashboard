@@ -2,22 +2,25 @@
 
 import expect from 'expect';
 
-import {setDatagroupsetTransacted, clearDatagroupsetTransacted} from './uiActions';
+import {
+  setLastViewedWidget,
+  setLastDatagroupsetTransaction
+} from './uiActions';
 
 
 describe('(Actions) UI - uiActions', () => {
 
-  describe('setDatagroupsetTransacted', () => {
-    it('should set the correct properties', () => {
-      const props = {widgetId:1, description:'elo', type:'first'};
-      expect(setDatagroupsetTransacted(props).payload).toEqual(props);
+  describe('setLastViewedWidget', () => {
+    it('should set the correct properties from a payload', () => {
+      const props = {widgetId:1};
+      expect(setLastViewedWidget(props).payload).toEqual(props);
     });
   });
 
-  describe('clearDatagroupsetTransacted', () => {
-    it('should set the correct properties', () => {
-      const props = {};
-      expect(clearDatagroupsetTransacted(props).payload).toEqual();
+  describe('setLastDatagroupsetTransaction', () => {
+    it('should set the correct properties from a payload', () => {
+      const props = {widgetId:1,description:'ca',type:'create'};
+      expect(setLastDatagroupsetTransaction(props).payload).toEqual(props);
     });
   });
 

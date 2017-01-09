@@ -19,7 +19,9 @@ const WidgetTypeSimple = ({
   return (
     <article className="widget-list__item">
 
-      {alertProps && <UikitAlert type={alertProps.type === 'created' || alertProps.type === 'updated' ? 'success' : 'error'} text={alertProps.description} />}
+      {alertProps && <UikitAlert type={alertProps.type === 'create' || alertProps.type === 'update' ? 'success' : 'info'}
+                                 text={alertProps.description}
+                                 className="animated fadeIn" />}
 
       <header>
         <div className="title">

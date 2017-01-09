@@ -1,18 +1,65 @@
+
 import React from 'react';
 import { connect } from 'react-redux'
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import DatagroupsetInput from './../fields/datagroupsetInput';
 import InputHidden from './../reduxFormFields/inputHidden';
-import { getHumanisedUnits } from './../../redux/datasets/datasetsHelper';
+import {getHumanisedUnits} from './../../redux/datasets/datasetsHelper';
 
+
+
+const renderFields = ({fields, models, canSubmit, disabled, formModel}) => {
+  return (
+    <div>
+      {fields.map((member, idx) => {
+        return (
+          <fieldset key={idx}>
+            <Field name={`${member}.dataset.id`}
+                   component={InputHidden} />
+
+            <Field name={`${member}.datapoint.value`}
+                   label={models[idx].dataset.label}
+                   component={DatagroupsetInput}
+                   elementProps={{disabled}}
+                   optionProps={{canSubmit, suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)}} />
+
+          </fieldset>
+        )
+      })}
+    </div>
+  )
+};
+
+const submit = (values, dispatch, props) => {
+  let formData = values.groups.map((g, idx) => {
+    return {
+      value: g.datapoint ? g.datapoint.value : '',
+      ts: new Date(props.formModel.sliceKey).toJSON(),
+      dataset_id: g.dataset.id
+    }
+  });
+  return new Promise((resolve, reject) => {
+    console.warn('did not actually do XHR', formData);
+    resolve();
+  });
+};
+
+const validate = () => {}; // todo
+
+const cancel = (rfProps, cb = null) => {
+  rfProps.reset();
+  if (cb) {
+    cb();
+  }
+};
 
 let UpdateDatagroupsetForm = ({
   canSubmit, formModel,
   ...rfProps
 }) => {
 
-  const { error, handleSubmit, pristine, valid, submitting } = rfProps;
+  const { error, handleSubmit, submitting } = rfProps;
 
   return (
     <form noValidate onSubmit={e => e.preventDefault()}>
@@ -41,74 +88,6 @@ let UpdateDatagroupsetForm = ({
       </div>
     </form>
   )
-};
-
-const renderFields = ({fields, models, canSubmit, disabled, formModel}) => {
-  return (
-    <div>
-      {fields.map((member, idx) => {
-        return (
-          <fieldset key={idx}>
-            <Field name={`${member}.dataset.id`}
-                   component={InputHidden} />
-
-            <Field name={`${member}.datapoint.value`}
-                   label={models[idx].dataset.label}
-                   component={DatagroupsetInput}
-                   elementProps={{disabled}}
-                   optionProps={{canSubmit, suffix:getHumanisedUnits(formModel.groups[idx].dataset.units)}} />
-
-          </fieldset>
-        )
-      })}
-    </div>
-  )
-};
-
-
-const submit = (values, dispatch, props) => {
-  let formData = values.groups.map((g, idx) => {
-    return {
-      value: g.datapoint ? g.datapoint.value : '',
-      ts: new Date(props.formModel.sliceKey).toJSON(),
-      dataset_id: g.dataset.id
-    }
-  });
-
-  return new Promise((resolve, reject) => {
-    resolve();
-    console.warn('did not actually do XHR');
-  //   dispatch(updateDatagroupset(formData))
-  //     .then(
-  //       (data) => { // promise success
-  //         if (data && data.length) {
-  //           return resolve();
-  //         }
-  //         // server error
-  //         // return reject({message: data.message || 'Server error'});
-  //         debugger
-  //         return reject({message:'Server error'});
-  //       },
-  //       (error) => { // promise failed
-  //         return reject(error);
-  //       },
-  //     ).catch((error) => {
-  //       debugger
-  //       throw new SubmissionError({_error: error.message || 'Submit failed'});
-  //     });
-  });
-};
-
-const validate = (values, props) => {   // todo - validate
-  const errors = {};
-  return errors;
-};
-
-const cancel = (rfProps, cb = null) => {
-  rfProps.reset();
-  if (cb) {
-    cb();
-  }
 };
 
 

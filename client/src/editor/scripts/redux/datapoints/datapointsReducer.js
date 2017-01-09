@@ -34,7 +34,7 @@ export const getDatapointById = (state, id) => {
   if (isArray(state) === false) {
     throw new Error('state must be of type Array');
   }
-  return state.find((d) => Number(id) == d.id);
+  return state.find((d) => Number(id) === Number(d.id));
 };
 
 

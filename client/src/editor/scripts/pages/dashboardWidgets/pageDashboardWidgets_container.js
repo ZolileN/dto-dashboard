@@ -1,5 +1,6 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 import {getDashboardById} from './../../redux/dashboards/dashboardsReducer';
 import {getWidgetsByDashboardId} from './../../redux/widgets/widgetsReducer';
@@ -10,8 +11,8 @@ import {
   filterDatagroupsetsByBtlWidgets,
 } from './../../redux/root/rootReducer';
 import {
-  setDatagroupsetTransacted,
-  clearDatagroupsetTransacted
+  setLastViewedWidget,
+  setLastDatagroupsetTransaction
 } from './../../redux/ui/uiActions';
 
 import Page from './pageDashboardWidgets_component';
@@ -36,13 +37,12 @@ const mapStateToProps = (state, ownProps) => {
     btlDatagroupsetsSlices
   }
 };
+
 const mapDispatchToProps = dispatch => ({
-  setDatagroupsetTransacted: bindActionCreators(setDatagroupsetTransacted, dispatch),
-  clearDatagroupsetTransacted: bindActionCreators(clearDatagroupsetTransacted, dispatch)
+  actions: bindActionCreators({setLastViewedWidget, setLastDatagroupsetTransaction}, dispatch)
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Page);
-

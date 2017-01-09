@@ -10,19 +10,17 @@ import * as validators from './../../../utils/validators';
 export const validate = (values, props) => {
   const errors = {};
 
-  errors.groups = values.groups.map((member, idx) => {
+  errors.groups = values.groups.map(member => {
+    let groupErrors = {};
 
     if (props.formMetadata && props.formMetadata.validators) {
-      let groupErrors = {value:''};
-
       props.formMetadata.validators.forEach(v => {  // todo - only handles single validator now
         if (validators[v.validator](member.value) === false) {
-          groupErrors.value = v.message;
+          groupErrors['value'] = v.message;
         }
       });
-
-      return groupErrors;
     }
+    return groupErrors;
   });
 
   return errors;

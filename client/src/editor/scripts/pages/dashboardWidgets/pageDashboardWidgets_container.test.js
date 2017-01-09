@@ -27,7 +27,9 @@ describe('(Container) Dashboard Widgets Page', () => {
       ...initialState,
       dashboards: [
         {id:1}
-      ]
+      ],
+      heroDatagroupsetSlice: {},
+      btlDatagroupsetsSlices: []
     };
     const mockedOwnProps = {
       params: {

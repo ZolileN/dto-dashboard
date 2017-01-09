@@ -32,14 +32,10 @@ export default function api(route, token, options={}) {
         error.response = `Unauthorised. If you think you should be authorised try logging out and then logging in again.`;
         throw error
       }
-
       if (response.status === 201) {
         return response;
       }
-
-      throw {message: response.statusText, ...response}
-
+      throw new Error({message: response.statusText, ...response})
     })
     .then(response => response.json());
-
 }

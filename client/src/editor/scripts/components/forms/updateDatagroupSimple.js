@@ -1,3 +1,4 @@
+
 import { FLAG_UDPATE_DATAGROUP } from './../../constants/flags';
 
 import React, {PropTypes} from 'react';
@@ -8,10 +9,27 @@ import Textarea from './../fields/textarea';
 import SubmitButton from './../submitButton';
 
 
-/**
- * @param props
- * @component
- */
+const submit = (values, dispatch, props) => {
+  return new Promise((resolve, reject) => {
+    console.warn('did not actually do XHR', values);
+    resolve();
+  });
+};
+
+const validate = (values, props) => {
+  const errors = {};
+  if (!values.description) {
+    errors.description = 'Required';
+  }
+  return errors;
+};
+
+const cancel = (rfProps, cb = ()=>{}) => {
+  rfProps.reset(rfProps.form);
+  cb();
+};
+
+
 let UpdateDatagroupSimpleForm = ({
   isEditing, isSubmitting, onCancelSuccess, disableUpdate,
   ...rfProps
@@ -54,47 +72,6 @@ UpdateDatagroupSimpleForm.propTypes = {
   // onSubmitSuccess: PropTypes.func.isRequired,
   // onCancelSuccess: PropTypes.func.isRequired,
   isEditing: PropTypes.bool
-};
-
-
-/**
- * @param values
- * @param dispatch
- * @returns {Promise} - this function *must* return Promise, until
- *    resolve is called, its' submitting prop will be true
- */
-const submit = (values, dispatch) => {
-  // return new Promise((resolve, reject) => {
-  //   dispatch(updateDashboard(values)).then(
-  //     (data) => { // promise success
-  //       if (data) {
-  //         return resolve();
-  //       }
-  //       // server error
-  //       return reject({message: data.message});
-  //     },
-  //     (error) => { // promise failed
-  //       return reject(error);
-  //     },
-  //   ).catch((error) => {
-  //     throw new SubmissionError({_error: error.message || 'Submit failed!'});
-  //   });
-  // });
-};
-
-const validate = (values, props) => {
-  const errors = {};
-
-  if (!values.description) {
-    errors.description = 'Required';
-  }
-
-  return errors;
-};
-
-const cancel = (rfProps, cb = ()=>{}) => {
-  rfProps.reset(rfProps.form);
-  cb();
 };
 
 

@@ -165,7 +165,8 @@
     "coverageDirectory": "client/coverage",
     "collectCoverageFrom": [
       "client/src/**/*.js",
-      "!**/node_modules/**"
+      "!**/node_modules/**",
+      "!**/*/index.js"
     ],
     "moduleFileExtensions": [
       "js"
