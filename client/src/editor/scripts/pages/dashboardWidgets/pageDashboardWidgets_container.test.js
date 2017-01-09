@@ -13,7 +13,17 @@ import Container from './pageDashboardWidgets_container';
 const mockStore = configureStore();
 
 
-describe('(Container) Dashboard Widgets Page', () => {
+describe('(Container) Dashboard Widgets Page - pageDashboardWidgets_container', () => {
+
+  const buildSubject = (mergeWithState = {}, ownProps = {}) => {
+    const ConnectedApp = () => (
+      <Provider store={mockStore({...initialState, ...mergeWithState})}>
+        <Container {...ownProps} />
+      </Provider>
+    );
+    // create a *deep* render of the Container
+    return mount(<ConnectedApp />);
+  };
 
   it('should render as a normal component without exploding', () => {
     // create a *shallow* render of the page
@@ -22,31 +32,17 @@ describe('(Container) Dashboard Widgets Page', () => {
   });
 
   it('should render as a mounted connected component without exploding', () => {
-
-    const mockedState = {
-      ...initialState,
-      dashboards: [
-        {id:1}
-      ],
-      heroDatagroupsetSlice: {},
-      btlDatagroupsetsSlices: []
-    };
-    const mockedOwnProps = {
+    const instance = buildSubject(
+      {
+        dashboards: [{id:1}]
+      },
+      {
       params: {
         dashboard_id:1,
         datagroup_key:'16-01'
       }
-    };
-
-    const ConnectedApp = () => (
-      <Provider store={mockStore(mockedState)}>
-        <Container {...mockedOwnProps} />
-      </Provider>
-    );
-
-    // create a *deep* render of the Container
-    const wrapper = mount(<ConnectedApp />);
-    expect(wrapper).toBeTruthy();
+    });
+    expect(instance.exists()).toBe(true);
   });
 
 });

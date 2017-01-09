@@ -2,19 +2,15 @@
 import expect from 'expect';
 
 import React from 'react';
-import {createRenderer} from 'react-addons-test-utils';
 import configureStore from 'redux-mock-store';
-import {Provider} from 'react-redux';
-import {mount} from 'enzyme';
-
-import initialState from './../../redux/initialState';
-import Page from './pageDashboards_component';
+import {shallow} from 'enzyme'
+import sinon from 'sinon'
 
 const mockStore = configureStore();
 
 
 describe('(Component) Dashboards Page', () => {
 
-  it.skip('todo');
+  it.skip('');
 
 });

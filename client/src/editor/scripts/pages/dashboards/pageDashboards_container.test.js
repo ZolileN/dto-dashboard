@@ -9,11 +9,23 @@ import {mount} from 'enzyme';
 
 import initialState from './../../redux/initialState';
 import Container from './pageDashboards_container';
+import {DashboardItem} from './pageDashboards_component';
+import fixtures from './../../../../test/fixtures/jbuilder-all';
 
 const mockStore = configureStore();
 
 
-describe('(Component) Dashboards Page', () => {
+describe('(Component) Dashboards Page - pageDashboards_container', () => {
+
+  const buildSubject = (mergeWithState = {}, props = {}) => {
+    const ConnectedApp = () => (
+      <Provider store={mockStore({...initialState, ...mergeWithState})}>
+        <Container {...props} />
+      </Provider>
+    );
+    // create a *deep* render of the Container
+    return mount(<ConnectedApp />);
+  };
 
   it('should render as a normal component without exploding', () => {
     // create a *shallow* render of the page
@@ -21,22 +33,17 @@ describe('(Component) Dashboards Page', () => {
     expect(wrapper).toBeTruthy();
   });
 
-  it('should render as a mounted connected component without exploding', () => {
+  it('should render as a connected component without exploding', () => {
+    const instance = buildSubject();
+    expect(instance.exists()).toBe(true);
+  });
 
-    const mockedState = {
-      ...initialState
-    };
-
-    const mockedOwnProps = {};
-
-    const ConnectedApp = () => (
-      <Provider store={mockStore(mockedState)}>
-        <Container {...mockedOwnProps} />
-      </Provider>
-    );
-    // create a *deep* render of the Container
-    const wrapper = mount(<ConnectedApp />);
-    expect(wrapper).toBeTruthy();
+  it('should render the number of dashboard items that are provided', () => {
+    const dashboards = fixtures.dashboards;
+    const dashLen = dashboards.length;
+    const instance = buildSubject({dashboards});
+    const items = instance.find(DashboardItem);
+    expect(items.length).toEqual(dashLen);
   });
 
 });

@@ -22,7 +22,7 @@ const DashboardItems = ({dashboards}) => {
   )
 };
 
-const DashboardItem = ({dashboard}) => {
+export const DashboardItem = ({dashboard}) => {
   return (
     <article className="dashboard-list__item">
       <h1 className="h5">{dashboard.name}</h1>

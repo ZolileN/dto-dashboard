@@ -1,7 +1,7 @@
 
 import * as flags from './../../constants/flags';
 
-import React  from 'react';
+import React, {PropTypes} from 'react';
 
 import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import Pagination from './../../components/widgetPagePagination';
@@ -95,6 +95,13 @@ const DashboardWidgetDatagroupTimeSeriesPage = (props) => {
 
     </div>
   )
+};
+
+DashboardWidgetDatagroupTimeSeriesPage.propTypes = {
+  dashboard: PropTypes.object.isRequired,
+  widget: PropTypes.object.isRequired,
+  datagroupsetSlice: PropTypes.object.isRequired,
+  push: PropTypes.func.isRequired
 };
 
 export default DashboardWidgetDatagroupTimeSeriesPage;
