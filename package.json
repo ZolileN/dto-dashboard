@@ -82,7 +82,6 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-jasmine-jquery": "^0.1.1",
-    "karma-nyan-reporter": "^0.2.4",
     "karma-phantomjs-launcher": "^1.0.1",
     "lodash": "^4.11.0",
     "moment": "^2.15.1",
@@ -137,8 +136,8 @@
     "build": "NODE_ENV=production webpack -p --release",
     "start": "node client/scripts/start.js",
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
-    "test:react": "NODE_ENV=test jest --verbose --env=jsdom",
-    "test:react:watch": "npm run test:react -- --watch",
+    "test:react": "NODE_ENV=test jest --env=jsdom",
+    "test:react:watch": "npm run test:react -- --watch --verbose",
     "test:react:coverage": "npm run test:react -- --coverage",
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
     "test-browser:tap": "NODE_ENV=test npm run test-browser -- --tap | tap-spec",
@@ -149,7 +148,7 @@
     "deploy-storybook": "npm run build-storybook && surge -p client/.out -d performance-dashboard-ui.surge.sh"
   },
   "engines": {
-    "node": "6.7.0"
+    "node": "6.3.0"
   },
   "jest": {
     "setupFiles": [

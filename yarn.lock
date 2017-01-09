@@ -2293,7 +2293,7 @@ cli-boxes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
 
-cli-color@^0.3.2, cli-color@~0.3.2:
+cli-color@~0.3.2:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/cli-color/-/cli-color-0.3.3.tgz#12d5bdd158ff8a0b0db401198913c03df069f6f5"
   dependencies:
@@ -6122,12 +6122,6 @@ karma-jasmine-jquery@^0.1.1:
 karma-jasmine@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-1.1.0.tgz#22e4c06bf9a182e5294d1f705e3733811b810acf"
-
-karma-nyan-reporter@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/karma-nyan-reporter/-/karma-nyan-reporter-0.2.4.tgz#361bc4135002cbe504a36e38f3506e866d6a852c"
-  dependencies:
-    cli-color "^0.3.2"
 
 karma-phantomjs-launcher@^1.0.1:
   version "1.0.2"
