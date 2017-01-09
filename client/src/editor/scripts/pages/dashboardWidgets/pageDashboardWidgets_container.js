@@ -1,18 +1,18 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {getDashboardById} from './../../../redux/dashboards/dashboardsReducer';
-import {getWidgetsByDashboardId} from './../../../redux/widgets/widgetsReducer';
+import {getDashboardById} from './../../redux/dashboards/dashboardsReducer';
+import {getWidgetsByDashboardId} from './../../redux/widgets/widgetsReducer';
 import {
   getDatagroupsets,
   getDatagroupsetSlices,
   filterDatagroupsetByHeroWidget,
   filterDatagroupsetsByBtlWidgets,
-} from './../../../redux/root/rootReducer';
+} from './../../redux/root/rootReducer';
 import {
   setDatagroupsetTransacted,
   clearDatagroupsetTransacted
-} from './../../../redux/ui/uiActions';
+} from './../../redux/ui/uiActions';
 
 import Page from './pageDashboardWidgets_component';
 

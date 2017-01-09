@@ -1,8 +1,8 @@
 
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../../../redux/dashboards/dashboardsReducer';
-import { getWidgetById } from './../../../redux/widgets/widgetsReducer';
+import { getDashboardById } from './../../redux/dashboards/dashboardsReducer';
+import { getWidgetById } from './../../redux/widgets/widgetsReducer';
 
 import Page from './pageDashboardWidgetDatagroupSimple_component';
 

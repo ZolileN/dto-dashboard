@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 import {
   getServiceDashboardUrl,
   getDashboardWidgetsUrl
-} from './../../../utils/urlHelpers';
-import Breadcrumbs from './../../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+} from './../../utils/urlHelpers';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 
 
 const DashboardItems = ({dashboards}) => {

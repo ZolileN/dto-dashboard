@@ -1,16 +1,16 @@
 
-import * as flags from './../../../constants/flags';
+import * as flags from './../../constants/flags';
 
 import React  from 'react';
 
-import Breadcrumbs from './../../../../../_shared/scripts/components/uikit-components/breadcrumbs';
-import Pagination from './../../widgetPagePagination';
-import {getHumanisedVeryShortDate} from './../../../utils/humanisedDates';
-import CreateDatagroupsetForm from './../../forms/createDatagroupset';
-import UpdateDatagroupsetForm from './../../forms/updateDatagroupset';
-import metadatas from './../../../data/widgetMetadata';
-import TrafficLight from './../../widgetTrafficLight';
-import {getDashboardWidgetsUrl} from './../../../utils/urlHelpers';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import Pagination from './../../components/widgetPagePagination';
+import {getHumanisedVeryShortDate} from './../../utils/humanisedDates';
+import CreateDatagroupsetForm from './../../components/forms/createDatagroupset';
+import UpdateDatagroupsetForm from './../../components/forms/updateDatagroupset';
+import metadatas from './../../data/widgetMetadata';
+import TrafficLight from './../../components/widgetTrafficLight';
+import {getDashboardWidgetsUrl} from './../../utils/urlHelpers';
 
 
 const DashboardWidgetDatagroupTimeSeriesPage = (props) => {

@@ -7,7 +7,7 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme';
 
-import initialState from './../../../redux/initialState';
+import initialState from './../../redux/initialState';
 import Page from './pageDashboards_component';
 
 const mockStore = configureStore();

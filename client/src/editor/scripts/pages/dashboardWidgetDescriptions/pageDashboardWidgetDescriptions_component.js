@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 
-import { getDashboardWidgetsUrl } from './../../../utils/urlHelpers';
-import Breadcrumbs from './../../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import { getDashboardWidgetsUrl } from './../../utils/urlHelpers';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 
 
 class DashboardWidgetDescriptionsPage extends Component {

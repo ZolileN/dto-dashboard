@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../../../redux/dashboards/dashboardsReducer';
-import { getWidgetById } from './../../../redux/widgets/widgetsReducer';
+import { getDashboardById } from './../../redux/dashboards/dashboardsReducer';
+import { getWidgetById } from './../../redux/widgets/widgetsReducer';
 
 import Page from './pageDashboardWidgetDescriptions_component';
 

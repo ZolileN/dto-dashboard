@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Breadcrumbs from './../../../../../_shared/scripts/components/uikit-components/breadcrumbs';
-import {getDashboardWidgetsUrl} from './../../../utils/urlHelpers';
-import UpdateDatagroupSimpleForm from './../../forms/updateDatagroupSimple';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import {getDashboardWidgetsUrl} from './../../utils/urlHelpers';
+import UpdateDatagroupSimpleForm from './../../components/forms/updateDatagroupSimple';
 
 
 class DashboardWidgetDatagroupSimplePage extends Component {

@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import Breadcrumbs from './../../../../../_shared/scripts/components/uikit-components/breadcrumbs';
-import WidgetTypeSimple from './../../widgetTypeSimple';
-import WidgetTypeTimeSeries from './../../widgetTypeTimeSeries';
+import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import WidgetTypeSimple from './../../components/widgetTypeSimple';
+import WidgetTypeTimeSeries from './../../components/widgetTypeTimeSeries';
 
 import {
   getDashboardUrl,
@@ -15,12 +15,12 @@ import {
   getDashboardWidgetDescriptionsUrl,
   getServiceDashboardUrl,
   getServiceDashboardUrlAnchor
-} from './../../../utils/urlHelpers';
+} from './../../utils/urlHelpers';
 import {
   getElementY,
   scrollToY
-} from './../../../utils/scrollPosition';
-import { onNextFrame } from './../../../utils/DOM';
+} from './../../utils/scrollPosition';
+import { onNextFrame } from './../../utils/DOM';
 
 
 class PageDashboardWidgets extends Component {

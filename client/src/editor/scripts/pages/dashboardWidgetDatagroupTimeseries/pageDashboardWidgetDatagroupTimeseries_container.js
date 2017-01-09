@@ -3,12 +3,12 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
-import {getDashboardById} from './../../../redux/dashboards/dashboardsReducer';
-import {getWidgetById} from './../../../redux/widgets/widgetsReducer';
+import {getDashboardById} from './../../redux/dashboards/dashboardsReducer';
+import {getWidgetById} from './../../redux/widgets/widgetsReducer';
 import {
   getDatagroupset,
   getDatagroupsetSlice
-} from './../../../redux/root/rootReducer';
+} from './../../redux/root/rootReducer';
 
 import Page from './pageDashboardWidgetDatagroupTimeseries_component';
 

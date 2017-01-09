@@ -6,7 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import configureStore from './redux/configureStore';
 import initialState from './redux/initialState';
-import Root from './components/pages/root';
+import Root from './pages/root';
 
 
 const bootState = merge(initialState, window.__STATE__);

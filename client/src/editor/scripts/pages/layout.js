@@ -2,9 +2,9 @@
 import React, {Component} from 'react';
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
-import IconLoader from './../../../../_shared/scripts/components/iconLoader';
-import {onNextFrame} from './../../utils/DOM';
-import {scrollToY} from './../../utils/scrollPosition';
+import IconLoader from './../../../_shared/scripts/components/iconLoader';
+import {onNextFrame} from './../utils/DOM';
+import {scrollToY} from './../utils/scrollPosition';
 
 
 class Layout extends Component {
