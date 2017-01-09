@@ -51,19 +51,35 @@
         ]
     },
     {
-        "id":           "clearing-time",
+        "id":           "clearing-time-2015",
         "recorded_at":  "2016-09-07T01:01:01.111Z",
         "units":        "i",
         "name":         "Time to clear",
-        "note":         "This shows the average time taken to clear a permit using the Permit Verifcation Service.",
+        "note":         "This shows the average time taken to clear a permit using the Permit Verification Service.",
         "data": [
-          { "label": "2016-05", "value": 84807},
-          { "label": "2016-06", "value": 48317},
-          { "label": "2016-07", "value": 51420},
-          { "label": "2016-08", "value": 62400},
-          { "label": "2016-09", "value": 48060},
-          { "label": "2016-10", "value": 37560},
-          { "label": "2016-11", "value": 39300}
+          { "label": "05", "value": 92940},
+          { "label": "06", "value": 135594},
+          { "label": "07", "value": 95700},
+          { "label": "08", "value": 258660},
+          { "label": "09", "value": 96660},
+          { "label": "10", "value": 96480},
+          { "label": "11", "value": 149820}
+      ]
+    },
+    {
+        "id":           "clearing-time-2016",
+        "recorded_at":  "2016-09-07T01:01:01.111Z",
+        "units":        "i",
+        "name":         "Time to clear",
+        "note":         "This shows the average time taken to clear a permit using the Permit Verification Service.",
+        "data": [
+          { "label": "05", "value": 83007},
+          { "label": "06", "value": 48317},
+          { "label": "07", "value": 51420},
+          { "label": "08", "value": 62400},
+          { "label": "09", "value": 48060},
+          { "label": "10", "value": 37560},
+          { "label": "11", "value": 39300}
       ]
     }
   ]
