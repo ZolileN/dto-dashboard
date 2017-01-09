@@ -1,5 +1,6 @@
+
 import deepMerge from 'deepmerge';
-import config from './config';
+import config from './../config';
 
 
 const rootUrl = config.API_BASE_URL;

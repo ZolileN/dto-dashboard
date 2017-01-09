@@ -2,10 +2,10 @@
 
 import expect from 'expect';
 
-import {getHumanisedUnits} from './dataset';
+import {getHumanisedUnits} from './datasetsHelper';
 
 
-describe('(Helpers) Dataset - datasetHelper', () => {
+describe('(Helpers) Datasets - datasetsHelper', () => {
 
   describe('getHumanisedUnits', () => {
     it('should return \'\' when provided n, s, or i', () => {

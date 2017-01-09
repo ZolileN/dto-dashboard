@@ -4,8 +4,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
 
-import api from './../api';
-import rootReducer from './../reducers';
+import api from './api';
+import rootReducer from './root/rootReducer';
 
 
 export default function configureStore(bootState, history, debug = __DEV__) {
@@ -25,8 +25,8 @@ export default function configureStore(bootState, history, debug = __DEV__) {
 
   // Make reducers hot reloadable
   if (module.hot) {
-    module.hot.accept('./../reducers', () => {
-      const nextRootReducer = require('./../reducers');
+    module.hot.accept('./root/rootReducer', () => {
+      const nextRootReducer = require('./root/rootReducer');
       store.replaceReducer(nextRootReducer);
     });
   }

@@ -1,4 +1,5 @@
-import initialState from './../store/initialState';
+
+import initialState from './../initialState';
 
 
 const currentUserReducer = (state = initialState.currentUser) => {

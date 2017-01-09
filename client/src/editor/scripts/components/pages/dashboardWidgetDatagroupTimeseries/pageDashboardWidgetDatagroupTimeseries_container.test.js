@@ -7,8 +7,8 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import {mount} from 'enzyme';
 
-import initialState from './../../../store/initialState';
-import Container from './index';
+import initialState from './../../../redux/initialState';
+import Container from './pageDashboardWidgetDatagroupTimeseries_container';
 
 const mockStore = configureStore();
 

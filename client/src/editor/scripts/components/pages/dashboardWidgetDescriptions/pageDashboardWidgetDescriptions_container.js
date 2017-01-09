@@ -2,12 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../../../reducers/dashboards';
-import { getWidgetById } from './../../../reducers/widgets';
+import { getDashboardById } from './../../../redux/dashboards/dashboardsReducer';
+import { getWidgetById } from './../../../redux/widgets/widgetsReducer';
 
-import * as uiActions from './../../../actions/ui';
-
-import DashboardWidgetDescriptionsPage from './pageDashboardWidgetDescriptions_component';
+import Page from './pageDashboardWidgetDescriptions_component';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,11 +16,9 @@ const mapStateToProps = (state, ownProps) => {
     widget
   }
 };
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiAppActions, dispatch)
-});
+const mapDispatchToProps = null;
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardWidgetDescriptionsPage);
+)(Page);

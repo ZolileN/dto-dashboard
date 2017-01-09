@@ -8,7 +8,7 @@ import {
   getPrevKey,
   getNumMonthsBetweenHeadKeyAndRecentKey,
   computeLabel
-} from './datapoint';
+} from './datapointsHelper';
 
 
 describe('(Helpers) Datapoint - datapointHelper', () => {

@@ -1,6 +1,15 @@
-import {pick} from 'lodash';
-import * as types from "./../types";
 
+import {pick} from 'lodash';
+
+
+// Action Types
+
+export const types = {
+  UPDATE_DATAGROUPSET: 'datagroupset/update'
+};
+
+
+// Actions
 
 export const createDatagroupset = formData => {
   return (dispatch, getState, api) => {

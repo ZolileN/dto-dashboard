@@ -4,8 +4,8 @@ import { merge } from 'lodash';
 import { hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import configureStore from './store/configureStore';
-import initialState from './store/initialState';
+import configureStore from './redux/configureStore';
+import initialState from './redux/initialState';
 import Root from './components/pages/root';
 
 

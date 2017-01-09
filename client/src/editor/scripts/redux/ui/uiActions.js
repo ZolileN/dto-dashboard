@@ -1,5 +1,13 @@
-import * as types from './../types';
 
+// Action Types
+
+export const types = {
+  UI_SET_DATAGROUPSET_TRANSACTED: 'ui/setDatagroupsetTransacted',
+  UI_CLEAR_DATAGROUPSET_TRANSACTED: 'ui/clearDatagroupsetTransacted'
+};
+
+
+// Actions
 
 export const setDatagroupsetTransacted = ({widgetId, description, type}) => {
   return {

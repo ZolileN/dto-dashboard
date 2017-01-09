@@ -3,14 +3,14 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
-import {getDashboardById} from './../../../reducers/dashboards';
-import {getWidgetById} from './../../../reducers/widgets';
+import {getDashboardById} from './../../../redux/dashboards/dashboardsReducer';
+import {getWidgetById} from './../../../redux/widgets/widgetsReducer';
 import {
   getDatagroupset,
   getDatagroupsetSlice
-} from './../../../reducers';
+} from './../../../redux/root/rootReducer';
 
-import DashboardWidgetDatagroupTimeSeriesPage from './pageDashboardWidgetDatagroupTimeseries_component';
+import Page from './pageDashboardWidgetDatagroupTimeseries_component';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -31,4 +31,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardWidgetDatagroupTimeSeriesPage);
+)(Page);

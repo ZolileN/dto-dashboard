@@ -1,6 +1,6 @@
 
-import * as types from './../../actions/types';
-import initialState from './../../store/initialState';
+import {types} from './uiActions';
+import initialState from './../initialState';
 
 
 const ui = (state = initialState.ui, {type, payload}) => {

@@ -1,10 +1,10 @@
 
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../../../reducers/dashboards';
-import { getWidgetById } from './../../../reducers/widgets';
+import { getDashboardById } from './../../../redux/dashboards/dashboardsReducer';
+import { getWidgetById } from './../../../redux/widgets/widgetsReducer';
 
-import DashboardWidgetDatagroupSimplePage from './pageDashboardWidgetDatagroupSimple_component';
+import Page from './pageDashboardWidgetDatagroupSimple_component';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -20,4 +20,4 @@ const mapDispatchToProps = null;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardWidgetDatagroupSimplePage);
+)(Page);

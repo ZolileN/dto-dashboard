@@ -1,16 +1,20 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {getDashboardById} from './../../../reducers/dashboards';
-import {getWidgetsByDashboardId} from './../../../reducers/widgets';
+import {getDashboardById} from './../../../redux/dashboards/dashboardsReducer';
+import {getWidgetsByDashboardId} from './../../../redux/widgets/widgetsReducer';
 import {
   getDatagroupsets,
   getDatagroupsetSlices,
   filterDatagroupsetByHeroWidget,
   filterDatagroupsetsByBtlWidgets,
-} from './../../../reducers';
-import * as uiActions from './../../../actions/ui';
-import PageDashboardWidgets from './pageDashboardWidgets_component';
+} from './../../../redux/root/rootReducer';
+import {
+  setDatagroupsetTransacted,
+  clearDatagroupsetTransacted
+} from './../../../redux/ui/uiActions';
+
+import Page from './pageDashboardWidgets_component';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -27,18 +31,18 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     ui: state.ui,
-    // ui: ownProps.ui.pageDashboardWidgets
     dashboard,
     heroDatagroupsetSlice,
     btlDatagroupsetsSlices
   }
 };
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(uiActions, dispatch)
+  setDatagroupsetTransacted: bindActionCreators(setDatagroupsetTransacted, dispatch),
+  clearDatagroupsetTransacted: bindActionCreators(clearDatagroupsetTransacted, dispatch)
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PageDashboardWidgets);
+)(Page);
 

@@ -3,9 +3,9 @@
 import expect from 'expect';
 
 import reducer from './uiReducer';
-import * as types from './../../actions/types';
+import {types} from './uiActions';
 
-import initialStoreState from './../.././store/initialState';
+import initialStoreState from './../initialState';
 const initialState = initialStoreState.ui;
 
 
@@ -27,10 +27,7 @@ describe('(Reducers) UI - uiReducer', () => {
         }
       };
       const outcome = reducer(initialState, action);
-
-      expect(outcome).toEqual({
-        didTransactDatagroupset: action.payload
-      })
+      expect(outcome.didTransactDatagroupset).toEqual(action.payload)
     });
   });
 
@@ -40,27 +37,26 @@ describe('(Reducers) UI - uiReducer', () => {
         type: types.UI_CLEAR_DATAGROUPSET_TRANSACTED
       };
       const outcome = reducer(initialState, action);
-      expect(outcome).toEqual(initialState)
+      expect(outcome.didTransactDatagroupset).toEqual({})
     });
 
     it('should handle subsequent state changes ', () => {
-      const state = {
-        didTransactDatagroupset: {
+      const firstAction = {
+        type: types.UI_SET_DATAGROUPSET_TRANSACTED,
+        payload: {
           widgetId: 1,
           description: 'this description',
           type: 'this type'
         }
       };
-      const action = {
+      const firstOutcome = reducer(initialState, firstAction);
+
+      const secondAction = {
         type: types.UI_CLEAR_DATAGROUPSET_TRANSACTED
       };
-      const outcome = reducer(state, action);
-      expect(outcome).toEqual(initialState)
+      const secondOutcome = reducer(firstOutcome, secondAction);
+      expect(secondOutcome.didTransactDatagroupset).toEqual({})
     });
   });
-
-
-
-  //UI_CLEAR_DATAGROUPSET_TRANSACTED
 
 });

@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import Donut from './svgs/donut';
 import { statusColors } from './../constants/styleVariables';
 import { humanisedShortDate } from './../utils/humanisedDates';
-import { getNumMonthsBetweenHeadKeyAndRecentKey } from './../helpers/datapoint';
+import { getNumMonthsBetweenHeadKeyAndRecentKey } from './../redux/datapoints/datapointsHelper';
 import { isNumber } from 'lodash';
 
 

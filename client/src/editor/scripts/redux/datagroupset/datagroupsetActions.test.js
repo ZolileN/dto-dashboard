@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import {mockFetch, mockFetchError} from './../../../../test/utils/testUtils';
 
-import api from './../../api';
+import api from './../api';
 
 const mockStore = configureStore([
   thunkMiddleware.withExtraArgument(api)
@@ -17,8 +17,8 @@ import config from './../../config';
 
 const rootUrl = config.API_BASE_URL;
 
+import {createDatagroupset} from './datagroupsetActions';
 
-import {createDatagroupset} from './index';
 
 describe('(Actions) Datagroupset', () => {
 

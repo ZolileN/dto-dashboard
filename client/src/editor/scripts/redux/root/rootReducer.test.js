@@ -2,9 +2,9 @@
 
 import expect from 'expect';
 
-import reducer from './index';
-import initialState from './../store/initialState';
-import * as types from './../actions/types';
+import reducer from './rootReducer';
+import initialState from './../initialState';
+import {types as datagroupsetActionTypes} from './../datagroupset/datagroupsetActions';
 
 
 describe('(Reducers) Root', () => {
@@ -35,7 +35,7 @@ describe('(Reducers) Datagroupset', () => {
     }};
 
     const action = {
-      type: types.UPDATE_DATAGROUPSET,
+      type: datagroupsetActionTypes.UPDATE_DATAGROUPSET,
       payload: {
         datapoint: {
           id:2,

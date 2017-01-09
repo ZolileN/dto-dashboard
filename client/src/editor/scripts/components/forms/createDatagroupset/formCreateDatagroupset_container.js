@@ -6,8 +6,8 @@ import {push} from 'react-router-redux';
 import Form from './formCreateDatagroupset_component';
 import {validate} from './behaviour';
 
-import {createDatagroupset} from './../../../actions/datagroupset';
-import {setDatagroupsetTransacted} from './../../../actions/ui';
+import {createDatagroupset} from './../../../redux/datagroupset/datagroupsetActions';
+import {setDatagroupsetTransacted} from './../../../redux/ui/uiActions';
 import {getHumanisedMonth} from './../../../utils/humanisedDates';
 import {getDashboardWidgetsUrl} from './../../../utils/urlHelpers';
 
@@ -31,7 +31,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
    * @returns {Promise}
    */
   onSave: payload => { // passes through handleSubmit
-    console.log('Now running onSave action');
     return dispatch(createDatagroupset(payload));
   },
   /**
@@ -45,8 +44,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     console.log('Now running onSaveSuccess');
     const {formModel} = props;
 
-    props.reset();
-
     dispatch(setDatagroupsetTransacted({
       widgetId: formModel.widget.id,
       description: `Published data for: ${getHumanisedMonth(response[0].ts)} - ${response.map((el, idx) => {
@@ -55,11 +52,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       type: 'created'
     }));
 
-    console.log('Now running onSaveSuccess thennable');
     dispatch(push(getDashboardWidgetsUrl(ownProps.dashboard_id)));
   },
+  /**
+   * Callback from once Cancel is clicked
+   * @param props
+   */
   onCancelSuccess: (props) => {
-    push(getDashboardWidgetsUrl(ownProps.dashboard_id));
+    dispatch(push(getDashboardWidgetsUrl(ownProps.dashboard_id)));
   }
 });
 

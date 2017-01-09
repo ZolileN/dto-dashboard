@@ -5,16 +5,15 @@ import {routerReducer} from 'react-router-redux'
 import {uniq,isObject,without} from 'lodash';
 import moment from 'moment';
 
-import * as types from './../actions/types';
+import {types as datagroupsetActionTypes} from './../datagroupset/datagroupsetActions';
 
-// import requests from './requests';
-import ui from './ui';
-import currentUser from './currentUser';
-import dashboards from './dashboards';
-import widgets from './widgets';
-import datasets from './datasets';
-import datapoints from './datapoints';
-import { reducer as formReducer } from 'redux-form';
+import ui from './../ui/uiReducer';
+import currentUser from './../currentUser/currentUserReducer';
+import dashboards from './../dashboards/dashboardsReducer';
+import widgets from './../widgets/widgetsReducer';
+import datasets from './../datasets/datasetsReducer';
+import datapoints from './../datapoints/datapointsReducer';
+import {reducer as formReducer} from 'redux-form';
 
 
 const rootReducer = reduceReducers(
@@ -32,7 +31,7 @@ const rootReducer = reduceReducers(
   (state, {type, payload}) => {
     switch (type) {
 
-      case types.UPDATE_DATAGROUPSET:
+      case datagroupsetActionTypes.UPDATE_DATAGROUPSET:
 
         const { datapoint, dataset } = payload;
         let hasDataset = false;
@@ -70,15 +69,15 @@ export default rootReducer;
 
 // Selectors
 
-import {getDatasetById} from './../reducers/datasets';
-import {getDatapointsByIds} from './../reducers/datapoints';
+import {getDatasetById} from './../datasets/datasetsReducer';
+import {getDatapointsByIds} from './../datapoints/datapointsReducer';
 
 import {
   computeLabel,
   getHeadKey,
   getPrevKey,
   getNextKey
-} from './../helpers/datapoint';
+} from './../datapoints/datapointsHelper';
 
 const headKey = getHeadKey();
 

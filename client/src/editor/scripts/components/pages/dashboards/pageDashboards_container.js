@@ -1,7 +1,7 @@
 
 import {connect} from 'react-redux';
 
-import PageDashboards from './pageDashboards_component';
+import Page from './pageDashboards_component';
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -12,4 +12,4 @@ const mapDispatchToProps = null;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PageDashboards);
+)(Page);

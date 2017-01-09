@@ -11,7 +11,7 @@ import {preview} from './behaviour';
 import InputHidden from './../../reduxFormFields/inputHidden';
 import DatagroupsetInput from './../../fields/datagroupsetInput';
 
-import {getHumanisedUnits} from './../../../helpers/dataset';
+import {getHumanisedUnits} from './../../../redux/datasets/datasetsHelper';
 
 
 /**
@@ -42,6 +42,7 @@ const mySubmit = (values, dispatch, props) => {
   let payload = normalizeValues(values, props);
   return props.onSave(payload).then(response => {
     props.onSaveSuccess(response, props);
+    props.reset();
     return response;
   }).catch(error => {
     // throw new SubmissionError(error);
@@ -50,8 +51,8 @@ const mySubmit = (values, dispatch, props) => {
 };
 
 const cancel = (props) => {
-  props.reset();
   props.onCancelSuccess(props);
+  props.reset();
 };
 
 const renderFields = ({

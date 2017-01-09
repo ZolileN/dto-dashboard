@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LegendDot, { getPaletteColor } from './svgs/legendDot';
-import { getHumanisedUnits } from './../helpers/dataset';
+import { getHumanisedUnits } from './../redux/datasets/datasetsHelper';
 import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
 
 

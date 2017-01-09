@@ -4,16 +4,6 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import { getDashboardById } from './../../../reducers/dashboards';
-import { getWidgetsByDashboardId } from './../../../reducers/widgets';
-import {
-  getDatagroupsets,
-  getDatagroupsetSlices,
-  filterDatagroupsetByHeroWidget,
-  filterDatagroupsetsByBtlWidgets,
-} from './../../../reducers/index';
-
-import * as uiActions from './../../../actions/ui';
 import Breadcrumbs from './../../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import WidgetTypeSimple from './../../widgetTypeSimple';
 import WidgetTypeTimeSeries from './../../widgetTypeTimeSeries';
@@ -46,7 +36,7 @@ class PageDashboardWidgets extends Component {
 
   componentWillUnmount() {
     if (this.props.ui.didTransactDatagroupset.widgetId) {
-      this.props.actions.clearDatagroupsetTransacted();
+      this.props.clearDatagroupsetTransacted();
     }
   }
 

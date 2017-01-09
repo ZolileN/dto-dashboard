@@ -4,7 +4,7 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import DatagroupsetInput from './../fields/datagroupsetInput';
 import InputHidden from './../reduxFormFields/inputHidden';
-import { getHumanisedUnits } from './../../helpers/dataset';
+import { getHumanisedUnits } from './../../redux/datasets/datasetsHelper';
 
 
 let UpdateDatagroupsetForm = ({

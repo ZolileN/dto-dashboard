@@ -1,6 +1,6 @@
 
 import {isArray} from 'lodash';
-import initialState from './../../store/initialState';
+import initialState from './../initialState';
 import isTypeOfState from './../../utils/isTypeOfState';
 
 
