@@ -138,7 +138,7 @@
       "type": "fact",
       "size": "extra-small",
       "units": "n",
-      "description": "90.9% of new mothers eligible for the trial are now participating, compared to 22.4% in week 1."
+      "description": "86.1% of new mothers eligible for the trial are now participating, compared to 22.4% in week 1."
     },
     {
       "id":   "fact-4",
@@ -156,7 +156,7 @@
       "type": "fact",
       "size": "extra-small",
       "units": "n",
-      "description": "1010 newborns were enrolled using the Medicare Newborn Enrolment Pilot."
+      "description": "786 newborns were enrolled using the Medicare Newborn Enrolment Pilot."
     }
   ],
   "layout":   [
