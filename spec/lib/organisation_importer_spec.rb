@@ -4,8 +4,10 @@ require 'organisation_importer'
 describe OrganisationImporter do
   let(:organisation) { FactoryGirl.create :organisation }
   let(:definition_json) { File.read("spec/fixtures/valid-definition.json") }
+  let(:dashboard_id) { 999999 }
 
-  subject { OrganisationImporter.new organisation, data_json, definition_json }
+  subject { OrganisationImporter.new organisation, data_json, definition_json,
+    dashboard_id }
 
   context 'Valid data' do
     let(:data_json) { File.read("spec/fixtures/valid-data.json") }
@@ -34,8 +36,7 @@ describe OrganisationImporter do
 
     context 'with preexisting dashboard' do
       let!(:old_dashboard) { FactoryGirl.create :dashboard,
-        name: 'Australian Citizenship Appointment Booking Service',
-        organisation: organisation }
+        id: dashboard_id, organisation: organisation }
       let!(:old_widget) { FactoryGirl.create :widget_with_datasets,
         dashboard: old_dashboard }
 
@@ -43,7 +44,6 @@ describe OrganisationImporter do
         subject.import!
       end
 
-      specify { expect(Dashboard.find_by(id: old_dashboard.id)).to be_nil }
       specify { expect(Widget.find_by(id: old_widget.id)).to be_nil }
     end
   end
