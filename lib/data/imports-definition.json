@@ -73,7 +73,6 @@
       "size": "medium",
       "units": "s",
       "displayRoundedData" : true,
-      "is_hero": true,
       "definition": "Time to clear measures the time between when a good requiring an import permit was held for assessment until the time it was cleared.",
       "datasets": ["clearing-time-2015","clearing-time-2016"]
     },
