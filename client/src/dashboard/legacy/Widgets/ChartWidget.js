@@ -134,3 +134,4 @@ class ChartWidget {
 
 
 module.exports = ChartWidget;
+export default ChartWidget;

@@ -77,7 +77,6 @@ d3.selectAll('.line .widget__inner').each(function() {
     isHighContrastMode: isHighContrastMode
   };
 
-
   let chartWidget = new ChartWidget(options);
   charts.push(chartWidget);
 });
@@ -234,7 +233,7 @@ let kpiLineStyles = {
   'cost-per-transaction': '10, 5',
   'digital-take-up': '3, 3',
   'completion-rate': '5, 10'
-}
+};
 
 // manually add svgs for kpi titles
 d3.selectAll('.dashboard__kpis .widget__title').each(function(){

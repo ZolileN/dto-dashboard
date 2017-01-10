@@ -129,11 +129,12 @@ class Legend {
    * @return {undefined}
    */
   hover(i) {
-    this.date.text(d => getDate().long(d[i].x));
+    if (this.data.length > 1) {  // if i'm showing multiple year on year datasets, such as multi-category line chart
+      this.date.text(d => getDate().shortMonth(d[i].x));
+    } else {
+      this.date.text(d => getDate().long(d[i].x));
+    }
     this.td.text(d => {
-      // if (d[i].y === 0) {
-      //   debugger;
-      // }
       return formatData(d[i].y, this.chart.prefix, this.chart.suffix, this.displayRoundedData);
     });
   }

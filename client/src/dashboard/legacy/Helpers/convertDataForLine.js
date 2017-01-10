@@ -20,3 +20,4 @@ function convertDataForLine(_data, _range) {
   return null;
 }
 module.exports = convertDataForLine;
+export default convertDataForLine;

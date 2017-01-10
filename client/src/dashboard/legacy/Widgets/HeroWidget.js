@@ -133,3 +133,4 @@ function updatePositionFromIndex(index, data) {
 }
 
 module.exports = HeroWidget;
+export default HeroWidget;

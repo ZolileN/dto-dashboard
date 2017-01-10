@@ -69,12 +69,12 @@
       "id":   "clearing-time",
       "updated_at": "2016-12-7T01:01:01.111Z",
       "name": "Time taken to clear permits",
-      "type": "bar",
+      "type": "line",
       "size": "medium",
       "units": "s",
       "displayRoundedData" : true,
       "definition": "Time to clear measures the time between when a good requiring an import permit was held for assessment until the time it was cleared.",
-      "datasets": ["clearing-time"]
+      "datasets": ["clearing-time-2015", "clearing-time-2016"]
     },
     {
       "id":   "fact-1",
