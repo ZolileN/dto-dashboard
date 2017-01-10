@@ -5,27 +5,30 @@ namespace :import do
   desc 'Imports Data'
 
   task update: :environment do
-    orgs = { 'industry' => 3 }
-    run(orgs)
+    ids = { 'industry' => 3 }
+    run(ids)
   end
 
   task data: :environment do
-    orgs = { 'mygov' => 1,
+    ids = { 'mygov' => 1,
       'dibp'  => 2,
       'industry' => 3,
       'imports' => 4,
       'medicare-enrolment' => 6,
-      'marketplace' => 7 }
-    run(orgs)
+      'marketplace' => 7,
+      'datagovau' => 9,
+      'nationalmap' => 10 }
+    run(ids)
   end
 
-  def run(orgs)
-    orgs.each do |name, id|
+  def run(ids)
+    ids.each do |name, id|
       puts "Importing: #{name}"
       data_json = File.read("lib/data/#{name}-data.json")
       data = JSON.parse(data_json)
       definition_json = File.read("lib/data/#{name}-definition.json")
-      organisation = Organisation.find_or_create_by!(:name => data['agency'], :url => data['url'])
+      organisation = Dashboard.find_by(id: id)&.organisation ||
+        Organisation.find_or_create_by!(name: data['agency'], url: data['url'])
       importer = OrganisationImporter.new organisation, data_json, definition_json, id
       importer.import!
     end
