@@ -57,13 +57,14 @@
         "name":         "2015",
         "note":         "This shows the average time taken to clear a permit using the Permit Verification Service.",
         "data": [
-          { "label": "2015-05", "value": 92940},
+          { "label": "2015-05", "value": 92940},  
           { "label": "2015-06", "value": 135594},
           { "label": "2015-07", "value": 95700},
           { "label": "2015-08", "value": 258660},
           { "label": "2015-09", "value": 96660},
           { "label": "2015-10", "value": 96480},
-          { "label": "2015-11", "value": 149820}
+          { "label": "2015-11", "value": 149820},
+          { "label": "2015-12", "value": 131580}
       ]
     },
     {
@@ -73,13 +74,14 @@
         "name":         "2016",
         "note":         "This shows the average time taken to clear a permit using the Permit Verification Service.",
         "data": [
-          { "label": "2015-05", "value": 83007},
+          { "label": "2015-05", "value": 84807},
           { "label": "2015-06", "value": 48317},
           { "label": "2015-07", "value": 51420},
           { "label": "2015-08", "value": 62400},
           { "label": "2015-09", "value": 48060},
           { "label": "2015-10", "value": 37560},
-          { "label": "2015-11", "value": 39300}
+          { "label": "2015-11", "value": 39300},
+          { "label": "2015-12", "value": 34740}
       ]
     }
   ]
