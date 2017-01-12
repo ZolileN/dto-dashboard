@@ -257,3 +257,4 @@ $RECYCLE.BIN/
 *.lnk
 
 public/page_cache_*/**/*.html
+.vscode

@@ -31,7 +31,8 @@ dependencies:
 
 test:
   override:
-    - yarn test
+    - yarn run test:react:coverage
+    - ./node_modules/.bin/codecov
     - bundle exec rspec --exclude-pattern "features/**"
     - bundle exec rspec spec/features
 

@@ -63,7 +63,6 @@ end
 
 group :test do
   gem 'capybara', '~> 2.8.1'
-  gem "codeclimate-test-reporter", '0.6.0', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
@@ -76,6 +75,7 @@ group :test do
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver', '~> 2.53.4'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'codecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
