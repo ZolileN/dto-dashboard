@@ -2,7 +2,7 @@
 import {combineReducers} from 'redux';
 import reduceReducers from 'reduce-reducers';
 import {routerReducer} from 'react-router-redux'
-import {uniq,isObject,without} from 'lodash';
+import {uniq,isObject,without,isArray} from 'lodash';
 import moment from 'moment';
 
 import {types as datagroupsetActionTypes} from './../datagroupset/datagroupsetActions';
@@ -14,6 +14,16 @@ import widgets from './../widgets/widgetsReducer';
 import datasets from './../datasets/datasetsReducer';
 import datapoints from './../datapoints/datapointsReducer';
 import {reducer as formReducer} from 'redux-form';
+
+import isTypeOfState from './../../utils/isTypeOfState';
+import {getDatasetById} from './../datasets/datasetsReducer';
+import {getDatapointsByIds} from './../datapoints/datapointsReducer';
+import {
+  computeLabel,
+  getHeadKey,
+  getPrevKey,
+  getNextKey
+} from './../datapoints/datapointsHelper';
 
 
 const rootReducer = reduceReducers(
@@ -65,53 +75,80 @@ const rootReducer = reduceReducers(
 export default rootReducer;
 
 
+// Helpers
+
+/**
+ * Check if is of state type
+ * @return {Boolean}
+ */
+export const isDatagroupset = isTypeOfState(['type', 'widget', 'groups', 'hasHead', 'headKey', 'hasRecent', 'recentKey']);
+
+export const isDatagroupsetSlice = isTypeOfState(['type', 'widget', 'groups', 'hasHead', 'headKey', 'hasRecent', 'recentKey', 'sliceKey', 'slicePrevKey', 'sliceNextKey', 'sliceLastUpdated'])
 
 
 // Selectors
-
-import {getDatasetById} from './../datasets/datasetsReducer';
-import {getDatapointsByIds} from './../datapoints/datapointsReducer';
-
-import {
-  computeLabel,
-  getHeadKey,
-  getPrevKey,
-  getNextKey
-} from './../datapoints/datapointsHelper';
 
 const headKey = getHeadKey();
 
 
 /*
- datagroupset = {
- type: null,
- widget: null,
- hasHead: null,
- headKey: latestDatagroupKey,  // tip most possible key
- currentKey: null,             // active key
- currentLastUpdated: null,
- hasRecent: null,
- recentKey: null,              // most recent saved key
- groups: [
-  {
-   key: null,
-   dataset: null,
-   datapoints: null,
-   recentDatapointIdx: null
-  },
-  {
-   // ...
-  },
-  // ...
- ]
- };
+
+  datagroupset - type:simple
+  --------------------------
+
+   {
+     type: 'simple',
+     widget: <Widget>
+     groups: null,
+     hasHead: false,
+     headKey: '2016-12',
+     hasRecent: null,
+     recentKey: null
+   }
+
+
+  datagroupset - type:time-series
+  -------------------------------
+
+   {
+    type: 'time-series',
+     widget: <Widget>,
+     groups: [
+       {dataset: <Dataset>, datapoints: [...<Datapoint>]}
+     ],
+     hasHead: false,
+     headKey: '2016-12',
+     hasRecent: null,
+     recentKey: null
+   }
+
+
+   datagroupsetSlice
+   -----------------
+
+   {
+     type: 'time-series',
+     widget: <Widget>,
+     groups: [
+       {dataset: <Dataset>, datapoints: [...<Datapoint>]}
+     ],
+     hasHead: false,
+     headKey: '2016-12',
+     hasRecent: null,
+     recentKey: null,
+     sliceKey: '2016-11',         // key requested at slice time
+     slicePrevKey: '2016-10',
+     sliceNextKey: '2016-12',
+     sliceLastUpdated: '2016-12'
+   }
+
  */
+
 
 /**
  * @param state {Object} complete state tree
  * @param widget {Object}
  * @returns {Object<{type: null, widget: *, groups: Array, hasHead: boolean, headKey, _recentDatpointIdxArr: Array, hasRecent: null, recentKey: null}>} the complete datagroupset **this will get really big with time**
- * todo - @joshm @elisechant we need to optimise this so the computation and storage is not so HUGE
  */
 export const getDatagroupset = (state, widget) => {
 
@@ -138,7 +175,7 @@ export const getDatagroupset = (state, widget) => {
   };
 
 
-  if (widget.datasets && !widget.datasets.length) {
+  if (!widget.datasets || !widget.datasets.length) {
 
     // simple type
     //
@@ -156,6 +193,14 @@ export const getDatagroupset = (state, widget) => {
       let group = {...groupState};
 
       group.dataset = getDatasetById(state.datasets, datasetId);
+
+      if (group.dataset === void 0) {
+        if (process.env.NODE_ENV !== 'test') {
+          console.error(`invalid dataset on widget: ${widget.id}`, datasetId);
+        }
+        return null;
+      }
+
       group.datapoints = getDatapointsByIds(state.datapoints, group.dataset.datapoints);
 
       group.datapoints.forEach((dp, idx) => {
@@ -207,6 +252,8 @@ export const getDatagroupset = (state, widget) => {
       datagroupset.recentKey = computeLabel(item.ts);
     }
 
+    delete datagroupset._recentDatpointIdxArr;
+
     // end curate
 
   }
@@ -223,6 +270,9 @@ export const getDatagroupset = (state, widget) => {
  * todo - @joshm @elisechant we need to optimise this so the computation and storage is not so HUGE
  */
 export const getDatagroupsets = (state, widgets) => {
+  if (!isArray(widgets)) {
+    throw new Error('widgets must be of type Array');
+  }
   return widgets.map(widget => {
     return getDatagroupset(state, widget);
   })
@@ -232,26 +282,11 @@ export const getDatagroupsets = (state, widgets) => {
 /**
  * Get a datagroupset slice in time
  * @param datagroupset {Object}
- * @param key {String} (optional) - the key to slice at or none to fetch recent
- * @returns
-
-  state = {
-    ...datagroupset,
-    sliceKey,
-    slicePrevKey: getPrevKey(key),
-    sliceNextKey: getNextKey(key),
-    sliceLastUpdated: '',
-    groups: [
-      {
-        dataset: {},
-        datapoint: {}
-      }
-    ]
-  };
-
+ * @param periodKey {String} (optional) - the key to slice at or none to fetch recent
+ * @returns {Object}
  *
  */
-export const getDatagroupsetSlice = (datagroupset, key = null) => {
+export const getDatagroupsetSlice = (datagroupset, periodKey = null) => {
 
   let state = {
     ...datagroupset,
@@ -266,13 +301,13 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
   let datapointItem = null;
   let sliceIndexArray = [];
 
-  if (!key) {
-    key = datagroupset.recentKey;
+  if (!periodKey) {
+    periodKey = datagroupset.recentKey;
   }
 
-  state.sliceKey = key;
-  state.slicePrevKey = getPrevKey(key);
-  state.sliceNextKey = getNextKey(datagroupset.headKey, key);
+  state.sliceKey = periodKey;
+  state.slicePrevKey = getPrevKey(periodKey);
+  state.sliceNextKey = getNextKey(datagroupset.headKey, periodKey);
 
 
   if (datagroupset.groups.length) {
@@ -282,7 +317,7 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
 
     datagroupset.groups.forEach((g, idx) => {
       g.datapoints.forEach((dp, idx2) => {
-        if (computeLabel(dp.ts) === key) {
+        if (computeLabel(dp.ts) === periodKey) {
           sliceIndexArray.push(idx2);
         }
       });
@@ -305,7 +340,7 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     if (!hasValidSlice) {
       state.groups = datagroupset.groups.map((g, idx) => {
         if (state.sliceLastUpdated === null) {
-          state.sliceLastUpdated = g.data_updated_at;
+          state.sliceLastUpdated = state.widget.data_updated_at;
         }
         return {
           dataset: g.dataset,
@@ -315,7 +350,7 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
     } else {
       state.groups = datagroupset.groups.map((g, idx) => {
         if (state.sliceLastUpdated === null) {
-          state.sliceLastUpdated = g.data_updated_at;
+          state.sliceLastUpdated = state.widget.data_updated_at;
         }
         datapointItem = g.datapoints[sliceIndexArray[idx]];
         return {
@@ -331,9 +366,20 @@ export const getDatagroupsetSlice = (datagroupset, key = null) => {
   return state;
 };
 
-export const getDatagroupsetSlices = (datagroupsets) => {
+/**
+ * Get all datagroupsetSlices per collection of widgets with **or without** common
+ * periodKey. When without return the **current tip of ALL widgets datagroupsets**
+ * that may have a range of period keys.
+ * @param datagroupsets {Object}
+ * @param datagroup_key {String}
+ * @returns datagroupsets {Array<datagroupset>}
+ */
+export const getDatagroupsetSlices = (datagroupsets, periodKey = null) => {
+  if (!isArray(datagroupsets)) {
+    throw new Error('datagroupsets must be of type Object');
+  }
   return datagroupsets.map(d => {
-    return getDatagroupsetSlice(d);
+    return getDatagroupsetSlice(d, periodKey);
   })
 };
 

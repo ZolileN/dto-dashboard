@@ -11,12 +11,11 @@ import { isObject } from 'lodash';
  *
  */
 const isTypeOfState = propertyKeys => {
-  return (item) => {
-    // item is an object
-    if (isObject(item) === false) {
+  return record => {
+    if (isObject(record) === false) {
       return false;
     }
-    let actualKeys = Object.keys(item);
+    let actualKeys = Object.keys(record);
     return propertyKeys.every(k => actualKeys.includes(k));
   }
 };
