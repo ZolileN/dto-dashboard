@@ -1,7 +1,7 @@
 import d3 from 'd3';
 import Axis from './Axis';
 import getDate from './../Helpers/getDate';
-
+import {assumeIsGroupedByCategory} from './../Helpers/dataAssumptions';
 
 /**
  * Crudely get the best Tick values by sample size
@@ -48,7 +48,9 @@ class XAxis extends Axis {
     return d3.svg.axis()
           .scale(this.chart.xScale)
           .orient('bottom')
-          .tickFormat(getDate().long)
+          .tickFormat(
+            getDate()[assumeIsGroupedByCategory(this.chart.data) ? 'shortMonth' : 'long']
+          )
           .tickValues(getBestTickValues(sampleData));
   }
 

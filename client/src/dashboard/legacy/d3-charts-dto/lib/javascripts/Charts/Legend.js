@@ -3,6 +3,7 @@ import formatData from './../Helpers/formatData';
 import getDate from './../Helpers/getDate';
 import defined from './../Helpers/defined';
 import _ from 'lodash';
+import {assumeIsGroupedByCategory} from './../Helpers/dataAssumptions';
 
 const iconSize = 12;
 
@@ -129,11 +130,9 @@ class Legend {
    * @return {undefined}
    */
   hover(i) {
-    if (this.data.length > 1) {  // if i'm showing multiple year on year datasets, such as multi-category line chart
-      this.date.text(d => getDate().shortMonth(d[i].x));
-    } else {
-      this.date.text(d => getDate().long(d[i].x));
-    }
+    this.date.text(d => {
+      return getDate()[assumeIsGroupedByCategory(this.data) ? 'shortMonth' : 'long'](d[i].x);
+    });
     this.td.text(d => {
       return formatData(d[i].y, this.chart.prefix, this.chart.suffix, this.displayRoundedData);
     });
