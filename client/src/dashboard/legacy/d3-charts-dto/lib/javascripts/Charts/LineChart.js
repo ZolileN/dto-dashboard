@@ -82,7 +82,13 @@ class LineChart extends Chart {
 
   computeRenderProperty() {
     super.computeRenderProperty();
-    this.line = d3.svg.line().defined(d=>d.y !== null).x(d=>this.xScale(d.x)).y(d=>this.yScale(d.y)).interpolate(this.interpolate);
+    this.line = d3.svg.line().defined(d => {
+      return d.y !== null;
+    }).x(d => {
+      return this.xScale(d.x);
+    }).y(d => {
+      return this.yScale(d.y);
+    }).interpolate(this.interpolate);
   }
 
   render() {
