@@ -70,7 +70,7 @@
       "updated_at": "2016-12-7T01:01:01.111Z",
       "name": "Time taken to clear permits",
       "type": "line",
-      "size": "medium",
+      "size": "large",
       "units": "s",
       "displayRoundedData" : true,
       "definition": "Time to clear measures the time between when a good requiring an import permit was held for assessment until the time it was cleared.",
@@ -81,7 +81,7 @@
       "updated_at": "2016-11-7T01:01:01.111Z",
       "name": "Fact",
       "type": "fact",
-      "size": "medium",
+      "size": "small",
       "units": "n",
       "description": "Australia has experienced a significant upturn in cargo volume with incoming air cargo of 33.6 million consignments, incoming sea cargo of 3.0 million in 2014-2015."
     }
