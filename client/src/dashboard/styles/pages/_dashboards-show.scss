@@ -1,0 +1,9 @@
+// HACK:
+// artificially bumps up the chart by the measure of stroke width
+// to avoid stroke sitting on top of axis. Even though this value 
+// is calculated by javascript. 
+.time-taken-to-clear-permits.line {
+  .chart__wrapper {
+    transform: translateY(17px) !important;
+  }
+}
