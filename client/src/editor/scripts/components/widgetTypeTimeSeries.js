@@ -11,6 +11,7 @@ import UikitAlert from './../../../_shared/scripts/components/uikit-components/a
 
 const WidgetTypeTimeSeries = ({
   recentDatagroupset,
+  widget,
   editUrl,
   addUrl,
   serviceDashboardUrl,
@@ -63,7 +64,7 @@ const WidgetTypeTimeSeries = ({
 
       <div className="row">
         <div className="col-xs-12 col-lg-6">
-          {recentDatagroupset.recentKey && <Preview recentDatagroupset={recentDatagroupset} />}
+          {recentDatagroupset.recentKey && <Preview recentDatagroupset={recentDatagroupset} widget={widget} />}
         </div>
         <div className="col-xs-12 col-lg-6 ctas">
           <Link to={addUrl} className="UIK-button btn btn-primary"
@@ -87,6 +88,7 @@ const WidgetTypeTimeSeries = ({
 
 WidgetTypeTimeSeries.propTypes = {
   recentDatagroupset: PropTypes.object.isRequired,
+  widget: PropTypes.object.isRequired,
   editUrl: PropTypes.string.isRequired,
   addUrl: PropTypes.string.isRequired,
   serviceDashboardUrl: PropTypes.string.isRequired,

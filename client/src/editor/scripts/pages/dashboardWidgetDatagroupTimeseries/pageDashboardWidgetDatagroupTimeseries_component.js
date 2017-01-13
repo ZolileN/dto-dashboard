@@ -5,12 +5,16 @@ import React, {PropTypes} from 'react';
 
 import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
 import Pagination from './../../components/widgetPagePagination';
-import {getHumanisedVeryShortDate} from './../../utils/humanisedDates';
+import {
+  getHumanisedVeryShortDate,
+  getHumanisedMonth
+} from './../../utils/humanisedDates';
 import CreateDatagroupsetForm from './../../components/forms/createDatagroupset';
 import UpdateDatagroupsetForm from './../../components/forms/updateDatagroupset';
 import metadatas from './../../data/widgetMetadata';
 import TrafficLight from './../../components/widgetTrafficLight';
 import {getDashboardWidgetsUrl} from './../../utils/urlHelpers';
+import {assumeIsGroupedByCategory} from './../../redux/datagroupset/datagroupsetHelpers'
 
 
 const DashboardWidgetDatagroupTimeSeriesPage = (props) => {
@@ -68,7 +72,11 @@ const DashboardWidgetDatagroupTimeSeriesPage = (props) => {
 
               <div className="timeseries-pagination">
                 <span className="timeseries-pagination__supp-title">{isUpdateMode ? 'View' : 'Add'} data for:</span>
-                <span className="timeseries-pagination__title">{getHumanisedVeryShortDate(datagroupsetSlice.sliceKey)}</span>
+                <span className="timeseries-pagination__title">{
+                  assumeIsGroupedByCategory(datagroupsetSlice.groups, widget.type) ? 
+                  getHumanisedMonth(datagroupsetSlice.sliceKey) :
+                  getHumanisedVeryShortDate(datagroupsetSlice.sliceKey)
+                }</span>
                 <Pagination prevKey={datagroupsetSlice.slicePrevKey}
                             nextKey={datagroupsetSlice.sliceNextKey}
                             widgetId={widget.id}

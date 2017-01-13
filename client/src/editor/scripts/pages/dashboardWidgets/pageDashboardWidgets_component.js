@@ -58,6 +58,7 @@ class PageDashboardWidgets extends Component {
       dashboard,
       heroDatagroupsetSlice,
       btlDatagroupsetsSlices,
+      widget,
       actions
     } = this.props;
 
@@ -97,6 +98,7 @@ class PageDashboardWidgets extends Component {
                   {heroDatagroupsetSlice && <div ref={String(heroDatagroupsetSlice.widget.id)}>
                     <WidgetTypeTimeSeries
                       recentDatagroupset={heroDatagroupsetSlice}
+                      widget={heroDatagroupsetSlice.widget}
                       addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.widget.id, heroDatagroupsetSlice.sliceNextKey)}
                       editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, heroDatagroupsetSlice.sliceKey)}
                       serviceDashboardUrl={getServiceDashboardUrl(dashboard.id, dashboard.name)}
@@ -125,6 +127,7 @@ class PageDashboardWidgets extends Component {
                       return (
                         <div key={idx} ref={String(slice.widget.id)}>
                           <WidgetTypeTimeSeries recentDatagroupset={slice}
+                            widget={slice.widget}
                             addUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceNextKey)}
                             editUrl={getDashboardWidgetDatagroupTimeSeriesUrl(dashboard.id, slice.widget.id, slice.sliceKey)}
                             editDescriptionsUrl={getDashboardWidgetDescriptionsUrl(dashboard.id, slice.widget.id)}

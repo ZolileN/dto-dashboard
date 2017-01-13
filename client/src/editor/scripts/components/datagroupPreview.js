@@ -2,14 +2,22 @@ import React from 'react';
 
 import LegendDot, { getPaletteColor } from './svgs/legendDot';
 import { getHumanisedUnits } from './../redux/datasets/datasetsHelper';
-import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
+import {
+  getHumanisedVeryShortDate,
+  getHumanisedMonth
+} from './../utils/humanisedDates';
 
+import {assumeIsGroupedByCategory} from './../redux/datagroupset/datagroupsetHelpers';
 
-const Preview = ({recentDatagroupset}) => {
+const Preview = ({recentDatagroupset, widget}) => {
 
   return (
     <div className="preview">
-      <p className="most-recent-text">Most recent data: <span className="strong">{getHumanisedVeryShortDate(recentDatagroupset.recentKey)}</span></p>
+      <p className="most-recent-text">Most recent data: <span className="strong">{
+        assumeIsGroupedByCategory(recentDatagroupset.groups, widget.type) ? 
+        getHumanisedMonth(recentDatagroupset.recentKey) :
+        getHumanisedVeryShortDate(recentDatagroupset.recentKey)
+      }</span></p>
 
       {recentDatagroupset.groups.map((group, idx) => {
 
