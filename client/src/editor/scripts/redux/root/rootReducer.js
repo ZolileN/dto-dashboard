@@ -60,9 +60,10 @@ const rootReducer = reduceReducers(
           return ds;
         });
 
-        if (hasDataset === false) {
-          throw new Error('Dataset does not exist, unable to update.');
-        }
+        // todo - verify
+        // if (hasDataset === false) {
+        //   throw new Error('Dataset does not exist, unable to update.');
+        // }
 
         return state;
 

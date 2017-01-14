@@ -45,7 +45,7 @@ const mySubmit = (values, dispatch, props) => {
     props.reset();
     return response;
   }).catch(error => {
-    throw new SubmissionError(String(error) ? error : error.message ? error.message : 'Submit failed')
+    throw new SubmissionError({_error: error && error.message ? error.message : 'Submit failed'})
   });
 };
 
@@ -86,7 +86,7 @@ const renderFields = ({
 
 /**
  * Container which renders the Create Datagroupset Form
- * @returns {Object.<jsx>}
+ * @returns {Object<jsx>}
  */
 const CreateDatagroupsetForm = (props) => {
 
