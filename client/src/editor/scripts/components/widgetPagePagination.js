@@ -15,7 +15,7 @@ const Pagination = ({nextKey, prevKey, dashboardId, widgetId}) => {
     nextUrl = getDashboardWidgetDatagroupTimeSeriesUrl(dashboardId, widgetId, nextKey);
   } else {
     // todo - get this as default from api instead
-    nextKey = moment(prevKey).add('months', 2);
+    nextKey = moment(prevKey).add(2, 'months');
   }
 
   prevUrl = getDashboardWidgetDatagroupTimeSeriesUrl(dashboardId, widgetId, prevKey);

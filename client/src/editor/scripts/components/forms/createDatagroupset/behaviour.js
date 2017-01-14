@@ -40,6 +40,9 @@ export const preview = (data) => {
     }
   });
 
+  document.getElementById('preview').style.display = 'block';
+  document.getElementById('preview').style.marginBottom = `2.1em`;
+
   let previewForm = document.createElement('form');
   previewForm.setAttribute('method', 'post');
   previewForm.setAttribute('target', 'preview');

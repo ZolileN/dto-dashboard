@@ -44,7 +44,7 @@ const rootReducer = reduceReducers(
       case datagroupsetActionTypes.UPDATE_DATAGROUPSET:
 
         const { datapoint, dataset } = payload;
-        let hasDataset = false;
+        // let hasDataset = false;
 
         // adds the new datapoint
         state.datapoints = [...state.datapoints, datapoint];
@@ -52,7 +52,7 @@ const rootReducer = reduceReducers(
         // update existing dataset with datapoint
         state.datasets = state.datasets.map(ds => {
           if (ds.id === dataset.id) {
-            hasDataset = true;
+            // hasDataset = true;
             return {...ds, ...{
               datapoints: [...ds.datapoints, dataset.datapoint_id]  // merge the new datapoint on to ref arr
             }}

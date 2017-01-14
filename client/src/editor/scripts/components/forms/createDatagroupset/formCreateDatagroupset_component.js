@@ -108,12 +108,12 @@ const CreateDatagroupsetForm = (props) => {
 
       <div className="form-preview">
         <button className="UIK-button btn btn-secondary mb-1"
-                onClick={preview.bind(this, formModel)}>Click to preview before publishing</button>
+                onClick={preview.bind(this, formModel)}>Click to preview</button>
 
-        <iframe id="preview" name="preview" style={{height: '500px', width: '100%'}}></iframe>
+        <iframe id="preview" name="preview" style={{height: '500px', width: '100%', display:'none'}}></iframe>
       </div>
 
-      <hr className="mt-2" />
+      <hr className="mt-0" />
 
       <div className="form-actions-buttons">
         <button type="submit"
