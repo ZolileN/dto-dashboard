@@ -16,7 +16,7 @@ const projectName = require('./../../package').name;
 let webpackConfig = {
 	name: projectName,
 	debug: true,
-  devtool: 'inline-source-map', //'cheap-module-source-map',
+  devtool: 'eval', //inline-source-map', //'cheap-module-source-map',
 	context: CONFIG.DIR_SRC,
     entry: {
       ['dashboard']: [`./dashboard`],

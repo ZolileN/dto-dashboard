@@ -139,7 +139,7 @@
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
     "test:react": "NODE_ENV=test jest --env=jsdom",
     "test:react:watch": "npm run test:react -- --watch --verbose",
-    "test:react:coverage": "npm run test:react -- --coverage",
+    "test:react:coverage": "npm run test:react -- --coverage --runInBand",
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
     "test-browser:tap": "NODE_ENV=test npm run test-browser -- --tap | tap-spec",
     "test-browser:watch": "NODE_ENV=test DEBUG=ava:watcher ava 'client/test/**/*.test.js' --require=babel-register --watch --verbose",
