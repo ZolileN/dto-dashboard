@@ -4,6 +4,7 @@ import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
 import IconLoader from './../../../_shared/scripts/components/iconLoader';
 import {scrollToY} from './../utils/scrollPosition';
+import Footer from './../components/footer';
 
 
 class Layout extends Component {
@@ -30,6 +31,7 @@ class Layout extends Component {
               key: this.props.location.pathname
             })}
         </TransitionGroup>
+        <Footer />
       </div>
     )
   }
