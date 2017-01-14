@@ -91,7 +91,7 @@ const renderFields = ({
 const CreateDatagroupsetForm = (props) => {
 
   const { canSubmit, formModel, ...rfProps } = props;
-  const { handleSubmit, submitting, error } = rfProps;
+  const { handleSubmit, submitting, error, valid } = rfProps;
 
   return (
     <form noValidate onSubmit={e => e.preventDefault()}>
@@ -118,8 +118,8 @@ const CreateDatagroupsetForm = (props) => {
       <div className="form-actions-buttons">
         <button type="submit"
                 className="UIK-button btn btn-primary"
-                disabled={!canSubmit || submitting}
-                onClick={handleSubmit(mySubmit.bind(this))}>{submitting ? 'Publishing...' : 'Publish'}</button>
+                disabled={!canSubmit || submitting || !valid}
+                onClick={valid ? handleSubmit(mySubmit.bind(this)) : () => {}}>{submitting ? 'Publishing...' : 'Publish'}</button>
         <button type="cancel"
                 className='UIK-button btn btn-link'
                 disabled={submitting}
@@ -128,6 +128,10 @@ const CreateDatagroupsetForm = (props) => {
 
       <div className="form__help-block mt-1">
         {error && <strong>{error}</strong>}
+      </div>
+
+      <div className="form__help-block mt-1">
+        {!valid && <strong>A field value you have entered is invalid.</strong>}
       </div>
 
     </form>
