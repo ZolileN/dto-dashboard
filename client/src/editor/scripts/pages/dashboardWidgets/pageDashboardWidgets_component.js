@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import { findDOMNode } from 'react-dom'
 import { Link } from 'react-router';
 
-import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import Breadcrumbs from './../../../../_shared/components/uikit-breadcrumbs';
 import WidgetTypeSimple from './../../components/widgetTypeSimple';
 import WidgetTypeTimeSeries from './../../components/widgetTypeTimeSeries';
 

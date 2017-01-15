@@ -6,7 +6,7 @@ import {Link} from 'react-router';
 
 import Preview from './datagroupPreview';
 import TrafficLight from './../components/widgetTrafficLight';
-import UikitAlert from './../../../_shared/scripts/components/uikit-components/alert';
+import UikitAlert from './../../../_shared/components/uikit-alert';
 
 
 const WidgetTypeTimeSeries = ({

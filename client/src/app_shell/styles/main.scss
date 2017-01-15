@@ -12,13 +12,13 @@
  */
 
 @import './../../_shared/styles/_vendor/bootstrap/bootstrap';
-@import './../../_shared/styles/_vendor/bootstrap/uikit-components/type';
-@import './../../_shared/styles/_vendor/bootstrap/uikit-components/links';
-@import './../../_shared/styles/_vendor/bootstrap/uikit-components/buttons';
-@import './../../_shared/styles/_vendor/bootstrap/uikit-components/govau-header';
-@import './../../_shared/styles/_vendor/bootstrap/uikit-components/govau-footer';
+@import './../../_shared/components/uikit-type/type';
+@import './../../_shared/components/uikit-links/links';
+@import './../../_shared/components/uikit-buttons/buttons';
+@import './../../_shared/components/header/header';
+@import './../../_shared/components/footer/footer';
 @import './../../_shared/styles/_vendor/bootstrap/uikit-components/govau-phase-banner';
-@import './../../_shared/styles/_vendor/bootstrap/uikit-components/alerts';
+@import './../../_shared/components/uikit-alert/alert';
 
 
 /**

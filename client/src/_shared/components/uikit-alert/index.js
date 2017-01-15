@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import Icon from './../../../../../_shared/scripts/components/icon';
+import {Icon} from './../iconLoader';
 
 
 const META = {

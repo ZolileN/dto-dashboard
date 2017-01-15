@@ -1,5 +1,6 @@
 
 import React from 'react';
+import imageCoatOfArms from './coat-of-arms.png';
 
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
 
           <div className="govau-footer__container">
             <div className="govau-footer__container__logo">
-              <img src={require('./coat-of-arms.png')} width="185" height="135" alt="Commonwealth of Australia Coat of Arms Logo" />
+              <img src={imageCoatOfArms} width="185" height="135" alt="Commonwealth of Australia Coat of Arms Logo" />
             </div>
 
             <div className="govau-footer__container__utils">
@@ -23,7 +24,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </footer>

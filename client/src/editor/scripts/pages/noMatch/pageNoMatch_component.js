@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import Breadcrumbs from './../../../../_shared/components/uikit-breadcrumbs';
 
 
 export default class NoMatch extends Component {

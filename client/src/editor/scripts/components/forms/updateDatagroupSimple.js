@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
 
 import Textarea from './../fields/textarea';
-import SubmitButton from './../submitButton';
 
 
 const submit = (values, dispatch, props) => {
@@ -46,11 +45,10 @@ let UpdateDatagroupSimpleForm = ({
              fieldProps={{autoComplete: 'off', rows: 5, disabled:disableUpdate}} />
 
       <div>
-        <SubmitButton type="submit"
-                      btnText={isSubmitting ? 'Saving...' : 'Save'}
-                      className='UIK-button btn btn-primary'
-                      disabled={disableEdit || isSubmitting || pristine || !valid}
-                      onClick={disableEdit || handleSubmit(submit.bind(this))} />
+        <button type="submit"
+                className='UIK-button btn btn-primary'
+                disabled={disableEdit || isSubmitting || pristine || !valid}
+                onClick={disableEdit || handleSubmit(submit.bind(this))}>{isSubmitting ? 'Saving...' : 'Save'}</button>
         <button type="cancel"
                 className='UIK-button btn btn-link'
                 disabled={disableEdit || !isEditing || isSubmitting}

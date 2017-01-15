@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import Breadcrumbs from './../../../../_shared/components/uikit-breadcrumbs';
 import {getDashboardWidgetsUrl} from './../../utils/urlHelpers';
 import UpdateDatagroupSimpleForm from './../../components/forms/updateDatagroupSimple';
 import metadatas from './../../data/widgetMetadata';

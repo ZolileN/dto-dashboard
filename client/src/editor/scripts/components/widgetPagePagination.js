@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
-import Icon from './../../../_shared/scripts/components/icon';
+import {Icon} from './../../../_shared/components/iconLoader';
 
 import { getHumanisedMonth } from './../utils/humanisedDates';
 import { getDashboardWidgetDatagroupTimeSeriesUrl } from './../utils/urlHelpers';

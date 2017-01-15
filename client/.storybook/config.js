@@ -7,7 +7,7 @@ const context = require.context('./../src', true, /story\.js$/);
 
 import './../src/_storybook/styles/main';
 
-import IconLoader from './../src/_shared/scripts/components/iconLoader';
+import {IconLoader} from './../src/_shared/components/icon';
 
 const StorybookDecorator = (story) => (
   <div style={{height:'100vh',width:'600px',display:'table',margin:'0 auto'}}>

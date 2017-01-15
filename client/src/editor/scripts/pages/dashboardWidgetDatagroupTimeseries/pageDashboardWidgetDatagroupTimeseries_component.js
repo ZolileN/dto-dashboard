@@ -3,7 +3,7 @@ import * as flags from './../../constants/flags';
 
 import React, {PropTypes} from 'react';
 
-import Breadcrumbs from './../../../../_shared/scripts/components/uikit-components/breadcrumbs';
+import Breadcrumbs from './../../../../_shared/components/uikit-breadcrumbs';
 import Pagination from './../../components/widgetPagePagination';
 import {getHumanisedVeryShortDate} from './../../utils/humanisedDates';
 import CreateDatagroupsetForm from './../../components/forms/createDatagroupset';

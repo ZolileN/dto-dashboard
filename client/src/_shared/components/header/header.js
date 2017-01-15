@@ -1,6 +1,8 @@
-import React, { PropTypes } from 'react';
 
-import Icon from './../../icon';
+import React, {PropTypes} from 'react';
+
+import imageEditorLogo from './editor-logo.svg';
+import {Icon} from './../../components/iconLoader';
 
 
 const GovauHeader = ({isLoggedIn, userEmail, signInUrl, signOutUrl}) => {
@@ -11,7 +13,7 @@ const GovauHeader = ({isLoggedIn, userEmail, signInUrl, signOutUrl}) => {
 
           <div className="govau-header__container__logo">
             <a href="/editor">
-              <img src={require("./../../../../../images/images/editor-logo.svg")} width="240" height="54" alt="Performance Dashboards - Editor" />
+              <img src={imageEditorLogo} width="240" height="54" alt="Performance Dashboards - Editor" />
             </a>
           </div>
 
