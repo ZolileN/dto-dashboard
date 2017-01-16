@@ -22,7 +22,7 @@ Currently WIP.
  - Postgres 9.4
  - Node 6.3.0
  - Yarn ^0.16.1
- - ImageMagick 
+ - ImageMagick
 
 ## Getting Started
 
@@ -395,6 +395,12 @@ Circle CI will deploy automatically once tests have passed
   - Production tracks tags in the form `rel-{timestamp}`
 
 Any branch can be deployed to the Testing environment for review and testing.
+
+Note: there is a bunch of JSON data (see `lib/data/*.json`) that is used
+to populate the dashboards on every deployment. This used to populate the
+dashboards even on production; now, however, it only happens on non-production
+servers. On production, use the editor to add new data to dashboards, or 
+use the import function in the admin section to create new dashboards via JSON.
 
 ### Staging
 
