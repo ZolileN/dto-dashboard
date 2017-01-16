@@ -1,5 +1,5 @@
 
-import {isArray} from 'lodash';
+import isArray from 'lodash/isArray';
 import initialState from './../initialState';
 import isTypeOfState from './../../utils/isTypeOfState';
 

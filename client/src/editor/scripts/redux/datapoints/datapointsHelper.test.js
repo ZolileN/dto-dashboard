@@ -1,7 +1,7 @@
 /*global describe,it,beforeEach*/
 
 import expect from 'expect';
-import {isNumber} from 'lodash';
+import isNumber from 'lodash/isNumber';
 
 
 import {

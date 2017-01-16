@@ -2,7 +2,8 @@
 /*global describe,it,beforeEach*/
 
 import expect from 'expect';
-import {isArray, without} from 'lodash'
+import isArray from 'lodash/isArray';
+import without from 'lodash/without';
 
 import reducer, {
   isDatagroupset,

@@ -2,7 +2,10 @@
 import {combineReducers} from 'redux';
 import reduceReducers from 'reduce-reducers';
 import {routerReducer} from 'react-router-redux'
-import {uniq,isObject,without,isArray} from 'lodash';
+import uniq from 'lodash/uniq';
+import isObject from 'lodash/isObject';
+import without from 'lodash/without';
+import isArray from 'lodash/isArray';
 import moment from 'moment';
 
 import {types as datagroupsetActionTypes} from './../datagroupset/datagroupsetActions';

@@ -4,7 +4,7 @@ import Donut from './svgs/donut';
 import { statusColors } from './../constants/styleVariables';
 import { humanisedShortDate } from './../utils/humanisedDates';
 import { getNumMonthsBetweenHeadKeyAndRecentKey } from './../redux/datapoints/datapointsHelper';
-import { isNumber } from 'lodash';
+import isNumber from 'lodash/isNumber';
 
 
 const STATUSES = [

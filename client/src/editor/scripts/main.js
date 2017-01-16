@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import { hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 

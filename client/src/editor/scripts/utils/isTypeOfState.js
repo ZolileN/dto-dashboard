@@ -1,4 +1,5 @@
-import { isObject } from 'lodash';
+
+import isObject from 'lodash/isObject';
 
 /**
  * Produce a function that can check an items' type against
