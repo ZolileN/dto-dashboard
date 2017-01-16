@@ -1,9 +1,20 @@
 /* global jest */
 require('./../../../config/polyfills');
 
+import isObject from 'lodash/isObject';
 
-// fake response object
+
+/**
+ * Fake response object
+ * @param status
+ * @param statusText
+ * @param response {String|Object}
+ * @returns {*}
+ */
 export const mockResponse = (status, statusText, response) => {
+  if (isObject(response)) {
+    response = JSON.stringify(response);
+  }
   return new window.Response(response, {
     status: status,
     statusText: statusText,

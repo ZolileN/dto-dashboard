@@ -2,7 +2,8 @@
 import * as validators from './../../../utils/validators';
 
 /**
- * Validate the form and provide errors like redux-form expects
+ * Validate the form and provide errors like redux-form expects.
+ * Errors must correspond to a field key.
  * @param values
  * @param props
  * @return {{}} - errors - which maps to shape of values

@@ -15,7 +15,6 @@ export const getDashboardWidgetDatagroupSimpleUrl = (dashboardId, widgetId) => {
 };
 
 export const getDashboardWidgetDatagroupTimeSeriesUrl = (dashboardId, widgetId, datagroup_key) => {
-  if (!datagroup_key) console.warn('no key provided');
   return `/dashboards/${dashboardId}/widgets/${widgetId}/datagroup-timeseries/${datagroup_key}`;
 };
 

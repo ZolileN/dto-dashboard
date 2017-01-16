@@ -10,7 +10,7 @@ export const checkStatus = response => {
     error.response = response;
     return response.json().then(serverResponse => {
       // save server error
-      error.message = serverResponse.message || serverResponse.error;
+      error.message = serverResponse.message || serverResponse.error || 'Request failed';
       // explicitly reject the promise chain, next call will be catch()
       throw error;
     });
@@ -35,9 +35,9 @@ export const parseBody = response => {
 const api = (route, token, options={}) => {
   // this will only ever happen if token fails on load because it never rehydrates
   if (!token) {
-    alert(`We're logging you out now because your session expired. Please log in again.`)
+    alert(`We're logging you out now because your session expired. Please log in again.`);
     window.location.hostname = '/sign-out';
-    return;
+    return new Promise((resolve, reject) => reject('No session token found.'));
   }
   return fetch(`${rootUrl}${route}`, deepMerge({
     credentials: 'same-origin',
@@ -49,6 +49,6 @@ const api = (route, token, options={}) => {
   }, options))
     .then(checkStatus)
     .then(parseBody);
-}
+};
 
 export default api;

@@ -45,6 +45,7 @@ const mySubmit = (values, dispatch, props) => {
     props.reset();
     return response;
   }).catch(error => {
+    // use the generic _error key, which will result in this.props.error being populated
     throw new SubmissionError({_error: error && error.message ? error.message : 'Submit failed'})
   });
 };

@@ -13,9 +13,7 @@ const mockStore = configureStore([
   thunkMiddleware.withExtraArgument(api)
 ]);
 
-import config from './../../config';
-
-const rootUrl = config.API_BASE_URL;
+import {API_BASE_URL as rootUrl} from './../../config';
 
 import {createDatagroupset} from './datagroupsetActions';
 

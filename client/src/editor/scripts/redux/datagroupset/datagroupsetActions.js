@@ -11,6 +11,11 @@ export const types = {
 
 // Actions
 
+/**
+ * Create datagroupset
+ * @param formData {Object}
+ * @returns {Object<Promise>}
+ */
 export const createDatagroupset = formData => {
   return (dispatch, getState, api) => {
     const promises = formData.map(d => {

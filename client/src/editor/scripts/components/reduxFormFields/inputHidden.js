@@ -6,9 +6,9 @@ import React from 'react';
  * @returns {Object<jsx>}
  * @constructor
  */
-const InputHidden = ({input}) => {
-  const {name} = input;
-  return <input {...input} type="hidden" id={name} />
+const InputHidden = (props) => {
+  const {input} = props;
+  return <input {...input} type="hidden" id={input.name} />
 };
 
 export default InputHidden;
