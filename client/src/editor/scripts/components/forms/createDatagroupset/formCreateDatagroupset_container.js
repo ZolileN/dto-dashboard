@@ -36,9 +36,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   /**
    * executed once onSave responds successfully
    * @param response
-   * @param formModel
-   * @param cb
-   * @returns {Promise}
+   * @param props
+   * @returns {undefined}
    */
   onSaveSuccess: (response, props) => {
     const {formModel} = props;
@@ -57,7 +56,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
    * Callback from once Cancel is clicked
    * @param props
    */
-  onCancelSuccess: (props) => {
+  onCancelSuccess: () => {
     dispatch(push(getDashboardWidgetsUrl(ownProps.dashboard_id)));
   }
 });
