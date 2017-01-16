@@ -30,7 +30,7 @@ const WidgetTypeTimeSeries = ({
       <article className="widget-list__item">
         <div className="row">
           <div className="col-xs-12">
-            <UikitAlert type="info" text="Datasets for this widget have not been set up. Please contact the Dashboard Team to set up your first dataset." />
+            <UikitAlert type="info" text="Your dashboard does not yet contain any charts or facts. Please contact the dashboard team to set up this information." />
           </div>
         </div>
       </article>
