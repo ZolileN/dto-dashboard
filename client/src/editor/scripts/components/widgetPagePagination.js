@@ -4,7 +4,7 @@ import moment from 'moment';
 import {Icon} from './../../../_shared/components/iconLoader';
 
 import { getHumanisedMonth } from './../utils/humanisedDates';
-import { getDashboardWidgetDatagroupTimeSeriesUrl } from './../utils/urlHelpers';
+import { getDashboardWidgetDatagroupTimeSeriesUrl } from './../utils/formatUrl';
 
 
 const Pagination = ({nextKey, prevKey, dashboardId, widgetId}) => {

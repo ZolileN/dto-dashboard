@@ -14,7 +14,7 @@ import {
   getDashboardWidgetDescriptionsUrl,
   getServiceDashboardUrl,
   getServiceDashboardUrlAnchor
-} from './../../utils/urlHelpers';
+} from './../../utils/formatUrl';
 import {
   getElementY,
   scrollToY

@@ -9,7 +9,7 @@ import {validate} from './behaviour';
 import {createDatagroupset} from './../../../redux/datagroupset/datagroupsetActions';
 import {setLastDatagroupsetTransaction} from './../../../redux/ui/uiActions';
 import {getHumanisedMonth} from './../../../utils/humanisedDates';
-import {getDashboardWidgetsUrl} from './../../../utils/urlHelpers';
+import {getDashboardWidgetsUrl} from './../../../utils/formatUrl';
 
 
 let Container = reduxForm({

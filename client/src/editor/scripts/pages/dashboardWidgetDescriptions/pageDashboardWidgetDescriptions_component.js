@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 
-import { getDashboardWidgetsUrl } from './../../utils/urlHelpers';
+import { getDashboardWidgetsUrl } from './../../utils/formatUrl';
 import Breadcrumbs from './../../../../_shared/components/uikit-breadcrumbs';
 
 

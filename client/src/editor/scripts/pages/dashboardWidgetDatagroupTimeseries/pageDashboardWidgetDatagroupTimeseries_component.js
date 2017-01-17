@@ -10,7 +10,7 @@ import CreateDatagroupsetForm from './../../components/forms/createDatagroupset'
 import UpdateDatagroupsetForm from './../../components/forms/updateDatagroupset';
 import metadatas from './../../data/widgetMetadata';
 import TrafficLight from './../../components/widgetTrafficLight';
-import {getDashboardWidgetsUrl} from './../../utils/urlHelpers';
+import {getDashboardWidgetsUrl} from './../../utils/formatUrl';
 
 
 const DashboardWidgetDatagroupTimeSeriesPage = (props) => {

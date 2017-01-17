@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import {
   getServiceDashboardUrl,
   getDashboardWidgetsUrl
-} from './../../utils/urlHelpers';
+} from './../../utils/formatUrl';
 import Breadcrumbs from './../../../../_shared/components/uikit-breadcrumbs';
 
 
