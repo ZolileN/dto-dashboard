@@ -20,7 +20,8 @@
         { "label": "2016-08", "value": 75 },
         { "label": "2016-09", "value": 60 },
         { "label": "2016-10", "value": null },
-        { "label": "2016-11", "value": null }
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
       ]
      },
      {
@@ -36,7 +37,8 @@
          { "label": "2016-08", "value": 40 },
          { "label": "2016-09", "value": 40 },
          { "label": "2016-10", "value": 30 },
-         { "label": "2016-11", "value": 22 }
+         { "label": "2016-11", "value": 22 },
+         { "label": "2016-12", "value": 22 }
        ]
      },
     {
@@ -52,7 +54,8 @@
         { "label": "2016-08", "value": 100 },
         { "label": "2016-09", "value": 100 },
         { "label": "2016-10", "value": null },
-        { "label": "2016-11", "value": null }
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
       ]
     },
     {
@@ -67,8 +70,9 @@
         { "label": "2016-07", "value": 73.39 },
         { "label": "2016-08", "value": 90.27 },
         { "label": "2016-09", "value": 84.28 },
-        { "label": "2016-10", "value": null },
-        { "label": "2016-11", "value": null }
+        { "label": "2016-10", "value": 60.82 },
+        { "label": "2016-11", "value": 63.1 },
+        { "label": "2016-12", "value": 63.43 }
       ]
     },
     {
@@ -101,7 +105,10 @@
         { "label": "2016-06", "value": 0 },
         { "label": "2016-07", "value": 3 },
         { "label": "2016-08", "value": 3 },
-        { "label": "2016-09", "value": 3 }
+        { "label": "2016-09", "value": 3 },
+        { "label": "2016-10", "value": null },
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
       ]
     },
     {
@@ -116,7 +123,10 @@
         { "label": "2016-06", "value": 0 },
         { "label": "2016-07", "value": 0 },
         { "label": "2016-08", "value": 2 },
-        { "label": "2016-09", "value": 2 }
+        { "label": "2016-09", "value": 2 },
+        { "label": "2016-10", "value": null },
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
       ]
     },
     {
@@ -131,7 +141,10 @@
         { "label": "2016-06", "value": 1 },
         { "label": "2016-07", "value": 1 },
         { "label": "2016-08", "value": 1 },
-        { "label": "2016-09", "value": 1 }
+        { "label": "2016-09", "value": 1 },
+        { "label": "2016-10", "value": null },
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
       ]
     },
     {
@@ -146,7 +159,10 @@
         { "label": "2016-06", "value": 0 },
         { "label": "2016-07", "value": 0 },
         { "label": "2016-08", "value": 0 },
-        { "label": "2016-09", "value": 0 }
+        { "label": "2016-09", "value": 0 },
+        { "label": "2016-10", "value": null },
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
       ]
     },
 
@@ -198,7 +214,10 @@
         { "label": "2016-06", "value": 0 },
         { "label": "2016-07", "value": 0 },
         { "label": "2016-08", "value": 0 },
-        { "label": "2016-09", "value": 0 }
+        { "label": "2016-09", "value": 0 },
+        { "label": "2016-10", "value": null },
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
 
       ]
     },
@@ -214,7 +233,10 @@
         { "label": "2016-06", "value": 1 },
         { "label": "2016-07", "value": 3 },
         { "label": "2016-08", "value": 6 },
-        { "label": "2016-09", "value": 6 }
+        { "label": "2016-09", "value": 6 },
+        { "label": "2016-10", "value": null },
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null }
       ]
     },
     {
