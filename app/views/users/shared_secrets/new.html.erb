@@ -5,9 +5,7 @@
 
   <section class="sign-in-form">
     <%= form_tag([:users, :shared_secrets], method: :post) do %>
-      <% if @form_error %>
-        <%= @form_error %>
-      <% end %>
+      <%= render partial: 'alert', locals: { alert_type: 'warning', message: @form_error } %>
       <%= label_tag 'code', 'Enter the 6-digit code' %>
       <%= text_field_tag :code, nil, autocomplete: :off, maxlength: 6 %>
       <div class="form-footer-actions">

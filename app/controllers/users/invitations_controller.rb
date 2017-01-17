@@ -28,10 +28,10 @@ class Users::InvitationsController < Devise::InvitationsController
   private
 
   def after_accept_path_for(resource)
-    if resource.otp_secret_key.present?
-      super
-    else
+    if $flipper[:two_factor].enabled? && resource.otp_secret_key.blank?
       users_shared_secrets_path
+    else
+      super
     end
   end
 
