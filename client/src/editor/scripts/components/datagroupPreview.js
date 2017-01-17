@@ -4,7 +4,7 @@ import LegendDot, { getPaletteColor } from './svgs/legendDot';
 import { getHumanisedUnits } from './../redux/datasets/datasetsHelper';
 import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
 import {formatCurrency2dp} from './../utils/formatCurrency';
-import {formatPercentile2dp} from './../utils/formatPercentiles';
+import {formatPercentile2dp} from './../utils/formatPercentile';
 
 const Preview = ({recentDatagroupset}) => {
 
