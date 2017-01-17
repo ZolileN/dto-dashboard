@@ -3,7 +3,8 @@ import React from 'react';
 import LegendDot, { getPaletteColor } from './svgs/legendDot';
 import { getHumanisedUnits } from './../redux/datasets/datasetsHelper';
 import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
-
+import {formatCurrency2dp} from './../utils/formatCurrency';
+import {formatPercentile2dp} from './../utils/formatPercentiles';
 
 const Preview = ({recentDatagroupset}) => {
 
@@ -18,9 +19,18 @@ const Preview = ({recentDatagroupset}) => {
         let units = getHumanisedUnits(group.dataset.units);
         let unitsStr = units ? ` ${units}` : '';
         if (group.datapoint) {
-          value = group.datapoint.value === null ? 'No data' : group.datapoint.value + unitsStr;
+          if (group.datapoint.value === null) {
+            value = 'No data';
+          } else {
+            if (units === '$') {
+              value = formatCurrency2dp(group.datapoint.value) + unitsStr;
+            } else if (units === '%') {
+              value = formatPercentile2dp(group.datapoint.value) + unitsStr;
+            } else {
+              value = group.datapoint.value + unitsStr;
+            }
+          }
         }
-
         return (
           <div key={idx} className="preview-table">
             <span className="key">
