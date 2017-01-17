@@ -13,9 +13,7 @@ const Preview = ({recentDatagroupset}) => {
       <p className="most-recent-text">Most recent data: <span className="strong">{getHumanisedVeryShortDate(recentDatagroupset.recentKey)}</span></p>
 
       {recentDatagroupset.groups.map((group, idx) => {
-
         let value;
-
         let units = getHumanisedUnits(group.dataset.units);
         let unitsStr = units ? ` ${units}` : '';
         if (group.datapoint) {
@@ -30,6 +28,9 @@ const Preview = ({recentDatagroupset}) => {
               value = group.datapoint.value + unitsStr;
             }
           }
+        } else {
+          console.warn('Group has no datapoint. Something is very wrong.');
+          return null;
         }
         return (
           <div key={idx} className="preview-table">
