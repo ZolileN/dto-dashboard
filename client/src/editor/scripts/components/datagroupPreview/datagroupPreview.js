@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-import LegendDot, { getPaletteColor } from './svgs/legendDot';
-import { getHumanisedUnits } from './../redux/datasets/datasetsHelper';
-import { getHumanisedVeryShortDate } from './../utils/humanisedDates';
-import {formatCurrency2dp} from './../utils/formatCurrency';
-import {formatPercentile2dp} from './../utils/formatPercentile';
+import LegendDot, { getPaletteColor } from './../svgs/legendDot';
+import { getHumanisedUnits } from './../../redux/datasets/datasetsHelper';
+import { getHumanisedVeryShortDate } from './../../utils/humanisedDates';
+import {formatCurrency2dp} from './../../utils/formatCurrency';
+import {formatPercentile2dp} from './../../utils/formatPercentile';
 
 
 /**
@@ -14,14 +14,16 @@ import {formatPercentile2dp} from './../utils/formatPercentile';
  * @param units {String}
  * @returns {String}
  */
-const formatValue = (value, units) => {
-  if (typeof value === 'undefined') {
-    console.warn('Group has no datapoint. Something is very wrong.');
+export const formatValue = (value, units) => {
+  if (value === null || typeof value === 'undefined') {
+    if (process.env.NODE_ENV !== 'test') {
+      console.warn('Group has no datapoint. Something is very wrong.');
+    }
     return null;
   }
   let formattedValue;
-  let units = getHumanisedUnits(units);
-  let unitsStr = units ? ` ${units}` : '';
+  let formattedUnits = getHumanisedUnits(units);
+  let unitsStr = formattedUnits ? ` ${formattedUnits}` : '';
   if (value === null) {
     formattedValue = 'No data';
   } else {
